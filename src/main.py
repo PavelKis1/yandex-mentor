@@ -55,11 +55,17 @@ def create_app() -> FastAPI:
     app = FastAPI(title="Yandex Review API", lifespan=_lifespan)
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
+        allow_origins=["https://yandexmentor.vercel.app"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
     )
+    
+    @app.middleware("http")
+    async def log_requests(request: Request, call_next):
+        print(f"Request: {request.method} {request.url}")
+        response = await call_next(request)
+        return response
     app.include_router(router, dependencies=[Depends(authenticate)])
     return app
 
