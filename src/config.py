@@ -7,6 +7,7 @@
 - data/               — динамические данные (progress, сохранённые решения)
 - logs/               — файлы логов
 """
+import os
 from pathlib import Path
 
 # Корень репозитория (каталог, в котором лежат backend/, frontend/, server.py)
@@ -29,5 +30,6 @@ HOST = "0.0.0.0"
 PORT = 8000
 
 # Безопасность
-AUTH_USER = "admin"
-AUTH_PASS = "admin" # ВАЖНО: смените пароль!
+AUTH_USER = os.getenv("AUTH_USER", "admin")
+AUTH_PASS = os.getenv("AUTH_PASS", "admin")
+
