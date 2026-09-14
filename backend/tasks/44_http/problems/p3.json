@@ -1,0 +1,23 @@
+{
+  "id": "44-p3",
+  "title": "Idempotency",
+  "difficulty": "hard",
+  "lecture_id": "44",
+  "order": 3,
+  "description": "POST /orders должен быть идемпотентным. Как клиент обеспечивает это?",
+  "examples": [
+    {
+      "input": "Передача Idempotency-Key на каждый повтор",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Ключ идемпотентности в заголовке."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

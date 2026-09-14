@@ -1,0 +1,100 @@
+{
+  "id": "20-p1",
+  "title": "Провинции",
+  "difficulty": "easy",
+  "lecture_id": "20",
+  "order": 1,
+  "description": "Найдите количество провинций.\n\n**Функция решения:**\n\n```python\ndef find_circle_num(is_connected: list[list[int]]) -> int:\n    \"\"\"O(n^2 α(n)) — число компонент связности по матрице смежности.\n\n    Edge cases: n = 0, одна провинция, изолированные вершины.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def find_circle_num(is_connected: list[list[int]]) -> int:\n    \"\"\"O(n^2 α(n)) — число компонент связности по матрице смежности.\n\n    Edge cases: n = 0, одна провинция, изолированные вершины.\n    \"\"\"\n    ...\n",
+  "entry_function": "find_circle_num",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

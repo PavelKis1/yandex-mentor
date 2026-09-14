@@ -1,0 +1,102 @@
+{
+  "id": "12-p2",
+  "title": "Gas Station",
+  "difficulty": "medium",
+  "lecture_id": "12",
+  "order": 2,
+  "description": "Найдите стартовую станцию для полного круга.\n\n**Функция решения:**\n\n```python\ndef can_complete_circuit(gas: list[int], cost: list[int]) -> int:\n    \"\"\"O(n) — если суммарный газ хватает, ответ существует; считаем запас.\n\n    Edge cases: суммарный газ < суммарной стоимости (−1), один элемент,\n    нулевые значения.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def can_complete_circuit(gas: list[int], cost: list[int]) -> int:\n    \"\"\"O(n) — если суммарный газ хватает, ответ существует; считаем запас.\n\n    Edge cases: суммарный газ < суммарной стоимости (−1), один элемент,\n    нулевые значения.\n    \"\"\"\n    ...\n",
+  "entry_function": "can_complete_circuit",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          3
+        ]
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          5
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,86 @@
+{
+  "id": "14-p3",
+  "title": "Расстояние редактирования",
+  "difficulty": "hard",
+  "lecture_id": "14",
+  "order": 3,
+  "description": "Найдите минимальное количество операций.\n\n**Функция решения:**\n\n```python\ndef edit_distance(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — DP: вставка, удаление, замена; нижняя граница памяти.\n\n    Edge cases: одна строка пустая (len другой), обе пустые, идентичные строки.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def edit_distance(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — DP: вставка, удаление, замена; нижняя граница памяти.\n\n    Edge cases: одна строка пустая (len другой), обе пустые, идентичные строки.\n    \"\"\"\n    ...\n",
+  "entry_function": "edit_distance",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "horse",
+        "ros"
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        "intention",
+        "execution"
+      ],
+      "expected": 5,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        "",
+        ""
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        "a",
+        "b"
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

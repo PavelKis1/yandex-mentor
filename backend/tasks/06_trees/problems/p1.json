@@ -1,0 +1,15 @@
+{
+  "id": "06-p1",
+  "title": "Обход в глубину",
+  "difficulty": "easy",
+  "lecture_id": "06",
+  "order": 1,
+  "description": "Реализуйте DFS для дерева.\n\n**Функция решения:**\n\n```python\ndef dfs(root: TreeNode | None) -> list[int]:\n    \"\"\"O(n) — итеративный обход в глубину (preorder: корень, левый, правый).\n\n    Edge cases: пустое дерево, один узел, вырожденное дерево (цепочка).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "class TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef dfs(root: TreeNode | None) -> list[int]:\n    \"\"\"O(n) — итеративный обход в глубину (preorder: корень, левый, правый).\n\n    Edge cases: пустое дерево, один узел, вырожденное дерево (цепочка).\n    \"\"\"\n    ...\n",
+  "entry_function": "dfs",
+  "test_cases": [],
+  "timeout_ms": 3000
+}

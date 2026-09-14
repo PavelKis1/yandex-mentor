@@ -1,0 +1,52 @@
+{
+  "id": "21-p1",
+  "title": "Реализация Trie",
+  "difficulty": "easy",
+  "lecture_id": "21",
+  "order": 1,
+  "description": "Реализуйте Trie с insert/search/startsWith.\n\n**Функция решения:**\n\n```python\ndef find_words(board: list[list[str]], words: list[str]) -> list[str]:\n    \"\"\"O(rows*cols*4^L) — DFS по доске с отсечением по Trie.\n\n    Edge cases: пустая доска ([[]]), нет совпадений ([]),\n    слова-дубликаты (в результате — без повторов).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "class TrieNode:\n    \"\"\"Узел префиксного дерева.\"\"\"\n\n    def __init__(self) -> None:\n        self.children: dict[str, TrieNode] = {}\n        self.is_end = False\n\nclass Trie:\n    \"\"\"O(L) — префиксное дерево с insert/search/startsWith.\n\n    Edge cases: пустая строка, один символ, вставка продублированных слов.\n    \"\"\"\n\n    def __init__(self) -> None:\n        self.root = TrieNode()\n\n    def insert(self, word: str) -> None:\n        \"\"\"O(L) — вставка слова в дерево.\"\"\"\n        node = self.root\n        for ch in word:\n            if ch not in node.children:\n                node.children[ch] = TrieNode()\n            node = node.children[ch]\n        node.is_end = True\n\n    def search(self, word: str) -> bool:\n        \"\"\"O(L) — True, если слово вставлено (не только префикс).\"\"\"\n        node = self.root\n        for ch in word:\n            if ch not in node.children:\n                return False\n            node = node.children[ch]\n        return node.is_end\n\n    def starts_with(self, prefix: str) -> bool:\n        \"\"\"O(L) — True, если есть слово, начинающееся с prefix.\"\"\"\n        node = self.root\n        for ch in prefix:\n            if ch not in node.children:\n                return False\n            node = node.children[ch]\n        return True\n\ndef find_words(board: list[list[str]], words: list[str]) -> list[str]:\n    \"\"\"O(rows*cols*4^L) — DFS по доске с отсечением по Trie.\n\n    Edge cases: пустая доска ([[]]), нет совпадений ([]),\n    слова-дубликаты (в результате — без повторов).\n    \"\"\"\n    ...\n",
+  "entry_function": "find_words",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [],
+        [
+          "a"
+        ]
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          [
+            "a"
+          ]
+        ],
+        [
+          "b"
+        ]
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

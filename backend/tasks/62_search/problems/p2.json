@@ -1,0 +1,23 @@
+{
+  "id": "62-p2",
+  "title": "Ранжирование",
+  "difficulty": "medium",
+  "lecture_id": "62",
+  "order": 2,
+  "description": "Почему простое количество совпадений недостаточно? Что добавить?",
+  "examples": [
+    {
+      "input": "TF-IDF, частота, позиция, релевантность",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Сначала фильтр, потом ранжирование."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

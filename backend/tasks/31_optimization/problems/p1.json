@@ -1,0 +1,23 @@
+{
+  "id": "31-p1",
+  "title": "Два указателя",
+  "difficulty": "easy",
+  "lecture_id": "31",
+  "order": 1,
+  "description": "Дан отсортированный массив. Найдите пару с суммой, равной target, за O(n) через два указателя.",
+  "examples": [
+    {
+      "input": "[1,2,3,4,6], target=8",
+      "output": "(2,6)",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "left=0, right=n-1; двигай left вправо, right влево."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

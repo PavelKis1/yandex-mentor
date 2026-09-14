@@ -1,0 +1,23 @@
+{
+  "id": "52-p2",
+  "title": "Пароли",
+  "difficulty": "medium",
+  "lecture_id": "52",
+  "order": 2,
+  "description": "Как хранить пароли пользователей безопасно? Почему нельзя sha256 напрямую?",
+  "examples": [
+    {
+      "input": "bcrypt/argon2 с солью",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "хэширование + соль + медленная функция."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

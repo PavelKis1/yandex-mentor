@@ -1,0 +1,23 @@
+{
+  "id": "64-p2",
+  "title": "Задержка задач",
+  "difficulty": "medium",
+  "lecture_id": "64",
+  "order": 2,
+  "description": "Письмо должно отправиться через 30 минут после регистрации. Как реализовать?",
+  "examples": [
+    {
+      "input": "RabbitMQ delayed exchange / Redis ZSET по времени",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Отложенные задачи в планировщике."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

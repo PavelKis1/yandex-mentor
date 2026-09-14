@@ -1,0 +1,23 @@
+{
+  "id": "31-p2",
+  "title": "Хеш вместо цикла",
+  "difficulty": "medium",
+  "lecture_id": "31",
+  "order": 2,
+  "description": "Дан массив. Найдите первый дубликат за O(n) с O(n) памяти (через set) и верните его индекс.",
+  "examples": [
+    {
+      "input": "[2,1,3,2,4]",
+      "output": "индекс 3",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Классический «уже видели» за O(1) на проверку."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

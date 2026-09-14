@@ -1,0 +1,23 @@
+{
+  "id": "46-p2",
+  "title": "Эндпоинт с валидацией",
+  "difficulty": "medium",
+  "lecture_id": "46",
+  "order": 2,
+  "description": "Создайте GET /healthz и POST /tasks, где тело — модель Task(title: str, done: bool=False).",
+  "examples": [
+    {
+      "input": "app = FastAPI(); @app.post('/tasks')",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "FastAPI сам возвращает 422 при невалидном теле."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

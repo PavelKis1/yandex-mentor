@@ -1,0 +1,23 @@
+{
+  "id": "38-p2",
+  "title": "Двойная группировка",
+  "difficulty": "medium",
+  "lecture_id": "38",
+  "order": 2,
+  "description": "Таблица events(date, platform). Подсчитайте события по дате и платформе.",
+  "examples": [
+    {
+      "input": "SELECT date, platform, COUNT(*) FROM events GROUP BY date, platform;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "GROUP BY с несколькими колонками."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

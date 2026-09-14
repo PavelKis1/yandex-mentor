@@ -1,0 +1,23 @@
+{
+  "id": "53-p3",
+  "title": "Демонизация",
+  "difficulty": "hard",
+  "lecture_id": "53",
+  "order": 3,
+  "description": "Запустите Python-скрипт как демон, чтобы он работал после выхода из терминала (nohup).",
+  "examples": [
+    {
+      "input": "nohup python app.py &",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "nohup + & или setsid."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,15 @@
+{
+  "id": "04-p2",
+  "title": "Круговая очередь",
+  "difficulty": "medium",
+  "lecture_id": "04",
+  "order": 2,
+  "description": "Реализуйте круговую очередь фиксированного размера.",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

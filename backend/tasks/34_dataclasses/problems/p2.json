@@ -1,0 +1,23 @@
+{
+  "id": "34-p2",
+  "title": "Сортировка заказов",
+  "difficulty": "medium",
+  "lecture_id": "34",
+  "order": 2,
+  "description": "Датакласс Order(id, total: float) снабдите полями так, чтобы сортировка шла по total (убыв.), затем по id (возр.).",
+  "examples": [
+    {
+      "input": "sorted(orders)",
+      "output": "наибольший total первым",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Поле ordering=True + кастомный порядок, либо sorted(key=...)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

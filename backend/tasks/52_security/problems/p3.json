@@ -1,0 +1,23 @@
+{
+  "id": "52-p3",
+  "title": "Заголовки",
+  "difficulty": "hard",
+  "lecture_id": "52",
+  "order": 3,
+  "description": "Перечислите 3 security-заголовка для ответа API и зачем они.",
+  "examples": [
+    {
+      "input": "CSP, X-Content-Type-Options, Strict-Transport-Security",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Защита XSS/sniffing/понижения."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

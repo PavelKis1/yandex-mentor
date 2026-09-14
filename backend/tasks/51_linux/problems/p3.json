@@ -1,0 +1,23 @@
+{
+  "id": "51-p3",
+  "title": "Права",
+  "difficulty": "hard",
+  "lecture_id": "51",
+  "order": 3,
+  "description": "Чем chmod 755 отличается от 644? Для какого типа файлов нужны 755?",
+  "examples": [
+    {
+      "input": "755: владелец rwx, группа/другие r-x; 644: rw- для всех",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Категории: owner/group/other × r/w/x."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

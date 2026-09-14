@@ -1,0 +1,115 @@
+{
+  "id": "02-p3",
+  "title": "Подмножество",
+  "difficulty": "hard",
+  "lecture_id": "02",
+  "order": 3,
+  "description": "Проверьте, является ли массив подмножеством другого.\n\n**Функция решения:**\n\n```python\ndef is_subset(small: list[int], large: list[int]) -> bool:\n    \"\"\"O(n + m) — мультимножественная проверка: каждый элемент small входит\n    в large с нужной кратностью (дубликаты учитываются).\n\n    Edge cases: пустой small (пустое подмножество чего угодно), пустой large,\n    повторяющиеся элементы.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "from collections import Counter\n\ndef is_subset(small: list[int], large: list[int]) -> bool:\n    \"\"\"O(n + m) — мультимножественная проверка: каждый элемент small входит\n    в large с нужной кратностью (дубликаты учитываются).\n\n    Edge cases: пустой small (пустое подмножество чего угодно), пустой large,\n    повторяющиеся элементы.\n    \"\"\"\n    ...\n",
+  "entry_function": "is_subset",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          4
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          1,
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

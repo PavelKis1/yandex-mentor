@@ -1,0 +1,23 @@
+{
+  "id": "64-p1",
+  "title": "Работа очереди",
+  "difficulty": "easy",
+  "lecture_id": "64",
+  "order": 1,
+  "description": "Producer отправляет задачи, worker обрабатывает. Какие гарантии даёт очередь (at-most-once, at-least-once)?",
+  "examples": [
+    {
+      "input": "at-least-once: повторная доставка после краха",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Идемпотентность обработчиков."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

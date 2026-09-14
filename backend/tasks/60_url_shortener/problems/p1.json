@@ -1,0 +1,23 @@
+{
+  "id": "60-p1",
+  "title": "Проектирование",
+  "difficulty": "easy",
+  "lecture_id": "60",
+  "order": 1,
+  "description": "Спроектируйте URL-shortener: API, модель данных, как генерировать короткие ключи.",
+  "examples": [
+    {
+      "input": "POST /shorten {url} → {short}; таблица: key←→url",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Key: 6 символов base62, коллизии."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

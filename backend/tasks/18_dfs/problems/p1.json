@@ -1,0 +1,65 @@
+{
+  "id": "18-p1",
+  "title": "Острова",
+  "difficulty": "easy",
+  "lecture_id": "18",
+  "order": 1,
+  "description": "Найдите количество островов.\n\n**Функция решения:**\n\n```python\ndef num_islands(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — итеративный DFS «затапливает» остров при встрече 1.\n\n    Edge cases: пустая сетка, полностью суша/вода, остров из одной клетки.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def num_islands(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — итеративный DFS «затапливает» остров при встрече 1.\n\n    Edge cases: пустая сетка, полностью суша/вода, остров из одной клетки.\n    \"\"\"\n    ...\n",
+  "entry_function": "num_islands",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,58 @@
+{
+  "id": "09-p2",
+  "title": "Удаление дубликатов",
+  "difficulty": "medium",
+  "lecture_id": "09",
+  "order": 2,
+  "description": "Удалите дубликаты из отсортированного массива in-place.\n\n**Функция решения:**\n\n```python\ndef remove_duplicates(nums: list[int]) -> int:\n    \"\"\"O(n), in-place — медленный указатель хранит «хвост» уникальных.\n\n    Edge cases: пустой массив, единственный элемент, все элементы одинаковые.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def remove_duplicates(nums: list[int]) -> int:\n    \"\"\"O(n), in-place — медленный указатель хранит «хвост» уникальных.\n\n    Edge cases: пустой массив, единственный элемент, все элементы одинаковые.\n    \"\"\"\n    ...\n",
+  "entry_function": "remove_duplicates",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          2,
+          2,
+          2
+        ]
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

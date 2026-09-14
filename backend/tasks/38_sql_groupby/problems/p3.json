@@ -1,0 +1,23 @@
+{
+  "id": "38-p3",
+  "title": "Количество уникальных",
+  "difficulty": "hard",
+  "lecture_id": "38",
+  "order": 3,
+  "description": "Таблица visits(day, user_id). Сколько уникальных пользователей было каждый день?",
+  "examples": [
+    {
+      "input": "SELECT day, COUNT(DISTINCT user_id) FROM visits GROUP BY day;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "COUNT(DISTINCT ...)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

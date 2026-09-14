@@ -1,0 +1,23 @@
+{
+  "id": "39-p1",
+  "title": "ROW_NUMBER",
+  "difficulty": "easy",
+  "lecture_id": "39",
+  "order": 1,
+  "description": "Таблица students(class_id, score). Для каждого класса пронумеруйте студентов по убыванию балла.",
+  "examples": [
+    {
+      "input": "SELECT *, ROW_NUMBER() OVER (PARTITION BY class_id ORDER BY score DESC) rn FROM students;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Оконная функция + PARTITION BY."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

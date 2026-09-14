@@ -1,0 +1,23 @@
+{
+  "id": "30-p1",
+  "title": "Замер времени",
+  "difficulty": "easy",
+  "lecture_id": "30",
+  "order": 1,
+  "description": "Дан список из 10^6 чисел. Сравните время создания списка квадратов через list comprehension против for-цикла с append. Верните соотношение.",
+  "examples": [
+    {
+      "input": "comprehension обычно в 1.5–2× быстрее",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "time.perf_counter() вокруг каждой версии, повторите 3 раза, возьмите минимум."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

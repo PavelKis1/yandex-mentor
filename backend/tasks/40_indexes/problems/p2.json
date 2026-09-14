@@ -1,0 +1,23 @@
+{
+  "id": "40-p2",
+  "title": "Композитный индекс",
+  "difficulty": "medium",
+  "lecture_id": "40",
+  "order": 2,
+  "description": "Запросы ищут по (country, city). Создайте подходящий индекс.",
+  "examples": [
+    {
+      "input": "CREATE INDEX idx_users_country_city ON users(country, city);",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Порядок колонок: самый селективный первым."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

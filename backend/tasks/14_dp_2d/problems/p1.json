@@ -1,0 +1,86 @@
+{
+  "id": "14-p1",
+  "title": "Уникальные пути",
+  "difficulty": "easy",
+  "lecture_id": "14",
+  "order": 1,
+  "description": "Найдите количество путей в сетке m×n.\n\n**Функция решения:**\n\n```python\ndef unique_paths(m: int, n: int) -> int:\n    \"\"\"O(m*n) — one-dimensional DP, по столбцам текущего ряда.\n\n    Edge cases: m = 0 или n = 0 (0 путей), m = 1 (1 путь), n = 1 (1 путь).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def unique_paths(m: int, n: int) -> int:\n    \"\"\"O(m*n) — one-dimensional DP, по столбцам текущего ряда.\n\n    Edge cases: m = 0 или n = 0 (0 путей), m = 1 (1 путь), n = 1 (1 путь).\n    \"\"\"\n    ...\n",
+  "entry_function": "unique_paths",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        3,
+        7
+      ],
+      "expected": 28,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        1,
+        1
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        0,
+        5
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        5,
+        0
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        1,
+        10
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

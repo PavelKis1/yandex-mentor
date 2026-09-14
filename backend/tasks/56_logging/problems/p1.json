@@ -1,0 +1,23 @@
+{
+  "id": "56-p1",
+  "title": "Конфигурация",
+  "difficulty": "easy",
+  "lecture_id": "56",
+  "order": 1,
+  "description": "Настройте Python logging: вывод в stdout + файл app.log, формат со временем и уровнем.",
+  "examples": [
+    {
+      "input": "logging.basicConfig(level=INFO, handlers=[...])",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "FileHandler + StreamHandler, формат."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

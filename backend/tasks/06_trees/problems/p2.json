@@ -1,0 +1,15 @@
+{
+  "id": "06-p2",
+  "title": "Максимальная глубина",
+  "difficulty": "medium",
+  "lecture_id": "06",
+  "order": 2,
+  "description": "Найдите максимальную глубину дерева.\n\n**Функция решения:**\n\n```python\ndef max_depth(root: TreeNode | None) -> int:\n    \"\"\"O(n) — рекурсивно: глубина пустого дерева = 0.\n\n    Edge cases: пустое дерево, один узел, несимметричное дерево.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "class TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef max_depth(root: TreeNode | None) -> int:\n    \"\"\"O(n) — рекурсивно: глубина пустого дерева = 0.\n\n    Edge cases: пустое дерево, один узел, несимметричное дерево.\n    \"\"\"\n    ...\n",
+  "entry_function": "max_depth",
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "44-p2",
+  "title": "Заголовки кэша",
+  "difficulty": "medium",
+  "lecture_id": "44",
+  "order": 2,
+  "description": "Ответ с большим статическим файлом должен кэшироваться на день. Какие заголовки?",
+  "examples": [
+    {
+      "input": "Cache-Control: max-age=86400",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Cache-Control + ETag/Last-Modified."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

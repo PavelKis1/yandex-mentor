@@ -1,0 +1,23 @@
+{
+  "id": "68-p1",
+  "title": "Вопрос по Backend",
+  "difficulty": "easy",
+  "lecture_id": "68",
+  "order": 1,
+  "description": "Клиент жалуется: POST /orders иногда возвращает 500. Как расследовать?",
+  "examples": [
+    {
+      "input": "Логи/трейсы, воспроизведение, метрики",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Системный подход: observe → localize."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

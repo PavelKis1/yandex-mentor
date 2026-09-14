@@ -1,0 +1,23 @@
+{
+  "id": "53-p2",
+  "title": "Управление",
+  "difficulty": "medium",
+  "lecture_id": "53",
+  "order": 2,
+  "description": "Покажите команды: посмотреть процессы, убить по имени, показать дерево.",
+  "examples": [
+    {
+      "input": "ps aux; pkill -f name; pstree",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "ps/pkill/pstree."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

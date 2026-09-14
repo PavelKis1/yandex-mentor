@@ -1,0 +1,23 @@
+{
+  "id": "28-p1",
+  "title": "Частичное применение",
+  "difficulty": "easy",
+  "lecture_id": "28",
+  "order": 1,
+  "description": "Дан список цен и скидка. Через functools.partial сделайте функцию discount(price), возвращающую цену со скидкой, и примените её ко всем ценам.",
+  "examples": [
+    {
+      "input": "prices=[100,200,300], скидка 10%",
+      "output": "[90,180,270]",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "partial скидывает фиксированный аргумент: discount = partial(apply_discount, rate=0.1)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

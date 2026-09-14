@@ -1,0 +1,23 @@
+{
+  "id": "49-p3",
+  "title": "Масштабирование",
+  "difficulty": "hard",
+  "lecture_id": "49",
+  "order": 3,
+  "description": "Как запустить 3 реплики web-сервиса? Что нужно изменить (переменные, healthcheck)?",
+  "examples": [
+    {
+      "input": "docker compose up --scale web=3",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Нужен healthcheck + общие для реплик тома."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

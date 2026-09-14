@@ -1,0 +1,23 @@
+{
+  "id": "59-p1",
+  "title": "Unit-файл",
+  "difficulty": "easy",
+  "lecture_id": "59",
+  "order": 1,
+  "description": "Напишите service-юнит для uvicorn-приложения с рестартом при падении (Restart=always).\nExecStart=...\nRestart=always\n[Install]\nWantedBy=multi-user.target`",
+  "examples": [
+    {
+      "input": "`[Service]",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Управление: systemctl enable/start."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

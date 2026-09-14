@@ -1,0 +1,23 @@
+{
+  "id": "26-p3",
+  "title": "Палиндром с deque",
+  "difficulty": "hard",
+  "lecture_id": "26",
+  "order": 3,
+  "description": "Проверьте, является ли строка палиндромом, с учётом только букв и цифр (игнорируя регистр). Реализуйте через collections.deque.",
+  "examples": [
+    {
+      "input": "s='A man, a plan, a canal: Panama'",
+      "output": "True",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Двусторонний deque: pop слева и справа за O(1), сравнивай буквы."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

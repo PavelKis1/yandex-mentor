@@ -1,0 +1,76 @@
+{
+  "id": "24-p3",
+  "title": "Подстрока",
+  "difficulty": "hard",
+  "lecture_id": "24",
+  "order": 3,
+  "description": "Найдите наибольшую подстроку без повторов.\n\n**Функция решения:**\n\n```python\ndef length_of_longest_substring(s: str) -> int:\n    \"\"\"O(n) — скользящее окно: набор уникальных символов, расширяем/сжимаем.\n\n    Edge cases: пустая строка (0), один символ (1), все символы уникальны.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def length_of_longest_substring(s: str) -> int:\n    \"\"\"O(n) — скользящее окно: набор уникальных символов, расширяем/сжимаем.\n\n    Edge cases: пустая строка (0), один символ (1), все символы уникальны.\n    \"\"\"\n    ...\n",
+  "entry_function": "length_of_longest_substring",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "abcabcbb"
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        "bbbbb"
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        "pwwkew"
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        ""
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        "abcdef"
+      ],
+      "expected": 6,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

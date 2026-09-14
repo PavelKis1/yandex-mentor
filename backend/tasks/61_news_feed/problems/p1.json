@@ -1,0 +1,23 @@
+{
+  "id": "61-p1",
+  "title": "Модель ленты",
+  "difficulty": "easy",
+  "lecture_id": "61",
+  "order": 1,
+  "description": "Спроектируйте ленту новостей (feed): какие сущности, как формируется ‘моя лента’?",
+  "examples": [
+    {
+      "input": "posts, follows, feed(user) = посты подписок, сортировка по времени",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Материализованная лента или фан-аут на чтение."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

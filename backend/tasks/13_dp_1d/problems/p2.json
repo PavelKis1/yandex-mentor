@@ -1,0 +1,92 @@
+{
+  "id": "13-p2",
+  "title": "Грабитель",
+  "difficulty": "medium",
+  "lecture_id": "13",
+  "order": 2,
+  "description": "Найдите максимальную сумму без соседних элементов.\n\n**Функция решения:**\n\n```python\ndef rob(nums: list[int]) -> int:\n    \"\"\"O(n) — на каждом доме: ограбить (prev + num) или пропустить (curr).\n\n    Edge cases: пустой массив (0), один дом, два дома, чередование.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def rob(nums: list[int]) -> int:\n    \"\"\"O(n) — на каждом доме: ограбить (prev + num) или пропустить (curr).\n\n    Edge cases: пустой массив (0), один дом, два дома, чередование.\n    \"\"\"\n    ...\n",
+  "entry_function": "rob",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 5,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          2,
+          7,
+          9,
+          3,
+          1
+        ]
+      ],
+      "expected": 12,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          2,
+          1,
+          1,
+          2
+        ]
+      ],
+      "expected": 4,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

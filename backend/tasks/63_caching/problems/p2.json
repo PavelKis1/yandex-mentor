@@ -1,0 +1,23 @@
+{
+  "id": "63-p2",
+  "title": "Инвалидация",
+  "difficulty": "medium",
+  "lecture_id": "63",
+  "order": 2,
+  "description": "База и кэш рассинхронизировались. Опишите TTL и write-through.",
+  "examples": [
+    {
+      "input": "TTL: данные сами устаревают; write-through: пишем в оба",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "TTL проще, write-through консистентнее."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

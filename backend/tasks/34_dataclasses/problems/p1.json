@@ -1,0 +1,23 @@
+{
+  "id": "34-p1",
+  "title": "dataclass пользователя",
+  "difficulty": "easy",
+  "lecture_id": "34",
+  "order": 1,
+  "description": "Опишите датакласс User с полями id: int, name: str, email: str и метод full_info()→str. Создайте экземпляр и сравните два экземпляра по равенству.",
+  "examples": [
+    {
+      "input": "User(1,'Ann','a@b') == User(1,'Ann','a@b')",
+      "output": "True",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "@dataclass + frozen=True (или eq по умолчанию)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

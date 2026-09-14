@@ -1,0 +1,15 @@
+{
+  "id": "17-p1",
+  "title": "Обход по уровням",
+  "difficulty": "easy",
+  "lecture_id": "17",
+  "order": 1,
+  "description": "Обойдите дерево по уровням.\n\n**Функция решения:**\n\n```python\ndef level_order(root: TreeNode | None) -> list[list[int]]:\n    \"\"\"O(n) — BFS с разбиением по текущей длине очереди (уровень за уровень).\n\n    Edge cases: пустое дерево, один узел, вырожденное дерево (цепочка).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "from collections import deque\n\nclass TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef level_order(root: TreeNode | None) -> list[list[int]]:\n    \"\"\"O(n) — BFS с разбиением по текущей длине очереди (уровень за уровень).\n\n    Edge cases: пустое дерево, один узел, вырожденное дерево (цепочка).\n    \"\"\"\n    ...\n",
+  "entry_function": "level_order",
+  "test_cases": [],
+  "timeout_ms": 3000
+}

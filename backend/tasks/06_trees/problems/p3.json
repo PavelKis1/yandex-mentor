@@ -1,0 +1,15 @@
+{
+  "id": "06-p3",
+  "title": "Проверка BST",
+  "difficulty": "hard",
+  "lecture_id": "06",
+  "order": 3,
+  "description": "Проверьте, является ли дерево BST.\n\n**Функция решения:**\n\n```python\ndef is_valid_bst(root: TreeNode | None) -> bool:\n    \"\"\"O(n) — каждый узел проверяется на диапазон (low, high).\n\n    Edge cases: пустое дерево (валидно), один узел, дубликат значения,\n    нарушение в правом поддереве левого узла.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "class TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef is_valid_bst(root: TreeNode | None) -> bool:\n    \"\"\"O(n) — каждый узел проверяется на диапазон (low, high).\n\n    Edge cases: пустое дерево (валидно), один узел, дубликат значения,\n    нарушение в правом поддереве левого узла.\n    \"\"\"\n    ...\n",
+  "entry_function": "is_valid_bst",
+  "test_cases": [],
+  "timeout_ms": 3000
+}

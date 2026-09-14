@@ -1,0 +1,23 @@
+{
+  "id": "65-p1",
+  "title": "Горизонтальное масштабирование",
+  "difficulty": "easy",
+  "lecture_id": "65",
+  "order": 1,
+  "description": "API тормозит при 1000 RPS. Что делает горизонтальное масштабирование и какие подводные камни?",
+  "examples": [
+    {
+      "input": "Несколько реплик за LB; состояние сессий вне процесса",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Stateless API + общий кэш/БД."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,49 @@
+{
+  "id": "23-p2",
+  "title": "Количество бит",
+  "difficulty": "medium",
+  "lecture_id": "23",
+  "order": 2,
+  "description": "Подсчитайте количество установленных битов.\n\n**Функция решения:**\n\n```python\ndef count_bits(n: int) -> list[int]:\n    \"\"\"O(n) — по элементам: count[i] = count[i >> 1] + (i & 1).\n\n    Edge cases: n = 0 ([0]), n = 1, большие n.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def count_bits(n: int) -> list[int]:\n    \"\"\"O(n) — по элементам: count[i] = count[i >> 1] + (i & 1).\n\n    Edge cases: n = 0 ([0]), n = 1, большие n.\n    \"\"\"\n    ...\n",
+  "entry_function": "count_bits",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        0
+      ],
+      "expected": [
+        0
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        5
+      ],
+      "expected": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        2
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

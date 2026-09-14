@@ -1,0 +1,23 @@
+{
+  "id": "51-p1",
+  "title": "Навигация",
+  "difficulty": "easy",
+  "lecture_id": "51",
+  "order": 1,
+  "description": "Какие команды покажут: текущую папку, список файлов с правами, содержимое файла?",
+  "examples": [
+    {
+      "input": "pwd; ls -la; cat file.txt",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Утилиты: pwd/ls/cat."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

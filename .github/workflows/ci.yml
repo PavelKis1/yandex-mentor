@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  python:
+    name: Python — tests & algorithm tasks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Unit tests (pytest)
+        run: python -m pytest -q
+
+      - name: Run all 25 algorithm task files
+        run: python scripts/run_all_tasks.py
+
+      - name: Start API, refresh and verify algorithms have no issues
+        run: |
+          python -m uvicorn server:app --host 127.0.0.1 --port 8000 &
+          python scripts/check_api_scan.py
+
+      - name: Upload mentor report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mentor-report
+          path: data/mentor_report.md

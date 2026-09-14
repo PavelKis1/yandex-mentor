@@ -1,0 +1,23 @@
+{
+  "id": "36-p2",
+  "title": "Подсчёт по группам",
+  "difficulty": "medium",
+  "lecture_id": "36",
+  "order": 2,
+  "description": "Таблица orders(user_id, amount). Подсчитайте для каждого пользователя суммарную сумму заказов и количество заказов.",
+  "examples": [
+    {
+      "input": "SELECT user_id, SUM(amount), COUNT(*) FROM orders GROUP BY user_id;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "GROUP BY + агрегатные функции."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

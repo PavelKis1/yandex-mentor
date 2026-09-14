@@ -1,0 +1,238 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-ink: #0f172a;
+  --color-paper: #f8fafc;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-accent: #6366f1;
+  --color-accent-glow: rgba(99, 102, 241, 0.3);
+}
+
+:root {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #1e293b 0%, #0f172a 100%);
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Glassmorphism cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Roadmap node */
+.roadmap-node {
+  position: relative;
+  overflow: hidden;
+}
+
+.roadmap-node::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.15), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.roadmap-node>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* Progress line */
+.progress-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.5), transparent);
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+/* Task input */
+.task-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  color: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.task-input:focus {
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  outline: none;
+}
+
+/* Submit button */
+.btn-glow {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Status badges */
+.badge-completed {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-current {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-locked {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.4);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* === Markdown статья (лекция) === */
+
+/* Отменяем дефолтные отступы/фон typography-плагина в собственных блоках кода */
+.markdown-body pre {
+  margin: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.markdown-body pre,
+.markdown-body code {
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+}
+
+.markdown-body pre::-webkit-scrollbar,
+.roadmap-node pre::-webkit-scrollbar {
+  height: 8px;
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.markdown-body pre::-webkit-scrollbar-thumb,
+.roadmap-node pre::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+/* Скроллбар горизонтальных списков (мобильное оглавление, таблицы) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Чек-боксы чек-листа заданий */
+.checkbox-accent {
+  accent-color: #f59e0b;
+}
+
+/* Плавное появление (модалка, переключение режимов лекции) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
+}
+
+/* === Monaco Editor в тёмной теме === */
+
+/* Контейнер редактора: контент не растягивает модалку, а подстраивается под высоту */
+.monaco-editor,
+.monaco-editor .overflow-guard {
+  border-radius: 0;
+}
+
+/* Скроллбары Monaco под цвет фона */
+.monaco-editor .scrollbar.vertical,
+.monaco-editor .scrollbar.horizontal {
+  background: transparent;
+}
+
+/* Фокус-рамка редактора */
+.monaco-editor:focus-within {
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.35);
+}
+
+/* Индикатор «Запустить на примерах» — консоль */
+.verdict-console::-webkit-scrollbar {
+  width: 8px;
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.verdict-console::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}

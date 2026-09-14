@@ -1,0 +1,64 @@
+{
+  "id": "21-p2",
+  "title": "Поиск слов",
+  "difficulty": "medium",
+  "lecture_id": "21",
+  "order": 2,
+  "description": "Найдите слова на доске.\n\n**Функция решения:**\n\n```python\ndef replace_words(dictionary: list[str], sentence: str) -> str:\n    \"\"\"O(sum(len(root)) + len(sentence)) — замена слов на кратчайший корень.\n\n    Edge cases: пустой словарь, пустое предложение, корень из одного\n    символа, слово без корня (остаётся как есть).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "class TrieNode:\n    \"\"\"Узел префиксного дерева.\"\"\"\n\n    def __init__(self) -> None:\n        self.children: dict[str, TrieNode] = {}\n        self.is_end = False\n\nclass Trie:\n    \"\"\"O(L) — префиксное дерево с insert/search/startsWith.\n\n    Edge cases: пустая строка, один символ, вставка продублированных слов.\n    \"\"\"\n\n    def __init__(self) -> None:\n        self.root = TrieNode()\n\n    def insert(self, word: str) -> None:\n        \"\"\"O(L) — вставка слова в дерево.\"\"\"\n        node = self.root\n        for ch in word:\n            if ch not in node.children:\n                node.children[ch] = TrieNode()\n            node = node.children[ch]\n        node.is_end = True\n\n    def search(self, word: str) -> bool:\n        \"\"\"O(L) — True, если слово вставлено (не только префикс).\"\"\"\n        node = self.root\n        for ch in word:\n            if ch not in node.children:\n                return False\n            node = node.children[ch]\n        return node.is_end\n\n    def starts_with(self, prefix: str) -> bool:\n        \"\"\"O(L) — True, если есть слово, начинающееся с prefix.\"\"\"\n        node = self.root\n        for ch in prefix:\n            if ch not in node.children:\n                return False\n            node = node.children[ch]\n        return True\n\ndef replace_words(dictionary: list[str], sentence: str) -> str:\n    \"\"\"O(sum(len(root)) + len(sentence)) — замена слов на кратчайший корень.\n\n    Edge cases: пустой словарь, пустое предложение, корень из одного\n    символа, слово без корня (остаётся как есть).\n    \"\"\"\n    ...\n",
+  "entry_function": "replace_words",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          "cat",
+          "bat",
+          "rat"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cat was rat by the bat",
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [],
+        "hello world"
+      ],
+      "expected": "hello world",
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          "a"
+        ],
+        "apple ant"
+      ],
+      "expected": "a a",
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

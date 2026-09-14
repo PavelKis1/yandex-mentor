@@ -1,0 +1,23 @@
+{
+  "id": "68-p2",
+  "title": "SQL на собесе",
+  "difficulty": "medium",
+  "lecture_id": "68",
+  "order": 2,
+  "description": "Напишите запрос: 3 самых дорогих заказа каждого клиента (оконные функции).",
+  "examples": [
+    {
+      "input": "ROW_NUMBER() OVER (PARTITION BY client_id ORDER BY amount DESC) rn; rn <= 3",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "PARTITION BY + фильтр по rn."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

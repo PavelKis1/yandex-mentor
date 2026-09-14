@@ -1,0 +1,23 @@
+{
+  "id": "35-p1",
+  "title": "Аннотации коллекций",
+  "difficulty": "easy",
+  "lecture_id": "35",
+  "order": 1,
+  "description": "Аннотируйте функцию group_by_first_letter(words: list[str]) → dict[str, list[str]], группирующую слова по первой букве. Включите Optional и Union где уместно.",
+  "examples": [
+    {
+      "input": "Аннотации проходят mypy без ошибок",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "from __future__ import annotations; dict[str, list[str]], Optional[str]."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

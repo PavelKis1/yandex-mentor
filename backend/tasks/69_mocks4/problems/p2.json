@@ -1,0 +1,23 @@
+{
+  "id": "69-p2",
+  "title": "Нагрузка",
+  "difficulty": "medium",
+  "lecture_id": "69",
+  "order": 2,
+  "description": "Генерация ключей: как избежать коллизий при 100M URL?",
+  "examples": [
+    {
+      "input": "base62 из счётчика или hash+проверка",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Уникальность + retire."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

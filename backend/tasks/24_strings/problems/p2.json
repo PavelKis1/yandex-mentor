@@ -1,0 +1,46 @@
+{
+  "id": "24-p2",
+  "title": "Группировка анаграмм",
+  "difficulty": "medium",
+  "lecture_id": "24",
+  "order": 2,
+  "description": "Сгруппируйте анаграммы.\n\n**Функция решения:**\n\n```python\ndef group_anagrams(strs: list[str]) -> list[list[str]]:\n    \"\"\"O(n * k log k) — ключ: отсортированная строка, одна итерация по strs.\n\n    Edge cases: пустой список, один элемент, все анаграммы, ни одной пары.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def group_anagrams(strs: list[str]) -> list[list[str]]:\n    \"\"\"O(n * k log k) — ключ: отсортированная строка, одна итерация по strs.\n\n    Edge cases: пустой список, один элемент, все анаграммы, ни одной пары.\n    \"\"\"\n    ...\n",
+  "entry_function": "group_anagrams",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        []
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          "a"
+        ]
+      ],
+      "expected": [
+        [
+          "a"
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

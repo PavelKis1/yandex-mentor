@@ -1,0 +1,23 @@
+{
+  "id": "37-p1",
+  "title": "INNER JOIN",
+  "difficulty": "easy",
+  "lecture_id": "37",
+  "order": 1,
+  "description": "Таблицы users(id, name) и orders(id, user_id, amount). Выведите имена и суммы всех заказов.",
+  "examples": [
+    {
+      "input": "SELECT u.name, o.amount FROM users u JOIN orders o ON u.id = o.user_id;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "INNER JOIN через ON."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

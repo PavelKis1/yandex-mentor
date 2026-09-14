@@ -1,0 +1,23 @@
+{
+  "id": "62-p3",
+  "title": "Поддержка опечаток",
+  "difficulty": "hard",
+  "lecture_id": "62",
+  "order": 3,
+  "description": "Пользователь печатает 'быстра' вместо 'быстрая'. Как исправить?",
+  "examples": [
+    {
+      "input": "Автополнение, редакционное расстояние / n-граммы",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Fuzzy match по индексу."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

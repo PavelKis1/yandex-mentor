@@ -1,0 +1,79 @@
+{
+  "id": "01-p1",
+  "title": "Два числа (Two Sum)",
+  "difficulty": "easy",
+  "lecture_id": "01",
+  "order": 1,
+  "description": "Дан массив целых чисел `nums` и целое число `target`. Верните **индексы** двух чисел таких, что их сумма равна `target`.\n\nСчитайте, что решение существует ровно одно, и нельзя использовать один и тот же элемент дважды. Ответ можно вернуть в любом порядке.\n\n**Функция решения:**\n\n```python\ndef two_sum(nums: list[int], target: int) -> list[int]:\n    ...\n```",
+  "examples": [
+    {
+      "input": "nums = [2, 7, 11, 15], target = 9",
+      "output": "[0, 1]",
+      "explanation": "nums[0] + nums[1] = 2 + 7 = 9"
+    },
+    {
+      "input": "nums = [3, 2, 4], target = 6",
+      "output": "[1, 2]",
+      "explanation": "nums[1] + nums[2] = 2 + 4 = 6"
+    },
+    {
+      "input": "nums = [3, 3], target = 6",
+      "output": "[0, 1]",
+      "explanation": "Оба элемента дают сумму 6: nums[0] + nums[1]"
+    }
+  ],
+  "constraints": [
+    "2 ≤ len(nums) ≤ 10^4",
+    "−10^9 ≤ nums[i], target ≤ 10^9",
+    "Гарантируется ровно одно верное решение"
+  ],
+  "hints": [
+    "Один проход с хеш-таблицей: для каждого nums[i] ищем target − nums[i] в словаре seen → индекс.",
+    "Словарь Python — это и есть хеш-таблица: сложность O(n) по времени и O(n) по памяти."
+  ],
+  "starter_code": "def two_sum(nums: list[int], target: int) -> list[int]:\n    \"\"\"Вернуть индексы двух элементов, дающих в сумме target.\"\"\"\n    ...",
+  "entry_function": "two_sum",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [[2, 7, 11, 15], 9],
+      "expected": [0, 1],
+      "hidden": false,
+      "arg_converters": [null, null],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [[3, 2, 4], 6],
+      "expected": [1, 2],
+      "hidden": false,
+      "arg_converters": [null, null],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [[3, 3], 6],
+      "expected": [0, 1],
+      "hidden": false,
+      "arg_converters": [null, null],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [[-1, -2, -3, -4, -5], -8],
+      "expected": [2, 4],
+      "hidden": false,
+      "arg_converters": [null, null],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 19],
+      "expected": [8, 9],
+      "hidden": true,
+      "arg_converters": [null, null],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

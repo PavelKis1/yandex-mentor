@@ -1,0 +1,23 @@
+{
+  "id": "54-p2",
+  "title": "Диагностика",
+  "difficulty": "medium",
+  "lecture_id": "54",
+  "order": 2,
+  "description": "Сервис не отвечает на 8080. Какие команды проверки связи?",
+  "examples": [
+    {
+      "input": "ping, netstat -tulpn, curl -v localhost:8080",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "curl -v покажет подключение/таймаут."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

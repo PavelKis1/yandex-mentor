@@ -1,0 +1,92 @@
+{
+  "id": "22-p1",
+  "title": "Сетевая задержка",
+  "difficulty": "easy",
+  "lecture_id": "22",
+  "order": 1,
+  "description": "Найдите максимальную задержку в сети.\n\n**Функция решения:**\n\n```python\ndef network_delay_time(times: list[list[int]], n: int, k: int) -> int:\n    \"\"\"O((V+E) log V) — время, за которое сигнал дойдёт до всех узлов.\n\n    Edge cases: n = 0 (0), недостижимые узлы (-1), один узел (0).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "import heapq\n\ndef network_delay_time(times: list[list[int]], n: int, k: int) -> int:\n    \"\"\"O((V+E) log V) — время, за которое сигнал дойдёт до всех узлов.\n\n    Edge cases: n = 0 (0), недостижимые узлы (-1), один узел (0).\n    \"\"\"\n    ...\n",
+  "entry_function": "network_delay_time",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            4,
+            1
+          ]
+        ],
+        4,
+        2
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          [
+            1,
+            2,
+            1
+          ]
+        ],
+        2,
+        1
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          [
+            1,
+            2,
+            1
+          ]
+        ],
+        2,
+        2
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

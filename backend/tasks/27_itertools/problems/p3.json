@@ -1,0 +1,23 @@
+{
+  "id": "27-p3",
+  "title": "Бесконечный счётчик",
+  "difficulty": "hard",
+  "lecture_id": "27",
+  "order": 3,
+  "description": "Создайте кастомный итератор, который бесконечно выдаёт числа 0,1,2,...,n-1,0,1,... (реализуйте через cycle+count или генератор).",
+  "examples": [
+    {
+      "input": "первые 7 значений: 0,1,2,3,0,1,2",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Напиши генератор с while True и % n; для эталона — itertools.cycle(range(n))."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

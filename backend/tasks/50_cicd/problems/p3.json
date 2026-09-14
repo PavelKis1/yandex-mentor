@@ -1,0 +1,23 @@
+{
+  "id": "50-p3",
+  "title": "Кэш зависимостей",
+  "difficulty": "hard",
+  "lecture_id": "50",
+  "order": 3,
+  "description": "Почему кэш pip в CI экономит минуты? Как его включить в GitHub Actions?",
+  "examples": [
+    {
+      "input": "actions/cache с ключом по hash requirements.txt",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "cache: pip → ~/.cache/pip."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

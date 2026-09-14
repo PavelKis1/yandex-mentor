@@ -1,0 +1,103 @@
+{
+  "id": "17-p3",
+  "title": "Кратчайший путь",
+  "difficulty": "hard",
+  "lecture_id": "17",
+  "order": 3,
+  "description": "Найдите кратчайший путь в графе.\n\n**Функция решения:**\n\n```python\ndef shortest_path(graph: dict[int, list[int]], start: int, end: int) -> int:\n    \"\"\"O(V + E) — BFS в невзвешенном графе (смежность: node -> neighbours).\n\n    Edge cases: start == end (0), изолированная вершина, недостижимый конец (-1).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "from collections import deque\n\nclass TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef shortest_path(graph: dict[int, list[int]], start: int, end: int) -> int:\n    \"\"\"O(V + E) — BFS в невзвешенном графе (смежность: node -> neighbours).\n\n    Edge cases: start == end (0), изолированная вершина, недостижимый конец (-1).\n    \"\"\"\n    ...\n",
+  "entry_function": "shortest_path",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        {
+          "0": [
+            1,
+            2
+          ],
+          "1": [
+            2
+          ],
+          "2": [
+            3
+          ],
+          "3": []
+        },
+        0,
+        3
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        {
+          "0": [
+            1
+          ],
+          "1": [
+            0
+          ]
+        },
+        0,
+        0
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        {
+          "0": [
+            1
+          ]
+        },
+        0,
+        5
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        {},
+        1,
+        2
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

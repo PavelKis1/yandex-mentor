@@ -1,0 +1,23 @@
+{
+  "id": "33-p1",
+  "title": "Файл-менеджер",
+  "difficulty": "easy",
+  "lecture_id": "33",
+  "order": 1,
+  "description": "Напишите контекстный менеджер open_file(path, mode), который гарантирует закрытие файла, и используйте его с 'with'.",
+  "examples": [
+    {
+      "input": "with open_file('tmp.txt','w') as f: f.write('hi') — файл закрыт после",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "class с __enter__/__exit__ или @contextmanager с yield."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

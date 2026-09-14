@@ -1,0 +1,23 @@
+{
+  "id": "61-p2",
+  "title": "Фан-аут",
+  "difficulty": "medium",
+  "lecture_id": "61",
+  "order": 2,
+  "description": "При публикации поста он должен появиться в ленте 1000 подписчиков. Как доставлять?",
+  "examples": [
+    {
+      "input": "фан-аут на запись: push в ленты (Redis/очередь)",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Queue + batch push; задержка для больших подписчиков."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

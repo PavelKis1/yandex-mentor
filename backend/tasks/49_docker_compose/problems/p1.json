@@ -1,0 +1,23 @@
+{
+  "id": "49-p1",
+  "title": "Compose-файл",
+  "difficulty": "easy",
+  "lecture_id": "49",
+  "order": 1,
+  "description": "Напишите docker-compose.yml: сервисы web (FastAPI) и db (postgres), web зависит от db.\n  web:\n    build: .\n    ports: ['8000:8000']\n  db:\n    image: postgres:16`",
+  "examples": [
+    {
+      "input": "`services:",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "version, services, ports, depends_on."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

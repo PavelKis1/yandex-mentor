@@ -1,0 +1,72 @@
+{
+  "id": "14-p2",
+  "title": "LCS",
+  "difficulty": "medium",
+  "lecture_id": "14",
+  "order": 2,
+  "description": "Найдите длину наибольшей общей подпоследовательности.\n\n**Функция решения:**\n\n```python\ndef longest_common_subsequence(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — нижняя граница памяти (2 строки), классическая LCS.\n\n    Edge cases: одна строка пустая, обе пустые, строки без общих символов.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def longest_common_subsequence(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — нижняя граница памяти (2 строки), классическая LCS.\n\n    Edge cases: одна строка пустая, обе пустые, строки без общих символов.\n    \"\"\"\n    ...\n",
+  "entry_function": "longest_common_subsequence",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "abcde",
+        "ace"
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        "abc",
+        "def"
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        "",
+        "abc"
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,105 @@
+{
+  "id": "25-p1",
+  "title": "Комбинации",
+  "difficulty": "easy",
+  "lecture_id": "25",
+  "order": 1,
+  "description": "Найдите все комбинации из n по k.\n\n**Функция решения:**\n\n```python\ndef combine(n: int, k: int) -> list[list[int]]:\n    \"\"\"O(C(n,k)) — все k-элементные подмножества [1..n].\n\n    Edge cases: k = 0 ([[]]), k = n (одна комбинация), k > n ([]).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def combine(n: int, k: int) -> list[list[int]]:\n    \"\"\"O(C(n,k)) — все k-элементные подмножества [1..n].\n\n    Edge cases: k = 0 ([[]]), k = n (одна комбинация), k > n ([]).\n    \"\"\"\n    ...\n",
+  "entry_function": "combine",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        4,
+        2
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        3,
+        3
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        3,
+        0
+      ],
+      "expected": [
+        []
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        3,
+        4
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

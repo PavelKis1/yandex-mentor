@@ -1,0 +1,23 @@
+{
+  "id": "55-p3",
+  "title": "Поиск больших файлов",
+  "difficulty": "hard",
+  "lecture_id": "55",
+  "order": 3,
+  "description": "Найдите 5 самых больших файлов в /var/log и покажите их размер.",
+  "examples": [
+    {
+      "input": "du -ah /var/log | sort -rh | head -5",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "du + sort + head."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

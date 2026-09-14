@@ -1,0 +1,82 @@
+{
+  "id": "02-p1",
+  "title": "Пересечение массивов",
+  "difficulty": "easy",
+  "lecture_id": "02",
+  "order": 1,
+  "description": "Найдите пересечение двух массивов.\n\n**Функция решения:**\n\n```python\ndef intersection(nums1: list[int], nums2: list[int]) -> list[int]:\n    \"\"\"O(n + m) — пересечение через set, без дубликатов в ответе.\n\n    Edge cases: пустые массивы, одинаковые массивы, дубликаты внутри массива.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "from collections import Counter\n\ndef intersection(nums1: list[int], nums2: list[int]) -> list[int]:\n    \"\"\"O(n + m) — пересечение через set, без дубликатов в ответе.\n\n    Edge cases: пустые массивы, одинаковые массивы, дубликаты внутри массива.\n    \"\"\"\n    ...\n",
+  "entry_function": "intersection",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        2,
+        3
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [],
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        1,
+        2
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

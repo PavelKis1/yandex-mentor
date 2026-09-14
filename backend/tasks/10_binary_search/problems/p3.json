@@ -1,0 +1,108 @@
+{
+  "id": "10-p3",
+  "title": "Поиск по ответу",
+  "difficulty": "hard",
+  "lecture_id": "10",
+  "order": 3,
+  "description": "Найдите минимальную скорость для съедания бананов.\n\n**Функция решения:**\n\n```python\ndef min_eating_speed(piles: list[int], h: int) -> int:\n    \"\"\"O(n log max) — бинарный поиск по скорости; если не успеть и с max — -1.\n\n    Edge cases: пустые piles, часов меньше числа куч, одна куча, крупная куча.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def min_eating_speed(piles: list[int], h: int) -> int:\n    \"\"\"O(n log max) — бинарный поиск по скорости; если не успеть и с max — -1.\n\n    Edge cases: пустые piles, часов меньше числа куч, одна куча, крупная куча.\n    \"\"\"\n    ...\n",
+  "entry_function": "min_eating_speed",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          3,
+          6,
+          7,
+          11
+        ],
+        8
+      ],
+      "expected": 4,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          30,
+          11,
+          23,
+          4,
+          20
+        ],
+        5
+      ],
+      "expected": 30,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          30,
+          11,
+          23,
+          4,
+          20
+        ],
+        6
+      ],
+      "expected": 23,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          5
+        ],
+        10
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          3,
+          6
+        ],
+        1
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

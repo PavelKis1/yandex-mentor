@@ -1,0 +1,23 @@
+{
+  "id": "61-p3",
+  "title": "Пагинация ленты",
+  "difficulty": "hard",
+  "lecture_id": "61",
+  "order": 3,
+  "description": "Лента растёт бесконечно. Как пагинировать без offset-проблем?",
+  "examples": [
+    {
+      "input": "Курсор по (user_id, post_time) — ключевая пагинация",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Курсор надёжнее OFFSET."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

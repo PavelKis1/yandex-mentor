@@ -1,0 +1,23 @@
+{
+  "id": "29-p3",
+  "title": "Генераторы: ленивость",
+  "difficulty": "hard",
+  "lecture_id": "29",
+  "order": 3,
+  "description": "Напишите генератор, который выдаёт первые n простых чисел, не вычисляя все заранее. Покажите, что значения считаются лениво (через yield).",
+  "examples": [
+    {
+      "input": "first_n_primes(3)",
+      "output": "[2,3,5]",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Решето Эратосфена как генератор с yield."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

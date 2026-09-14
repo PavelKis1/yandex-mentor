@@ -1,0 +1,76 @@
+{
+  "id": "03-p1",
+  "title": "Валидные скобки",
+  "difficulty": "easy",
+  "lecture_id": "03",
+  "order": 1,
+  "description": "Проверьте, корректны ли скобки.\n\n**Функция решения:**\n\n```python\ndef is_valid(s: str) -> bool:\n    \"\"\"O(n) — стек открывающих скобок, закрывающая должна совпадать с верхушкой.\n\n    Edge cases: пустая строка, только открывающие, только закрывающие скобки.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "import operator\n\ndef is_valid(s: str) -> bool:\n    \"\"\"O(n) — стек открывающих скобок, закрывающая должна совпадать с верхушкой.\n\n    Edge cases: пустая строка, только открывающие, только закрывающие скобки.\n    \"\"\"\n    ...\n\nclass MinStack:\n    \"\"\"O(1) на push/pop/top/get_min — храним пару (значение, текущий минимум).\n\n    Edge cases: пустой стек, повторяющиеся минимальные значения.\n    \"\"\"\n\n    def __init__(self) -> None:\n        self._stack: list[tuple[int, int]] = []\n\n    def push(self, val: int) -> None:\n        current_min = val if not self._stack else min(val, self._stack[-1][1])\n        self._stack.append((val, current_min))\n\n    def pop(self) -> None:\n        self._stack.pop()\n\n    def top(self) -> int:\n        return self._stack[-1][0]\n\n    def get_min(self) -> int:\n        return self._stack[-1][1]\n",
+  "entry_function": "is_valid",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "()[]{}"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        "(]"
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        "([)]"
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        ""
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        "{[]}"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

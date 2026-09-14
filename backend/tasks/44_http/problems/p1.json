@@ -1,0 +1,23 @@
+{
+  "id": "44-p1",
+  "title": "Коды ответа",
+  "difficulty": "easy",
+  "lecture_id": "44",
+  "order": 1,
+  "description": "Для каждой ситуации назовите корректный HTTP-код: 'не найдено', 'нет прав', 'создано', 'валидация не прошла'.",
+  "examples": [
+    {
+      "input": "404, 403, 201, 422",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Коды: клиентские 4xx, серверные 5xx."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

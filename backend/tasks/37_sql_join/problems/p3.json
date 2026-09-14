@@ -1,0 +1,23 @@
+{
+  "id": "37-p3",
+  "title": "JOIN 3 таблиц",
+  "difficulty": "hard",
+  "lecture_id": "37",
+  "order": 3,
+  "description": "users, orders, items. Выведите для каждого заказа: имя пользователя и название товара.",
+  "examples": [
+    {
+      "input": "SELECT u.name, i.name FROM orders o JOIN users u ON o.user_id=u.id JOIN items i ON o.item_id=i.id;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Двойной JOIN в цепочке."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "35-p2",
+  "title": "TypedDict для API",
+  "difficulty": "medium",
+  "lecture_id": "35",
+  "order": 2,
+  "description": "Опишите TypedDict UserResponse с полями id: int, name: str, friends: list[int] и функцию, принимающую объект и возвращающую его имя. Проверьте корректность через mypy.",
+  "examples": [
+    {
+      "input": "mypy не ругается на валидный объект и ругается на невалидный",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "from typing import TypedDict, NotRequired."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

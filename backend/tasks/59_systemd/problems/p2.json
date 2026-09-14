@@ -1,0 +1,23 @@
+{
+  "id": "59-p2",
+  "title": "Логи",
+  "difficulty": "medium",
+  "lecture_id": "59",
+  "order": 2,
+  "description": "Как посмотреть логи сервиса myapp без выхода в файл?",
+  "examples": [
+    {
+      "input": "journalctl -u myapp -f",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "journalctl -u, -f follow."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

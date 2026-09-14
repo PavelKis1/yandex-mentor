@@ -1,0 +1,23 @@
+{
+  "id": "28-p3",
+  "title": "Редукция",
+  "difficulty": "hard",
+  "lecture_id": "28",
+  "order": 3,
+  "description": "Дан список чисел. Через functools.reduce найдите максимальный элемент, НЕ используя max().",
+  "examples": [
+    {
+      "input": "[3,7,2,9,5]",
+      "output": "9",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "reduce(lambda a,b: a if a>b else b, nums) или functools.reduce(max, nums)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

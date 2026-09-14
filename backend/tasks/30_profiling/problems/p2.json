@@ -1,0 +1,23 @@
+{
+  "id": "30-p2",
+  "title": "Найти узкое место",
+  "difficulty": "medium",
+  "lecture_id": "30",
+  "order": 2,
+  "description": "Дана функция с вложенным циклом: find_duplicates(nums). Профилируйте её через cProfile и найдите функцию-узкое место.",
+  "examples": [
+    {
+      "input": "cProfile: большая часть времени — в inner loop",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Пиши в файл: python -m cProfile -o out.prof script.py; смотри stats."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

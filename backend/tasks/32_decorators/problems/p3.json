@@ -1,0 +1,23 @@
+{
+  "id": "32-p3",
+  "title": "Повтор с задержкой",
+  "difficulty": "hard",
+  "lecture_id": "32",
+  "order": 3,
+  "description": "Напишите декоратор @retry(times=3, delay=0.1), который повторяет функцию при исключении и пробрасывает ошибку после times попыток.",
+  "examples": [
+    {
+      "input": "f бросает ValueError 2 раза подряд, times=3",
+      "output": "3-я попытка успешна",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "for i in range(times): try: return f(*a,**kw) except: time.sleep(delay)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

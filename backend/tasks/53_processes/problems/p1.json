@@ -1,0 +1,23 @@
+{
+  "id": "53-p1",
+  "title": "fork vs thread",
+  "difficulty": "easy",
+  "lecture_id": "53",
+  "order": 1,
+  "description": "Чем многопроцессность отличается от многопоточности в Python (GIL)? Когда что выбирать?",
+  "examples": [
+    {
+      "input": "CPU-bound → процессы; I/O-bound → потоки/async",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "GIL ограничивает параллелизм потоков."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

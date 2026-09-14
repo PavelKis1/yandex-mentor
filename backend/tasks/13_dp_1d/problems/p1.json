@@ -1,0 +1,76 @@
+{
+  "id": "13-p1",
+  "title": "Лестница",
+  "difficulty": "easy",
+  "lecture_id": "13",
+  "order": 1,
+  "description": "Найдите количество способов подняться на n ступеней.\n\n**Функция решения:**\n\n```python\ndef climb_stairs(n: int) -> int:\n    \"\"\"O(n) — фибоначчи: ways(i) = ways(i-1) + ways(i-2).\n\n    Edge cases: n < 0 (0), n = 1 (1 способ), n = 2 (2 способа).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def climb_stairs(n: int) -> int:\n    \"\"\"O(n) — фибоначчи: ways(i) = ways(i-1) + ways(i-2).\n\n    Edge cases: n < 0 (0), n = 1 (1 способ), n = 2 (2 способа).\n    \"\"\"\n    ...\n",
+  "entry_function": "climb_stairs",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        1
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        2
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        4
+      ],
+      "expected": 5,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        0
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        -3
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

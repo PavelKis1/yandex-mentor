@@ -1,0 +1,15 @@
+{
+  "id": "21-p3",
+  "title": "Замена слов",
+  "difficulty": "hard",
+  "lecture_id": "21",
+  "order": 3,
+  "description": "Замените слова на корни.",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "47-p1",
+  "title": "Модель",
+  "difficulty": "easy",
+  "lecture_id": "47",
+  "order": 1,
+  "description": "Опишите модель User(id, name, email unique) на SQLAlchemy (declarative).",
+  "examples": [
+    {
+      "input": "class User(Base): __tablename__='users'; email = Column(String, unique=True)",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Declarative Base + Column."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

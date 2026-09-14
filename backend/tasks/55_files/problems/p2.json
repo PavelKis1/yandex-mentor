@@ -1,0 +1,23 @@
+{
+  "id": "55-p2",
+  "title": "Симлинки",
+  "difficulty": "medium",
+  "lecture_id": "55",
+  "order": 2,
+  "description": "Чем симлинк отличается от жёсткой ссылки? Когда использовать ln -s?",
+  "examples": [
+    {
+      "input": "symlink: ссылка на путь; hardlink: та же inode",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "ln -s для удобства, чужой файловой системы."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

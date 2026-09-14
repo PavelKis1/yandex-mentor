@@ -1,0 +1,23 @@
+{
+  "id": "56-p2",
+  "title": "Уровни",
+  "difficulty": "medium",
+  "lecture_id": "56",
+  "order": 2,
+  "description": "Когда использовать debug/info/warning/error? Назовите по одному примеру.",
+  "examples": [
+    {
+      "input": "debug: подробности; info: значимые события; error: сбой",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Уровни по важности."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

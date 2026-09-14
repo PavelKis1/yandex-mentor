@@ -1,0 +1,23 @@
+{
+  "id": "27-p2",
+  "title": "Произведение списков",
+  "difficulty": "medium",
+  "lecture_id": "27",
+  "order": 2,
+  "description": "Дан список списков. Верните всевозможные произведения их элементов через itertools.product, но без повторений одинаковых кортежей.",
+  "examples": [
+    {
+      "input": "[1,2] x [3,4]",
+      "output": "[(1,3),(1,4),(2,3),(2,4)]",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "itertools.product(*lists) + set для дедупликации."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

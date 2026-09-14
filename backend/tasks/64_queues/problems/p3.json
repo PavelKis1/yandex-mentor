@@ -1,0 +1,23 @@
+{
+  "id": "64-p3",
+  "title": "Dead letter queue",
+  "difficulty": "hard",
+  "lecture_id": "64",
+  "order": 3,
+  "description": "Задача падает всегда (битый JSON). Она блокирует очередь. Как её отложить?",
+  "examples": [
+    {
+      "input": "Retry с счётчиком",
+      "output": "DLQ после N попыток",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "DLQ + алертинг."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

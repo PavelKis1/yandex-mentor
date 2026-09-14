@@ -1,0 +1,23 @@
+{
+  "id": "69-p3",
+  "title": "Финальный вопрос",
+  "difficulty": "hard",
+  "lecture_id": "69",
+  "order": 3,
+  "description": "Какие метрики покажут, что сервис деградирует?",
+  "examples": [
+    {
+      "input": "Latency p99, error rate, cache hit rate",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "RED/USE."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

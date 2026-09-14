@@ -1,0 +1,23 @@
+{
+  "id": "58-p2",
+  "title": "OpenTelemetry",
+  "difficulty": "medium",
+  "lecture_id": "58",
+  "order": 2,
+  "description": "Как автоматически инструментировать FastAPI-приложение для трейсинга?",
+  "examples": [
+    {
+      "input": "opentelemetry-instrumentation-fastapi",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "SDK + exporter + instrumentation."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

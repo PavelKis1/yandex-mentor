@@ -1,0 +1,399 @@
+{
+  "stages": [
+    {
+      "id": "algorithms",
+      "name": "Алгоритмы",
+      "icon": "🧠",
+      "lectures": [
+        {
+          "id": "01",
+          "name": "Хеш-таблицы",
+          "dir": "01_hash_tables"
+        },
+        {
+          "id": "02",
+          "name": "Множества",
+          "dir": "02_sets"
+        },
+        {
+          "id": "03",
+          "name": "Стеки",
+          "dir": "03_stacks"
+        },
+        {
+          "id": "04",
+          "name": "Очереди",
+          "dir": "04_queues"
+        },
+        {
+          "id": "05",
+          "name": "Связные списки",
+          "dir": "05_linked_lists"
+        },
+        {
+          "id": "06",
+          "name": "Деревья",
+          "dir": "06_trees"
+        },
+        {
+          "id": "07",
+          "name": "Кучи",
+          "dir": "07_heaps"
+        },
+        {
+          "id": "08",
+          "name": "Sliding Window",
+          "dir": "08_sliding_window"
+        },
+        {
+          "id": "09",
+          "name": "Два указателя",
+          "dir": "09_two_pointers"
+        },
+        {
+          "id": "10",
+          "name": "Бинарный поиск",
+          "dir": "10_binary_search"
+        },
+        {
+          "id": "11",
+          "name": "Префиксные суммы",
+          "dir": "11_prefix_sum"
+        },
+        {
+          "id": "12",
+          "name": "Жадные алгоритмы",
+          "dir": "12_greedy"
+        },
+        {
+          "id": "13",
+          "name": "DP: 1D",
+          "dir": "13_dp_1d"
+        },
+        {
+          "id": "14",
+          "name": "DP: 2D",
+          "dir": "14_dp_2d"
+        },
+        {
+          "id": "15",
+          "name": "DP на строках",
+          "dir": "15_dp_strings"
+        },
+        {
+          "id": "16",
+          "name": "Backtracking",
+          "dir": "16_backtracking"
+        },
+        {
+          "id": "17",
+          "name": "BFS",
+          "dir": "17_bfs"
+        },
+        {
+          "id": "18",
+          "name": "DFS",
+          "dir": "18_dfs"
+        },
+        {
+          "id": "19",
+          "name": "Топологическая сортировка",
+          "dir": "19_toposort"
+        },
+        {
+          "id": "20",
+          "name": "Union-Find",
+          "dir": "20_union_find"
+        },
+        {
+          "id": "21",
+          "name": "Trie",
+          "dir": "21_trie"
+        },
+        {
+          "id": "22",
+          "name": "Дейкстра",
+          "dir": "22_dijkstra"
+        },
+        {
+          "id": "23",
+          "name": "Битовая арифметика",
+          "dir": "23_bitwise"
+        },
+        {
+          "id": "24",
+          "name": "Строки",
+          "dir": "24_strings"
+        },
+        {
+          "id": "25",
+          "name": "Комбинаторика",
+          "dir": "25_combinations"
+        }
+      ]
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "icon": "🐍",
+      "lectures": [
+        {
+          "id": "26",
+          "name": "collections",
+          "dir": "26_collections"
+        },
+        {
+          "id": "27",
+          "name": "itertools",
+          "dir": "27_itertools"
+        },
+        {
+          "id": "28",
+          "name": "functools",
+          "dir": "28_functools"
+        },
+        {
+          "id": "29",
+          "name": "Внутренности Python",
+          "dir": "29_python_internals"
+        },
+        {
+          "id": "30",
+          "name": "Профилирование",
+          "dir": "30_profiling"
+        },
+        {
+          "id": "31",
+          "name": "Оптимизация",
+          "dir": "31_optimization"
+        },
+        {
+          "id": "32",
+          "name": "Декораторы",
+          "dir": "32_decorators"
+        },
+        {
+          "id": "33",
+          "name": "Контекстные менеджеры",
+          "dir": "33_context_managers"
+        },
+        {
+          "id": "34",
+          "name": "dataclasses",
+          "dir": "34_dataclasses"
+        },
+        {
+          "id": "35",
+          "name": "Type hints",
+          "dir": "35_type_hints"
+        }
+      ]
+    },
+    {
+      "id": "databases",
+      "name": "Базы данных",
+      "icon": "🗄️",
+      "lectures": [
+        {
+          "id": "36",
+          "name": "SQL: SELECT",
+          "dir": "36_sql_select"
+        },
+        {
+          "id": "37",
+          "name": "SQL: JOIN",
+          "dir": "37_sql_join"
+        },
+        {
+          "id": "38",
+          "name": "SQL: GROUP BY",
+          "dir": "38_sql_groupby"
+        },
+        {
+          "id": "39",
+          "name": "SQL: Оконные функции",
+          "dir": "39_sql_window"
+        },
+        {
+          "id": "40",
+          "name": "Индексы",
+          "dir": "40_indexes"
+        },
+        {
+          "id": "41",
+          "name": "EXPLAIN",
+          "dir": "41_explain"
+        },
+        {
+          "id": "42",
+          "name": "Транзакции",
+          "dir": "42_transactions"
+        },
+        {
+          "id": "43",
+          "name": "Redis",
+          "dir": "43_redis"
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "name": "Backend",
+      "icon": "🛠️",
+      "lectures": [
+        {
+          "id": "44",
+          "name": "HTTP",
+          "dir": "44_http"
+        },
+        {
+          "id": "45",
+          "name": "REST API",
+          "dir": "45_rest"
+        },
+        {
+          "id": "46",
+          "name": "FastAPI + Pydantic",
+          "dir": "46_fastapi"
+        },
+        {
+          "id": "47",
+          "name": "SQLAlchemy",
+          "dir": "47_sqlalchemy"
+        },
+        {
+          "id": "48",
+          "name": "Docker",
+          "dir": "48_docker"
+        },
+        {
+          "id": "49",
+          "name": "Docker Compose",
+          "dir": "49_docker_compose"
+        },
+        {
+          "id": "50",
+          "name": "CI/CD",
+          "dir": "50_cicd"
+        },
+        {
+          "id": "51",
+          "name": "Linux + bash",
+          "dir": "51_linux"
+        },
+        {
+          "id": "52",
+          "name": "Безопасность",
+          "dir": "52_security"
+        }
+      ]
+    },
+    {
+      "id": "linux",
+      "name": "Linux и Observability",
+      "icon": "🐧",
+      "lectures": [
+        {
+          "id": "53",
+          "name": "Процессы",
+          "dir": "53_processes"
+        },
+        {
+          "id": "54",
+          "name": "Сеть",
+          "dir": "54_network"
+        },
+        {
+          "id": "55",
+          "name": "Файлы",
+          "dir": "55_files"
+        },
+        {
+          "id": "56",
+          "name": "Логирование",
+          "dir": "56_logging"
+        },
+        {
+          "id": "57",
+          "name": "Метрики",
+          "dir": "57_metrics"
+        },
+        {
+          "id": "58",
+          "name": "Трейсинг",
+          "dir": "58_tracing"
+        },
+        {
+          "id": "59",
+          "name": "systemd",
+          "dir": "59_systemd"
+        }
+      ]
+    },
+    {
+      "id": "system_design",
+      "name": "System Design",
+      "icon": "🏗️",
+      "lectures": [
+        {
+          "id": "60",
+          "name": "URL Shortener",
+          "dir": "60_url_shortener"
+        },
+        {
+          "id": "61",
+          "name": "Лента новостей",
+          "dir": "61_news_feed"
+        },
+        {
+          "id": "62",
+          "name": "Поисковик",
+          "dir": "62_search"
+        },
+        {
+          "id": "63",
+          "name": "Кэширование",
+          "dir": "63_caching"
+        },
+        {
+          "id": "64",
+          "name": "Очереди",
+          "dir": "64_queues"
+        },
+        {
+          "id": "65",
+          "name": "Масштабирование",
+          "dir": "65_scaling"
+        }
+      ]
+    },
+    {
+      "id": "mocks",
+      "name": "Моки",
+      "icon": "🎯",
+      "lectures": [
+        {
+          "id": "66",
+          "name": "Мок: Алгоритм",
+          "dir": "66_mocks"
+        },
+        {
+          "id": "67",
+          "name": "Мок: Python",
+          "dir": "67_mocks2"
+        },
+        {
+          "id": "68",
+          "name": "Мок: Backend",
+          "dir": "68_mocks3"
+        },
+        {
+          "id": "69",
+          "name": "Мок: System Design",
+          "dir": "69_mocks4"
+        }
+      ]
+    }
+  ],
+  "total": 69
+}

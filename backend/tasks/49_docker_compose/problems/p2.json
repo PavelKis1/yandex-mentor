@@ -1,0 +1,23 @@
+{
+  "id": "49-p2",
+  "title": "Переменные окружения",
+  "difficulty": "medium",
+  "lecture_id": "49",
+  "order": 2,
+  "description": "Прокидывайте DATABASE_URL в web-сервис через environment (не хардкодьте в коде).\n  - DATABASE_URL=postgres://...`",
+  "examples": [
+    {
+      "input": "`environment:",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "12-factor: конфиг в env."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

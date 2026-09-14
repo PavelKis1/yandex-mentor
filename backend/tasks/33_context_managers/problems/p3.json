@@ -1,0 +1,23 @@
+{
+  "id": "33-p3",
+  "title": "Подавление исключений",
+  "difficulty": "hard",
+  "lecture_id": "33",
+  "order": 3,
+  "description": "Напишите контекстный менеджер suppress(Exc), который подавляет указанное исключение внутри блока и продолжает выполнение.",
+  "examples": [
+    {
+      "input": "with suppress(ValueError): int('abc') — ошибки нет",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "__exit__ возвращает True при совпадении исключения."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

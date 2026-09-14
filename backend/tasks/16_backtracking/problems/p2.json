@@ -1,0 +1,30 @@
+{
+  "id": "16-p2",
+  "title": "Подмножества",
+  "difficulty": "medium",
+  "lecture_id": "16",
+  "order": 2,
+  "description": "Найдите все подмножества.\n\n**Функция решения:**\n\n```python\ndef subsets(nums: list[int]) -> list[list[int]]:\n    \"\"\"O(2^n) — рекурсивно: взять элемент или пропустить и двигаться дальше.\n\n    Edge cases: пустой массив ([[]]), один элемент, все элементы одинаковые.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def subsets(nums: list[int]) -> list[list[int]]:\n    \"\"\"O(2^n) — рекурсивно: взять элемент или пропустить и двигаться дальше.\n\n    Edge cases: пустой массив ([[]]), один элемент, все элементы одинаковые.\n    \"\"\"\n    ...\n",
+  "entry_function": "subsets",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        []
+      ],
+      "expected": [
+        []
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

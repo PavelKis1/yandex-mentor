@@ -1,0 +1,23 @@
+{
+  "id": "67-p3",
+  "title": "Беседа",
+  "difficulty": "hard",
+  "lecture_id": "67",
+  "order": 3,
+  "description": "Как бы вы профилировали медленную функцию продакшена?",
+  "examples": [
+    {
+      "input": "cProfile/трассировка + гипотезы",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Сначала измерь, потом оптимизируй."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

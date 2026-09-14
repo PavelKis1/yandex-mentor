@@ -1,0 +1,23 @@
+{
+  "id": "38-p1",
+  "title": "HAVING",
+  "difficulty": "easy",
+  "lecture_id": "38",
+  "order": 1,
+  "description": "Таблица sales(category, price). Найдите категории со средней ценой больше 100.",
+  "examples": [
+    {
+      "input": "SELECT category, AVG(price) FROM sales GROUP BY category HAVING AVG(price) > 100;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "HAVING для фильтра агрегатов (не WHERE)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

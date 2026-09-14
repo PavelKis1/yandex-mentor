@@ -1,0 +1,23 @@
+{
+  "id": "40-p3",
+  "title": "Влияние на запись",
+  "difficulty": "hard",
+  "lecture_id": "40",
+  "order": 3,
+  "description": "Объясните: почему много индексов ускоряют SELECT, но замедляют INSERT/UPDATE?",
+  "examples": [
+    {
+      "input": "INSERT обновляет все индексы; баланс чтение/запись",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Каждый индекс = доп. структура на запись."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

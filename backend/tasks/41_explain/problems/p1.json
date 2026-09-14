@@ -1,0 +1,23 @@
+{
+  "id": "41-p1",
+  "title": "Чтение EXPLAIN",
+  "difficulty": "easy",
+  "lecture_id": "41",
+  "order": 1,
+  "description": "Дан EXPLAIN SELECT ... FROM users WHERE age > 30; Как определить, что есть полный скан таблицы?",
+  "examples": [
+    {
+      "input": "type = ALL в плане",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Ищи 'type: ALL' (seq scan)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

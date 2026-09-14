@@ -1,0 +1,134 @@
+{
+  "id": "22-p2",
+  "title": "Дешёвые рейсы",
+  "difficulty": "medium",
+  "lecture_id": "22",
+  "order": 2,
+  "description": "Найдите минимальную стоимость рейса с K остановками.\n\n**Функция решения:**\n\n```python\ndef find_cheapest_price(\n    n: int, flights: list[list[int]], src: int, dst: int, k: int\n) -> int:\n    \"\"\"O(k * E * log V) — Дейкстра + лимит k промежуточных остановок.\n\n    Edge cases: src == dst (0), нет маршрута (-1), k = 0 (только напрямую).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "import heapq\n\ndef find_cheapest_price(\n    n: int, flights: list[list[int]], src: int, dst: int, k: int\n) -> int:\n    \"\"\"O(k * E * log V) — Дейкстра + лимит k промежуточных остановок.\n\n    Edge cases: src == dst (0), нет маршрута (-1), k = 0 (только напрямую).\n    \"\"\"\n    ...\n",
+  "entry_function": "find_cheapest_price",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ],
+          [
+            0,
+            2,
+            500
+          ]
+        ],
+        0,
+        2,
+        1
+      ],
+      "expected": 200,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ],
+          [
+            0,
+            2,
+            500
+          ]
+        ],
+        0,
+        2,
+        0
+      ],
+      "expected": 500,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1,
+            100
+          ]
+        ],
+        0,
+        2,
+        1
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        3,
+        [],
+        1,
+        1,
+        0
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

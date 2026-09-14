@@ -1,0 +1,23 @@
+{
+  "id": "36-p1",
+  "title": "Выборка с условием",
+  "difficulty": "easy",
+  "lecture_id": "36",
+  "order": 1,
+  "description": "Таблица users(id, name, age). Выберите имена пользователей старше 18 лет, отсортированных по возрасту по убыванию.",
+  "examples": [
+    {
+      "input": "SELECT name FROM users WHERE age > 18 ORDER BY age DESC;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "WHERE + ORDER BY; экранируй кавычки."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

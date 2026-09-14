@@ -1,0 +1,23 @@
+{
+  "id": "45-p3",
+  "title": "Версионирование",
+  "difficulty": "hard",
+  "lecture_id": "45",
+  "order": 3,
+  "description": "Клиент старой версии сломается при изменении /users. Как поддержать обратную совместимость?",
+  "examples": [
+    {
+      "input": "GET /v1/users и /v2/users",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Версия в пути или в Accept-заголовке."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

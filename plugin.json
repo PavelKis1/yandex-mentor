@@ -1,0 +1,32 @@
+{
+  "name": "yandex-mentor",
+  "version": "1.0.0",
+  "description": "Yandex Backend Intern Mentorship — 24 engineering skills + 30 tasks",
+  "skills_dir": ".agent-skills",
+  "skills": [
+    "spec-driven-development",
+    "planning-and-task-breakdown",
+    "test-driven-development",
+    "code-review-and-quality",
+    "debugging-and-error-recovery",
+    "security-and-hardening",
+    "performance-optimization",
+    "api-and-interface-design",
+    "git-workflow-and-versioning",
+    "ci-cd-and-automation",
+    "shipping-and-launch",
+    "observability-and-instrumentation",
+    "documentation-and-adrs",
+    "deprecation-and-migration",
+    "incremental-implementation",
+    "constraint-driven-development",
+    "context-engineering",
+    "source-driven-development",
+    "doubt-driven-development",
+    "idea-refine",
+    "interview-me",
+    "browser-testing-with-devtools",
+    "code-simplification",
+    "frontend-ui-engineering"
+  ]
+}

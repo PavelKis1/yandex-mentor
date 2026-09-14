@@ -1,0 +1,23 @@
+{
+  "id": "37-p2",
+  "title": "LEFT JOIN + агрегация",
+  "difficulty": "medium",
+  "lecture_id": "37",
+  "order": 2,
+  "description": "Выведите всех пользователей и суммарную сумму их заказов, включая тех, у кого заказов нет (NULL→0).",
+  "examples": [
+    {
+      "input": "SELECT u.name, COALESCE(SUM(o.amount),0) FROM users u LEFT JOIN orders o ON u.id=o.user_id GROUP BY u.name;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "LEFT JOIN + COALESCE(...,0)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

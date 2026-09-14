@@ -1,0 +1,91 @@
+{
+  "id": "19-p2",
+  "title": "Проверка цикла",
+  "difficulty": "medium",
+  "lecture_id": "19",
+  "order": 2,
+  "description": "Проверьте, есть ли цикл в графе.\n\n**Функция решения:**\n\n```python\ndef has_cycle(graph: dict[int, list[int]], n: int) -> bool:\n    \"\"\"O(V + E) — DFS-состояния 0/1/2; цикл = ребро в «текущий обход».\n\n    Edge cases: граф без рёбер (False), самопетля (True), одна вершина.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "from collections import deque\n\ndef has_cycle(graph: dict[int, list[int]], n: int) -> bool:\n    \"\"\"O(V + E) — DFS-состояния 0/1/2; цикл = ребро в «текущий обход».\n\n    Edge cases: граф без рёбер (False), самопетля (True), одна вершина.\n    \"\"\"\n    ...\n",
+  "entry_function": "has_cycle",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        {
+          "0": [
+            1
+          ],
+          "1": [
+            0
+          ],
+          "2": []
+        },
+        3
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        {},
+        3
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        {
+          "0": [
+            0
+          ]
+        },
+        1
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        {
+          "0": [
+            1
+          ],
+          "1": [
+            2
+          ]
+        },
+        3
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

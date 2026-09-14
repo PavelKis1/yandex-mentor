@@ -1,0 +1,109 @@
+{
+  "id": "09-p1",
+  "title": "Два числа",
+  "difficulty": "easy",
+  "lecture_id": "09",
+  "order": 1,
+  "description": "Найдите два числа в массиве, сумма которых равна target.\n\n**Функция решения:**\n\n```python\ndef two_sum(nums: list[int], target: int) -> list[int]:\n    \"\"\"O(n) — nums отсортирован; сдвигаем указатели с краёв к центру.\n\n    Возвращает два числа либо []. Edge cases: пустой/одноэлементный массив,\n    отрицательные числа, отсутствие подходящей пары.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def two_sum(nums: list[int], target: int) -> list[int]:\n    \"\"\"O(n) — nums отсортирован; сдвигаем указатели с краёв к центру.\n\n    Возвращает два числа либо []. Edge cases: пустой/одноэлементный массив,\n    отрицательные числа, отсутствие подходящей пары.\n    \"\"\"\n    ...\n",
+  "entry_function": "two_sum",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        9
+      ],
+      "expected": [
+        4,
+        5
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [],
+        5
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          3
+        ],
+        3
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          -5,
+          -2,
+          0,
+          3
+        ],
+        -2
+      ],
+      "expected": [
+        -5,
+        3
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1,
+          2,
+          7
+        ],
+        5
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

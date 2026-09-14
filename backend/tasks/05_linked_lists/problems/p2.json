@@ -1,0 +1,77 @@
+{
+  "id": "05-p2",
+  "title": "Середина списка",
+  "difficulty": "medium",
+  "lecture_id": "05",
+  "order": 2,
+  "description": "Найдите середину списка.\n\n**Функция решения:**\n\n```python\ndef middle_node(head: ListNode | None) -> ListNode | None:\n    \"\"\"O(n) — два указателя: fast движется вдвое быстрее slow.\n\n    Edge cases: пустой список, один узел, чётное и нечётное число узлов.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "class ListNode:\n    \"\"\"Узел односвязного списка.\"\"\"\n\n    def __init__(self, val: int = 0, next: ListNode | None = None) -> None:\n        self.val = val\n        self.next = next\n\ndef middle_node(head: ListNode | None) -> ListNode | None:\n    \"\"\"O(n) — два указателя: fast движется вдвое быстрее slow.\n\n    Edge cases: пустой список, один узел, чётное и нечётное число узлов.\n    \"\"\"\n    ...\n\ndef _build(values: list[int]) -> ListNode | None:\n    dummy = ListNode()\n    tail = dummy\n    for value in values:\n        tail.next = ListNode(value)\n        tail = tail.next\n    return dummy.next\n\ndef _to_list(head: ListNode | None) -> list[int]:\n    result: list[int] = []\n    while head is not None:\n        result.append(head.val)\n        head = head.next\n    return result\n",
+  "entry_function": "middle_node",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        "_build"
+      ],
+      "result_converter": "attr:val"
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        "_build"
+      ],
+      "result_converter": "attr:val"
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        "_build"
+      ],
+      "result_converter": "attr:val"
+    },
+    {
+      "id": "t4",
+      "args": [
+        []
+      ],
+      "expected": null,
+      "hidden": false,
+      "arg_converters": [
+        "_build"
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

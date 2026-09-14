@@ -1,0 +1,52 @@
+{
+  "id": "15-p1",
+  "title": "Палиндром",
+  "difficulty": "easy",
+  "lecture_id": "15",
+  "order": 1,
+  "description": "Найдите наибольшую палиндромную подстроку.\n\n**Функция решения:**\n\n```python\ndef longest_palindrome(s: str) -> str:\n    \"\"\"O(n^2) — расширение от центра (2n-1 центров × до n расширений).\n\n    Edge cases: пустая строка, один символ, чётный палиндром, все разные символы.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def longest_palindrome(s: str) -> str:\n    \"\"\"O(n^2) — расширение от центра (2n-1 центров × до n расширений).\n\n    Edge cases: пустая строка, один символ, чётный палиндром, все разные символы.\n    \"\"\"\n    ...\n",
+  "entry_function": "longest_palindrome",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "cbbd"
+      ],
+      "expected": "bb",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        ""
+      ],
+      "expected": "",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        "a"
+      ],
+      "expected": "a",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

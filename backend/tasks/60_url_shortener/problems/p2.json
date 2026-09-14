@@ -1,0 +1,23 @@
+{
+  "id": "60-p2",
+  "title": "Идемпотентность",
+  "difficulty": "medium",
+  "lecture_id": "60",
+  "order": 2,
+  "description": "Один и тот же URL сокращается повторно. Что вернуть: новый ключ или тот же? Как реализовать?",
+  "examples": [
+    {
+      "input": "Один ключ на URL: unique-индекс на url",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Идемпотентность + дедупликация."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

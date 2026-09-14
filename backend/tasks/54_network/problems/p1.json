@@ -1,0 +1,23 @@
+{
+  "id": "54-p1",
+  "title": "Порты",
+  "difficulty": "easy",
+  "lecture_id": "54",
+  "order": 1,
+  "description": "Какие TCP-порты на 80/443/22/5432/6379 и кому они принадлежат?",
+  "examples": [
+    {
+      "input": "HTTP/HTTPS/SSH/PostgreSQL/Redis",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Узнаваемые порты."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

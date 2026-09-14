@@ -1,0 +1,64 @@
+{
+  "id": "08-p2",
+  "title": "Подстрока без повторов",
+  "difficulty": "medium",
+  "lecture_id": "08",
+  "order": 2,
+  "description": "Найдите длину наибольшей подстроки без повторяющихся символов.\n\n**Функция решения:**\n\n```python\ndef length_of_longest_substring(s: str) -> int:\n    \"\"\"O(n) — sliding window + множество символов в текущем окне.\n\n    Edge cases: пустая строка, строка без повторов, все символы одинаковые.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "from collections import Counter\n\ndef length_of_longest_substring(s: str) -> int:\n    \"\"\"O(n) — sliding window + множество символов в текущем окне.\n\n    Edge cases: пустая строка, строка без повторов, все символы одинаковые.\n    \"\"\"\n    ...\n",
+  "entry_function": "length_of_longest_substring",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "abcabcbb"
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        "bbbbb"
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        ""
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        "pwwkew"
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

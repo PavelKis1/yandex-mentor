@@ -1,0 +1,23 @@
+{
+  "id": "32-p2",
+  "title": "Логирование вызовов",
+  "difficulty": "medium",
+  "lecture_id": "32",
+  "order": 2,
+  "description": "Напишите декоратор @logged, который логирует имя функции, аргументы и результат каждого вызова в список LOG.",
+  "examples": [
+    {
+      "input": "LOG = []; @logged f(2)",
+      "output": "LOG = [('f', (2,), result)]",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Декоратор с *args, **kwargs и wrapped.__name__."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "26-p2",
+  "title": "Группа анаграмм",
+  "difficulty": "medium",
+  "lecture_id": "26",
+  "order": 2,
+  "description": "Дан массив строк strs. Сгруппируйте анаграммы вместе. Верните список групп.",
+  "examples": [
+    {
+      "input": "strs=['eat','tea','tan','ate','nat','bat']",
+      "output": "[['bat'],['tan','nat'],['eat','tea','ate']]",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Ключ группы — отсортированная строка или tuple(Counter)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

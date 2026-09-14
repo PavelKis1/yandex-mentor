@@ -1,0 +1,23 @@
+{
+  "id": "46-p3",
+  "title": "Зависимости",
+  "difficulty": "hard",
+  "lecture_id": "46",
+  "order": 3,
+  "description": "Создайте зависимость get_db(), которая открывает соединение и закрывает его. Примените к эндпоинту.\ndef get_users(db: Session = Depends(get_db))`",
+  "examples": [
+    {
+      "input": "`@app.get('/users')",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Depends + yield/генератор в зависимости."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

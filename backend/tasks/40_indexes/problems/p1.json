@@ -1,0 +1,23 @@
+{
+  "id": "40-p1",
+  "title": "Индекс по равенству",
+  "difficulty": "easy",
+  "lecture_id": "40",
+  "order": 1,
+  "description": "Таблица users(email). Запрос WHERE email='x@y.z' медленный. Что создать для ускорения?",
+  "examples": [
+    {
+      "input": "CREATE INDEX idx_users_email ON users(email);",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "B-tree индекс на колонку поиска."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,72 @@
+{
+  "id": "24-p1",
+  "title": "Анаграмма",
+  "difficulty": "easy",
+  "lecture_id": "24",
+  "order": 1,
+  "description": "Проверьте, являются ли строки анаграммами.\n\n**Функция решения:**\n\n```python\ndef is_anagram(s: str, t: str) -> bool:\n    \"\"\"O(n) — подсчёт символов через фиксированный массив 26 букв (a-z).\n\n    Edge cases: разная длина (False), пустые строки (True).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def is_anagram(s: str, t: str) -> bool:\n    \"\"\"O(n) — подсчёт символов через фиксированный массив 26 букв (a-z).\n\n    Edge cases: разная длина (False), пустые строки (True).\n    \"\"\"\n    ...\n",
+  "entry_function": "is_anagram",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "anagram",
+        "nagaram"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        "rat",
+        "car"
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        "",
+        ""
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        "a",
+        "ab"
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

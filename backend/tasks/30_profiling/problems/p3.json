@@ -1,0 +1,23 @@
+{
+  "id": "30-p3",
+  "title": "Память",
+  "difficulty": "hard",
+  "lecture_id": "30",
+  "order": 3,
+  "description": "Измерьте потребление памяти списком из 10^6 целых через tracemalloc. Верните примерный размер в МБ.",
+  "examples": [
+    {
+      "input": "~8 МБ (64-бит Python)",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "tracemalloc.start() → выполни → tracemalloc.get_traced_memory()."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

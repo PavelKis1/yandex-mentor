@@ -1,0 +1,23 @@
+{
+  "id": "67-p1",
+  "title": "Вопрос по Python",
+  "difficulty": "easy",
+  "lecture_id": "67",
+  "order": 1,
+  "description": "Что выведет и почему: def f(lst=[]): lst.append(1); return lst — для двух вызовов f()?",
+  "examples": [
+    {
+      "input": "[1], затем [1,1] — mutable default",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Мутабельный дефолтный аргумент."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

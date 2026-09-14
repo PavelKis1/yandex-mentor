@@ -1,0 +1,75 @@
+{
+  "id": "01-p2",
+  "title": "Группировка анаграмм",
+  "difficulty": "medium",
+  "lecture_id": "01",
+  "order": 2,
+  "description": "Дан массив строк `strs`. Сгруппируйте анаграммы вместе. Две строки считаются анаграммами, если они составлены из одинакового набора букв (с учётом кратности).\n\nПорядок групп и порядок строк внутри группы не важен: проверка сравнивает группы как множества.\n\n**Функция решения:**\n\n```python\ndef group_anagrams(strs: list[str]) -> list[list[str]]:\n    ...\n```",
+  "examples": [
+    {
+      "input": "strs = [\"eat\", \"tea\", \"tan\", \"ate\", \"nat\", \"bat\"]",
+      "output": "[[\"bat\"], [\"nat\", \"tan\"], [\"ate\", \"eat\", \"tea\"]]",
+      "explanation": "Обратите внимание: сортировка каждой строки даёт одинаковый ключ для анаграмм."
+    },
+    {
+      "input": "strs = [\"\"]",
+      "output": "[[\"\"]]",
+      "explanation": "Одна пустая строка — своя группа."
+    },
+    {
+      "input": "strs = [\"a\"]",
+      "output": "[[\"a\"]]"
+    }
+  ],
+  "constraints": [
+    "1 ≤ len(strs) ≤ 10^4",
+    "0 ≤ len(strs[i]) ≤ 100",
+    "strs[i] состоит из строчных латинских букв"
+  ],
+  "hints": [
+    "Ключ группы: отсортированная строка ('eat' → 'aet').",
+    "Хеш-таблица: key → список строк; ответ — это values словаря.",
+    "Сложность: O(n · k log k), где k — длина самой длинной строки."
+  ],
+  "starter_code": "def group_anagrams(strs: list[str]) -> list[list[str]]:\n    \"\"\"Сгруппировать анаграммы вместе.\"\"\"\n    ...",
+  "entry_function": "group_anagrams",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [["eat", "tea", "tan", "ate", "nat", "bat"]],
+      "expected": [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]],
+      "hidden": false,
+      "arg_converters": [null],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t2",
+      "args": [[""]],
+      "expected": [[""]],
+      "hidden": false,
+      "arg_converters": [null],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t3",
+      "args": [["a"]],
+      "expected": [["a"]],
+      "hidden": false,
+      "arg_converters": [null],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t4",
+      "args": [["ab", "ba", "abc", "cba", "bca"]],
+      "expected": [["ab", "ba"], ["abc", "cba", "bca"]],
+      "hidden": true,
+      "arg_converters": [null],
+      "result_converter": null,
+      "sort_result": true
+    }
+  ],
+  "timeout_ms": 3000
+}

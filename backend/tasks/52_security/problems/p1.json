@@ -1,0 +1,23 @@
+{
+  "id": "52-p1",
+  "title": "Инъекции",
+  "difficulty": "easy",
+  "lecture_id": "52",
+  "order": 1,
+  "description": "Пользователь вводит в поиск: ' OR 1=1; --. Чем опасен такой ввод и как защититься?",
+  "examples": [
+    {
+      "input": "SQL-инъекция: параметризуй запросы (не конкатенация)",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "SQLAlchemy .execute с параметрами."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

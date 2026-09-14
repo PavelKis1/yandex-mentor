@@ -1,0 +1,23 @@
+{
+  "id": "46-p1",
+  "title": "Модель Pydantic",
+  "difficulty": "easy",
+  "lecture_id": "46",
+  "order": 1,
+  "description": "Опишите Pydantic-модель Order с полями id, total, items (список) и валидацией total ≥ 0.",
+  "examples": [
+    {
+      "input": "class Order(BaseModel): total: float = Field(ge=0)",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "BaseModel + Field(ge=0)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

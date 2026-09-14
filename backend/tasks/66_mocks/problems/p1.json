@@ -1,0 +1,23 @@
+{
+  "id": "66-p1",
+  "title": "Алгоритм на собесе",
+  "difficulty": "easy",
+  "lecture_id": "66",
+  "order": 1,
+  "description": "Решите Two Sum за O(n) на бумаге: объясните подход, напишите код, укажите сложность.",
+  "examples": [
+    {
+      "input": "дикт: {число: индекс}, O(n)",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Объясни до кода."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

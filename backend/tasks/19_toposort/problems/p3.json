@@ -1,0 +1,90 @@
+{
+  "id": "19-p3",
+  "title": "Словарь инопланетян",
+  "difficulty": "hard",
+  "lecture_id": "19",
+  "order": 3,
+  "description": "Восстановите порядок букв.\n\n**Функция решения:**\n\n```python\ndef alien_order(words: list[str]) -> str:\n    \"\"\"O(C) — рёбра из соседних слов + топологическая сортировка букв.\n\n    Edge cases: одно слово, пустой список, префикс-конфликт (\"\"),\n    изолированные буквы.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "from collections import deque\n\ndef alien_order(words: list[str]) -> str:\n    \"\"\"O(C) — рёбра из соседних слов + топологическая сортировка букв.\n\n    Edge cases: одно слово, пустой список, префикс-конфликт (\"\"),\n    изолированные буквы.\n    \"\"\"\n    ...\n",
+  "entry_function": "alien_order",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          "wrt",
+          "wrf",
+          "er",
+          "ett",
+          "rftt"
+        ]
+      ],
+      "expected": "wertf",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          "z",
+          "x"
+        ]
+      ],
+      "expected": "zx",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          "a"
+        ]
+      ],
+      "expected": "a",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        []
+      ],
+      "expected": "",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          "abc",
+          "ab"
+        ]
+      ],
+      "expected": "",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

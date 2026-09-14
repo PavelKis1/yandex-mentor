@@ -1,0 +1,23 @@
+{
+  "id": "63-p3",
+  "title": "Cache stampede",
+  "difficulty": "hard",
+  "lecture_id": "63",
+  "order": 3,
+  "description": "Кэш истёк, все запросы пошли в БД (каскад). Как защититься?",
+  "examples": [
+    {
+      "input": "Лок-блокировка / single-flight + jitter при TTL",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Один процесс пересобирает кэш."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

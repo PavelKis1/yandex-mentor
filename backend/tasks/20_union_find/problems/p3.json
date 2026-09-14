@@ -1,0 +1,15 @@
+{
+  "id": "20-p3",
+  "title": "Слияние аккаунтов",
+  "difficulty": "hard",
+  "lecture_id": "20",
+  "order": 3,
+  "description": "Объедините аккаунты с одинаковыми email.\n\n**Функция решения:**\n\n```python\ndef accounts_merge(accounts: list[list[str]]) -> list[list[str]]:\n    \"\"\"O(N log N) — DSU по email; результат: имя + отсортированные email.\n\n    Edge cases: один email в аккаунте, дубликаты email, несколько аккаунтов\n    одного человека, соединяющиеся через общий email.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def accounts_merge(accounts: list[list[str]]) -> list[list[str]]:\n    \"\"\"O(N log N) — DSU по email; результат: имя + отсортированные email.\n\n    Edge cases: один email в аккаунте, дубликаты email, несколько аккаунтов\n    одного человека, соединяющиеся через общий email.\n    \"\"\"\n    ...\n",
+  "entry_function": "accounts_merge",
+  "test_cases": [],
+  "timeout_ms": 3000
+}

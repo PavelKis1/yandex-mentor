@@ -1,0 +1,86 @@
+{
+  "id": "23-p3",
+  "title": "Сумма двух чисел",
+  "difficulty": "hard",
+  "lecture_id": "23",
+  "order": 3,
+  "description": "Сложите два числа без + и -.\n\n**Функция решения:**\n\n```python\ndef get_sum(a: int, b: int) -> int:\n    \"\"\"O(1) — сложение через XOR (сумма) + сдвинутый AND (перенос).\n\n    Edge cases: оба ноля (0), разные знаки, оба отрицательных,\n    результат, выходящий за 32-битный знаковый диапазон.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def get_sum(a: int, b: int) -> int:\n    \"\"\"O(1) — сложение через XOR (сумма) + сдвинутый AND (перенос).\n\n    Edge cases: оба ноля (0), разные знаки, оба отрицательных,\n    результат, выходящий за 32-битный знаковый диапазон.\n    \"\"\"\n    ...\n",
+  "entry_function": "get_sum",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        1,
+        2
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 5,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        -1,
+        1
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        -2,
+        -3
+      ],
+      "expected": -5,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

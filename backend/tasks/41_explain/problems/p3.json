@@ -1,0 +1,23 @@
+{
+  "id": "41-p3",
+  "title": "Оптимизация по плану",
+  "difficulty": "hard",
+  "lecture_id": "41",
+  "order": 3,
+  "description": "EXPLAIN показывает 'Seq Scan' на миллионной таблице с WHERE по колонке x. Что сделать?",
+  "examples": [
+    {
+      "input": "Добавить индекс на x и перезапустить ANALYZE",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Индекс + VACUUM ANALYZE."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "41-p2",
+  "title": "Использование индекса",
+  "difficulty": "medium",
+  "lecture_id": "41",
+  "order": 2,
+  "description": "Почему запрос с LIKE '%text%' не использует обычный индекс на колонке?",
+  "examples": [
+    {
+      "input": "LIKE с ведущей звездой — не сработает btree",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Полнотекстовый поиск / GIN для подстрок."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

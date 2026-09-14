@@ -1,0 +1,23 @@
+{
+  "id": "54-p3",
+  "title": "DNS",
+  "difficulty": "hard",
+  "lecture_id": "54",
+  "order": 3,
+  "description": "Как проверить, что DNS-имя резолвится, и чем отличается A-запись от CNAME?",
+  "examples": [
+    {
+      "input": "dig/nslookup; A = IP, CNAME = имя",
+      "output": "имя",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "dig + типы записей."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

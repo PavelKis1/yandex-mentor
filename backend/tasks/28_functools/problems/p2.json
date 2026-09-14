@@ -1,0 +1,23 @@
+{
+  "id": "28-p2",
+  "title": "Мемоизация",
+  "difficulty": "medium",
+  "lecture_id": "28",
+  "order": 2,
+  "description": "Реализуйте рекурсивную функцию чисел Фибоначчи с кэшированием через functools.lru_cache. Сравните количество вызовов с наивной версией.",
+  "examples": [
+    {
+      "input": "fib(30)",
+      "output": "832040, вызовов ≤ 2*n",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "@lru_cache(maxsize=None) на внутренней функции."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

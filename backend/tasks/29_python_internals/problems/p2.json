@@ -1,0 +1,23 @@
+{
+  "id": "29-p2",
+  "title": "Замыкания",
+  "difficulty": "medium",
+  "lecture_id": "29",
+  "order": 2,
+  "description": "Напишите счётчик-замыкание: функция, которая при каждом вызове возвращает 1,2,3,... — используя nonlocal.",
+  "examples": [
+    {
+      "input": "increment() три раза",
+      "output": "1, 2, 3",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Внутренняя функция + nonlocal count."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

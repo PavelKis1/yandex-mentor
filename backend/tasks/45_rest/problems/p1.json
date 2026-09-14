@@ -1,0 +1,23 @@
+{
+  "id": "45-p1",
+  "title": "Проектирование ресурсов",
+  "difficulty": "easy",
+  "lecture_id": "45",
+  "order": 1,
+  "description": "Спроектируйте REST-эндпоинты для блога: создать пост, получить пост, лайк поста, список постов автора.",
+  "examples": [
+    {
+      "input": "POST/GET /posts, POST /posts/{id}/like, GET /users/{id}/posts",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Существительные, иерархия, методы по действию."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

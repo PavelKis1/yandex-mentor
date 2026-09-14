@@ -1,0 +1,23 @@
+{
+  "id": "66-p2",
+  "title": "Ещё задача",
+  "difficulty": "medium",
+  "lecture_id": "66",
+  "order": 2,
+  "description": "Найдите k-й наибольший элемент в массиве за O(n log k) (heap).",
+  "examples": [
+    {
+      "input": "heapq.nlargest / min-heap размера k",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Объясни выбор структуры."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

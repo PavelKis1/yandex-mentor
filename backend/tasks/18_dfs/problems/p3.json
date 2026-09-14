@@ -1,0 +1,105 @@
+{
+  "id": "18-p3",
+  "title": "Курс",
+  "difficulty": "hard",
+  "lecture_id": "18",
+  "order": 3,
+  "description": "Проверьте, можно ли пройти все курсы.\n\n**Функция решения:**\n\n```python\ndef can_finish(num_courses: int, prerequisites: list[list[int]]) -> bool:\n    \"\"\"O(V + E) — поиск цикла по DFS-состояниям: 0/не посещён, 1/в обходе, 2/готов.\n\n    Edge cases: пустой список зависимостей (True), самозависимость (False),\n    курсов нет вообще (True).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def can_finish(num_courses: int, prerequisites: list[list[int]]) -> bool:\n    \"\"\"O(V + E) — поиск цикла по DFS-состояниям: 0/не посещён, 1/в обходе, 2/готов.\n\n    Edge cases: пустой список зависимостей (True), самозависимость (False),\n    курсов нет вообще (True).\n    \"\"\"\n    ...\n",
+  "entry_function": "can_finish",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        2,
+        [
+          [
+            1,
+            0
+          ]
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        2,
+        [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        1,
+        [
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        3,
+        []
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        0,
+        []
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

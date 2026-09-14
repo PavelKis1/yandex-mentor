@@ -1,0 +1,48 @@
+{
+  "id": "16-p1",
+  "title": "Перестановки",
+  "difficulty": "easy",
+  "lecture_id": "16",
+  "order": 1,
+  "description": "Найдите все перестановки массива.\n\n**Функция решения:**\n\n```python\ndef permute(nums: list[int]) -> list[list[int]]:\n    \"\"\"O(n!) — перебор всех перестановок с флагом использованных позиций.\n\n    Edge cases: пустой массив ([[]]), один элемент, дубликаты значений.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def permute(nums: list[int]) -> list[list[int]]:\n    \"\"\"O(n!) — перебор всех перестановок с флагом использованных позиций.\n\n    Edge cases: пустой массив ([[]]), один элемент, дубликаты значений.\n    \"\"\"\n    ...\n",
+  "entry_function": "permute",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        []
+      ],
+      "expected": [
+        []
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

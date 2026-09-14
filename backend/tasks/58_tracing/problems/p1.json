@@ -1,0 +1,23 @@
+{
+  "id": "58-p1",
+  "title": "Trace/span",
+  "difficulty": "easy",
+  "lecture_id": "58",
+  "order": 1,
+  "description": "Объясните разницу между trace, span и log. Как они связаны?",
+  "examples": [
+    {
+      "input": "trace = цепочка span; span = единица работы; log = событие внутри",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Correlation: trace_id в логах."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

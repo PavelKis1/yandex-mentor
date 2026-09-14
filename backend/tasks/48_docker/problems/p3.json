@@ -1,0 +1,23 @@
+{
+  "id": "48-p3",
+  "title": "Уменьшение образа",
+  "difficulty": "hard",
+  "lecture_id": "48",
+  "order": 3,
+  "description": "Образ весит 1.5 ГБ. Какие действия уменьшат его до ~200 МБ?",
+  "examples": [
+    {
+      "input": "multi-stage build, python:*-slim, --no-cache-dir",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "multi-stage + slim + dockerignore."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

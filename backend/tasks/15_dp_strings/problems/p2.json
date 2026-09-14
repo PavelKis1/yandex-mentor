@@ -1,0 +1,84 @@
+{
+  "id": "15-p2",
+  "title": "Word Break",
+  "difficulty": "medium",
+  "lecture_id": "15",
+  "order": 2,
+  "description": "Проверьте, можно ли разбить строку на слова.\n\n**Функция решения:**\n\n```python\ndef word_break(s: str, word_dict: list[str]) -> bool:\n    \"\"\"O(n^2) — DP: dp[i] = True, если s[:i] разбивается на слова.\n\n    Edge cases: пустая строка (True), одно длинное слово, несколько вариантов.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def word_break(s: str, word_dict: list[str]) -> bool:\n    \"\"\"O(n^2) — DP: dp[i] = True, если s[:i] разбивается на слова.\n\n    Edge cases: пустая строка (True), одно длинное слово, несколько вариантов.\n    \"\"\"\n    ...\n",
+  "entry_function": "word_break",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "leetcode",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        "applepenapple",
+        [
+          "apple",
+          "pen"
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        "catsandog",
+        [
+          "cats",
+          "dog",
+          "sand",
+          "and",
+          "cat"
+        ]
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        "",
+        []
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

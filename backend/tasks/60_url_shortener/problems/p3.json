@@ -1,0 +1,23 @@
+{
+  "id": "60-p3",
+  "title": "Перенаправление",
+  "difficulty": "hard",
+  "lecture_id": "60",
+  "order": 3,
+  "description": "Реализуйте GET /{key}: редирект с кэшированием. Какой HTTP-статус?",
+  "examples": [
+    {
+      "input": "302/301 + Cache-Control на ответ",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "302: временный; 301: постоянный (кэшируется)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

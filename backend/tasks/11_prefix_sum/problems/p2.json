@@ -1,0 +1,78 @@
+{
+  "id": "11-p2",
+  "title": "Product Except Self",
+  "difficulty": "medium",
+  "lecture_id": "11",
+  "order": 2,
+  "description": "Верните массив произведений всех элементов кроме текущего.\n\n**Функция решения:**\n\n```python\ndef product_except_self(nums: list[int]) -> list[int]:\n    \"\"\"O(n) — левое произведение × правое, без деления (корректно при нулях).\n\n    Edge cases: один/два нуля, отрицательные числа, один элемент.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def product_except_self(nums: list[int]) -> list[int]:\n    \"\"\"O(n) — левое произведение × правое, без деления (корректно при нулях).\n\n    Edge cases: один/два нуля, отрицательные числа, один элемент.\n    \"\"\"\n    ...\n",
+  "entry_function": "product_except_self",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        24,
+        12,
+        8,
+        6
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          -1,
+          1,
+          0,
+          3,
+          -3
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        9,
+        0,
+        0
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": [
+        1
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

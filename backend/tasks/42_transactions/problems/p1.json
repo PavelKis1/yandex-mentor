@@ -1,0 +1,23 @@
+{
+  "id": "42-p1",
+  "title": "Потерянное обновление",
+  "difficulty": "easy",
+  "lecture_id": "42",
+  "order": 1,
+  "description": "Две транзакции одновременно увеличивают balance на 10. Опишите проблему и решение (BEGIN/COMMIT/ISOLATION).",
+  "examples": [
+    {
+      "input": "Свойство атомарности: UPDATE ... SET balance=balance+10 атомарно",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Одиночная UPDATE атомарна; массивы обновлять через row lock."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

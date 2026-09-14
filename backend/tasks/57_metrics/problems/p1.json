@@ -1,0 +1,23 @@
+{
+  "id": "57-p1",
+  "title": "Prometheus",
+  "difficulty": "easy",
+  "lecture_id": "57",
+  "order": 1,
+  "description": "Какие метрики вы бы собирали для HTTP API: счётчики, гистограммы?",
+  "examples": [
+    {
+      "input": "http_requests_total, http_request_duration_seconds",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Counter + Histogram."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

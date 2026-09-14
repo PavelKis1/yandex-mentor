@@ -1,0 +1,23 @@
+{
+  "id": "35-p3",
+  "title": "Generics",
+  "difficulty": "hard",
+  "lecture_id": "35",
+  "order": 3,
+  "description": "Напишите обобщённую функцию first(items: Sequence[T]) → T, возвращающую первый элемент, с TypeVar.",
+  "examples": [
+    {
+      "input": "first([1,2]) → 1; first(('a','b')) → 'a'",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "T = TypeVar('T'); def first(items: Sequence[T]) → T."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

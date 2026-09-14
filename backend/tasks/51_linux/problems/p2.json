@@ -1,0 +1,23 @@
+{
+  "id": "51-p2",
+  "title": "Поиск и фильтр",
+  "difficulty": "medium",
+  "lecture_id": "51",
+  "order": 2,
+  "description": "Найдите все .py файлы в /app и посчитайте количество строк в каждом (find, wc).",
+  "examples": [
+    {
+      "input": "find /app -name '*.py' -exec wc -l {} \\;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "find + -exec."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

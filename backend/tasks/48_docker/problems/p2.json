@@ -1,0 +1,23 @@
+{
+  "id": "48-p2",
+  "title": "Команды",
+  "difficulty": "medium",
+  "lecture_id": "48",
+  "order": 2,
+  "description": "Объясните разницу между COPY и ADD, RUN и CMD.",
+  "examples": [
+    {
+      "input": "COPY копирует, ADD распаковывает архивы; RUN — build-time, CMD — runtime",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Минимальный образ: python:3.11-slim."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

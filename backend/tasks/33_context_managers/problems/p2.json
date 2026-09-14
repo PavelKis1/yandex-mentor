@@ -1,0 +1,23 @@
+{
+  "id": "33-p2",
+  "title": "Таймер как менеджер",
+  "difficulty": "medium",
+  "lecture_id": "33",
+  "order": 2,
+  "description": "Напишите контекстный менеджер timed_block. В 'with' блоке он измеряет время выполнения и печатает его.",
+  "examples": [
+    {
+      "input": "with timed_block(): ...",
+      "output": "'block took 0.15 s'",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "@contextmanager: время до yield и после."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

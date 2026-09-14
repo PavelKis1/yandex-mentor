@@ -1,0 +1,23 @@
+{
+  "id": "69-p1",
+  "title": "System design",
+  "difficulty": "easy",
+  "lecture_id": "69",
+  "order": 1,
+  "description": "Спроектируйте сервис сокращения ссылок (как tinyurl) за 20 минут: функциональные/нефункциональные требования.",
+  "examples": [
+    {
+      "input": "POST /shorten, GET /{key}; 1M RPS; latency < 100 мс",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Обсуждай требования → дизайн → детали."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

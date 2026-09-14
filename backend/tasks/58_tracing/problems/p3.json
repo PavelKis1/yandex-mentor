@@ -1,0 +1,23 @@
+{
+  "id": "58-p3",
+  "title": "Задержки",
+  "difficulty": "hard",
+  "lecture_id": "58",
+  "order": 3,
+  "description": "В трейсе видно, что /users занимает 900 мс: 800 мс в span 'db.query'. Что это значит и что делать?",
+  "examples": [
+    {
+      "input": "Узкое место — БД: индекс/кэш/пагинация",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Читай span-дерево, где основное время."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

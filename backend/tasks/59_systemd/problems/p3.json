@@ -1,0 +1,23 @@
+{
+  "id": "59-p3",
+  "title": "Автозапуск",
+  "difficulty": "hard",
+  "lecture_id": "59",
+  "order": 3,
+  "description": "Чтобы сервис запускался при загрузке ОС, нужно...",
+  "examples": [
+    {
+      "input": "systemctl enable myapp",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "enable создаёт симлинк в multi-user.target."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "65-p3",
+  "title": "Метрики нагрузки",
+  "difficulty": "hard",
+  "lecture_id": "65",
+  "order": 3,
+  "description": "Назовите 3 метрики, по которым вы решите, что пора масштабироваться.",
+  "examples": [
+    {
+      "input": "CPU/loadavg, p99 latency, error rate",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "SLO/SLI: 99.9% < 500 мс."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

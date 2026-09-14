@@ -1,0 +1,43 @@
+{
+  "id": "22-p3",
+  "title": "Максимальная вероятность",
+  "difficulty": "hard",
+  "lecture_id": "22",
+  "order": 3,
+  "description": "Найдите путь с максимальной вероятностью.\n\n**Функция решения:**\n\n```python\ndef max_probability(\n    n: int,\n    edges: list[list[int]],\n    succ_prob: list[float],\n    start: int,\n    end: int,\n) -> float:\n    \"\"\"O((V+E) log V) — путь с максимальной вероятностью (неориентированный).\n\n    Edge cases: start == end (1.0), нет пути (0.0), ноль узлов.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "import heapq\n\ndef max_probability(\n    n: int,\n    edges: list[list[int]],\n    succ_prob: list[float],\n    start: int,\n    end: int,\n) -> float:\n    \"\"\"O((V+E) log V) — путь с максимальной вероятностью (неориентированный).\n\n    Edge cases: start == end (1.0), нет пути (0.0), ноль узлов.\n    \"\"\"\n    ...\n",
+  "entry_function": "max_probability",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0.5
+        ],
+        0,
+        2
+      ],
+      "expected": 0.0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

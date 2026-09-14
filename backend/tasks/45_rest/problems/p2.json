@@ -1,0 +1,23 @@
+{
+  "id": "45-p2",
+  "title": "Пагинация",
+  "difficulty": "medium",
+  "lecture_id": "45",
+  "order": 2,
+  "description": "Как вернуть 10 000 постов постранично по 25? Какой параметр и зачем limit/offset?",
+  "examples": [
+    {
+      "input": "GET /posts?page=2&limit=25",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "limit/offset или курсор; лимит против перегрузки."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

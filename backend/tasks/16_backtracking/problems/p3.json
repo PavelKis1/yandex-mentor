@@ -1,0 +1,52 @@
+{
+  "id": "16-p3",
+  "title": "N-Queens",
+  "difficulty": "hard",
+  "lecture_id": "16",
+  "order": 3,
+  "description": "Разместите N ферзей на доске.\n\n**Функция решения:**\n\n```python\ndef solve_n_queens(n: int) -> list[list[str]]:\n    \"\"\"O(n!) — доски n×n в виде списка строк ('Q' и '.').\n\n    Edge cases: n = 0 (пусто), n = 1 (одно решение), n = 2 и 3 (решений нет).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def solve_n_queens(n: int) -> list[list[str]]:\n    \"\"\"O(n!) — доски n×n в виде списка строк ('Q' и '.').\n\n    Edge cases: n = 0 (пусто), n = 1 (одно решение), n = 2 и 3 (решений нет).\n    \"\"\"\n    ...\n",
+  "entry_function": "solve_n_queens",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        0
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        2
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        3
+      ],
+      "expected": [],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

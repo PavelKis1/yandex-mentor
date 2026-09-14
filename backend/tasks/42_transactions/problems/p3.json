@@ -1,0 +1,23 @@
+{
+  "id": "42-p3",
+  "title": "Уровни изоляции",
+  "difficulty": "hard",
+  "lecture_id": "42",
+  "order": 3,
+  "description": "Чем READ COMMITTED отличается от REPEATABLE READ? Приведите пример, когда результат различается.",
+  "examples": [
+    {
+      "input": "При RC повторные чтения видят чужие коммиты",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Опиши ситуацию с двумя соединениями."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,15 @@
+{
+  "id": "04-p3",
+  "title": "Скользящее окно",
+  "difficulty": "hard",
+  "lecture_id": "04",
+  "order": 3,
+  "description": "Найдите максимум в каждом окне размера k.",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

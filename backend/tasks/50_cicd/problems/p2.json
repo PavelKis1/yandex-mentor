@@ -1,0 +1,23 @@
+{
+  "id": "50-p2",
+  "title": "Окружения",
+  "difficulty": "medium",
+  "lecture_id": "50",
+  "order": 2,
+  "description": "Разделите деплой dev/stage/prod через GitHub Actions: когда какой включается?",
+  "examples": [
+    {
+      "input": "dev: push в main; prod: тег v*",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "triggers: push/branches/tags."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

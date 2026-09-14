@@ -1,0 +1,23 @@
+{
+  "id": "31-p3",
+  "title": "Пропустить половину",
+  "difficulty": "hard",
+  "lecture_id": "31",
+  "order": 3,
+  "description": "Дан большой отсортированный массив и target. Найдите индекс target за O(log n) через бинарный поиск (без bisect).",
+  "examples": [
+    {
+      "input": "search([1,3,5,7,9], 5)",
+      "output": "2",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "half = (l + r) // 2, сужай диапазон в два раза."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "62-p1",
+  "title": "Индексирование",
+  "difficulty": "easy",
+  "lecture_id": "62",
+  "order": 1,
+  "description": "Как устроен полнотекстовый поиск по 10M документов? Опишите pipeline.",
+  "examples": [
+    {
+      "input": "crawler → нормализация → inverted index",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Inverted index: слово → список документов."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,101 @@
+{
+  "id": "17-p2",
+  "title": "Гниющие апельсины",
+  "difficulty": "medium",
+  "lecture_id": "17",
+  "order": 2,
+  "description": "Найдите время, за которое все апельсины сгниют.\n\n**Функция решения:**\n\n```python\ndef oranges_rotting(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — мультиисточниковый BFS от «гнилых» апельсинов.\n\n    Edge cases: пустая сетка, нет свежих (0 минут), недостижимые свежие (-1).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "from collections import deque\n\nclass TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef oranges_rotting(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — мультиисточниковый BFS от «гнилых» апельсинов.\n\n    Edge cases: пустая сетка, нет свежих (0 минут), недостижимые свежие (-1).\n    \"\"\"\n    ...\n",
+  "entry_function": "oranges_rotting",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 4,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          [
+            0,
+            2
+          ]
+        ]
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "42-p2",
+  "title": "Откат",
+  "difficulty": "medium",
+  "lecture_id": "42",
+  "order": 2,
+  "description": "В транзакции: INSERT, INSERT с ошибкой. Что останется после ROLLBACK?",
+  "examples": [
+    {
+      "input": "Ничего: обе вставки откатятся",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "ROLLBACK отменяет всю транзакцию."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

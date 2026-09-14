@@ -1,0 +1,23 @@
+{
+  "id": "43-p2",
+  "title": "Счётчик просмотров",
+  "difficulty": "medium",
+  "lecture_id": "43",
+  "order": 2,
+  "description": "Реализуйте счётчик просмотров поста через INCR, без гонок.",
+  "examples": [
+    {
+      "input": "r.incr('post:5:views')",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "INCR атомарен — не нужны блокировки."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

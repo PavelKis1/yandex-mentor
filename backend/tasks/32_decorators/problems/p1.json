@@ -1,0 +1,23 @@
+{
+  "id": "32-p1",
+  "title": "Таймер-декоратор",
+  "difficulty": "easy",
+  "lecture_id": "32",
+  "order": 1,
+  "description": "Напишите декоратор @timed, который печатает время выполнения функции в миллисекундах и возвращает результат неизменным.",
+  "examples": [
+    {
+      "input": "печать 'slow took 123 ms', вернул результат",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "functools.wraps(f); time.perf_counter() до и после."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

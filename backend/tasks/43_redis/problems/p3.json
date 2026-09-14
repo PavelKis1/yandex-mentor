@@ -1,0 +1,23 @@
+{
+  "id": "43-p3",
+  "title": "Очередь через LPUSH/BRPOP",
+  "difficulty": "hard",
+  "lecture_id": "43",
+  "order": 3,
+  "description": "Реализуйте очередь на Redis: producer (LPUSH) и consumer (BRPOP с таймаутом).",
+  "examples": [
+    {
+      "input": "r.brpop('queue', timeout=0)",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "BRPOP блокирует; потребитель забирает справа."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "66-p3",
+  "title": "Обсуждение",
+  "difficulty": "hard",
+  "lecture_id": "66",
+  "order": 3,
+  "description": "Расскажите про разницу list vs dict по времени операций.",
+  "examples": [
+    {
+      "input": "list: O(n) поиск, O(1) append; dict: O(1) get/set",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Говори про амортизацию."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

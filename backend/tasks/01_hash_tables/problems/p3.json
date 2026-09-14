@@ -1,0 +1,89 @@
+{
+  "id": "01-p3",
+  "title": "Подмножества с суммой",
+  "difficulty": "hard",
+  "lecture_id": "01",
+  "order": 3,
+  "description": "Дан массив целых чисел `nums` и целое число `target`. Найдите **количество подмножеств** (наборов элементов по их индексам) элементов `nums`, сумма которых равна `target`.\n\nПодмножество определяется набором **индексов**; элементы с одинаковыми значениями считаются различными.\n\n**Функция решения:**\n\n```python\ndef count_subsets(nums: list[int], target: int) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "nums = [1, 2, 3], target = 3",
+      "output": "2",
+      "explanation": "[1, 2] = 1+2 = 3; [3] = 3. Два подмножества."
+    },
+    {
+      "input": "nums = [1, 1, 2], target = 2",
+      "output": "3",
+      "explanation": "[2] = 2; [1, 2] с первым 1; [1, 2] со вторым 1. Три подмножества."
+    },
+    {
+      "input": "nums = [1, 2, 3, 4], target = 5",
+      "output": "2",
+      "explanation": "[1, 4] = 5; [2, 3] = 5. Два подмножества."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(nums) ≤ 30",
+    "−100 ≤ nums[i] ≤ 100",
+    "−1000 ≤ target ≤ 1000",
+    "Наличие нулей в массиве: ноль можно включить или исключить без изменения суммы."
+  ],
+  "hints": [
+    "ДП-массив dp[c] = кол-во способов набрать сумму c; изначально dp[0] = 1.",
+    "Обновляем dp обратным обходом: для каждого num обходим sums от target до num.",
+    "Сложность O(n · target) по времени и O(target) по памяти."
+  ],
+  "starter_code": "def count_subsets(nums: list[int], target: int) -> int:\n    \"\"\"Найти количество подмножеств с суммой target.\"\"\"\n    ...",
+  "entry_function": "count_subsets",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [[1, 2, 3], 3],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [null, null],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [[1, 1, 2], 2],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [null, null],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [[1, 2, 3, 4], 5],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [null, null],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [[1, 2, 3], 7],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [null, null],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [[5], 5],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [null, null],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [[0, 0, 0], 0],
+      "expected": 8,
+      "hidden": true,
+      "arg_converters": [null, null],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

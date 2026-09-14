@@ -1,0 +1,23 @@
+{
+  "id": "47-p3",
+  "title": "Связь один-ко-многим",
+  "difficulty": "hard",
+  "lecture_id": "47",
+  "order": 3,
+  "description": "Модели User и Post: один пользователь — много постов. Опишите relationship.",
+  "examples": [
+    {
+      "input": "posts = relationship('Post', back_populates='user')",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "ForeignKey + relationship."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,94 @@
+{
+  "id": "12-p1",
+  "title": "Jump Game",
+  "difficulty": "easy",
+  "lecture_id": "12",
+  "order": 1,
+  "description": "Определите, можно ли достичь конца.\n\n**Функция решения:**\n\n```python\ndef can_jump(nums: list[int]) -> bool:\n    \"\"\"O(n) — на каждом шаге обновляем максимальный достижимый индекс.\n\n    Edge cases: пустой массив (can reach vacuously), один элемент,\n    нули как ловушки в середине.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def can_jump(nums: list[int]) -> bool:\n    \"\"\"O(n) — на каждом шаге обновляем максимальный достижимый индекс.\n\n    Edge cases: пустой массив (can reach vacuously), один элемент,\n    нули как ловушки в середине.\n    \"\"\"\n    ...\n",
+  "entry_function": "can_jump",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          2,
+          3,
+          1,
+          1,
+          4
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          3,
+          2,
+          1,
+          0,
+          4
+        ]
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          0
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        []
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

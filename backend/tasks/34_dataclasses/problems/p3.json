@@ -1,0 +1,23 @@
+{
+  "id": "34-p3",
+  "title": "Объединение dataclass",
+  "difficulty": "hard",
+  "lecture_id": "34",
+  "order": 3,
+  "description": "Напишите функцию merge_users(a: User, b: User), которая возвращает нового User с полями a, но c email=b.email, если email пуст в a.",
+  "examples": [
+    {
+      "input": "merge_users(User(1,'A',''), User(2,'B','bb'))",
+      "output": "User(1,'A','bb')",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "dataclasses.replace() или ручное создание."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

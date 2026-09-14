@@ -1,0 +1,15 @@
+{
+  "id": "09-p3",
+  "title": "Слияние массивов",
+  "difficulty": "hard",
+  "lecture_id": "09",
+  "order": 3,
+  "description": "Объедините два отсортированных массива.\n\n**Функция решения:**\n\n```python\ndef merge_sorted(nums1: list[int], m: int, nums2: list[int], n: int) -> None:\n    \"\"\"O(m + n), in-place — заполняем nums1 с конца, ничего не перезаписывая.\n\n    Edge cases: пустой nums2 (n=0), пустой nums1 (m=0), пересекающиеся значения.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def merge_sorted(nums1: list[int], m: int, nums2: list[int], n: int) -> None:\n    \"\"\"O(m + n), in-place — заполняем nums1 с конца, ничего не перезаписывая.\n\n    Edge cases: пустой nums2 (n=0), пустой nums1 (m=0), пересекающиеся значения.\n    \"\"\"\n    ...\n",
+  "entry_function": "merge_sorted",
+  "test_cases": [],
+  "timeout_ms": 3000
+}

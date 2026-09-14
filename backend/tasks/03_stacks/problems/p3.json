@@ -1,0 +1,15 @@
+{
+  "id": "03-p3",
+  "title": "Оценка RPN",
+  "difficulty": "hard",
+  "lecture_id": "03",
+  "order": 3,
+  "description": "Вычислите выражение в обратной польской нотации.",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

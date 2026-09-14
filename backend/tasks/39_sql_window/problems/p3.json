@@ -1,0 +1,23 @@
+{
+  "id": "39-p3",
+  "title": "LAG для дельты",
+  "difficulty": "hard",
+  "lecture_id": "39",
+  "order": 3,
+  "description": "Таблица prices(day, price). Для каждого дня добавьте разницу с предыдущим днём.",
+  "examples": [
+    {
+      "input": "SELECT day, price - LAG(price) OVER (ORDER BY day) FROM prices;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "LAG(...) OVER (ORDER BY ...)."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

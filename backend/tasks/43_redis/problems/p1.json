@@ -1,0 +1,23 @@
+{
+  "id": "43-p1",
+  "title": "Кэш с TTL",
+  "difficulty": "easy",
+  "lecture_id": "43",
+  "order": 1,
+  "description": "Напишите код: сохраните key 'user:1' со значением JSON и временем жизни 60 секунд (redis-py).",
+  "examples": [
+    {
+      "input": "r.setex('user:1', 60, json.dumps(user))",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "setex / SETEX с ttl."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

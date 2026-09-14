@@ -1,0 +1,95 @@
+{
+  "id": "07-p1",
+  "title": "K-й наибольший",
+  "difficulty": "easy",
+  "lecture_id": "07",
+  "order": 1,
+  "description": "Найдите k-й наибольший элемент.\n\n**Функция решения:**\n\n```python\ndef find_kth_largest(nums: list[int], k: int) -> int:\n    \"\"\"O(n log k) — min-heap фиксированного размера k хранит k наибольших.\n\n    Edge cases: k = 1, k = len(nums), отрицательные числа, дубликаты.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "import heapq\n\nfrom collections import Counter\n\ndef find_kth_largest(nums: list[int], k: int) -> int:\n    \"\"\"O(n log k) — min-heap фиксированного размера k хранит k наибольших.\n\n    Edge cases: k = 1, k = len(nums), отрицательные числа, дубликаты.\n    \"\"\"\n    ...\n",
+  "entry_function": "find_kth_largest",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        2
+      ],
+      "expected": 5,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          3,
+          2,
+          3,
+          1,
+          2,
+          4,
+          5,
+          5,
+          6
+        ],
+        4
+      ],
+      "expected": 4,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          -1,
+          -5,
+          -3
+        ],
+        1
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          7
+        ],
+        1
+      ],
+      "expected": 7,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

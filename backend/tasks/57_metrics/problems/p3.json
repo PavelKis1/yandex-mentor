@@ -1,0 +1,23 @@
+{
+  "id": "57-p3",
+  "title": "Алерты",
+  "difficulty": "hard",
+  "lecture_id": "57",
+  "order": 3,
+  "description": "Сформулируйте алерт: '95% запросов медленнее 1 с в течение 5 минут' в PromQL.",
+  "examples": [
+    {
+      "input": "histogram_quantile(0.95, rate(...[5m])) > 1",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "PromQL + alerting rules."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

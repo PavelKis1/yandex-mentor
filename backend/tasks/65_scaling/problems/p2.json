@@ -1,0 +1,23 @@
+{
+  "id": "65-p2",
+  "title": "База: шардирование",
+  "difficulty": "medium",
+  "lecture_id": "65",
+  "order": 2,
+  "description": "Таблица users стала 500M строк. Как разделить по шардам?",
+  "examples": [
+    {
+      "input": "Партиционирование/шардирование по user_id (hash/range)",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Ключ шарда = хеш, чтобы читать с одного шарда."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

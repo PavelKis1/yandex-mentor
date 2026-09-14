@@ -1,0 +1,23 @@
+{
+  "id": "26-p1",
+  "title": "Топ K частых элементов",
+  "difficulty": "easy",
+  "lecture_id": "26",
+  "order": 1,
+  "description": "Дан массив nums и число k. Верните k наиболее часто встречающихся элементов. Порядок не важен.",
+  "examples": [
+    {
+      "input": "nums=[1,1,1,2,2,3], k=2",
+      "output": "[1,2]",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Используй collections.Counter + heapq.nlargest (O(n log k))."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

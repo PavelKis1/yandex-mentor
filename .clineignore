@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.git/
+__pycache__/
+*.pyc
+.venv/
+mentor.log
+server.log
+server_check.log
+server_final.log
+server_run.log
+server_run2.log
+srv_new.log

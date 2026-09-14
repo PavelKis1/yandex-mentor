@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Данные, генерируемые/изменяемые ментором
+data/*.json
+data/mentor_report.md
+logs/*.log
+.mentor_state.json
+
+# Node / frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Тесты и артефакты
+.pytest_cache/
+.coverage
+
+# Локальные инструменты
+*.local
+.DS_Store
+Thumbs.db

@@ -1,0 +1,23 @@
+{
+  "id": "50-p1",
+  "title": "Пайплайн CI",
+  "difficulty": "easy",
+  "lecture_id": "50",
+  "order": 1,
+  "description": "Опишите шаги CI для Python-проекта: линт, тесты, сборка образа, пуша в registry.",
+  "examples": [
+    {
+      "input": "lint → test → build → push",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Этапы: checkout, setup-python, pip install, pytest, docker build."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

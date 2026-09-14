@@ -1,0 +1,23 @@
+{
+  "id": "36-p3",
+  "title": "LIMIT и OFFSET",
+  "difficulty": "hard",
+  "lecture_id": "36",
+  "order": 3,
+  "description": "Таблица products(price). Верните 5 самых дешёвых товаров, исключая первые 10.",
+  "examples": [
+    {
+      "input": "SELECT * FROM products ORDER BY price LIMIT 5 OFFSET 10;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "ORDER BY price ASC LIMIT/OFFSET."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

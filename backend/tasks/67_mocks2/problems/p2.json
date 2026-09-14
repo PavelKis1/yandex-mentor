@@ -1,0 +1,23 @@
+{
+  "id": "67-p2",
+  "title": "Декоратор на собесе",
+  "difficulty": "medium",
+  "lecture_id": "67",
+  "order": 2,
+  "description": "Напишите декоратор memoize на бумаге для рекурсивной функции.",
+  "examples": [
+    {
+      "input": "кэш {args: result}",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "functools.lru_cache суть."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

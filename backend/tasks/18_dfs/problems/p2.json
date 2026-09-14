@@ -1,0 +1,65 @@
+{
+  "id": "18-p2",
+  "title": "Максимальная площадь",
+  "difficulty": "medium",
+  "lecture_id": "18",
+  "order": 2,
+  "description": "Найдите максимальную площадь острова.\n\n**Функция решения:**\n\n```python\ndef max_area_of_island(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — DFS-площадь каждого острова, берём максимум.\n\n    Edge cases: пустая сетка, нет суши (0), вся сетка — один остров.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def max_area_of_island(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — DFS-площадь каждого острова, берём максимум.\n\n    Edge cases: пустая сетка, нет суши (0), вся сетка — один остров.\n    \"\"\"\n    ...\n",
+  "entry_function": "max_area_of_island",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          [
+            0
+          ]
+        ]
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 4,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

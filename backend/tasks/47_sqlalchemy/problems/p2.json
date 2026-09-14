@@ -1,0 +1,23 @@
+{
+  "id": "47-p2",
+  "title": "Запросы",
+  "difficulty": "medium",
+  "lecture_id": "47",
+  "order": 2,
+  "description": "Напишите: получить пользователя по email, всех старше 30, первого отсортированного по id.",
+  "examples": [
+    {
+      "input": "User.query.filter_by(email=e).first()",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "filter_by для равенства, order_by/limit."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

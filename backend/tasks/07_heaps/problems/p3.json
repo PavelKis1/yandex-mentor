@@ -1,0 +1,58 @@
+{
+  "id": "07-p3",
+  "title": "Топ K частых",
+  "difficulty": "hard",
+  "lecture_id": "07",
+  "order": 3,
+  "description": "Найдите k наиболее частых элементов.\n\n**Функция решения:**\n\n```python\ndef top_k_frequent(nums: list[int], k: int) -> list[int]:\n    \"\"\"O(n log k) — Counter и nlargest по частоте.\n\n    Edge cases: один уникальный элемент, все элементы одинаковые, k = n.\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "import heapq\n\nfrom collections import Counter\n\ndef top_k_frequent(nums: list[int], k: int) -> list[int]:\n    \"\"\"O(n log k) — Counter и nlargest по частоте.\n\n    Edge cases: один уникальный элемент, все элементы одинаковые, k = n.\n    \"\"\"\n    ...\n",
+  "entry_function": "top_k_frequent",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected": [
+        1,
+        2
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1
+        ],
+        1
+      ],
+      "expected": [
+        1
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

@@ -1,0 +1,23 @@
+{
+  "id": "39-p2",
+  "title": "Скользящая сумма",
+  "difficulty": "medium",
+  "lecture_id": "39",
+  "order": 2,
+  "description": "Таблица sales(day, amount). Для каждого дня посчитайте накопительную сумму продаж.",
+  "examples": [
+    {
+      "input": "SELECT day, SUM(amount) OVER (ORDER BY day) FROM sales;",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "SUM OVER без PARTITION = по всему набору."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

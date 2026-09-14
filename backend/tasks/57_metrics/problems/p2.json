@@ -1,0 +1,23 @@
+{
+  "id": "57-p2",
+  "title": "RED-метрики",
+  "difficulty": "medium",
+  "lecture_id": "57",
+  "order": 2,
+  "description": "Назовите три метрики для сервиса: Rate, Errors, Duration. Как их измерить?",
+  "examples": [
+    {
+      "input": "RPS, error rate, latency (p99)",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "RED = Rate/Errors/Duration."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}

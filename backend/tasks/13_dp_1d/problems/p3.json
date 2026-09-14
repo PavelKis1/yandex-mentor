@@ -1,0 +1,101 @@
+{
+  "id": "13-p3",
+  "title": "Монеты",
+  "difficulty": "hard",
+  "lecture_id": "13",
+  "order": 3,
+  "description": "Найдите минимальное количество монет для суммы amount.\n\n**Функция решения:**\n\n```python\ndef coin_change(coins: list[int], amount: int) -> int:\n    \"\"\"O(amount * len(coins)) — DP по сумме, инициализация +∞.\n\n    Edge cases: amount = 0 (нужно 0 монет), один номинал,\n    невозможно составить сумму (−1).\n    \"\"\"\n```",
+  "examples": [],
+  "constraints": [],
+  "hints": [],
+  "starter_code": "def coin_change(coins: list[int], amount: int) -> int:\n    \"\"\"O(amount * len(coins)) — DP по сумме, инициализация +∞.\n\n    Edge cases: amount = 0 (нужно 0 монет), один номинал,\n    невозможно составить сумму (−1).\n    \"\"\"\n    ...\n",
+  "entry_function": "coin_change",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          5
+        ],
+        11
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          2
+        ],
+        3
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          1
+        ],
+        0
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          1,
+          5,
+          10,
+          25
+        ],
+        30
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          2
+        ],
+        1
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
+  "timeout_ms": 3000
+}

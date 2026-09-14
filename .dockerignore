@@ -1,0 +1,17 @@
+# Контекст сборки Docker-образа
+node_modules/
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+*.pyc
+data/
+logs/
+.pytest_cache/
+**/__pycache__/
+*.log
+.mentor_state.json
+progress.json
+errors.json
+mentor_report.md
+skills-lock.json
+package-lock.json

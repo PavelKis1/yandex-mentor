@@ -1,0 +1,23 @@
+{
+  "id": "56-p3",
+  "title": "Структурированные логи",
+  "difficulty": "hard",
+  "lecture_id": "56",
+  "order": 3,
+  "description": "Почему JSON-логи лучше текстовых для продакшена и как их сделать?",
+  "examples": [
+    {
+      "input": "json.dumps(record) в кастомном Formatter",
+      "output": "",
+      "explanation": null
+    }
+  ],
+  "constraints": [],
+  "hints": [
+    "Парсинг/поиск/агрегация."
+  ],
+  "starter_code": "",
+  "entry_function": null,
+  "test_cases": [],
+  "timeout_ms": 3000
+}
