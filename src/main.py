@@ -5,18 +5,29 @@
 """
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, status, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 import secrets
+from typing import Optional
 
 from src import config
 from src.api.routes import router
 from src.core.storage import ensure_storage
 
-security = HTTPBasic()
+security = HTTPBasic(auto_error=False)
 
-def authenticate(credentials: HTTPBasicCredentials = Depends(security)):
+def authenticate(request: Request, credentials: Optional[HTTPBasicCredentials] = Depends(security)):
+    if request.method == "OPTIONS":
+        return None
+    
+    if not credentials:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    
     is_correct_username = secrets.compare_digest(
         credentials.username, config.AUTH_USER
     )
