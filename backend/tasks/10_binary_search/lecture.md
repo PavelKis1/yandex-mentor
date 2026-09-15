@@ -1,134 +1,31 @@
 # 📖 Лекция 10: Бинарный поиск (Binary Search)
 
-## Что это и зачем
+## 📝 О чем это
+Бинарный поиск — это алгоритм поиска элемента в отсортированном массиве, который многократно делит область поиска пополам.
 
-Бинарный поиск — поиск элемента в отсортированном массиве за **O(log n)**. На каждом шаге делим массив пополам.
+## 💡 Основные концепции
+*   Определяем средний элемент (`mid`). Если искомое значение меньше `mid`, ищем в левой половине, иначе — в правой.
+*   **Критически важно**: Массив должен быть отсортирован.
 
-## Когда использовать
+## 🛠 Применение
+*   Поиск в отсортированном массиве.
+*   Поиск "первого" или "последнего" вхождения элемента.
+*   Поиск по ответу (когда нужно найти минимальное/максимальное значение, удовлетворяющее условию).
 
-- Массив/список отсортирован
-- Монотонная функция (f(x) монотонна)
-- Найти границу (first true / last false)
-- Поиск по ответу (answer search)
-
-## Базовый шаблон
-
+## 💻 Базовый код
 ```python
-def binary_search(nums, target):
-    left, right = 0, len(nums) - 1
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
     while left <= right:
         mid = (left + right) // 2
-        if nums[mid] == target:
-            return mid
-        elif nums[mid] < target:
-            left = mid + 1
-        else:
-            right = mid - 1
+        if arr[mid] == target: return mid
+        elif arr[mid] < target: left = mid + 1
+        else: right = mid - 1
     return -1
 ```
 
-**Время:** O(log n). **Память:** O(1).
+## 🚀 Сложность
+*   O(log n).
 
-## Шаблон для границ
-
-**Первая позиция target:**
-```python
-def lower_bound(nums, target):
-    left, right = 0, len(nums)
-    while left < right:
-        mid = (left + right) // 2
-        if nums[mid] < target:
-            left = mid + 1
-        else:
-            right = mid
-    return left
-```
-
-**Последняя позиция target:**
-```python
-def upper_bound(nums, target):
-    left, right = 0, len(nums)
-    while left < right:
-        mid = (left + right) // 2
-        if nums[mid] <= target:
-            left = mid + 1
-        else:
-            right = mid
-    return left - 1
-```
-
-В Python: `bisect.bisect_left`, `bisect.bisect_right`.
-
-## Поиск вращения (Rotated Sorted Array)
-
-```python
-def search_rotated(nums, target):
-    left, right = 0, len(nums) - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if nums[mid] == target:
-            return mid
-        if nums[left] <= nums[mid]:  # левая половина отсортирована
-            if nums[left] <= target < nums[mid]:
-                right = mid - 1
-            else:
-                left = mid + 1
-        else:  # правая отсортирована
-            if nums[mid] < target <= nums[right]:
-                left = mid + 1
-            else:
-                right = mid + 1
-    return -1
-```
-
-## Поиск по ответу
-
-**Koko Eating Bananas (минимальная скорость):**
-```python
-def min_speed(piles, h):
-    left, right = 1, max(piles)
-    while left < right:
-        mid = (left + right) // 2
-        hours = sum((p + mid - 1) // mid for p in piles)
-        if hours <= h:
-            right = mid
-        else:
-            left = mid + 1
-    return left
-```
-
-## bisect в Python
-
-```python
-import bisect
-
-arr = [1, 3, 4, 4, 5, 7]
-bisect.bisect_left(arr, 4)   # 2 (первый индекс)
-bisect.bisect_right(arr, 4)  # 4 (после последнего)
-bisect.insort(arr, 6)        # вставка с сохранением порядка
-```
-
-## Задачи на LeetCode
-
-- Binary Search (#704)
-- Search in Rotated Sorted Array (#33)
-- Find First and Last Position (#34)
-- Search Insert Position (#35)
-- Koko Eating Bananas (#875)
-- Median of Two Sorted Arrays (#4)
-- Find Minimum in Rotated Sorted Array (#153)
-
-## Где используется в Яндексе
-
-- **Поиск в логах** — bisect по времени
-- **DB индексы** — B-tree поиск O(log n)
-- **Параметры моделей** — гиперпараметры через бинарный поиск
-- **Rate limiter** — поиск окна
-- **Скоринг** — пороги классификации
-
-## Подводные камни
-
-- `mid = (left + right) // 2` vs `mid = left + (right - left) // 2` (переполнение)
-- `<= right` vs `< right` — выбор инварианта
-- Забыл вернуть `left` после цикла (для lower_bound)
-- В rotated массиве — какая половина отсортирована
+## 🔗 Ресурсы
+*   [Wikipedia: Binary Search](https://en.wikipedia.org/wiki/Binary_search_algorithm)

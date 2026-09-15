@@ -1,100 +1,24 @@
-# 📖 Лекция 25: Комбинаторика (Combinations)
+# 📖 Лекция 25: Комбинаторика (Combinations & Permutations)
 
-## Что это и зачем
+## 📝 О чем это
+Задачи на генерацию всех возможных комбинаций или перестановок элементов. Часто решаются через `itertools` или рекурсивно.
 
-Комбинаторика — подсчёт комбинаций, перестановок, подмножеств. Часто решается через backtracking или математические формулы.
+## 💡 Основные концепции
+*   **Перестановки (Permutations)**: Порядок имеет значение.
+*   **Сочетания (Combinations)**: Порядок не имеет значения.
 
-## Формулы
-
-- **Перестановки:** P(n, k) = n! / (n-k)!
-- **Комбинации:** C(n, k) = n! / (k! * (n-k)!)
-- **Подмножества:** 2^n
-
-## Python: itertools
-
+## 💻 Базовый код
 ```python
-from itertools import permutations, combinations, product
+from itertools import combinations, permutations
 
-# Перестановки
-list(permutations([1, 2, 3]))  # 6 штук
-
-# Комбинации
-list(combinations([1, 2, 3, 4], 2))  # 6 штук
-
-# Декартово произведение
-list(product([1, 2], ['a', 'b']))  # 4 пары
+items = [1, 2, 3]
+print(list(combinations(items, 2))) # [(1, 2), (1, 3), (2, 3)]
+print(list(permutations(items, 2))) # [(1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2)]
 ```
 
-## Backtracking для комбинаций
+## 🚀 Сложность
+*   Количество перестановок n!: O(n!).
+*   Количество сочетаний: C(n, k).
 
-```python
-def combine(n, k):
-    result = []
-    def backtrack(start, path):
-        if len(path) == k:
-            result.append(path[:])
-            return
-        for i in range(start, n + 1):
-            path.append(i)
-            backtrack(i + 1, path)
-            path.pop()
-    backtrack(1, [])
-    return result
-```
-
-## Subsets (все подмножества)
-
-```python
-def subsets(nums):
-    result = []
-    def backtrack(start, path):
-        result.append(path[:])
-        for i in range(start, len(nums)):
-            path.append(nums[i])
-            backtrack(i + 1, path)
-            path.pop()
-    backtrack(0, [])
-    return result
-```
-
-## Letter Combinations of Phone Number
-
-```python
-def letter_combinations(digits):
-    if not digits: return []
-    mapping = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl",
-               "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
-    result = []
-    def backtrack(index, path):
-        if index == len(digits):
-            result.append("".join(path))
-            return
-        for char in mapping[digits[index]]:
-            path.append(char)
-            backtrack(index + 1, path)
-            path.pop()
-    backtrack(0, [])
-    return result
-```
-
-## Задачи на LeetCode
-
-- Combinations (#77)
-- Permutations (#46)
-- Subsets (#78)
-- Letter Combinations (#17)
-- N-Queens (#51)
-- Combination Sum (#39)
-
-## Где используется в Яндексе
-
-- **A/B тесты** — комбинации вариантов
-- **Конфигурация** — подбор параметров
-- **Тестирование** — генерация тест-кейсов
-- **AI** — поиск в дереве решений
-
-## Подводные камни
-
-- Не сделал `path.pop()` — бесконечный рост
-- Забыл `start` в backtrack — дубликаты
-- Путаешь `permutations` и `combinations`
+## 🔗 Ресурсы
+*   [Python Docs: itertools](https://docs.python.org/3/library/itertools.html)
