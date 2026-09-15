@@ -35,15 +35,15 @@ const DIFF_META: Record<
 > = {
   easy: {
     label: "Простая",
-    className: "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30",
+    className: "bg-emerald-100 text-emerald-700 border border-emerald-200",
   },
   medium: {
     label: "Средняя",
-    className: "bg-amber-500/20 text-amber-300 border border-amber-500/30",
+    className: "bg-amber-100 text-amber-700 border border-amber-200",
   },
   hard: {
     label: "Сложная",
-    className: "bg-red-500/20 text-red-300 border border-red-500/30",
+    className: "bg-red-100 text-red-700 border border-red-200",
   },
 };
 
@@ -79,18 +79,37 @@ export function ProblemWorkbench({
   return (
     <div className="space-y-4">
       {/* Header: навигация по задачам лекции */}
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-3 bg-white rounded-xl border border-slate-200 p-3 shadow-sm">
         <button
           onClick={onBack}
-          className="flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800/70 px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:bg-slate-700 cursor-pointer"
+          title={`Вернуться к заданиям лекции «${lectureName}»`}
+          className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-50 hover:border-slate-300 cursor-pointer shadow-sm"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           К списку
         </button>
-        <span className="text-[11px] font-mono text-slate-500">
-          {lectureName} • Задание {index + 1} / {total}
-        </span>
-        <span className={`ml-auto text-[10px] font-semibold shrink-0 px-2.5 py-1 rounded-full ${diffMeta.className}`}>
+
+        <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5">
+          <button
+            onClick={onPrev ?? undefined}
+            disabled={!onPrev}
+            className="text-slate-400 hover:text-slate-700 disabled:opacity-30 disabled:hover:text-slate-400 transition-colors cursor-pointer disabled:cursor-not-allowed"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <span className="text-xs font-semibold text-slate-700 min-w-[90px] text-center select-none">
+            Задание {index + 1} <span className="text-slate-400 font-normal">из</span> {total}
+          </span>
+          <button
+            onClick={onNext ?? undefined}
+            disabled={!onNext}
+            className="text-slate-400 hover:text-slate-700 disabled:opacity-30 disabled:hover:text-slate-400 transition-colors cursor-pointer disabled:cursor-not-allowed"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+
+        <span className={`ml-auto text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full ${diffMeta.className}`}>
           {diffMeta.label}
         </span>
       </div>
@@ -98,46 +117,48 @@ export function ProblemWorkbench({
       <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] gap-4 items-start">
         {/* Левая панель — условие */}
         <div className="min-w-0 space-y-4">
-          <h2 className="flex items-start gap-2.5 text-lg font-bold text-white">
-            <Terminal className="h-5 w-5 shrink-0 text-amber-400 mt-0.5" />
-            {problem.title}
+          <h2 className="flex items-center gap-3 text-xl font-bold text-slate-900 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span className="bg-slate-900 text-white p-2 rounded-lg shadow-md shrink-0">
+              <Terminal className="h-5 w-5" />
+            </span>
+            <span>Задача #{index + 1}: {problem.title}</span>
             {problem.solved && (
-              <span className="mt-1 text-[10px] font-semibold text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-full border border-emerald-500/30 shrink-0">
-                ✓ Решено
+              <span className="ml-auto text-[10px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0">
+                Решено
               </span>
             )}
           </h2>
 
-          <div className="markdown-body text-sm leading-relaxed text-slate-300">
+          <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
             <MarkdownArticle markdown={problem.description} />
           </div>
 {/* Примеры */}
           {problem.examples && problem.examples.length > 0 && (
             <div className="space-y-3">
-              <h3 className="flex items-center gap-2 text-sm font-semibold text-white">
+              <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-900 pl-1">
                 Примеры
               </h3>
               {problem.examples.map((example: { input?: string; output?: string; explanation?: string }, i: number) => (
                 <div
                   key={i}
-                  className="rounded-xl border border-slate-800 bg-slate-950/50 overflow-hidden"
+                  className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm"
                 >
-                  <div className="px-4 py-2 border-b border-slate-800 text-[10px] font-mono text-slate-500">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
                     Пример {i + 1}
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 text-xs font-mono">
-                    <div className="px-4 py-3 border-b sm:border-b-0 sm:border-r border-slate-800">
-                      <span className="text-slate-500 block mb-1 text-[10px] uppercase">Input</span>
-                      <code className="text-slate-200 whitespace-pre">{example.input ?? ""}</code>
+                  <div className="space-y-2 font-mono text-sm">
+                    <div className="bg-slate-50 rounded-lg p-3 border border-slate-100">
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Вход:</span>
+                      <div className="text-slate-800 mt-1 break-all">{example.input ?? ""}</div>
                     </div>
-                    <div className="px-4 py-3">
-                      <span className="text-slate-500 block mb-1 text-[10px] uppercase">Output</span>
-                      <code className="text-emerald-400 whitespace-pre">{example.output ?? ""}</code>
+                    <div className="bg-slate-50 rounded-lg p-3 border border-slate-100">
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Выход:</span>
+                      <div className="text-slate-800 mt-1 break-all">{example.output ?? ""}</div>
                     </div>
                   </div>
                   {example.explanation && (
-                    <div className="px-4 py-2 border-t border-slate-800 text-[11px] text-slate-400 bg-slate-900/50">
-                      <span className="text-slate-500">Пояснение:</span> {example.explanation}
+                    <div className="mt-3 text-xs text-slate-600 bg-indigo-50 border border-indigo-100 rounded-lg p-3">
+                      <span className="font-semibold text-indigo-700">Пояснение:</span> {example.explanation}
                     </div>
                   )}
                 </div>
@@ -147,11 +168,11 @@ export function ProblemWorkbench({
 
           {/* Ограничения */}
           {problem.constraints && problem.constraints.length > 0 && (
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-white">Ограничения</h3>
+            <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm space-y-2">
+              <h3 className="text-sm font-semibold text-slate-900">Ограничения</h3>
               <ul className="space-y-1 pl-4">
                 {problem.constraints.map((c: string, i: number) => (
-                  <li key={i} className="text-xs text-slate-400 list-disc">{c}</li>
+                  <li key={i} className="text-xs text-slate-600 list-disc">{c}</li>
                 ))}
               </ul>
             </div>
@@ -159,13 +180,13 @@ export function ProblemWorkbench({
 
           {/* Подсказки с учётом необратимости */}
           {totalHints > 0 && (
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-white">Подсказки ментора</h3>
+            <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm space-y-3">
+              <h3 className="text-sm font-semibold text-slate-900">Подсказки ментора</h3>
               {shownHints.length > 0 && (
-                <div className="bg-amber-500/10 border border-amber-500/25 p-3 rounded-xl text-xs space-y-1">
+                <div className="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs space-y-2">
                   {shownHints.map((hint, i) => (
-                    <div key={i} className="flex items-start gap-1.5 text-amber-200/90">
-                      <Lightbulb className="w-3.5 h-3.5 shrink-0 text-amber-500/70 mt-0.5" />
+                    <div key={i} className="flex items-start gap-2 text-amber-800">
+                      <Lightbulb className="w-3.5 h-3.5 shrink-0 text-amber-500 mt-0.5" />
                       {hint}
                     </div>
                   ))}
@@ -176,11 +197,11 @@ export function ProblemWorkbench({
                 <button
                   type="button"
                   onClick={() => setUnlocked((c) => c + 1)}
-                  className="flex items-center gap-1.5 w-full border border-dashed border-amber-500/40 bg-amber-500/[0.04] hover:bg-amber-500/10 rounded-xl px-3 py-2 text-xs font-medium text-amber-300 transition cursor-pointer"
+                  className="flex items-center gap-1.5 w-full border border-dashed border-amber-300 bg-amber-50 hover:bg-amber-100 rounded-xl px-3 py-2 text-xs font-medium text-amber-700 transition cursor-pointer"
                 >
                   <Lightbulb className="w-3.5 h-3.5" />
                   Показать подсказку {unlocked + 1} из {totalHints}
-                  <span className="ml-auto text-[10px] text-slate-500">необратимо</span>
+                  <span className="ml-auto text-[10px] text-slate-400">необратимо</span>
                 </button>
               )}
             </div>
@@ -188,11 +209,11 @@ export function ProblemWorkbench({
 
           {/* Навигация между задачами */}
           {(onPrev || onNext) && (
-            <div className="flex items-center justify-between border-t border-slate-800 pt-3">
+            <div className="flex items-center justify-between border-t border-slate-200 pt-3">
               {onPrev ? (
                 <button
                   onClick={onPrev}
-                  className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800/70 px-3 py-1.5 text-xs font-medium text-slate-200 transition hover:bg-slate-700 cursor-pointer"
+                  className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-50 hover:border-slate-300 cursor-pointer shadow-sm"
                 >
                   <ChevronLeft className="h-3.5 w-3.5" />
                   Предыдущая
@@ -201,7 +222,7 @@ export function ProblemWorkbench({
               {onNext ? (
                 <button
                   onClick={onNext}
-                  className="flex items-center gap-1.5 rounded-xl bg-amber-500 px-3 py-1.5 text-xs font-semibold text-slate-950 transition hover:bg-amber-400 cursor-pointer"
+                  className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-indigo-500 cursor-pointer shadow-md"
                 >
                   Следующая
                   <ChevronRight className="h-3.5 w-3.5" />

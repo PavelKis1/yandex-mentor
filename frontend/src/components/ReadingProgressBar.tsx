@@ -13,7 +13,7 @@ export function ReadingProgressBar({ value }: ReadingProgressBarProps) {
       aria-valuenow={percent}
       aria-valuemin={0}
       aria-valuemax={100}
-      className="h-1.5 w-full overflow-hidden rounded-full bg-slate-800"
+      className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100 border border-slate-200"
     >
       <div
         className="h-full rounded-full bg-indigo-500 transition-all duration-300"

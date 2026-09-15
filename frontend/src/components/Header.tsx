@@ -1,4 +1,4 @@
-import { RefreshCw, Terminal } from "lucide-react";
+import { RefreshCw, Terminal, UserCircle } from "lucide-react";
 
 interface HeaderProps {
   onRefresh: () => void;
@@ -24,16 +24,22 @@ export function Header({ onRefresh, loading }: HeaderProps) {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
           <button
             onClick={onRefresh}
             disabled={loading}
-            className="flex items-center gap-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-800 px-4 py-2 rounded-xl border border-indigo-200 transition-all active:scale-95 disabled:opacity-50 cursor-pointer hover:shadow-md"
-            title="Обновить прогресс и запустить ментор"
+            className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md"
+            title="Обновить прогресс"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
             <span className="text-sm font-semibold">Синхронизировать</span>
           </button>
+          
+          <div className="h-8 w-px bg-slate-200 mx-2" />
+
+          <div className="flex items-center gap-2 text-slate-400">
+            <UserCircle className="w-9 h-9" />
+          </div>
         </div>
 
       </div>

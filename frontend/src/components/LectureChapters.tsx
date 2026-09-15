@@ -164,7 +164,7 @@ export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
 
   if (chapters.length === 0) {
     return (
-      <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-8 text-slate-400 italic">
+      <div className="rounded-xl border border-slate-200 bg-slate-50 p-8 text-slate-400 italic text-center">
         Материалы лекции готовятся.
       </div>
     );
@@ -180,16 +180,16 @@ export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
     <div className="animate-fadeIn">
       {/* Шапка: заголовок + переключатель режима */}
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-2 font-semibold text-white">
-          <BookOpen className="h-4 w-4 text-indigo-400" />
+        <div className="flex items-center gap-2 font-semibold text-slate-900">
+          <BookOpen className="h-4 w-4 text-indigo-600" />
           Чтение лекции
         </div>
-        <div className="flex items-center gap-1 self-start rounded-xl border border-slate-700 bg-slate-800/70 p-1">
+        <div className="flex items-center gap-1 self-start rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
           <button
             type="button"
             onClick={() => setMode("step")}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition cursor-pointer ${
-              mode === "step" ? "bg-indigo-500 text-white shadow" : "text-slate-600 hover:bg-slate-100"
+              mode === "step" ? "bg-indigo-600 text-white shadow" : "text-slate-500 hover:bg-slate-100"
             }`}
           >
             По шагам
@@ -198,7 +198,7 @@ export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
             type="button"
             onClick={() => setMode("full")}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition cursor-pointer ${
-              mode === "full" ? "bg-indigo-500 text-white shadow" : "text-slate-600 hover:bg-slate-100"
+              mode === "full" ? "bg-indigo-600 text-white shadow" : "text-slate-500 hover:bg-slate-100"
             }`}
           >
             Весь текст
@@ -219,8 +219,8 @@ export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
             onClick={() => jumpTo(chapter.index)}
             className={`flex shrink-0 items-center gap-1 rounded-full border px-3 py-1 text-xs transition cursor-pointer ${
               chapter.index === activeIndex
-                ? "border-indigo-500/50 bg-indigo-500/15 text-indigo-700"
-                : "border-slate-700 text-slate-400 hover:bg-slate-800"
+                ? "border-indigo-300 bg-indigo-100 text-indigo-700 font-medium"
+                : "border-slate-200 bg-white text-slate-500 hover:bg-slate-50"
             }`}
           >
             {chapter.spoiler && <Lock className="h-3 w-3" />}
@@ -242,13 +242,16 @@ export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
                   key={chapter.index}
                   type="button"
                   onClick={() => jumpTo(chapter.index)}
-                  className={`flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-left text-[13px] leading-snug transition cursor-pointer ${
+                  className={`flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-left text-[13px] leading-snug transition cursor-pointer border ${
                     chapter.index === activeIndex
-                      ? "bg-indigo-500/15 font-medium text-indigo-400"
-                      : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+                      ? "bg-indigo-50 border-indigo-200 font-medium text-indigo-700 shadow-sm"
+                      : "border-transparent text-slate-500 hover:bg-slate-100 hover:text-slate-800"
                   }`}
                 >
                   {chapter.spoiler && <Lock className="h-3 w-3 shrink-0 text-slate-400" />}
+                  {chapter.index === activeIndex && (
+                    <span className="absolute left-0 h-4 w-0.5 rounded-r bg-indigo-600" />
+                  )}
                   <span className="min-w-0 truncate">{chapter.heading}</span>
                 </button>
               ))}
@@ -311,15 +314,15 @@ export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
                   ref={(el) => {
                     sectionRefs.current[chapter.index] = el;
                   }}
-                  className="scroll-mt-40 rounded-2xl border border-slate-800 bg-slate-900/40 p-6"
+                  className="scroll-mt-40 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
                 >
-                  <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-white">
+                  <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-slate-900">
                     {chapter.heading}
-                    {chapter.spoiler && <Lock className="h-4 w-4 shrink-0 text-amber-500/80" />}
+                    {chapter.spoiler && <Lock className="h-4 w-4 shrink-0 text-slate-400" />}
                   </h2>
                   {renderChapterBody(chapter)}
                   {idx < chapters.length - 1 && (
-                    <div className="mt-6 pt-4 text-center text-slate-700">···</div>
+                    <div className="mt-6 pt-4 text-center text-slate-300">···</div>
                   )}
                 </article>
               ))}

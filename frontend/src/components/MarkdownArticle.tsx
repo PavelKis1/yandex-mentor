@@ -78,7 +78,7 @@ const components: Components = {
     return (
       <code
         {...props}
-        className="rounded bg-slate-800/90 px-1.5 py-0.5 font-mono text-[0.85em] text-amber-200/90 whitespace-pre-wrap break-words"
+        className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[0.85em] text-slate-800 font-medium whitespace-pre-wrap break-words border border-slate-200"
       >
         {props.children}
       </code>
@@ -87,8 +87,8 @@ const components: Components = {
 
   table({ children }) {
     return (
-      <div className="my-5 overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/50">
-        <table className="w-full text-sm text-slate-300">{children}</table>
+      <div className="my-5 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+        <table className="w-full text-sm text-slate-700">{children}</table>
       </div>
     );
   },
@@ -99,7 +99,7 @@ const components: Components = {
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="text-amber-400 underline decoration-amber-500/40 underline-offset-2 transition hover:text-amber-300"
+        className="text-indigo-600 underline decoration-indigo-300 underline-offset-2 transition hover:text-indigo-500"
       >
         {children}
       </a>
@@ -119,7 +119,7 @@ interface MarkdownArticleProps {
 export function MarkdownArticle({ markdown, className = "" }: MarkdownArticleProps) {
   return (
     <div
-      className={`markdown-body prose prose-slate max-w-none prose-headings:text-slate-900 prose-strong:text-slate-900 prose-a:text-amber-700 prose-code:font-mono prose-code:text-[0.85em] prose-code:before:content-none prose-code:after:content-none prose-blockquote:border-l-amber-500 prose-blockquote:text-slate-700 prose-th:text-slate-900 prose-hr:border-slate-300 ${className}`}
+      className={`markdown-body prose prose-slate max-w-none prose-headings:text-slate-900 prose-strong:text-slate-900 prose-a:text-indigo-600 prose-code:font-mono prose-code:text-[0.85em] prose-code:before:content-none prose-code:after:content-none prose-blockquote:border-l-indigo-400 prose-blockquote:text-slate-600 prose-th:text-slate-900 prose-hr:border-slate-200 ${className}`}
     >
       <Markdown remarkPlugins={[remarkGfm]} components={components}>
         {markdown}

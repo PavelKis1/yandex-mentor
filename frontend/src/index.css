@@ -12,8 +12,8 @@
 
 :root {
   font-family: "Inter", system-ui, -apple-system, sans-serif;
-  background-color: #0f172a;
-  color: #f8fafc;
+  background-color: #f8fafc;
+  color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,7 +21,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(ellipse at top, #1e293b 0%, #0f172a 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 40%, #f1f5f9 100%);
   overflow-x: hidden;
 }
 
@@ -223,7 +223,7 @@ body {
 
 /* Фокус-рамка редактора */
 .monaco-editor:focus-within {
-  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.4);
 }
 
 /* Индикатор «Запустить на примерах» — консоль */

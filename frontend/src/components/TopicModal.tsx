@@ -102,41 +102,41 @@ const problemCount = problems.length;
       <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-7xl max-h-[94vh] flex flex-col shadow-xl overflow-hidden">
 
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-5 py-3.5 bg-slate-50 border-b border-slate-200 gap-3">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 gap-3">
           <div className="flex items-center gap-3 min-w-0">
-            <span className="bg-indigo-500/20 text-indigo-600 font-mono text-xs px-2.5 py-1 rounded-lg border border-indigo-500/30 shrink-0">
+            <span className="bg-indigo-100 text-indigo-700 font-bold text-[10px] px-2.5 py-1 rounded-lg border border-indigo-200 shrink-0 uppercase tracking-wider">
               Тема #{lecture.id}
             </span>
-            <h2 className="text-lg font-bold text-white truncate">{lecture.name}</h2>
+            <h2 className="text-lg font-bold text-slate-900 truncate">{lecture.name}</h2>
             {allSolved && (
-              <span className="hidden md:inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-full border border-emerald-500/30 shrink-0">
+              <span className="hidden md:inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0">
                 <CheckCircle2 className="h-3 w-3" />
                 Все задачи решены
               </span>
             )}
           </div>
           <div className="flex items-center gap-2 shrink-0">
-            <span className="hidden sm:inline text-[10px] text-slate-500">
-              Esc — закрыть
+            <span className="hidden sm:inline text-[10px] text-slate-400">
+              <kbd className="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded text-[9px] font-mono">Esc</kbd> — закрыть
             </span>
             <button
               onClick={onClose}
               aria-label="Закрыть"
-              className="text-slate-500 hover:text-slate-900 p-2 rounded-lg hover:bg-slate-100 transition cursor-pointer"
+              className="text-slate-400 hover:text-slate-900 p-2 rounded-lg hover:bg-slate-100 transition cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Tabs Bar */}
-        <div className="flex border-b border-slate-200 bg-slate-50 px-5 gap-4">
+        {/* Tabs Bar — Segmented Control */}
+        <div className="flex border-b border-slate-200 bg-white px-5 gap-1 pt-3">
           <button
             onClick={() => setActiveTab("lecture")}
-            className={`flex items-center gap-2 py-3 px-4 font-medium text-sm border-b-2 transition cursor-pointer ${
+            className={`flex items-center gap-2 py-2.5 px-5 font-medium text-sm rounded-t-xl transition-all cursor-pointer ${
               activeTab === "lecture"
-                ? "border-indigo-600 text-indigo-600"
-                : "border-transparent text-slate-400 hover:text-slate-200"
+                ? "bg-slate-100 border border-slate-200 border-b-white text-slate-900 -mb-px"
+                : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
             }`}
           >
             <BookOpen className="w-4 h-4" />
@@ -144,10 +144,10 @@ const problemCount = problems.length;
           </button>
           <button
             onClick={() => setActiveTab("tasks")}
-            className={`flex items-center gap-2 py-3 px-4 font-medium text-sm border-b-2 transition cursor-pointer ${
+            className={`flex items-center gap-2 py-2.5 px-5 font-medium text-sm rounded-t-xl transition-all cursor-pointer ${
               activeTab === "tasks"
-                ? "border-indigo-600 text-indigo-600"
-                : "border-transparent text-slate-400 hover:text-slate-200"
+                ? "bg-slate-100 border border-slate-200 border-b-white text-slate-900 -mb-px"
+                : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
             }`}
           >
             <Code className="w-4 h-4" />
@@ -155,7 +155,7 @@ const problemCount = problems.length;
           </button>
         </div>
 {/* Modal Body */}
-        <div className="flex-1 overflow-y-auto p-5 text-slate-300">
+        <div className="flex-1 overflow-y-auto p-5 text-slate-700">
           {loading ? (
             <LoadingSpinner label="Загружаем материалы темы..." />
           ) : error ? (
@@ -244,10 +244,11 @@ const problemCount = problems.length;
           )}
         </div>
 {/* Modal Footer */}
-        <div className="flex items-center justify-between gap-3 px-5 py-3.5 bg-slate-50 border-t border-slate-200">
-          <p className="text-[10px] text-slate-500 hidden lg:block">
-            ПКМ по карточке на роадмапе — быстро сменить статус темы
-          </p>
+        <div className="flex items-center justify-between gap-3 px-5 py-3.5 bg-white border-t border-slate-200">
+          <div className="hidden lg:flex items-center gap-1.5 text-[10px] text-slate-500 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5">
+            <kbd className="px-1 py-0.5 bg-white border border-slate-200 rounded text-[9px] font-mono shadow-sm">ПКМ</kbd>
+            по карточке — сменить статус темы
+          </div>
           <div className="flex items-center gap-2 ml-auto">
             <button
               onClick={onClose}

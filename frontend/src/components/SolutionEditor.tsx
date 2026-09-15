@@ -1,5 +1,6 @@
 import Editor from "@monaco-editor/react";
 import { useCallback, useEffect, useState } from "react";
+import { RotateCcw, Play, Send } from "lucide-react";
 import type { ProblemPublic, RunResponse, SubmitResponse } from "../types";
 import { readJson, readText, writeJson, writeText } from "../utils/storage";
 
@@ -49,47 +50,59 @@ export function SolutionEditor({
 
   return (
     <div className="flex flex-col h-full gap-2">
-      <div className="flex justify-between p-2 bg-white rounded-lg border border-slate-200">
+      <div className="flex justify-between items-center p-2 bg-white rounded-xl border border-slate-200 shadow-sm">
         <button 
             onClick={handleReset} 
-            className="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded text-sm transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-600 rounded-lg text-xs font-medium transition cursor-pointer border border-slate-200"
         >
+          <RotateCcw className="w-3.5 h-3.5" />
           Сбросить
         </button>
         <div className="flex gap-2">
           <button 
             onClick={() => onRun(code)} 
             disabled={submitting} 
-            className="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded text-sm transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 rounded-lg text-xs font-medium transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer border border-slate-200 shadow-sm"
           >
+            <Play className="w-3.5 h-3.5" />
             {submitting ? "Запуск..." : "Запустить"}
           </button>
           <button 
             onClick={() => onSubmit(code)} 
             disabled={submitting} 
-            className="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded text-sm transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-sm"
           >
+            <Send className="w-3.5 h-3.5" />
             {submitting ? "Отправка..." : "Отправить"}
           </button>
         </div>
       </div>
-      <Editor
-        key={resetKey}
-        height="300px"
-        value={code}
-        onChange={(v) => setCode(v ?? "")}
-        theme="vs-light"
-        options={{
-            minimap: { enabled: false },
-            fontSize: 14,
-            padding: { top: 10 }
-        }}
-      />
+      <div className="rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <Editor
+          key={resetKey}
+          height="300px"
+          value={code}
+          onChange={(v) => setCode(v ?? "")}
+          theme="vs-light"
+          options={{
+              minimap: { enabled: false },
+              fontSize: 14,
+              padding: { top: 10 },
+              lineNumbers: "on",
+              scrollBeyondLastLine: false,
+              automaticLayout: true,
+          }}
+        />
+      </div>
       
       {/* Result Display */}
       {result && (
-        <div className="p-3 bg-white border border-slate-200 rounded-lg text-sm">
-            <div className={`font-bold mb-2 ${result.verdict === 'accepted' ? 'text-emerald-600' : 'text-red-600'}`}>
+        <div className={`p-4 border rounded-xl text-sm shadow-sm ${
+          result.verdict === 'accepted'
+            ? 'bg-emerald-50 border-emerald-200'
+            : 'bg-red-50 border-red-200'
+        }`}>
+            <div className={`font-bold mb-2 ${result.verdict === 'accepted' ? 'text-emerald-700' : 'text-red-700'}`}>
                 Вердикт: {result.verdict}
             </div>
             {result.results.map((r, i) => (
