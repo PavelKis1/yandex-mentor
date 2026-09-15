@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchProgress, fetchRoadmap, setTaskStatus as setTaskStatusRemote } from "../api/client";
 import type { ProgressMap, RoadmapStage, TaskStatus } from "../types";
 import { errorMessage } from "../utils/errors";
-import { getCache, setCache, clearAllCache } from "../utils/cache";
+import { getCache, setCache } from "../utils/cache";
 
 const CACHE_KEY = "roadmap";
 

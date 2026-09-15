@@ -23,35 +23,31 @@ export function StageSection({
     : 0;
 
   return (
-    <div className="space-y-4">
-
-      {/* Stage Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between bg-slate-900/90 border border-slate-800 p-5 rounded-2xl gap-3 shadow-lg">
-        <div className="flex items-center gap-3">
-          <span className="text-3xl bg-slate-800 p-2.5 rounded-xl border border-slate-700 shadow-inner">
+    <div className="space-y-6">
+      {/* Interactive Module Tab-Card */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-white border border-slate-200 p-6 rounded-3xl gap-4 shadow-sm hover:border-indigo-200 transition-all duration-300">
+        <div className="flex items-center gap-4">
+          <div className="text-3xl bg-indigo-50 p-4 rounded-2xl border border-indigo-100 text-indigo-600">
             {stage.icon}
-          </span>
+          </div>
           <div>
-            <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              Этап {stageIndex + 1}: {stage.name}
+            <h2 className="text-xl font-bold text-slate-950">
+              {stage.name}
             </h2>
-            <p className="text-xs text-slate-400">
-              {stageLectures.length} тем в разделе
+            <p className="text-sm text-slate-500 font-medium">
+              Модуль {stageIndex + 1} &bull; {completedCount} / {stageLectures.length} тем завершено
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="text-xs text-slate-400 text-right">
-            <div>Пройдено: {completedCount} из {stageLectures.length}</div>
-          </div>
-          <div className="w-28 bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700">
+        <div className="w-full sm:w-auto flex items-center gap-4">
+          <div className="flex-1 sm:w-48 h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
             <div
-              className="bg-amber-500 h-full rounded-full transition-all duration-500"
+              className="bg-indigo-600 h-full rounded-full transition-all duration-500"
               style={{ width: `${stageProgress}%` }}
             ></div>
           </div>
-          <span className="text-xs font-semibold text-amber-400 w-10 text-right">
+          <span className="text-sm font-bold text-indigo-700 w-12 text-right">
             {stageProgress}%
           </span>
         </div>
@@ -69,7 +65,7 @@ export function StageSection({
           />
         ))}
       </div>
-
     </div>
   );
 }
+

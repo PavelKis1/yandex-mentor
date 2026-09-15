@@ -11,7 +11,6 @@ export default function App() {
   const {
     roadmap,
     progress,
-    totalTasks,
     completedTasks,
     loading,
     error,
@@ -38,8 +37,6 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-indigo-200 selection:text-slate-900">
 
       <Header
-        totalTasks={totalTasks}
-        completedTasks={completedTasks}
         onRefresh={handleRefresh}
         loading={loading}
       />

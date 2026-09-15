@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
-  ArrowRight,
   CheckCircle2,
   Circle,
   Clock,
@@ -65,21 +64,22 @@ export function TaskCard({ task, status, onSelect, onSetStatus }: TaskCardProps)
     setMenuOpen(false);
   };
 
-  let statusBg = "bg-white border-slate-300 hover:border-slate-400 text-slate-900";
-  let statusIcon = <Circle className="h-4 w-4 text-slate-600" />;
+  let cardBg = "bg-white border-slate-200 text-slate-900 hover:border-slate-300";
+  let statusIcon = <Circle className="h-5 w-5 text-slate-300" />;
   let badgeText = "К изучению";
-  let badgeClass = "bg-slate-200 text-slate-800";
+  let badgeClass = "bg-slate-100 text-slate-600 border border-slate-200";
+  const orderLabel = String(task.id).padStart(2, "0");
 
   if (status === "done") {
-    statusBg = "bg-emerald-50 border-emerald-200 hover:border-emerald-300 text-emerald-900";
-    statusIcon = <CheckCircle2 className="w-4 h-4 text-emerald-600" />;
+    cardBg = "bg-emerald-50/60 border-emerald-200 text-emerald-950 hover:border-emerald-300";
+    statusIcon = <CheckCircle2 className="w-5 h-5 text-emerald-600" />;
     badgeText = "Пройдено";
-    badgeClass = "bg-emerald-100 text-emerald-700";
+    badgeClass = "bg-emerald-100 text-emerald-700 border border-emerald-200";
   } else if (status === "wip") {
-    statusBg = "bg-indigo-50 border-indigo-200 hover:border-indigo-300 text-indigo-950";
-    statusIcon = <Clock className="h-4 w-4 text-indigo-700" />;
+    cardBg = "bg-indigo-50/60 border-indigo-200 text-indigo-950 hover:border-indigo-300";
+    statusIcon = <Clock className="h-5 w-5 text-indigo-600" />;
     badgeText = "В процессе";
-    badgeClass = "bg-indigo-100 text-indigo-800";
+    badgeClass = "bg-indigo-100 text-indigo-700 border border-indigo-200";
   }
 
   return (
@@ -90,44 +90,38 @@ export function TaskCard({ task, status, onSelect, onSetStatus }: TaskCardProps)
         setMenuOpen(true);
       }}
       title={onSetStatus ? "Открыть тему. ПКМ — быстро сменить статус" : undefined}
-      className={`group relative flex flex-col justify-between p-5 rounded-2xl border transition-all duration-200 cursor-pointer shadow-md hover:shadow-xl hover:-translate-y-1 ${statusBg}`}
+      className={`group relative flex flex-col p-5 rounded-2xl border transition-all duration-300 cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 ${cardBg}`}
     >
-      <div>
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-mono bg-slate-100 px-2.5 py-1 rounded-lg text-slate-700 border border-slate-200">
-            #{task.id}
-          </span>
-          <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${badgeClass}`}>
-            {badgeText}
-          </span>
+      <div className="flex items-center justify-between mb-4">
+        <span className="text-xs font-mono font-bold tracking-wide text-slate-600">
+          #{orderLabel}
+        </span>
+        <div className={`text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider ${badgeClass}`}>
+          {badgeText}
         </div>
-        <h3 className="font-semibold text-sm line-clamp-2 group-hover:text-indigo-500 transition">
-          {task.name}
-        </h3>
       </div>
+      
+      <h3 className="font-semibold text-sm text-slate-900 group-hover:text-indigo-700 transition-colors duration-200 flex-grow">
+        {task.name}
+      </h3>
 
-      <div className="flex items-center justify-between mt-6 pt-3 border-t border-slate-200 text-xs text-slate-500">
-        <span className="flex items-center gap-1.5">
+      <div className="flex items-center justify-between mt-5 pt-4 border-t border-slate-200/50">
+        <div className="flex items-center gap-1.5 text-slate-500">
           {statusIcon}
-          <span>Материалы</span>
-        </span>
-        <span className="flex items-center gap-2">
-          {onSetStatus && (
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                setMenuOpen((open) => !open);
-              }}
-              aria-label="Сменить статус"
-              title="Быстро сменить статус (todo / wip / done)"
-              className="flex items-center gap-1 rounded-lg px-1.5 py-1 text-xs text-slate-500 hover:bg-slate-100 hover:text-indigo-700 transition cursor-pointer"
-            >
-              <MoreHorizontal className="w-4 h-4" />
-            </button>
-          )}
-          <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-500 group-hover:translate-x-1 transition" />
-        </span>
+        </div>
+        
+        {onSetStatus && (
+           <button
+             type="button"
+             onClick={(event) => {
+               event.stopPropagation();
+               setMenuOpen((open) => !open);
+             }}
+             className="opacity-0 group-hover:opacity-100 p-1.5 hover:bg-slate-200/50 rounded-lg transition-opacity"
+           >
+             <MoreHorizontal className="w-4 h-4 text-slate-500" />
+           </button>
+        )}
       </div>
 
       {/* Контекстное меню статуса */}
@@ -135,9 +129,9 @@ export function TaskCard({ task, status, onSelect, onSetStatus }: TaskCardProps)
         <div
           ref={menuRef}
           onClick={(event) => event.stopPropagation()}
-          className="absolute right-3 bottom-14 z-30 w-44 rounded-xl border border-slate-200 bg-white p-1 shadow-xl"
+          className="absolute right-3 bottom-16 z-30 w-44 rounded-xl border border-slate-200 bg-white p-1 shadow-xl animate-in fade-in zoom-in-95 duration-200"
         >
-          <p className="px-3 py-1.5 text-[10px] uppercase tracking-wider text-slate-500">
+          <p className="px-3 py-1.5 text-[10px] uppercase tracking-wider text-slate-400">
             Статус темы
           </p>
           {STATUS_ITEMS.map((item) => {
@@ -163,4 +157,6 @@ export function TaskCard({ task, status, onSelect, onSetStatus }: TaskCardProps)
       )}
     </div>
   );
+
 }
+
