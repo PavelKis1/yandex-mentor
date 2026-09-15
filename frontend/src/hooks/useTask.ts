@@ -2,6 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchLecture, runProblem, submitProblem } from "../api/client";
 import type { LectureData, RunResponse, SubmitResponse } from "../types";
 import { errorMessage } from "../utils/errors";
+import { getCache, setCache } from "../utils/cache";
+
+const CACHE_KEY_PREFIX = "lecture_";
 
 interface UseTask {
   data: LectureData | null;
@@ -25,12 +28,21 @@ export function useTask(lectureId: string | null): UseTask {
 
   useEffect(() => {
     if (!lectureId) return;
+
+    // 1. Пробуем загрузить из кэша
+    const cached = getCache<LectureData>(CACHE_KEY_PREFIX + lectureId);
+    if (cached) {
+      setData(cached);
+      setLoadedLectureId(lectureId);
+    }
+
     let cancelled = false;
 
     fetchLecture(lectureId)
       .then((fetched) => {
         if (!cancelled) {
           setData(fetched);
+          setCache(CACHE_KEY_PREFIX + lectureId, fetched);
         }
       })
       .catch((err) => {
@@ -52,18 +64,19 @@ export function useTask(lectureId: string | null): UseTask {
       try {
         const res = await submitProblem(problemId, code);
         // актуализируем код решения и статус «решено» в загруженных данных
-        setData((prev) =>
-          prev
-            ? {
-                ...prev,
-                problems: prev.problems.map((p) =>
-                  p.id === problemId
-                    ? { ...p, code, solved: res.verdict === "accepted" ? true : p.solved }
-                    : p
-                ),
-              }
-            : prev
-        );
+        setData((prev) => {
+          if (!prev) return prev;
+          const updated = {
+            ...prev,
+            problems: prev.problems.map((p) =>
+              p.id === problemId
+                ? { ...p, code, solved: res.verdict === "accepted" ? true : p.solved }
+                : p
+            ),
+          };
+          setCache(CACHE_KEY_PREFIX + (prev.id), updated);
+          return updated;
+        });
         return res;
       } catch (err) {
         setError(errorMessage(err));

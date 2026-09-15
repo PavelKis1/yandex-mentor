@@ -2,6 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchProgress, fetchRoadmap, setTaskStatus as setTaskStatusRemote } from "../api/client";
 import type { ProgressMap, RoadmapStage, TaskStatus } from "../types";
 import { errorMessage } from "../utils/errors";
+import { getCache, setCache, clearAllCache } from "../utils/cache";
+
+const CACHE_KEY = "roadmap";
 
 const DEFAULT_TOTAL = 69;
 
@@ -14,11 +17,13 @@ interface RoadmapSnapshot {
 /** Чистая загрузка данных (без состояния) — используется и эффектом, и refresh. */
 async function fetchRoadmapData(): Promise<RoadmapSnapshot> {
   const [roadmapRes, progressRes] = await Promise.all([fetchRoadmap(), fetchProgress()]);
-  return {
+  const data = {
     roadmap: roadmapRes.roadmap ?? [],
     total: roadmapRes.total ?? DEFAULT_TOTAL,
     progress: progressRes,
   };
+  setCache(CACHE_KEY, data);
+  return data;
 }
 
 interface UseRoadmap {
@@ -46,6 +51,15 @@ export function useRoadmap(): UseRoadmap {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // 1. Попытка загрузить из кэша
+    const cached = getCache<RoadmapSnapshot>(CACHE_KEY);
+    if (cached) {
+      setRoadmap(cached.roadmap);
+      setTotalTasks(cached.total);
+      setProgress(cached.progress);
+      setLoaded(true);
+    }
+
     let cancelled = false;
     fetchRoadmapData()
       .then((data) => {
