@@ -23,6 +23,7 @@ DATA_DIR = BASE_DIR / "data"
 LOG_DIR = BASE_DIR / "logs"
 
 PROGRESS_FILE = DATA_DIR / "progress.json"
+SOLVED_FILE = DATA_DIR / "solved.json"
 ERRORS_FILE = DATA_DIR / "errors.json"
 SOLUTIONS_DIR = DATA_DIR / "solutions"
 

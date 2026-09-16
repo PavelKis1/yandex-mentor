@@ -13,8 +13,8 @@
     },
     {
       "input": "nums = [1, 1, 2], target = 2",
-      "output": "3",
-      "explanation": "[2] = 2; [1, 2] с первым 1; [1, 2] со вторым 1. Три подмножества."
+      "output": "2",
+      "explanation": "[2] = 2; [1, 1] = 1 + 1 = 2. Два подмножества."
     },
     {
       "input": "nums = [1, 2, 3, 4], target = 5",
@@ -47,7 +47,7 @@
     {
       "id": "t2",
       "args": [[1, 1, 2], 2],
-      "expected": 3,
+      "expected": 2,
       "hidden": false,
       "arg_converters": [null, null],
       "result_converter": null

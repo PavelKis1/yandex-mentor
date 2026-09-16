@@ -17,9 +17,30 @@ def two_sum(nums, target):
     return []
 """
 
+GROUP_ANAGRAMS_CODE = """\
+def group_anagrams(strs):
+    from collections import defaultdict
+    groups = defaultdict(list)
+    for s in strs:
+        groups["".join(sorted(s))].append(s)
+    return list(groups.values())
+"""
+
+COUNT_SUBSETS_CODE = """\
+def count_subsets(nums, target):
+    dp = {0: 1}
+    for x in nums:
+        new = dict(dp)
+        for s, c in dp.items():
+            new[s + x] = new.get(s + x, 0) + c
+        dp = new
+    return dp.get(target, 0)
+"""
+
 
 def _make_client(tmp_path, monkeypatch) -> TestClient:
     monkeypatch.setattr(config, "PROGRESS_FILE", tmp_path / "progress.json")
+    monkeypatch.setattr(config, "SOLVED_FILE", tmp_path / "solved.json")
     monkeypatch.setattr(config, "ERRORS_FILE", tmp_path / "errors.json")
     monkeypatch.setattr(config, "SOLUTIONS_DIR", tmp_path / "solutions")
     (tmp_path / "solutions").mkdir(exist_ok=True)
@@ -116,17 +137,53 @@ def test_run_accepted_public_only(tmp_path, monkeypatch):
     assert len(body["results"]) == 4  # скрытый t5 не выполняется
 
 
-def test_submit_accepted_marks_done(tmp_path, monkeypatch):
+def test_submit_one_problem_not_done(tmp_path, monkeypatch):
+    """Баг-фикс: решение ОДНОЙ задачи из трёх не делает лекцию done."""
     client = _make_client(tmp_path, monkeypatch)
     body = client.post(
         "/api/tasks/01-p1/submit", json={"code": TWO_SUM_CODE}
     ).json()
     assert body["verdict"] == "accepted"
-    assert body["task_status"] == "done"
+    assert body["task_status"] == "wip"
+    assert client.get("/api/progress").json()["01"] == "wip"
+    # задача отмечена как решённая, лекция — нет
+    lecture = client.get("/api/lectures/01").json()
+    assert lecture["problems"][0]["solved"] is True
+    assert lecture["status"] == "wip"
+
+
+def test_submit_all_problems_marks_done(tmp_path, monkeypatch):
+    """Лекция становится done только после решения ВСЕХ её задач."""
+    client = _make_client(tmp_path, monkeypatch)
+    for problem_id, code in (
+        ("01-p1", TWO_SUM_CODE),
+        ("01-p2", GROUP_ANAGRAMS_CODE),
+        ("01-p3", COUNT_SUBSETS_CODE),
+    ):
+        body = client.post(f"/api/tasks/{problem_id}/submit", json={"code": code}).json()
+        assert body["verdict"] == "accepted", f"{problem_id}: {body}"
     assert client.get("/api/progress").json()["01"] == "done"
-    # решение сохранилось на диск
-    solution_file = config.SOLUTIONS_DIR / "01-p1.py"
-    assert solution_file.exists()
+    # плашки «решено» восстановлены для всех задач лекции
+    lecture = client.get("/api/lectures/01").json()
+    assert lecture["status"] == "done"
+    assert all(p["solved"] for p in lecture["problems"])
+
+
+def test_submit_after_done_keeps_done(tmp_path, monkeypatch):
+    """Повторный неверный сабмит не «откатывает» уже решённую тему."""
+    client = _make_client(tmp_path, monkeypatch)
+    for problem_id, code in (
+        ("01-p1", TWO_SUM_CODE),
+        ("01-p2", GROUP_ANAGRAMS_CODE),
+        ("01-p3", COUNT_SUBSETS_CODE),
+    ):
+        client.post(f"/api/tasks/{problem_id}/submit", json={"code": code})
+    wrong = client.post(
+        "/api/tasks/01-p1/submit",
+        json={"code": "def two_sum(nums, target):\n    return [0, 0]\n"},
+    ).json()
+    assert wrong["verdict"] == "wrong_answer"
+    assert client.get("/api/progress").json()["01"] == "done"
 
 
 def test_submit_wrong_answer_marks_wip(tmp_path, monkeypatch):

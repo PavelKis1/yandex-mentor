@@ -38,6 +38,38 @@ def _update_progress(lecture_id: str, status: str) -> None:
     write_json(config.PROGRESS_FILE, progress)
 
 
+def _mark_solved(problem_id: str, accepted: bool) -> None:
+    """Зафиксировать статус задачи: accepted → 'solved', иначе → 'attempted'.
+
+    Уже решённую задачу повторный неверный сабмит не «откатывает».
+    """
+    solved = read_json(config.SOLVED_FILE)
+    if accepted:
+        solved[problem_id] = "solved"
+    elif solved.get(problem_id) != "solved":
+        solved[problem_id] = "attempted"
+    write_json(config.SOLVED_FILE, solved)
+
+
+def _lecture_status(lecture_id: str) -> str:
+    """Статус темы, агрегированный по решённым в ней задачам.
+
+    done — когда решены (accepted) ВСЕ задачи темы;
+    wip  — есть хотя бы одна решённая/начатая задача, но не все;
+    todo — по теме задач ещё не трогали.
+    """
+    problems = registry.list_problems(lecture_id)
+    if not problems:
+        return "todo"
+    solved = read_json(config.SOLVED_FILE)
+    statuses = [solved.get(p.id) for p in problems]
+    if all(s == "solved" for s in statuses):
+        return "done"
+    if any(s in ("solved", "attempted") for s in statuses):
+        return "wip"
+    return "todo"
+
+
 # === Roadmap / Progress ===
 
 
@@ -74,6 +106,7 @@ def get_lecture(lecture_id: str):
 
     progress = read_json(config.PROGRESS_FILE)
     status = progress.get(lecture_id, "todo")
+    solved = read_json(config.SOLVED_FILE)
     problems = registry.list_problems(lecture_id)
     if not problems:
         raise HTTPException(status_code=404, detail="Lecture has no problems")
@@ -102,7 +135,9 @@ def get_lecture(lecture_id: str):
         "stage_name": lecture.stage_name,
         "lecture_md": lecture_md,
         "status": status,
-        "problems": [_problem_public(p) for p in problems],
+        "problems": [
+            _problem_public(p, solved=solved.get(p.id) == "solved") for p in problems
+        ],
         "description": meta.get("description"),
         "durationMinutes": meta.get("durationMinutes"),
         "difficulty": meta.get("difficulty"),
@@ -148,7 +183,8 @@ def submit_task(problem_id: str, body: CodeSubmit):
 
     save_solution(problem_id, body.code)
 
-    task_status = "done" if result["verdict"] == "accepted" else "wip"
+    _mark_solved(problem_id, result["verdict"] == "accepted")
+    task_status = _lecture_status(problem.lecture_id)
     _update_progress(problem.lecture_id, task_status)
 
     return {
