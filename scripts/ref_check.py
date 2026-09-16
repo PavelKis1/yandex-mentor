@@ -92,6 +92,112 @@ def max_sliding_window(nums, k):
     return out
 
 
+# ----------------------------- 26-29: collections/itertools/functools/internals - #
+def top_k_frequent(nums, k):
+    from collections import Counter
+    return [x for x, _ in Counter(nums).most_common(k)]
+
+
+def group_anagrams(strs):
+    from collections import defaultdict
+    groups = defaultdict(list)
+    for s in strs:
+        groups[tuple(sorted(s))].append(s)
+    return list(groups.values())
+
+
+def is_palindrome(s):
+    from collections import deque
+    dq = deque(ch.lower() for ch in s if ch.isalnum())
+    while len(dq) > 1:
+        if dq.popleft() != dq.pop():
+            return False
+    return True
+
+
+def combinations(nums, k):
+    from itertools import combinations as C
+    return [list(c) for c in C(nums, k)]
+
+
+def cartesian_product(lists):
+    from itertools import product
+    seen, out = set(), []
+    for t in product(*lists):
+        tt = tuple(t)
+        if tt not in seen:
+            seen.add(tt)
+            out.append(list(tt))
+    return out
+
+
+def cyclic_sequence(n, count):
+    from itertools import cycle, islice
+    return list(islice(cycle(range(n)), count))
+
+
+def discounted_prices(prices, percent):
+    return [int(p * (100 - percent) // 100) for p in prices]
+
+
+def fib(n):
+    from functools import lru_cache
+
+    @lru_cache(maxsize=None)
+    def f(x):
+        return x if x < 2 else f(x - 1) + f(x - 2)
+
+    return f(n)
+
+
+def reduce_max(nums):
+    from functools import reduce
+    if not nums:
+        return None
+    return reduce(lambda a, b: a if a > b else b, nums)
+
+
+def append_unique(lst, value):
+    if value not in lst:
+        lst.append(value)
+        return True
+    return False
+
+
+def closure_counter(steps):
+    def make():
+        c = 0
+
+        def inc():
+            nonlocal c
+            c += 1
+            return c
+
+        return inc
+
+    fn = make()
+    return [fn() for _ in range(steps)]
+
+
+def first_primes(n):
+    def is_prime(x):
+        if x < 2:
+            return False
+        i = 2
+        while i * i <= x:
+            if x % i == 0:
+                return False
+            i += 1
+        return True
+
+    out, cand = [], 2
+    while len(out) < n:
+        if is_prime(cand):
+            out.append(cand)
+        cand += 1
+    return out
+
+
 # ----------- ListNode helpers (для задач на связные списки, 05) ----------- #
 class ListNode:
     def __init__(self, v=0, nxt=None):
@@ -1089,6 +1195,18 @@ REF = {
     "25-p1": combine,
     "25-p2": permute,
     "25-p3": subsets,
+    "26-p1": top_k_frequent,
+    "26-p2": group_anagrams,
+    "26-p3": is_palindrome,
+    "27-p1": combinations,
+    "27-p2": cartesian_product,
+    "27-p3": cyclic_sequence,
+    "28-p1": discounted_prices,
+    "28-p2": fib,
+    "28-p3": reduce_max,
+    "29-p1": append_unique,
+    "29-p2": closure_counter,
+    "29-p3": first_primes,
 }
 
 

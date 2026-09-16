@@ -1,23 +1,179 @@
 {
   "id": "28-p1",
-  "title": "Частичное применение",
+  "title": "Цены со скидкой",
   "difficulty": "easy",
   "lecture_id": "28",
   "order": 1,
-  "description": "Дан список цен и скидка. Через functools.partial сделайте функцию discount(price), возвращающую цену со скидкой, и примените её ко всем ценам.",
+  "description": "Даны цены `prices` и скидка `percent` (0–100). Через `functools.partial` зафиксируйте ставку и примените функцию ко всем ценам. Верните список цен после скидки (целые числа, деление с округлением вниз).\n\n**Функция решения:**\n\n```python\ndef discounted_prices(prices: list[int], percent: int) -> list[int]:\n    ...\n```",
   "examples": [
     {
-      "input": "prices=[100,200,300], скидка 10%",
+      "input": "prices = [100,200,300], percent = 10",
       "output": "[90,180,270]",
-      "explanation": null
+      "explanation": "Цена после скидки 10% = price * 90 // 100."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "partial скидывает фиксированный аргумент: discount = partial(apply_discount, rate=0.1)."
+  "constraints": [
+    "1 ≤ len(prices) ≤ 10^4",
+    "0 ≤ percent ≤ 100"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Внутренняя функция берёт price, partial фиксирует percent.",
+    "Итог: int(price * (100 - percent) // 100)."
+  ],
+  "starter_code": "def discounted_prices(prices: list[int], percent: int) -> list[int]:\n    \"\"\"Вернуть цены после скидки percent (целые, округление вниз).\"\"\"\n    ...",
+  "entry_function": "discounted_prices",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          100,
+          200,
+          300
+        ],
+        10
+      ],
+      "expected": [
+        90,
+        180,
+        270
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          100,
+          200
+        ],
+        25
+      ],
+      "expected": [
+        75,
+        150
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          10,
+          20,
+          30
+        ],
+        20
+      ],
+      "expected": [
+        8,
+        16,
+        24
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          50,
+          50
+        ],
+        0
+      ],
+      "expected": [
+        50,
+        50
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        100
+      ],
+      "expected": [
+        0,
+        0,
+        0
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          400,
+          500
+        ],
+        50
+      ],
+      "expected": [
+        200,
+        250
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t7",
+      "args": [
+        [
+          7
+        ],
+        30
+      ],
+      "expected": [
+        4
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

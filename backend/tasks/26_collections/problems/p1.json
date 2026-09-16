@@ -4,20 +4,188 @@
   "difficulty": "easy",
   "lecture_id": "26",
   "order": 1,
-  "description": "Дан массив nums и число k. Верните k наиболее часто встречающихся элементов. Порядок не важен.",
+  "description": "Дан массив `nums` и число `k`. Верните **k наиболее часто встречающихся** элементов. Порядок элементов в ответе не важен.\n\n**Функция решения:**\n\n```python\ndef top_k_frequent(nums: list[int], k: int) -> list[int]:\n    ...\n```",
   "examples": [
     {
-      "input": "nums=[1,1,1,2,2,3], k=2",
+      "input": "nums = [1,1,1,2,2,3], k = 2",
       "output": "[1,2]",
-      "explanation": null
+      "explanation": "1 встречается 3 раза, 2 — два раза."
+    },
+    {
+      "input": "nums = [1], k = 1",
+      "output": "[1]",
+      "explanation": "Единственный элемент."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Используй collections.Counter + heapq.nlargest (O(n log k))."
+  "constraints": [
+    "1 ≤ len(nums) ≤ 10^5",
+    "1 ≤ k ≤ число различных элементов"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "collections.Counter(nums).most_common(k) вернёт пары (элемент, частота).",
+    "Возьмите только элементы из первых k пар."
+  ],
+  "starter_code": "def top_k_frequent(nums: list[int], k: int) -> list[int]:\n    \"\"\"Вернуть k наиболее частых элементов. Порядок не важен.\"\"\"\n    ...",
+  "entry_function": "top_k_frequent",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected": [
+        1,
+        2
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1
+        ],
+        1
+      ],
+      "expected": [
+        1
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          3,
+          3
+        ],
+        2
+      ],
+      "expected": [
+        3,
+        2
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          3,
+          0,
+          1,
+          0
+        ],
+        1
+      ],
+      "expected": [
+        0
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          2
+        ],
+        1
+      ],
+      "expected": [
+        1
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t7",
+      "args": [
+        [
+          4,
+          4,
+          4,
+          4
+        ],
+        1
+      ],
+      "expected": [
+        4
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    }
+  ],
   "timeout_ms": 3000
 }

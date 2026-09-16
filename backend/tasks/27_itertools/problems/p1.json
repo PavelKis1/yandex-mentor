@@ -4,20 +4,266 @@
   "difficulty": "easy",
   "lecture_id": "27",
   "order": 1,
-  "description": "Дан массив nums и число k. Верните все комбинации по k элементов (без itertools.combinations).",
+  "description": "Дан массив `nums` (элементы попарно различны) и число `k`. Верните все **сочетания** по `k` элементов. Порядок элементов внутри набора и порядок наборов не важен.\n\n**Функция решения:**\n\n```python\ndef combinations(nums: list[int], k: int) -> list[list[int]]:\n    ...\n```",
   "examples": [
     {
-      "input": "nums=[1,2,3,4], k=2",
+      "input": "nums = [1,2,3,4], k = 2",
       "output": "[[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]",
-      "explanation": null
+      "explanation": "Все пары элементов."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Рекурсия + бэктрекинг, либо itertools.combinations для эталона."
+  "constraints": [
+    "1 ≤ len(nums) ≤ 15",
+    "0 ≤ k ≤ len(nums)"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "itertools.combinations(nums, k) вернёт все сочетания.",
+    "Для эталона можно использовать combinations из стандартной библиотеки."
+  ],
+  "starter_code": "def combinations(nums: list[int], k: int) -> list[list[int]]:\n    \"\"\"Вернуть все сочетания по k элементов (без учёта порядка).\"\"\"\n    ...",
+  "entry_function": "combinations",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        2
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1,
+          2
+        ],
+        1
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          5,
+          6,
+          7
+        ],
+        2
+      ],
+      "expected": [
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1
+        ],
+        0
+      ],
+      "expected": [
+        []
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          1,
+          3,
+          5
+        ],
+        [
+          1,
+          4,
+          5
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          5
+        ],
+        [
+          2,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          5
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    },
+    {
+      "id": "t7",
+      "args": [
+        [
+          9,
+          8
+        ],
+        2
+      ],
+      "expected": [
+        [
+          9,
+          8
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": true
+    }
+  ],
   "timeout_ms": 3000
 }

@@ -4,20 +4,138 @@
   "difficulty": "hard",
   "lecture_id": "26",
   "order": 3,
-  "description": "Проверьте, является ли строка палиндромом, с учётом только букв и цифр (игнорируя регистр). Реализуйте через collections.deque.",
+  "description": "Дана строка `s`. Проверьте, является ли она **палиндромом**: учитываются только буквы и цифры, регистр игнорируется. Рекомендуется реализация через `collections.deque` — сравнение с обоих концов.\n\n**Функция решения:**\n\n```python\ndef is_palindrome(s: str) -> bool:\n    ...\n```",
   "examples": [
     {
-      "input": "s='A man, a plan, a canal: Panama'",
+      "input": "s = 'A man, a plan, a canal: Panama'",
       "output": "True",
-      "explanation": null
+      "explanation": "'amanaplanacanalpanama' — палиндром."
+    },
+    {
+      "input": "s = 'race a car'",
+      "output": "False",
+      "explanation": "'raceacar' не палиндром."
+    },
+    {
+      "input": "s = ' '",
+      "output": "True",
+      "explanation": "Пустая строка считается палиндромом."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Двусторонний deque: pop слева и справа за O(1), сравнивай буквы."
+  "constraints": [
+    "1 ≤ len(s) ≤ 2·10^5"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "deque: постройте очередь из отфильтрованных символов в lower().",
+    "Сравнивайте popleft() и pop() — если хоть раз не равны, верните False."
+  ],
+  "starter_code": "def is_palindrome(s: str) -> bool:\n    \"\"\"Проверить палиндром, учитывая только буквы/цифры и игнорируя регистр.\"\"\"\n    ...",
+  "entry_function": "is_palindrome",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "A man, a plan, a canal: Panama"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "race a car"
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        " "
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        "ab_a"
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        "0P"
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        "aba"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t7",
+      "args": [
+        "12321"
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t8",
+      "args": [
+        "Never odd or even"
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

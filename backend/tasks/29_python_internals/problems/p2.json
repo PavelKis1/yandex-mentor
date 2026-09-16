@@ -1,23 +1,131 @@
 {
   "id": "29-p2",
-  "title": "Замыкания",
+  "title": "Замыкание-счётчик",
   "difficulty": "medium",
   "lecture_id": "29",
   "order": 2,
-  "description": "Напишите счётчик-замыкание: функция, которая при каждом вызове возвращает 1,2,3,... — используя nonlocal.",
+  "description": "Реализуйте **счётчик-замыкание**: внешняя функция создаёт локальную неотрицательную переменную и возвращает внутреннюю функцию, которая через `nonlocal` увеличивает счётчик и возвращает очередное значение. Вызовите счётчик `steps` раз и верните список `1..steps`.\n\n**Функция решения:**\n\n```python\ndef closure_counter(steps: int) -> list[int]:\n    ...\n```",
   "examples": [
     {
-      "input": "increment() три раза",
-      "output": "1, 2, 3",
-      "explanation": null
+      "input": "steps = 3",
+      "output": "[1,2,3]",
+      "explanation": "Каждый вызов внутренней функции возвращает следующее значение счётчика."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Внутренняя функция + nonlocal count."
+  "constraints": [
+    "0 ≤ steps ≤ 1000"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Внутренняя функция объявляет nonlocal count и делает count += 1.",
+    "Накопите результаты в список, вызывая внутреннюю функцию steps раз."
+  ],
+  "starter_code": "def closure_counter(steps: int) -> list[int]:\n    \"\"\"Вернуть 1..steps, вычисленные счётчиком-замыканием через nonlocal.\"\"\"\n    ...",
+  "entry_function": "closure_counter",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        1
+      ],
+      "expected": [
+        1
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        5
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        0
+      ],
+      "expected": [],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        2
+      ],
+      "expected": [
+        1,
+        2
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        10
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

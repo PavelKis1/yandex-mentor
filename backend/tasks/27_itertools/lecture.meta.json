@@ -1,0 +1,105 @@
+{
+  "id": "27",
+  "slug": "itertools",
+  "title": "Itertools: комбинаторика и ленивые итераторы",
+  "description": "Модуль itertools даёт быстрые и ленивые итераторы: product, permutations, combinations, chain, cycle и другие. Разбираем комбинаторные задачи и построение повторяющихся последовательностей.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Python",
+    "Standard Library",
+    "Iterators",
+    "Combinatorics"
+  ],
+  "learningOutcomes": [
+    "Генерировать сочетания и произведения через product/combinations",
+    "Дедуплицировать элементы, сохраняя порядок обхода",
+    "Строить циклические последовательности через cycle/islice"
+  ],
+  "complexity": {
+    "timeComplexity": "O(C(n,k)) для комбинаторики",
+    "spaceComplexity": "O(1) на шаг итератора (лениво)",
+    "explanation": "Итераторы itertools работают лениво — память O(1) на шаг, но объём результата комбинаторного взрыва влияет на время."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что вернёт product('AB', range(2))?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "('A',0),('A',1),('B',0),('B',1)",
+          "isCorrect": true,
+          "explanation": "Декартово произведение в лексикографическом порядке."
+        },
+        {
+          "id": "opt2",
+          "text": "['AB','A0','B1']",
+          "isCorrect": false,
+          "explanation": "Это не кортежи произведения."
+        },
+        {
+          "id": "opt3",
+          "text": "('A','B'),('0','1')",
+          "isCorrect": false,
+          "explanation": "Кортежи из одного элемента каждого списка."
+        }
+      ],
+      "hint": "Как устроено декартово произведение?"
+    },
+    {
+      "id": "q2",
+      "question": "Чем отличаются combinations и permutations?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "В permutations важен порядок элементов",
+          "isCorrect": true,
+          "explanation": "permutations учитывает порядок, combinations — нет."
+        },
+        {
+          "id": "opt2",
+          "text": "Они полностью идентичны",
+          "isCorrect": false,
+          "explanation": "Порядок внутри набора различает их."
+        },
+        {
+          "id": "opt3",
+          "text": "combinations больше по размеру",
+          "isCorrect": false,
+          "explanation": "permutations больше: n!/(n-k)! против C(n,k)."
+        }
+      ],
+      "hint": "Меняют ли местами элементы внутри набора?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "27-p1",
+      "title": "Комбинации",
+      "difficulty": "easy",
+      "slug": "combinations"
+    },
+    {
+      "taskId": "27-p2",
+      "title": "Произведение списков",
+      "difficulty": "medium",
+      "slug": "cartesian-product"
+    },
+    {
+      "taskId": "27-p3",
+      "title": "Циклическая последовательность",
+      "difficulty": "hard",
+      "slug": "cyclic-sequence"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "product(*lists) — декартово произведение; dedup через set с сохранением порядка.",
+      "combinations(nums, k) — сочетания без учёта порядка; permutations — с учётом.",
+      "cycle(it) + islice(it, n) — бесконечная циклическая последовательность.",
+      "chain(*its) склеивает итераторы; zip_longest — с fillvalue.",
+      "Итераторы ленивые: память O(1) на шаг."
+    ]
+  }
+}

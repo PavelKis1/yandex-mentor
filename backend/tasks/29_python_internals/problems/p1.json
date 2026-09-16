@@ -1,23 +1,156 @@
 {
   "id": "29-p1",
-  "title": "Иммутабельность int/str",
+  "title": "Списки: мутабельность",
   "difficulty": "easy",
   "lecture_id": "29",
   "order": 1,
-  "description": "Объясните и продемонстрируйте кодом: почему a = 5; b = a; a = 6 — а остаётся 5? Напишите функцию, которая принимает список и число, меняет список in-place и возвращает новое число.",
+  "description": "Вспомните, что списки **мутабельны** и передаются по ссылке. Реализуйте функцию, которая добавляет `value` в список `lst` **in-place**, если такого элемента ещё нет (и возвращает `True`), либо ничего не меняет и возвращает `False`.\n\n**Функция решения:**\n\n```python\ndef append_unique(lst: list[int], value: int) -> bool:\n    ...\n```",
   "examples": [
     {
-      "input": "f([1,2,3], 4)",
-      "output": "[1,2,3,4], вернула 4",
-      "explanation": null
+      "input": "lst = [1,2], value = 3",
+      "output": "True",
+      "explanation": "3 ещё нет — добавляем, список меняется in-place."
+    },
+    {
+      "input": "lst = [1,2], value = 2",
+      "output": "False",
+      "explanation": "2 уже есть — не добавляем."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Целые и строки иммутабельны; списки — мутабельны, передаются по ссылке."
+  "constraints": [
+    "1 ≤ len(lst) ≤ 10^5"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Проверьте value not in lst и вызовите lst.append(value).",
+    "Мутация in-place означает, что вызывающий увидит изменения в списке."
+  ],
+  "starter_code": "def append_unique(lst: list[int], value: int) -> bool:\n    \"\"\"Добавить value в lst (in-place), если его ещё нет, и вернуть True; иначе — False.\"\"\"\n    ...",
+  "entry_function": "append_unique",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2
+        ],
+        3
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1,
+          2
+        ],
+        2
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [],
+        0
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          5,
+          5
+        ],
+        5
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        4
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          0
+        ],
+        1
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t7",
+      "args": [
+        [
+          7,
+          8,
+          9
+        ],
+        9
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

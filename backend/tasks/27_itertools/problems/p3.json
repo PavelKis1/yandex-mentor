@@ -1,23 +1,185 @@
 {
   "id": "27-p3",
-  "title": "Бесконечный счётчик",
+  "title": "Циклическая последовательность",
   "difficulty": "hard",
   "lecture_id": "27",
   "order": 3,
-  "description": "Создайте кастомный итератор, который бесконечно выдаёт числа 0,1,2,...,n-1,0,1,... (реализуйте через cycle+count или генератор).",
+  "description": "Постройте **бесконечную** последовательность `0,1,...,n-1,0,1,...` и верните её **первые `count`** значений. Реализуйте через `itertools.cycle` и `islice` (или вручную через генератор).\n\n**Функция решения:**\n\n```python\ndef cyclic_sequence(n: int, count: int) -> list[int]:\n    ...\n```",
   "examples": [
     {
-      "input": "первые 7 значений: 0,1,2,3,0,1,2",
-      "output": "",
-      "explanation": null
+      "input": "n = 4, count = 7",
+      "output": "[0,1,2,3,0,1,2]",
+      "explanation": "Цикл 0..3 повторяется."
+    },
+    {
+      "input": "n = 2, count = 3",
+      "output": "[0,1,0]",
+      "explanation": "Повтор 0,1."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Напиши генератор с while True и % n; для эталона — itertools.cycle(range(n))."
+  "constraints": [
+    "1 ≤ n ≤ 1000",
+    "0 ≤ count ≤ 10^5"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "itertools.cycle(range(n)) — бесконечный цикл.",
+    "itertools.islice(cycle_it, count) возьмёт первые count значений."
+  ],
+  "starter_code": "def cyclic_sequence(n: int, count: int) -> list[int]:\n    \"\"\"Первые count значений бесконечного цикла 0,1,...,n-1,0,1,...\"\"\"\n    ...",
+  "entry_function": "cyclic_sequence",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        4,
+        7
+      ],
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        2,
+        3
+      ],
+      "expected": [
+        0,
+        1,
+        0
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        3,
+        0
+      ],
+      "expected": [],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        1,
+        5
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        5,
+        9
+      ],
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        0,
+        1,
+        2,
+        3
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        10,
+        15
+      ],
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t7",
+      "args": [
+        6,
+        2
+      ],
+      "expected": [
+        0,
+        1
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

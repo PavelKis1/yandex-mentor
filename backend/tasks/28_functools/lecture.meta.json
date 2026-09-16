@@ -1,0 +1,104 @@
+{
+  "id": "28",
+  "slug": "functools",
+  "title": "Functools: partial, lru_cache, reduce",
+  "description": "Модуль functools — для функций высшего порядка: lru_cache кеширует вычисления, partial фиксирует аргументы, reduce сводит последовательность. Разбираем практику на ценах, Фибоначчи и поиске максимума.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Python",
+    "Standard Library",
+    "Functional Programming"
+  ],
+  "learningOutcomes": [
+    "Использовать lru_cache для мемоизации рекурсии",
+    "Фиксировать аргументы функций через partial",
+    "Сводить последовательность через reduce"
+  ],
+  "complexity": {
+    "timeComplexity": "lru_cache: O(n), reduce: O(n)",
+    "spaceComplexity": "lru_cache: O(n), partial: O(1)",
+    "explanation": "lru_cache превращает экспоненциальную рекурсию в линейную, храня ранее вычисленные значения."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что делает functools.lru_cache?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Кеширует результаты функции по аргументам",
+          "isCorrect": true,
+          "explanation": "Повторные вызовы с теми же аргументами берутся из кэша."
+        },
+        {
+          "id": "opt2",
+          "text": "Сортирует аргументы",
+          "isCorrect": false,
+          "explanation": "К кэшу отношения не имеет."
+        },
+        {
+          "id": "opt3",
+          "text": "Делает функцию потокобезопасной",
+          "isCorrect": false,
+          "explanation": "Не про потоки."
+        }
+      ],
+      "hint": "Как ускоряется повторяющаяся рекурсия?"
+    },
+    {
+      "id": "q2",
+      "question": "Зачем нужен functools.partial?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Зафиксировать часть аргументов функции",
+          "isCorrect": true,
+          "explanation": "partial создаёт новую функцию с предзаданными аргументами."
+        },
+        {
+          "id": "opt2",
+          "text": "Частично выполнить функцию",
+          "isCorrect": false,
+          "explanation": "Функция не выполняется до вызова."
+        },
+        {
+          "id": "opt3",
+          "text": "Импортировать модуль частично",
+          "isCorrect": false,
+          "explanation": "Не про импорт."
+        }
+      ],
+      "hint": "Что «частичного» в partial?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "28-p1",
+      "title": "Цены со скидкой",
+      "difficulty": "easy",
+      "slug": "partial-discount"
+    },
+    {
+      "taskId": "28-p2",
+      "title": "Мемоизация",
+      "difficulty": "medium",
+      "slug": "memoized-fib"
+    },
+    {
+      "taskId": "28-p3",
+      "title": "Редукция",
+      "difficulty": "hard",
+      "slug": "reduce-max"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "@lru_cache(maxsize=None) на внутренней функции убирает повторные вычисления.",
+      "partial(fn, rate=0.1) фиксирует аргумент и возвращает новую функцию.",
+      "reduce(lambda a,b: a if a>b else b, nums) — свёртка слева направо.",
+      "wraps сохраняет имя и docstring при написании декораторов.",
+      "Мемоизация меняет экспоненциальную сложность на линейную."
+    ]
+  }
+}

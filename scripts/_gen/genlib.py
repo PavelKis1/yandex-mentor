@@ -36,6 +36,7 @@ def build_problem(entry, args_list, hidden_flags=None):
             "hidden": hidden,
             "arg_converters": [None] * len(args),
             "result_converter": None,
+            "sort_result": bool(entry.get("sort_result", False)),
         })
     prob = {
         "id": entry["id"],

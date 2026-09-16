@@ -1,0 +1,104 @@
+{
+  "id": "26",
+  "slug": "collections",
+  "title": "Collections: специализированные контейнеры",
+  "description": "Модуль collections расширяет встроенные структуры: Counter — подсчёт, defaultdict — значения по умолчанию, deque — двусторонняя очередь за O(1). Разбираем классические задачи на частые элементы, анаграммы и палиндромы.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Python",
+    "Standard Library",
+    "Data Structures"
+  ],
+  "learningOutcomes": [
+    "Использовать Counter для подсчёта и top-K частых элементов",
+    "Группировать данные через defaultdict по сортированному ключу",
+    "Применять deque для задач на палиндромы за O(1) с обоих концов"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n) или O(n log k)",
+    "spaceComplexity": "O(n)",
+    "explanation": "Counter строит частотную таблицу за O(n), most_common(k) — O(n log k); deque даёт O(1) на операцию с обоих концов."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что удобнее всего для подсчёта частот элементов?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "collections.Counter",
+          "isCorrect": true,
+          "explanation": "Counter — подкласс dict, готов к подсчёту и top-K."
+        },
+        {
+          "id": "opt2",
+          "text": "обычный set",
+          "isCorrect": false,
+          "explanation": "set хранит только факт наличия, не частоту."
+        },
+        {
+          "id": "opt3",
+          "text": "deque",
+          "isCorrect": false,
+          "explanation": "deque — очередь, а не счётчик."
+        }
+      ],
+      "hint": "Какой словарь умеет most_common()?"
+    },
+    {
+      "id": "q2",
+      "question": "Какая сложность appendleft() у deque?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "O(1)",
+          "isCorrect": true,
+          "explanation": "deque реализован как двухсвязный список блоков — O(1) с обоих концов."
+        },
+        {
+          "id": "opt2",
+          "text": "O(n)",
+          "isCorrect": false,
+          "explanation": "O(n) было бы у list.insert(0, ...)."
+        },
+        {
+          "id": "opt3",
+          "text": "O(log n)",
+          "isCorrect": false,
+          "explanation": "Логарифмической сложности у очереди нет."
+        }
+      ],
+      "hint": "Почему deque создавали именно для этого?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "26-p1",
+      "title": "Топ K частых элементов",
+      "difficulty": "easy",
+      "slug": "top-k-frequent"
+    },
+    {
+      "taskId": "26-p2",
+      "title": "Группа анаграмм",
+      "difficulty": "medium",
+      "slug": "group-anagrams"
+    },
+    {
+      "taskId": "26-p3",
+      "title": "Палиндром с deque",
+      "difficulty": "hard",
+      "slug": "valid-palindrome"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "Counter(nums).most_common(k) — топ-K частых элементов за O(n log k).",
+      "Ключ анаграммы — tuple(sorted(s)) или frozenset Counter.",
+      "deque: append/pop с обоих концов за O(1); popleft() для палиндрома.",
+      "defaultdict(int/list) избавляет от проверок существования ключа.",
+      "namedtuple — лёгкие иммутабельные контейнеры с именованными полями."
+    ]
+  }
+}

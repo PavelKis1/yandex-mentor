@@ -4,20 +4,115 @@
   "difficulty": "medium",
   "lecture_id": "28",
   "order": 2,
-  "description": "Реализуйте рекурсивную функцию чисел Фибоначчи с кэшированием через functools.lru_cache. Сравните количество вызовов с наивной версией.",
+  "description": "Реализуйте рекурсивную функцию `fib(n)`, возвращающую **n-е** число Фибоначчи, с кэшированием через `functools.lru_cache`. Должно работать быстро даже для больших `n`.\n\n**Функция решения:**\n\n```python\ndef fib(n: int) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "fib(30)",
-      "output": "832040, вызовов ≤ 2*n",
-      "explanation": null
+      "input": "n = 10",
+      "output": "55",
+      "explanation": "Ряд: 0,1,1,2,3,5,8,13,21,34,55."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "@lru_cache(maxsize=None) на внутренней функции."
+  "constraints": [
+    "0 ≤ n ≤ 1000"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Поместите @lru_cache(maxsize=None) на внутреннюю рекурсивную функцию.",
+    "База: fib(0)=0, fib(1)=1."
+  ],
+  "starter_code": "def fib(n: int) -> int:\n    \"\"\"n-е число Фибоначчи с кэшированием через functools.lru_cache.\"\"\"\n    ...",
+  "entry_function": "fib",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        0
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        1
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        10
+      ],
+      "expected": 55,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        20
+      ],
+      "expected": 6765,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        5
+      ],
+      "expected": 5,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        50
+      ],
+      "expected": 12586269025,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t7",
+      "args": [
+        100
+      ],
+      "expected": 354224848179261915075,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

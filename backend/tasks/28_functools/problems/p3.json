@@ -4,20 +4,146 @@
   "difficulty": "hard",
   "lecture_id": "28",
   "order": 3,
-  "description": "Дан список чисел. Через functools.reduce найдите максимальный элемент, НЕ используя max().",
+  "description": "Дан список чисел `nums`. Найдите **максимальный элемент** через `functools.reduce`, не используя встроенный `max()`. Для пустого списка верните `None`.\n\n**Функция решения:**\n\n```python\ndef reduce_max(nums: list[int]) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "[3,7,2,9,5]",
+      "input": "nums = [3,7,2,9,5]",
       "output": "9",
-      "explanation": null
+      "explanation": "Свёртка с сохранением большего из двух."
+    },
+    {
+      "input": "nums = []",
+      "output": "None",
+      "explanation": "Максимум пустого списка не определён."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "reduce(lambda a,b: a if a>b else b, nums) или functools.reduce(max, nums)."
+  "constraints": [
+    "0 ≤ len(nums) ≤ 10^5"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "reduce(lambda a,b: a if a > b else b, nums).",
+    "При пустом списке верните None до вызова reduce."
+  ],
+  "starter_code": "def reduce_max(nums: list[int]) -> int:\n    \"\"\"Максимум списка через functools.reduce (без встроенного max).\"\"\"\n    ...",
+  "entry_function": "reduce_max",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          3,
+          7,
+          2,
+          9,
+          5
+        ]
+      ],
+      "expected": 9,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        []
+      ],
+      "expected": null,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 5,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          -3,
+          -1,
+          -7
+        ]
+      ],
+      "expected": -1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          0,
+          -5,
+          10,
+          2
+        ]
+      ],
+      "expected": 10,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t7",
+      "args": [
+        [
+          100,
+          50,
+          75
+        ]
+      ],
+      "expected": 100,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

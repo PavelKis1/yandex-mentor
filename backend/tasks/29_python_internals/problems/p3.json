@@ -1,23 +1,159 @@
 {
   "id": "29-p3",
-  "title": "Генераторы: ленивость",
+  "title": "Генератор простых чисел",
   "difficulty": "hard",
   "lecture_id": "29",
   "order": 3,
-  "description": "Напишите генератор, который выдаёт первые n простых чисел, не вычисляя все заранее. Покажите, что значения считаются лениво (через yield).",
+  "description": "Напишите **генератор** (функцию с `yield`), который лениво выдаёт простые числа по возрастанию. Верните **первые `n`** простых чисел списком. Значения должны вычисляться по одному, а не строиться заранее.\n\n**Функция решения:**\n\n```python\ndef first_primes(n: int) -> list[int]:\n    ...\n```",
   "examples": [
     {
-      "input": "first_n_primes(3)",
+      "input": "n = 3",
       "output": "[2,3,5]",
-      "explanation": null
+      "explanation": "Первые три простых числа."
+    },
+    {
+      "input": "n = 1",
+      "output": "[2]",
+      "explanation": "Минимальное простое — 2."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Решето Эратосфена как генератор с yield."
+  "constraints": [
+    "0 ≤ n ≤ 1000"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Генератор: def gen(): ... yield p — вычисляет p по одному за раз.",
+    "Проверяйте делители до корня из числа; возьмите n значений из генератора."
+  ],
+  "starter_code": "def first_primes(n: int) -> list[int]:\n    \"\"\"Вернуть первые n простых чисел (минимум через генератор с yield).\"\"\"\n    ...",
+  "entry_function": "first_primes",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        3
+      ],
+      "expected": [
+        2,
+        3,
+        5
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        1
+      ],
+      "expected": [
+        2
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        5
+      ],
+      "expected": [
+        2,
+        3,
+        5,
+        7,
+        11
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        10
+      ],
+      "expected": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        0
+      ],
+      "expected": [],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        4
+      ],
+      "expected": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t7",
+      "args": [
+        7
+      ],
+      "expected": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }
