@@ -163,6 +163,72 @@ def _build_runner(problem: Problem, code: str, cases: list[TestCase]) -> str:
     )
 
 
+def _build_sql_runner(problem: Problem, code: str, cases: list[TestCase]) -> str:
+    """Собрать runner для SQL-задач: схема из кейса + выполнение SQL пользователя.
+
+    Поданный SQL встраивается как строковый литерал (repr), затем выполняется
+    через sqlite3 против in-memory БД, собранной из db_schema каждого кейса.
+    Сравнение — как мультимножества строк (порядок строк не важен).
+    """
+    payload = [
+        {"id": c.id, "db_schema": c.db_schema, "expected": c.expected}
+        for c in cases
+    ]
+    cases_json = json.dumps(payload, ensure_ascii=False)
+    return (
+        "# -*- coding: utf-8 -*-\n"
+        "import json as _json\n"
+        "import sqlite3 as _sq\n"
+        "import sys as _sys\n"
+        "import time as _time\n"
+        "\n"
+        "_CASES = _json.loads(" + repr(cases_json) + ")\n"
+        "_SQL = " + repr(code) + "\n"
+        "\n"
+        "\n"
+        "def _norm_scalar(v):\n"
+        "    return v\n"
+        "\n"
+        "\n"
+        "def _eq_rows(a, b):\n"
+        "    ka = sorted([tuple(r) for r in a], key=repr)\n"
+        "    kb = sorted([tuple(r) for r in b], key=repr)\n"
+        "    return ka == kb\n"
+        "\n"
+        "\n"
+        'if __name__ == "__main__":\n'
+        "    results = []\n"
+        "    started = _time.perf_counter()\n"
+        "    for case in _CASES:\n"
+        "        try:\n"
+        "            con = _sq.connect(':memory:')\n"
+        "            cur = con.cursor()\n"
+        "            cur.executescript(case.get('db_schema') or '')\n"
+        "            cur.execute(_SQL)\n"
+        "            actual = [[_norm_scalar(v) for v in row] for row in cur.fetchall()]\n"
+        "            con.close()\n"
+        "            expected = case.get('expected') or []\n"
+        "            results.append({\n"
+        '                "id": case["id"],\n'
+        '                "passed": bool(_eq_rows(actual, expected)),\n'
+        '                "expected": expected,\n'
+        '                "actual": actual,\n'
+        '                "error": None,\n'
+        "            })\n"
+        "        except Exception as exc:\n"
+        "            results.append({\n"
+        '                "id": case.get("id"),\n'
+        '                "passed": False,\n'
+        '                "expected": case.get("expected"),\n'
+        '                "actual": None,\n'
+        '                "error": type(exc).__name__ + ": " + str(exc),\n'
+        "            })\n"
+        "    elapsed = round((_time.perf_counter() - started) * 1000, 1)\n"
+        '    with open(_sys.argv[1], "w", encoding="utf-8") as fh:\n'
+        '        _json.dump({"results": results, "time_ms": elapsed}, fh, ensure_ascii=False)\n'
+    )
+
+
 def _extract_error(stderr: str) -> str:
     """Последняя строка traceback (тип + сообщение)."""
     lines = [line.strip() for line in stderr.splitlines() if line.strip()]
@@ -179,7 +245,10 @@ def run_checks(problem: Problem, code: str, hide_hidden: bool = True) -> dict:
     if not cases:
         return {"verdict": "no_tests", "results": [], "time_ms": 0, "error": None}
 
-    runner = _build_runner(problem, code, cases)
+    if problem.language == "sql":
+        runner = _build_sql_runner(problem, code, cases)
+    else:
+        runner = _build_runner(problem, code, cases)
     timeout_sec = max(_MIN_TIMEOUT_SEC, problem.timeout_ms / 1000) + _STARTUP_SLACK_SEC
     config.SOLUTIONS_DIR.mkdir(parents=True, exist_ok=True)
     out_path = config.SOLUTIONS_DIR / f"_{problem.id}_run.json"

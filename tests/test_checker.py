@@ -194,3 +194,74 @@ def group(strs):
 """
     result = run_checks(anagram, code_an, hide_hidden=False)
     assert result["verdict"] == "accepted"
+
+
+SQL_PROBLEM = Problem(
+    id="t-sql",
+    title="SQL select",
+    difficulty="easy",
+    lecture_id="t",
+    order=1,
+    description="select adults",
+    language="sql",
+    entry_function=None,
+    test_cases=[
+        TestCase(
+            id="t1",
+            args=[],
+            expected=[["Alice", 30], ["Bob", 25]],
+            hidden=False,
+            db_schema=(
+                "CREATE TABLE users(id INTEGER, name TEXT, age INTEGER);\n"
+                "INSERT INTO users VALUES (1, 'Alice', 30);\n"
+                "INSERT INTO users VALUES (2, 'Bob', 25);\n"
+                "INSERT INTO users VALUES (3, 'Kid', 10);"
+            ),
+        ),
+        TestCase(
+            id="t2",
+            args=[],
+            expected=[["Bob", 25]],
+            hidden=True,
+            db_schema=(
+                "CREATE TABLE users(id INTEGER, name TEXT, age INTEGER);\n"
+                "INSERT INTO users VALUES (1, 'Bob', 25);\n"
+                "INSERT INTO users VALUES (3, 'Kid', 10);"
+            ),
+        ),
+    ],
+    timeout_ms=3000,
+)
+
+
+def test_sql_accepted(tmp_path, monkeypatch):
+    _isolate(tmp_path, monkeypatch)
+    result = run_checks(
+        SQL_PROBLEM,
+        "SELECT name, age FROM users WHERE age >= 18 ORDER BY age;",
+        hide_hidden=False,
+    )
+    assert result["verdict"] == "accepted"
+    assert all(r["passed"] for r in result["results"])
+
+
+def test_sql_wrong_answer(tmp_path, monkeypatch):
+    _isolate(tmp_path, monkeypatch)
+    result = run_checks(
+        SQL_PROBLEM,
+        "SELECT name FROM users;",
+        hide_hidden=False,
+    )
+    assert result["verdict"] == "wrong_answer"
+    assert any(not r["passed"] for r in result["results"])
+
+
+def test_sql_rows_unordered(tmp_path, monkeypatch):
+    _isolate(tmp_path, monkeypatch)
+    # Порядок строк не должен влиять на вердикт (сравнение как мультимножества).
+    result = run_checks(
+        SQL_PROBLEM,
+        "SELECT name, age FROM users WHERE age >= 18;",
+        hide_hidden=False,
+    )
+    assert result["verdict"] == "accepted"

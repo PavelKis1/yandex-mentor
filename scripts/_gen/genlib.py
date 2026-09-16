@@ -72,12 +72,58 @@ def write_meta(meta):
         json.dumps(meta["data"], ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def build_sql_problem(entry):
+    """Собрать problem для SQL-задачи (language='sql').
+
+    entry['cases'] — список кейсов: {"schema": str(DDL+DML), "expected": [[..], ..], "hidden": bool}.
+    """
+    tests = []
+    for i, cs in enumerate(entry["cases"], start=1):
+        tests.append({
+            "id": f"t{i}",
+            "args": [],
+            "expected": cs["expected"],
+            "hidden": bool(cs.get("hidden", False)),
+            "arg_converters": [],
+            "result_converter": None,
+            "db_schema": cs["schema"],
+        })
+    return {
+        "id": entry["id"],
+        "title": entry["title"],
+        "difficulty": entry["difficulty"],
+        "lecture_id": entry["lecture_id"],
+        "order": entry["order"],
+        "description": entry["description"],
+        "examples": entry["examples"],
+        "constraints": entry["constraints"],
+        "hints": entry["hints"],
+        "starter_code": entry.get("starter_code", ""),
+        "entry_function": None,
+        "test_cases": tests,
+        "timeout_ms": 3000,
+        "language": "sql",
+    }
+
+
+def write_sql_problem(entry):
+    folder = BASE / entry["lecture_slug"]
+    pdir = folder / "problems"
+    pdir.mkdir(exist_ok=True)
+    pdir.joinpath(f"p{entry['order']}.json").write_text(
+        json.dumps(build_sql_problem(entry), ensure_ascii=False, indent=2), encoding="utf-8")
+    return len(entry["cases"])
+
+
 def run(blocks):
     total_tests = 0
     for block in blocks:
         write_meta(block)
         for entry in block["problems"]:
-            n = write_problem(entry, entry["args"], entry.get("hidden"))
+            if entry.get("sql"):
+                n = write_sql_problem(entry)
+            else:
+                n = write_problem(entry, entry["args"], entry.get("hidden"))
             total_tests += n
         print(f"{block['data']['id']:>2} {block['data']['slug']:<24} done")
     print(f"Итого тест-кейсов: {total_tests}")

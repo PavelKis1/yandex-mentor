@@ -53,6 +53,10 @@ class TestCase:
     arg_converters: list[str | None] | None = None
     result_converter: str | None = None
     sort_result: bool = False
+    # SQL-режим: полный DDL+DML скрипт, создающий БД для этого кейса.
+    db_schema: str | None = None
+    # Какие колонки ожидаются в результате (имена); иначе — без подписей.
+    columns: list[str] | None = None
 
 
 @dataclass
@@ -72,6 +76,8 @@ class Problem:
     entry_function: str | None = None
     test_cases: list[TestCase] = field(default_factory=list)
     timeout_ms: int = 3000
+    # "python" (по умолчанию) или "sql" — выполнение SQL через sqlite3.
+    language: str = "python"
     path: Path | None = None
 
     def test_cases_count(self) -> int:
@@ -171,6 +177,8 @@ def _parse_test_cases(raw: list[dict]) -> list[TestCase]:
                 arg_converters=item.get("arg_converters"),
                 result_converter=item.get("result_converter"),
                 sort_result=bool(item.get("sort_result", False)),
+                db_schema=item.get("db_schema"),
+                columns=item.get("columns"),
             )
         )
     return cases
@@ -195,6 +203,7 @@ def _parse_problem(path: Path) -> Problem | None:
         entry_function=data.get("entry_function") or None,
         test_cases=_parse_test_cases(data.get("test_cases", [])),
         timeout_ms=int(data.get("timeout_ms", 3000)),
+        language=str(data.get("language", "python") or "python"),
         path=path,
     )
 
