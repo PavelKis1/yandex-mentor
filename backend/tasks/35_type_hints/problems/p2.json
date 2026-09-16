@@ -4,20 +4,140 @@
   "difficulty": "medium",
   "lecture_id": "35",
   "order": 2,
-  "description": "Опишите TypedDict UserResponse с полями id: int, name: str, friends: list[int] и функцию, принимающую объект и возвращающую его имя. Проверьте корректность через mypy.",
+  "description": "Опишите `TypedDict` `UserResponse` с полями `id: int`, `name: str`, `friends: list[int]`. Функция `user_name(usr)` принимает такой объект и возвращает `usr['name']`.\n\n**Функция решения:**\n\n```python\ndef user_name(usr: UserResponse) -> str:\n    ...\n```",
   "examples": [
     {
-      "input": "mypy не ругается на валидный объект и ругается на невалидный",
-      "output": "",
-      "explanation": null
+      "input": "{'id': 1, 'name': 'Ann', 'friends': [3, 7]}",
+      "output": "'Ann'",
+      "explanation": "Возвращаем поле name."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "from typing import TypedDict, NotRequired."
+  "constraints": [
+    "usr — словарь вида UserResponse"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "TypedDict задаёт структуру; доступ usr['name'].",
+    "mypy подсветит передачу невалидного объекта."
+  ],
+  "starter_code": "from typing import TypedDict\n\nclass UserResponse(TypedDict):\n    id: int\n    name: str\n    friends: list[int]\n\ndef user_name(usr: UserResponse) -> str:\n    \"\"\"Вернуть usr['name'].\"\"\"\n    ...",
+  "entry_function": "user_name",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        {
+          "id": 1,
+          "name": "Ann",
+          "friends": [
+            3,
+            7
+          ]
+        }
+      ],
+      "expected": "Ann",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        {
+          "id": 2,
+          "name": "Bob",
+          "friends": []
+        }
+      ],
+      "expected": "Bob",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        {
+          "id": 3,
+          "name": "",
+          "friends": [
+            1
+          ]
+        }
+      ],
+      "expected": "",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        {
+          "id": 4,
+          "name": "Cid",
+          "friends": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "expected": "Cid",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        {
+          "id": 5,
+          "name": "D",
+          "friends": [
+            9
+          ]
+        }
+      ],
+      "expected": "D",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        {
+          "id": 6,
+          "name": "Eve",
+          "friends": [
+            0,
+            0
+          ]
+        }
+      ],
+      "expected": "Eve",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

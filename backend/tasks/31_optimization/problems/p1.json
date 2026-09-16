@@ -1,23 +1,166 @@
 {
   "id": "31-p1",
-  "title": "Два указателя",
+  "title": "Два указателя: пара по сумме",
   "difficulty": "easy",
   "lecture_id": "31",
   "order": 1,
-  "description": "Дан отсортированный массив. Найдите пару с суммой, равной target, за O(n) через два указателя.",
+  "description": "Дан **отсортированный по возрастанию** список `nums`. Найдите любую пару `(x, y)` (два разных элемента), сумма которых равна `target`, за `O(n)` через **два указателя**. Верните её как список `[x, y]` или `None`, если пары нет.\n\n**Функция решения:**\n\n```python\ndef two_pointers(nums: list[int], target: int) -> list[int] | None:\n    ...\n```",
   "examples": [
     {
-      "input": "[1,2,3,4,6], target=8",
-      "output": "(2,6)",
-      "explanation": null
+      "input": "nums = [1,2,3,4,6], target = 8",
+      "output": "[2,6]",
+      "explanation": "2+6=8."
+    },
+    {
+      "input": "nums = [1,2,3], target = 99",
+      "output": "None",
+      "explanation": "Подходящей пары нет."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "left=0, right=n-1; двигай left вправо, right влево."
+  "constraints": [
+    "2 ≤ len(nums) ≤ 10^5; nums отсортирован"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "left=0, right=len(nums)-1; сравнивайте sum.",
+    "Если sum < target — двигайте left вправо, иначе right влево."
+  ],
+  "starter_code": "def two_pointers(nums: list[int], target: int) -> list[int] | None:\n    \"\"\"Пару (x, y) из отсортированного nums с суммой target; None, если нет.\"\"\"\n    ...",
+  "entry_function": "two_pointers",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        8
+      ],
+      "expected": [
+        2,
+        6
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        99
+      ],
+      "expected": null,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          7
+        ],
+        8
+      ],
+      "expected": [
+        1,
+        7
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          -2,
+          0,
+          2,
+          4
+        ],
+        2
+      ],
+      "expected": [
+        -2,
+        4
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1,
+          2
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        10
+      ],
+      "expected": [
+        5,
+        5
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

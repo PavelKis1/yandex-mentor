@@ -1,0 +1,104 @@
+{
+  "id": "30",
+  "slug": "profiling",
+  "title": "Profiling & Performance: замеры, узкие места, память",
+  "description": "Учимся находить узкие места: почему comprehension быстрее append-цикла, где тратится память и время. Задачи детерминированы — проверяем результат, а не миллисекунды.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Python",
+    "Profiling",
+    "Performance",
+    "Perf"
+  ],
+  "learningOutcomes": [
+    "Строить списки через list comprehension",
+    "Находить дубликаты за O(n) через set",
+    "Оценивать память и время алгоритма"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n) на задачи блока",
+    "spaceComplexity": "O(1)–O(n) в зависимости от задачи",
+    "explanation": "Замер времени vbenchmark не стабилен, поэтому задачи проверяются по детерминированному результату, а не по миллисекундам."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Почему list comprehension обычно быстрее for с append?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Меньше байткод-инструкций и нет лишних вызовов метода",
+          "isCorrect": true,
+          "explanation": "Comprehension выполняется в C-ускоренном цикле списка."
+        },
+        {
+          "id": "opt2",
+          "text": "Он не выделяет память",
+          "isCorrect": false,
+          "explanation": "Память он тоже выделяет."
+        },
+        {
+          "id": "opt3",
+          "text": "Он не хранит результаты",
+          "isCorrect": false,
+          "explanation": "Хранит, в этом его смысл."
+        }
+      ],
+      "hint": "Сравните количество операций в обоих циклах."
+    },
+    {
+      "id": "q2",
+      "question": "Зачем профилировать, а не гадать?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Данные показывают реальные узкие места",
+          "isCorrect": true,
+          "explanation": "cProfile/tracemalloc дают факты вместо догадок."
+        },
+        {
+          "id": "opt2",
+          "text": "Чтобы код выглядел сложнее",
+          "isCorrect": false,
+          "explanation": "Не цель."
+        },
+        {
+          "id": "opt3",
+          "text": "Это требование стиля",
+          "isCorrect": false,
+          "explanation": "Профилировка — про скорость, не стиль."
+        }
+      ],
+      "hint": "Что надёжнее — измерение или предположение?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "30-p1",
+      "title": "Список квадратов (comprehension)",
+      "difficulty": "easy",
+      "slug": "list-squares"
+    },
+    {
+      "taskId": "30-p2",
+      "title": "Дубликаты за O(n)",
+      "difficulty": "medium",
+      "slug": "count-duplicates"
+    },
+    {
+      "taskId": "30-p3",
+      "title": "Длина серии (память O(1))",
+      "difficulty": "hard",
+      "slug": "longest-run"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "list comprehension быстрее append-цикла из-за C-оптимизации.",
+      "set-проверки дают O(1) «уже видели» вместо вложенного цикла O(n²).",
+      "Профилируйте cProfile, а не гадайте, где узкое место.",
+      "Алгоритм с памятью O(1) экономит ресурсы при больших данных."
+    ]
+  }
+}

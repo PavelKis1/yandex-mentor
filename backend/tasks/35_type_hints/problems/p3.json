@@ -1,23 +1,124 @@
 {
   "id": "35-p3",
-  "title": "Generics",
+  "title": "Обобщённый first",
   "difficulty": "hard",
   "lecture_id": "35",
   "order": 3,
-  "description": "Напишите обобщённую функцию first(items: Sequence[T]) → T, возвращающую первый элемент, с TypeVar.",
+  "description": "Напишите **обобщённую** функцию `first_item(items: Sequence[T]) -> T` с `TypeVar`, возвращающую **первый элемент** последовательности (списка, кортежа или строки). Для пустой последовательности можете вернуть `None`.\n\n**Функция решения:**\n\n```python\ndef first_item(items: Sequence[T]) -> T:\n    ...\n```",
   "examples": [
     {
-      "input": "first([1,2]) → 1; first(('a','b')) → 'a'",
-      "output": "",
-      "explanation": null
+      "input": "items = [1, 2, 3]",
+      "output": "1",
+      "explanation": "Первый элемент списка."
+    },
+    {
+      "input": "items = ('a', 'b')",
+      "output": "'a'",
+      "explanation": "Первый элемент кортежа."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "T = TypeVar('T'); def first(items: Sequence[T]) → T."
+  "constraints": [
+    "items — непустая последовательность"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "return items[0].",
+    "TypeVar связывает тип аргумента и возвращаемого значения."
+  ],
+  "starter_code": "from typing import TypeVar, Sequence\n\nT = TypeVar('T')\n\ndef first_item(items: Sequence[T]) -> T:\n    \"\"\"Первый элемент любой последовательности.\"\"\"\n    ...",
+  "entry_function": "first_item",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected": "a",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "hello"
+      ],
+      "expected": "h",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expected": 7,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          true
+        ]
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          1.5,
+          2.5
+        ]
+      ],
+      "expected": 1.5,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

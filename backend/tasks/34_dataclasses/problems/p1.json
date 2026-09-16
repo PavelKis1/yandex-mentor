@@ -1,23 +1,170 @@
 {
   "id": "34-p1",
-  "title": "dataclass пользователя",
+  "title": "Сравнение пользователей",
   "difficulty": "easy",
   "lecture_id": "34",
   "order": 1,
-  "description": "Опишите датакласс User с полями id: int, name: str, email: str и метод full_info()→str. Создайте экземпляр и сравните два экземпляра по равенству.",
+  "description": "Опишите датакласс `User` с полями `id: int`, `name: str`, `email: str`. Функция `compare_users(u1, u2)` принимает двух пользователей как списки `[id, name, email]`, строит из них экземпляры `User` и возвращает `True`, если они **равны** (сгенерированный `__eq__` сравнивает все поля).\n\n**Функция решения:**\n\n```python\ndef compare_users(u1: list, u2: list) -> bool:\n    ...\n```",
   "examples": [
     {
-      "input": "User(1,'Ann','a@b') == User(1,'Ann','a@b')",
+      "input": "u1 = [1,'Ann','a@b'], u2 = [1,'Ann','a@b']",
       "output": "True",
-      "explanation": null
+      "explanation": "Все поля совпадают."
+    },
+    {
+      "input": "u1 = [1,'Ann','a@b'], u2 = [1,'Ann','c@d']",
+      "output": "False",
+      "explanation": "Отличается email."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "@dataclass + frozen=True (или eq по умолчанию)."
+  "constraints": [
+    "id: int; name, email: str"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "User(*u1) == User(*u2) — работает благодаря eq=True.",
+    "Поля: id:int, name:str, email:str."
+  ],
+  "starter_code": "from dataclasses import dataclass\n\n@dataclass\nclass User:\n    ...\n\ndef compare_users(u1: list, u2: list) -> bool:\n    \"\"\"u1, u2 — [id, name, email]; построить двух User и вернуть u1 == u2.\"\"\"\n    ...",
+  "entry_function": "compare_users",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          "Ann",
+          "a@b"
+        ],
+        [
+          1,
+          "Ann",
+          "a@b"
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1,
+          "Ann",
+          "a@b"
+        ],
+        [
+          1,
+          "Ann",
+          "c@d"
+        ]
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          2,
+          "B",
+          "b"
+        ],
+        [
+          2,
+          "B",
+          "b"
+        ]
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          1,
+          "A",
+          "x"
+        ],
+        [
+          2,
+          "A",
+          "x"
+        ]
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          7,
+          "I",
+          "i"
+        ],
+        [
+          7,
+          "J",
+          "i"
+        ]
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          0,
+          "",
+          ""
+        ],
+        [
+          0,
+          "",
+          ""
+        ]
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

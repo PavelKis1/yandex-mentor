@@ -1,23 +1,138 @@
 {
   "id": "30-p1",
-  "title": "Замер времени",
+  "title": "Список квадратов (comprehension)",
   "difficulty": "easy",
   "lecture_id": "30",
   "order": 1,
-  "description": "Дан список из 10^6 чисел. Сравните время создания списка квадратов через list comprehension против for-цикла с append. Верните соотношение.",
+  "description": "Напишите функцию `list_squares(n)`, возвращающую список квадратов `1,4,9,...,n²` при помощи **list comprehension** — это самый быстрый способ собрать список по формуле.\n\n**Функция решения:**\n\n```python\ndef list_squares(n: int) -> list[int]:\n    ...\n```",
   "examples": [
     {
-      "input": "comprehension обычно в 1.5–2× быстрее",
-      "output": "",
-      "explanation": null
+      "input": "n = 3",
+      "output": "[1,4,9]",
+      "explanation": "1²,2²,3²."
+    },
+    {
+      "input": "n = 1",
+      "output": "[1]",
+      "explanation": "Только 1²."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "time.perf_counter() вокруг каждой версии, повторите 3 раза, возьмите минимум."
+  "constraints": [
+    "1 ≤ n ≤ 10^4"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "[i*i for i in range(1, n+1)].",
+    "Comprehension быстрее цикла с append."
+  ],
+  "starter_code": "def list_squares(n: int) -> list[int]:\n    \"\"\"Список квадратов 1..n через list comprehension.\"\"\"\n    ...",
+  "entry_function": "list_squares",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        3
+      ],
+      "expected": [
+        1,
+        4,
+        9
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        1
+      ],
+      "expected": [
+        1
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        5
+      ],
+      "expected": [
+        1,
+        4,
+        9,
+        16,
+        25
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        0
+      ],
+      "expected": [],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        4
+      ],
+      "expected": [
+        1,
+        4,
+        9,
+        16
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        10
+      ],
+      "expected": [
+        1,
+        4,
+        9,
+        16,
+        25,
+        36,
+        49,
+        64,
+        81,
+        100
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

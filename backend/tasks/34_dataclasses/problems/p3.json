@@ -4,20 +4,186 @@
   "difficulty": "hard",
   "lecture_id": "34",
   "order": 3,
-  "description": "Напишите функцию merge_users(a: User, b: User), которая возвращает нового User с полями a, но c email=b.email, если email пуст в a.",
+  "description": "Напишите `merge_users(a, b)`, где `a` и `b` — пользователи как списки `[id, name, email]`. Верните списком `[id, name, email]` **нового** пользователя `User`, взяв поля из `a`, но с `email = b.email`, если у `a` email **пустой**. Используйте `dataclasses.replace(User(*a), email=...)` или ручное создание.\n\n**Функция решения:**\n\n```python\ndef merge_users(a: list, b: list) -> list:\n    ...\n```",
   "examples": [
     {
-      "input": "merge_users(User(1,'A',''), User(2,'B','bb'))",
-      "output": "User(1,'A','bb')",
-      "explanation": null
+      "input": "a = [1,'Ann',''], b = [2,'Bob','bb@x']",
+      "output": "[1,'Ann','bb@x']",
+      "explanation": "У a пустой email — берём из b."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "dataclasses.replace() или ручное создание."
+  "constraints": [
+    "id:int; name,email:str"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "email = b[2] if not a[2] else a[2].",
+    "dataclasses.replace копирует объект без мутации исходного."
+  ],
+  "starter_code": "def merge_users(a: list, b: list) -> list:\n    \"\"\"a, b — [id,name,email]; вернуть [id,name,email] нового User: поля a, но email=b.email если у a пустой email.\"\"\"\n    ...",
+  "entry_function": "merge_users",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          "Ann",
+          ""
+        ],
+        [
+          2,
+          "Bob",
+          "bb@x"
+        ]
+      ],
+      "expected": [
+        1,
+        "Ann",
+        "bb@x"
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1,
+          "Ann",
+          "a@b"
+        ],
+        [
+          2,
+          "Bob",
+          "bb@x"
+        ]
+      ],
+      "expected": [
+        1,
+        "Ann",
+        "a@b"
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          7,
+          "I",
+          ""
+        ],
+        [
+          8,
+          "J",
+          ""
+        ]
+      ],
+      "expected": [
+        7,
+        "I",
+        ""
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          3,
+          "C",
+          "c@c"
+        ],
+        [
+          4,
+          "D",
+          "d@d"
+        ]
+      ],
+      "expected": [
+        3,
+        "C",
+        "c@c"
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          5,
+          "E",
+          ""
+        ],
+        [
+          6,
+          "F",
+          "f@f"
+        ]
+      ],
+      "expected": [
+        5,
+        "E",
+        "f@f"
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          0,
+          "",
+          "keep"
+        ],
+        [
+          9,
+          "Z",
+          "z@z"
+        ]
+      ],
+      "expected": [
+        0,
+        "",
+        "keep"
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

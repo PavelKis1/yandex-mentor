@@ -1121,6 +1121,122 @@ def combine(n, k):
     return [list(c) for c in combinations(range(1, n + 1), k)]
 
 
+# ----------------------- 30-35: profiling/optimization/decorators/ctx/dataclasses/typing - #
+def list_squares(n):
+    return [i * i for i in range(1, n + 1)]
+
+
+def count_duplicates(nums):
+    from collections import Counter
+    return sum(1 for v in Counter(nums).values() if v > 1)
+
+
+def longest_run_len(nums):
+    if not nums:
+        return 0
+    best = cur = 1
+    for i in range(1, len(nums)):
+        if nums[i] == nums[i - 1]:
+            cur += 1
+            best = max(best, cur)
+        else:
+            cur = 1
+    return best
+
+
+def two_pointers(nums, target):
+    l, r = 0, len(nums) - 1
+    while l < r:
+        s = nums[l] + nums[r]
+        if s == target:
+            return [nums[l], nums[r]]
+        if s < target:
+            l += 1
+        else:
+            r -= 1
+    return None
+
+
+def first_duplicate_index(nums):
+    seen = set()
+    for i, x in enumerate(nums):
+        if x in seen:
+            return i
+        seen.add(x)
+    return -1
+
+
+def binary_search(nums, target):
+    l, r = 0, len(nums) - 1
+    while l <= r:
+        m = (l + r) // 2
+        if nums[m] == target:
+            return m
+        if nums[m] < target:
+            l = m + 1
+        else:
+            r = m - 1
+    return -1
+
+
+def timed_sum(nums):
+    return sum(nums)
+
+
+def logged_add(a, b):
+    return [a + b, 1]
+
+
+def retry_success(failures):
+    return {0: 1, 1: 2, 2: 3}[failures]
+
+
+def write_lines(items):
+    return len(items)
+
+
+def append_on_exit(value, base):
+    return [base, value]
+
+
+def suppress_sum(items):
+    total = 0
+    for x in items:
+        try:
+            total += int(x)
+        except ValueError:
+            continue
+    return total
+
+
+def compare_users(u1, u2):
+    return u1 == u2
+
+
+def sort_orders(orders):
+    return sorted(orders, key=lambda o: (-o[1], o[0]))
+
+
+def merge_users(a, b):
+    return [a[0], a[1], b[2] if not a[2] else a[2]]
+
+
+def group_by_first_letter(words):
+    from collections import defaultdict
+    g = defaultdict(list)
+    for w in words:
+        g[w[0]].append(w)
+    return dict(g)
+
+
+def user_name(resp):
+    return resp["name"]
+
+
+def first_item(items):
+    return items[0]
+
+
 # ----------------------- сопоставление taskId -> function ----------------- #
 REF = {
     "02-p1": intersection,
@@ -1207,6 +1323,24 @@ REF = {
     "29-p1": append_unique,
     "29-p2": closure_counter,
     "29-p3": first_primes,
+    "30-p1": list_squares,
+    "30-p2": count_duplicates,
+    "30-p3": longest_run_len,
+    "31-p1": two_pointers,
+    "31-p2": first_duplicate_index,
+    "31-p3": binary_search,
+    "32-p1": timed_sum,
+    "32-p2": logged_add,
+    "32-p3": retry_success,
+    "33-p1": write_lines,
+    "33-p2": append_on_exit,
+    "33-p3": suppress_sum,
+    "34-p1": compare_users,
+    "34-p2": sort_orders,
+    "34-p3": merge_users,
+    "35-p1": group_by_first_letter,
+    "35-p2": user_name,
+    "35-p3": first_item,
 }
 
 

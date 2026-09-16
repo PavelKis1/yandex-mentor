@@ -1,23 +1,137 @@
 {
   "id": "30-p2",
-  "title": "Найти узкое место",
+  "title": "Дубликаты за O(n)",
   "difficulty": "medium",
   "lecture_id": "30",
   "order": 2,
-  "description": "Дана функция с вложенным циклом: find_duplicates(nums). Профилируйте её через cProfile и найдите функцию-узкое место.",
+  "description": "Дан список `nums`. Найдите **количество различных чисел, встречающихся более одного раза**, за `O(n)` времени (вложенный цикл — это и есть «узкое место», которое надо устранить).\n\n**Функция решения:**\n\n```python\ndef count_duplicates(nums: list[int]) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "cProfile: большая часть времени — в inner loop",
-      "output": "",
-      "explanation": null
+      "input": "nums = [1,2,2,3,3,3]",
+      "output": "2",
+      "explanation": "Дубликаты: 2 и 3 (3 встречается трижды — всё равно одно число)."
+    },
+    {
+      "input": "nums = [1,2,3]",
+      "output": "0",
+      "explanation": "Повторов нет."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Пиши в файл: python -m cProfile -o out.prof script.py; смотри stats."
+  "constraints": [
+    "1 ≤ len(nums) ≤ 10^5"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "collections.Counter считает частоты за O(n).",
+    "Сосчитайте значения > 1 — это дубликаты."
+  ],
+  "starter_code": "import collections\n\ndef count_duplicates(nums: list[int]) -> int:\n    \"\"\"Сколько различных чисел встречается в nums более одного раза (за O(n)).\"\"\"\n    ...",
+  "entry_function": "count_duplicates",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          3,
+          3
+        ]
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          4,
+          4,
+          5
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          0,
+          0,
+          1,
+          1,
+          2
+        ]
+      ],
+      "expected": 2,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          9
+        ]
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

@@ -1,0 +1,103 @@
+{
+  "id": "31",
+  "slug": "optimization",
+  "title": "Optimization: два указателя, хеш-таблицы, бинарный поиск",
+  "description": "Ускоряем алгоритмы: пары через два указателя за O(n), дубликаты через set-«уже видели», поиск за O(log n) без bisect.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Python",
+    "Optimization",
+    "Two Pointers",
+    "Binary Search"
+  ],
+  "learningOutcomes": [
+    "Использовать два указателя для отсортированных данных",
+    "Применять set для проверки «уже видели» за O(1)",
+    "Реализовать бинарный поиск без встроенного bisect"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n) и O(log n) на задачи блока",
+    "spaceComplexity": "O(1)–O(n)",
+    "explanation": "Главная цель — снизить сложность с O(n²) до O(n) или O(log n)."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Когда два указателя работают за O(n)?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Когда массив отсортирован и монотонно двигаем края",
+          "isCorrect": true,
+          "explanation": "Каждый шаг двигает один из указателей, суммарно O(n)."
+        },
+        {
+          "id": "opt2",
+          "text": "Всегда, независимо от данных",
+          "isCorrect": false,
+          "explanation": "Требуется отсортированность для однозначного выбора."
+        },
+        {
+          "id": "opt3",
+          "text": "Только когда есть дубликаты",
+          "isCorrect": false,
+          "explanation": "Дубликаты не обязательны."
+        }
+      ],
+      "hint": "Почему указатель не ходит назад?"
+    },
+    {
+      "id": "q2",
+      "question": "Почему set-проверка «уже видели» даёт O(1)?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Хеш-таблица в среднем за O(1)",
+          "isCorrect": true,
+          "explanation": "Поиск по хешу даёт константное время в среднем."
+        },
+        {
+          "id": "opt2",
+          "text": "Set хранит элементы отсортированно",
+          "isCorrect": false,
+          "explanation": "Set не сортирует."
+        },
+        {
+          "id": "opt3",
+          "text": "Set никогда не растёт",
+          "isCorrect": false,
+          "explanation": "Set растёт, но амортизированно O(1)."
+        }
+      ],
+      "hint": "Какая структура даёт быстрый поиск?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "31-p1",
+      "title": "Два указателя: пара по сумме",
+      "difficulty": "easy",
+      "slug": "two-pointers"
+    },
+    {
+      "taskId": "31-p2",
+      "title": "Первый дубликат через set",
+      "difficulty": "medium",
+      "slug": "first-duplicate-index"
+    },
+    {
+      "taskId": "31-p3",
+      "title": "Бинарный поиск без bisect",
+      "difficulty": "hard",
+      "slug": "binary-search"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "Два указателя: сходите к центру, выбирая шаг по сумме.",
+      "set «уже видели» превращает O(n²) в O(n).",
+      "Бинарный поиск каждый шаг делит диапазон пополам — O(log n)."
+    ]
+  }
+}

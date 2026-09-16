@@ -1,0 +1,103 @@
+{
+  "id": "35",
+  "slug": "type-hints",
+  "title": "Type Hints: коллекции, TypedDict, generics",
+  "description": "Пишем типизированный код: аннотации коллекций, TypedDict для API-ответов и обобщённые функции с TypeVar.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Python",
+    "Type Hints",
+    "Typing"
+  ],
+  "learningOutcomes": [
+    "Аннотировать list/dict и Optional",
+    "Описывать структуру словаря через TypedDict",
+    "Писать обобщённые функции с TypeVar"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n) на задачи блока",
+    "spaceComplexity": "O(n)",
+    "explanation": "Типизация не меняет сложность алгоритма; задачи проверяют результат, а mypy отдельно."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что вернёт Optional[str] для отсутствующего значения?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "None или строку",
+          "isCorrect": true,
+          "explanation": "Optional[str] == str | None."
+        },
+        {
+          "id": "opt2",
+          "text": "Только строку",
+          "isCorrect": false,
+          "explanation": "Это str без None."
+        },
+        {
+          "id": "opt3",
+          "text": "Список строк",
+          "isCorrect": false,
+          "explanation": "Это уже list[str]."
+        }
+      ],
+      "hint": "Что означает Optional буквально?"
+    },
+    {
+      "id": "q2",
+      "question": "Чем TypedDict отличается от dict?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Задаёт структуру с типами полей",
+          "isCorrect": true,
+          "explanation": "TypedDict типизирует конкретные ключи словаря."
+        },
+        {
+          "id": "opt2",
+          "text": "Это быстрый словарь",
+          "isCorrect": false,
+          "explanation": "Это только аннотация типов."
+        },
+        {
+          "id": "opt3",
+          "text": "Это неизменяемый словарь",
+          "isCorrect": false,
+          "explanation": "Не про неизменяемость."
+        }
+      ],
+      "hint": "Какие поля разрешены?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "35-p1",
+      "title": "Группировка по первой букве",
+      "difficulty": "easy",
+      "slug": "group-by-first-letter"
+    },
+    {
+      "taskId": "35-p2",
+      "title": "TypedDict для API",
+      "difficulty": "medium",
+      "slug": "user-name"
+    },
+    {
+      "taskId": "35-p3",
+      "title": "Обобщённый first",
+      "difficulty": "hard",
+      "slug": "first-item"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "Аннотируйте контейнеры: list[str], dict[str, list[str]].",
+      "Optional[T] == T | None; используйте для возможно пустых значений.",
+      "TypedDict описывает структуру словаря с типами полей.",
+      "TypeVar('T') делает функцию обобщённой: Sequence[T] -> T."
+    ]
+  }
+}

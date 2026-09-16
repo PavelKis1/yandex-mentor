@@ -4,20 +4,132 @@
   "difficulty": "medium",
   "lecture_id": "32",
   "order": 2,
-  "description": "Напишите декоратор @logged, который логирует имя функции, аргументы и результат каждого вызова в список LOG.",
+  "description": "Напишите декоратор `@logger`, который при каждом вызове дописывает в список `LOG` кортеж `(имя_функции, args, результат)`. Реализуйте `logged_add(a, b)`, которая применяет `@logger` к сложению `a` и `b` и возвращает **список** `[a + b, len(LOG)]` после одного вызова.\n\n**Функция решения:**\n\n```python\ndef logged_add(a: int, b: int):\n    ...\n```",
   "examples": [
     {
-      "input": "LOG = []; @logged f(2)",
-      "output": "LOG = [('f', (2,), result)]",
-      "explanation": null
+      "input": "logged_add(1, 2)",
+      "output": "[3, 1]",
+      "explanation": "Результат 3 и ровно одна запись в LOG."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Декоратор с *args, **kwargs и wrapped.__name__."
+  "constraints": [
+    "Целые числа |a|,|b| ≤ 10^6"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Обёртка принимает *args, **kwargs и возвращает результат.",
+    "LOG.append((fn.__name__, args, result)); верните (result, len(LOG))."
+  ],
+  "starter_code": "LOG: list = []\n\ndef logger(fn):\n    \"\"\"Декоратор, логирует имя, аргументы и результат в LOG.\"\"\"\n    ...\n\ndef logged_add(a: int, b: int):\n    \"\"\"Вернуть список [a+b, число записей в LOG после вызова @logger].\"\"\"\n    ...",
+  "entry_function": "logged_add",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        1,
+        2
+      ],
+      "expected": [
+        3,
+        1
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        5,
+        7
+      ],
+      "expected": [
+        12,
+        1
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        -3,
+        3
+      ],
+      "expected": [
+        0,
+        1
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        1
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        10,
+        20
+      ],
+      "expected": [
+        30,
+        1
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        100,
+        200
+      ],
+      "expected": [
+        300,
+        1
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

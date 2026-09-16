@@ -1,0 +1,103 @@
+{
+  "id": "34",
+  "slug": "dataclasses",
+  "title": "Dataclasses: равенство, сортировка, replace",
+  "description": "dataclass автоматически генерирует eq/ordering/repr. Разбираем равенство экземпляров, сортировку заказов и объединение полей через replace.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Python",
+    "Dataclasses",
+    "OO"
+  ],
+  "learningOutcomes": [
+    "Описывать dataclass с типизированными полями",
+    "Использовать сгенерированное eq и ordering",
+    "Копировать/менять поля через dataclasses.replace"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n log n) для сортировки",
+    "spaceComplexity": "O(n)",
+    "explanation": "Равенство и конструкторы O(1) на экземпляр; сортировка заказов — O(n log n)."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что генерирует @dataclass(eq=True) по умолчанию?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Метод __eq__, сравнивающий все поля",
+          "isCorrect": true,
+          "explanation": "Экземпляры равны, если все поля совпадают."
+        },
+        {
+          "id": "opt2",
+          "text": "Метод __lt__ для сортировки",
+          "isCorrect": false,
+          "explanation": "Для сортировки нужен order=True."
+        },
+        {
+          "id": "opt3",
+          "text": "Ничего",
+          "isCorrect": false,
+          "explanation": "eq=True включён по умолчанию."
+        }
+      ],
+      "hint": "Что сравнивает == для dataclass?"
+    },
+    {
+      "id": "q2",
+      "question": "Зачем dataclasses.replace?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Создать копию с изменением отдельных полей",
+          "isCorrect": true,
+          "explanation": "replace копирует объект, переопределяя указанные поля."
+        },
+        {
+          "id": "opt2",
+          "text": "Удалить поля",
+          "isCorrect": false,
+          "explanation": "replace не удаляет поля."
+        },
+        {
+          "id": "opt3",
+          "text": "Отсортировать",
+          "isCorrect": false,
+          "explanation": "Для сортировки есть sorted."
+        }
+      ],
+      "hint": "Как не мутировать исходный объект, но поменять поле?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "34-p1",
+      "title": "Сравнение пользователей",
+      "difficulty": "easy",
+      "slug": "compare-users"
+    },
+    {
+      "taskId": "34-p2",
+      "title": "Сортировка заказов",
+      "difficulty": "medium",
+      "slug": "sort-orders"
+    },
+    {
+      "taskId": "34-p3",
+      "title": "Объединение dataclass",
+      "difficulty": "hard",
+      "slug": "merge-users"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "@dataclass добавляет __init__, __repr__ и __eq__ по умолчанию.",
+      "order=True добавляет методы сравнения для sorted().",
+      "dataclasses.replace(obj, field=val) — не мутирует исходный объект.",
+      "Поля с default или default_factory упрощают конструирование."
+    ]
+  }
+}

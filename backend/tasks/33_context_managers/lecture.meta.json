@@ -1,0 +1,103 @@
+{
+  "id": "33",
+  "slug": "context-managers",
+  "title": "Context Managers: файлы, таймеры, подавление ошибок",
+  "description": "Контекстные менеджеры гарантируют очистку ресурсов. Проверяем их по детерминированному эффекту: корректный выход, счётчики, подавление исключений.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Python",
+    "Context Managers",
+    "with"
+  ],
+  "learningOutcomes": [
+    "Строить контекстный менеджер через __enter__/__exit__",
+    "Использовать @contextmanager с yield",
+    "Подавлять исключения возвратом True из __exit__"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n) на задачи блока",
+    "spaceComplexity": "O(1) дополнительно",
+    "explanation": "Контекстные менеджеры добавляют работу при входе/выходе из блока with."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что делает __exit__ при возврате True?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Подавляет возникшее исключение",
+          "isCorrect": true,
+          "explanation": "True означает «исключение обработано, бросать не надо»."
+        },
+        {
+          "id": "opt2",
+          "text": "Закрывает файл",
+          "isCorrect": false,
+          "explanation": "Закрытие файла — следствие кода в __exit__, не само по себе."
+        },
+        {
+          "id": "opt3",
+          "text": "Вызывает исключение повторно",
+          "isCorrect": false,
+          "explanation": "Противоположно: True именно гасит его."
+        }
+      ],
+      "hint": "Какое значение гасит ошибку?"
+    },
+    {
+      "id": "q2",
+      "question": "Зачем with вместо try/finally?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Короче и гарантирует очистку",
+          "isCorrect": true,
+          "explanation": "with всегда вызывает __exit__, даже при исключении."
+        },
+        {
+          "id": "opt2",
+          "text": "Быстрее try/finally",
+          "isCorrect": false,
+          "explanation": "Скорость не главное."
+        },
+        {
+          "id": "opt3",
+          "text": "Это единственный способ открыть файл",
+          "isCorrect": false,
+          "explanation": "Файл можно открыть и без with, но тогда надо закрывать вручную."
+        }
+      ],
+      "hint": "Кто гарантирует закрытие?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "33-p1",
+      "title": "Число строк (менеджер файла)",
+      "difficulty": "easy",
+      "slug": "write-lines"
+    },
+    {
+      "taskId": "33-p2",
+      "title": "Действие при выходе",
+      "difficulty": "medium",
+      "slug": "append-on-exit"
+    },
+    {
+      "taskId": "33-p3",
+      "title": "Подавление ValueError",
+      "difficulty": "hard",
+      "slug": "suppress-sum"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "with гарантирует вызов __exit__ даже при ошибке.",
+      "@contextmanager оборачивает генератор вокруг yield.",
+      "__exit__, возвращающий True, подавляет исключение.",
+      "Ресурсы (файлы, соединения) закрываются автоматически."
+    ]
+  }
+}

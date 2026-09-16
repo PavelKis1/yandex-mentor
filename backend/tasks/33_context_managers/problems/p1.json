@@ -1,23 +1,126 @@
 {
   "id": "33-p1",
-  "title": "Файл-менеджер",
+  "title": "Число строк (менеджер файла)",
   "difficulty": "easy",
   "lecture_id": "33",
   "order": 1,
-  "description": "Напишите контекстный менеджер open_file(path, mode), который гарантирует закрытие файла, и используйте его с 'with'.",
+  "description": "Реализуйте контекстный менеджер `open_file(path, mode)` с `__enter__`/`__exit__`, который **гарантирует закрытие файла**. Используя его в `with`, функция `write_lines(items)` записывает строки `items` во временный файл и возвращает их **количество** (`len(items)`).\n\n**Функция решения:**\n\n```python\ndef write_lines(items: list[str]) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "with open_file('tmp.txt','w') as f: f.write('hi') — файл закрыт после",
-      "output": "",
-      "explanation": null
+      "input": "items = ['a','b']",
+      "output": "2",
+      "explanation": "Менеджер записал 2 строки и закрыл файл."
+    },
+    {
+      "input": "items = []",
+      "output": "0",
+      "explanation": "Строк не было."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "class с __enter__/__exit__ или @contextmanager с yield."
+  "constraints": [
+    "0 ≤ len(items) ≤ 10^4"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "__enter__ возвращает открытый файл, __exit__ вызывает f.close().",
+    "Верните len(items) — менеджер отработал корректно."
+  ],
+  "starter_code": "def open_file(path, mode):\n    \"\"\"Контекстный менеджер, гарантирующий закрытие файла.\"\"\"\n    ...\n\ndef write_lines(items: list[str]) -> int:\n    \"\"\"Записать items во временный файл через with open_file и вернуть число строк.\"\"\"\n    ...",
+  "entry_function": "write_lines",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          "x"
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          "1",
+          "2",
+          "3"
+        ]
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          "hello",
+          "world"
+        ]
+      ],
+      "expected": 2,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          "a",
+          "a",
+          "a"
+        ]
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

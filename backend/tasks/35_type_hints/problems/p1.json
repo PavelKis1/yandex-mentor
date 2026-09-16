@@ -1,23 +1,157 @@
 {
   "id": "35-p1",
-  "title": "Аннотации коллекций",
+  "title": "Группировка по первой букве",
   "difficulty": "easy",
   "lecture_id": "35",
   "order": 1,
-  "description": "Аннотируйте функцию group_by_first_letter(words: list[str]) → dict[str, list[str]], группирующую слова по первой букве. Включите Optional и Union где уместно.",
+  "description": "Реализуйте типизированную `group_by_first_letter(words: list[str]) -> dict[str, list[str]]`, которая группирует слова по **первой букве** и возвращает словарь `{буква: [список слов в порядке появления]}`.\n\n**Функция решения:**\n\n```python\ndef group_by_first_letter(words: list[str]) -> dict[str, list[str]]:\n    ...\n```",
   "examples": [
     {
-      "input": "Аннотации проходят mypy без ошибок",
-      "output": "",
-      "explanation": null
+      "input": "words = ['apple','ant','banana']",
+      "output": "{'a':['apple','ant'], 'b':['banana']}",
+      "explanation": "Первая буква определяет группу."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "from __future__ import annotations; dict[str, list[str]], Optional[str]."
+  "constraints": [
+    "0 ≤ len(words) ≤ 10^4; слова непустые"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "defaultdict(list) и w[0] как ключ.",
+    "Сохранение порядка появления важно — верните dict(g)."
+  ],
+  "starter_code": "def group_by_first_letter(words: list[str]) -> dict[str, list[str]]:\n    \"\"\"Группировать слова по первой букве: {буква: [слова]}.\"\"\"\n    ...",
+  "entry_function": "group_by_first_letter",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          "apple",
+          "ant",
+          "banana"
+        ]
+      ],
+      "expected": {
+        "a": [
+          "apple",
+          "ant"
+        ],
+        "b": [
+          "banana"
+        ]
+      },
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        []
+      ],
+      "expected": {},
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          "x"
+        ]
+      ],
+      "expected": {
+        "x": [
+          "x"
+        ]
+      },
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          "aa",
+          "ab",
+          "ba",
+          "bb"
+        ]
+      ],
+      "expected": {
+        "a": [
+          "aa",
+          "ab"
+        ],
+        "b": [
+          "ba",
+          "bb"
+        ]
+      },
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          "zoo",
+          "zap"
+        ]
+      ],
+      "expected": {
+        "z": [
+          "zoo",
+          "zap"
+        ]
+      },
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          "m",
+          "n",
+          "m"
+        ]
+      ],
+      "expected": {
+        "m": [
+          "m",
+          "m"
+        ],
+        "n": [
+          "n"
+        ]
+      },
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

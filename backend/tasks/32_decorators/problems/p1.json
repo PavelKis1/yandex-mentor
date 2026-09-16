@@ -4,20 +4,127 @@
   "difficulty": "easy",
   "lecture_id": "32",
   "order": 1,
-  "description": "Напишите декоратор @timed, который печатает время выполнения функции в миллисекундах и возвращает результат неизменным.",
+  "description": "Напишите декоратор `@timed`, который печатает время выполнения функции в миллисекундах и **возвращает результат без изменений**. Затем реализуйте `timed_sum(nums)`, которая применяет `@timed` к функции суммирования и возвращает её результат (`sum(nums)`). Проверяется именно результат — таймер не должен его ломать.\n\n**Функция решения:**\n\n```python\ndef timed_sum(nums: list[int]) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "печать 'slow took 123 ms', вернул результат",
-      "output": "",
-      "explanation": null
+      "input": "nums = [1,2,3]",
+      "output": "6",
+      "explanation": "Сумма при сохранении результата декоратором."
+    },
+    {
+      "input": "nums = []",
+      "output": "0",
+      "explanation": "Сумма пустого списка — 0."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "functools.wraps(f); time.perf_counter() до и после."
+  "constraints": [
+    "1 ≤ len(nums) ≤ 10^5"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "functools.wraps(f) сохраняет __name__.",
+    "time.perf_counter() до и после вызова; верните res как есть."
+  ],
+  "starter_code": "import functools, time\n\ndef timed(fn):\n    \"\"\"Декоратор, печатает время и возвращает результат функции без изменений.\"\"\"\n    ...\n\ndef timed_sum(nums: list[int]) -> int:\n    \"\"\"Вернуть сумму nums, применив @timed к внутренней функции.\"\"\"\n    ...",
+  "entry_function": "timed_sum",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": 6,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 5,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          -1,
+          10,
+          -3,
+          7
+        ]
+      ],
+      "expected": 13,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          2,
+          4,
+          6,
+          8
+        ]
+      ],
+      "expected": 20,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

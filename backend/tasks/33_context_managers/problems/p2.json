@@ -1,23 +1,135 @@
 {
   "id": "33-p2",
-  "title": "Таймер как менеджер",
+  "title": "Действие при выходе",
   "difficulty": "medium",
   "lecture_id": "33",
   "order": 2,
-  "description": "Напишите контекстный менеджер timed_block. В 'with' блоке он измеряет время выполнения и печатает его.",
+  "description": "Напишите контекстный менеджер, который при **выходе** из `with` добавляет `value` в список. Функция `append_on_exit(value, base)` создаёт список `[base]`, использует менеджер в `with` и возвращает итоговый список `[base, value]` (доказательство того, что код в `__exit__` выполнился).\n\n**Функция решения:**\n\n```python\ndef append_on_exit(value, base):\n    ...\n```",
   "examples": [
     {
-      "input": "with timed_block(): ...",
-      "output": "'block took 0.15 s'",
-      "explanation": null
+      "input": "value = 3, base = 0",
+      "output": "[0, 3]",
+      "explanation": "На выходе значение добавилось в список."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "@contextmanager: время до yield и после."
+  "constraints": [
+    "Любые значения value, base"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "__enter__ может вернуть список; код в __exit__ выполняет lst.append(value).",
+    "Используйте with менеджер вокруг строки, чтобы вызвался __exit__."
+  ],
+  "starter_code": "class AppendOnExit:\n    \"\"\"КМ: при выходе из with добавляет value в список.\"\"\"\n    ...\n\ndef append_on_exit(value, base):\n    \"\"\"Вернуть список, к которому контекстный менеджер добавит value при ВЫХОДЕ.\"\"\"\n    ...",
+  "entry_function": "append_on_exit",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        3,
+        0
+      ],
+      "expected": [
+        0,
+        3
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "x",
+        "y"
+      ],
+      "expected": [
+        "y",
+        "x"
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        5,
+        5
+      ],
+      "expected": [
+        5,
+        5
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        10,
+        1
+      ],
+      "expected": [
+        1,
+        10
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        "end",
+        "start"
+      ],
+      "expected": [
+        "start",
+        "end"
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        9,
+        8
+      ],
+      "expected": [
+        8,
+        9
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

@@ -4,20 +4,107 @@
   "difficulty": "hard",
   "lecture_id": "32",
   "order": 3,
-  "description": "Напишите декоратор @retry(times=3, delay=0.1), который повторяет функцию при исключении и пробрасывает ошибку после times попыток.",
+  "description": "Напишите декоратор `@retry(times=3, delay=0.1)`, который при исключении повторяет вызов и пробрасывает ошибку после `times` неудачных попыток. Функция-внутренность падает первые `failures` вызовов (для `failures < times`) и на следующем вызывает успех. Верните **число сделанных попыток**.\n\n**Функция решения:**\n\n```python\ndef retry_success(failures: int) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "f бросает ValueError 2 раза подряд, times=3",
-      "output": "3-я попытка успешна",
-      "explanation": null
+      "input": "failures = 1",
+      "output": "2",
+      "explanation": "1-я попытка упала, 2-я успешна — потребовалось 2 попытки."
+    },
+    {
+      "input": "failures = 0",
+      "output": "1",
+      "explanation": "Успех с первой попытки."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "for i in range(times): try: return f(*a,**kw) except: time.sleep(delay)."
+  "constraints": [
+    "0 ≤ failures ≤ 2 (times=3)"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "for i in range(times): try: return f(*a,**kw) except: time.sleep(delay) — после цикла пробросить.",
+    "Считайте попытки счётчиком; верните счётчик на момент успеха."
+  ],
+  "starter_code": "import time\n\ndef retry(times=3, delay=0.1):\n    \"\"\"Декоратор-параметр: повторяет вызов при исключении, после times попыток пробрасывает.\"\"\"\n    ...\n\ndef retry_success(failures: int) -> int:\n    \"\"\"Сколько попыток сделает @retry(times=3), если функция падает первые `failures` раз.\"\"\"\n    ...",
+  "entry_function": "retry_success",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        0
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        1
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        2
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        0
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        1
+      ],
+      "expected": 2,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        2
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

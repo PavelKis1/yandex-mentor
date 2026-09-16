@@ -1,23 +1,127 @@
 {
   "id": "33-p3",
-  "title": "Подавление исключений",
+  "title": "Подавление ValueError",
   "difficulty": "hard",
   "lecture_id": "33",
   "order": 3,
-  "description": "Напишите контекстный менеджер suppress(Exc), который подавляет указанное исключение внутри блока и продолжает выполнение.",
+  "description": "Реализуйте контекстный менеджер `suppress(Exc)`, у которого `__exit__` возвращает `True` при совпадении с исключением `Exc` (подавление). Функция `suppress_sum(items)` проходит по элементам, вычисляет `int(x)` **внутри** `with suppress(ValueError)` и суммирует успешно распарсенные значения.\n\n**Функция решения:**\n\n```python\ndef suppress_sum(items: list) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "with suppress(ValueError): int('abc') — ошибки нет",
-      "output": "",
-      "explanation": null
+      "input": "items = ['1', 'abc', '2']",
+      "output": "3",
+      "explanation": "'abc' не парсится — ValueError подавлен."
+    },
+    {
+      "input": "items = []",
+      "output": "0",
+      "explanation": "Пустой список."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "__exit__ возвращает True при совпадении исключения."
+  "constraints": [
+    "0 ≤ len(items) ≤ 10^5"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "__exit__ возвращает issubclass(exc, Exc).",
+    "Внутри with выполняйте x = int(item); при подавлении переход к следующему."
+  ],
+  "starter_code": "class suppress:\n    \"\"\"КМ, подавляющий указанное исключение внутри блока with.\"\"\"\n    ...\n\ndef suppress_sum(items: list) -> int:\n    \"\"\"Сумма int(x) по items, игнорируя элементы, не парсящиеся в int (через свой suppress).\"\"\"\n    ...",
+  "entry_function": "suppress_sum",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          "1",
+          "abc",
+          "2"
+        ]
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          "a"
+        ]
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          "5",
+          "5"
+        ]
+      ],
+      "expected": 10,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          "0",
+          "x",
+          "x",
+          "3"
+        ]
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          "10",
+          "20"
+        ]
+      ],
+      "expected": 30,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

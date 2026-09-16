@@ -1,23 +1,136 @@
 {
   "id": "30-p3",
-  "title": "Память",
+  "title": "Длина серии (память O(1))",
   "difficulty": "hard",
   "lecture_id": "30",
   "order": 3,
-  "description": "Измерьте потребление памяти списком из 10^6 целых через tracemalloc. Верните примерный размер в МБ.",
+  "description": "Реализуйте `longest_run_len(nums)`, возвращающую **длину самой длинной серии** подряд идущих одинаковых значений, используя только `O(1)` дополнительной памяти (никаких списков/словарей). Это и есть соревнование за память.\n\n**Функция решения:**\n\n```python\ndef longest_run_len(nums: list[int]) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "~8 МБ (64-бит Python)",
-      "output": "",
-      "explanation": null
+      "input": "nums = [1,1,2,2,2,3]",
+      "output": "3",
+      "explanation": "Серия из трёх двоек."
+    },
+    {
+      "input": "nums = []",
+      "output": "0",
+      "explanation": "Пустой список."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "tracemalloc.start() → выполни → tracemalloc.get_traced_memory()."
+  "constraints": [
+    "0 ≤ len(nums) ≤ 10^5"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Два счётчика: текущая и лучшая длина серии.",
+    "При смене значения сбрасывайте текущую длину в 1."
+  ],
+  "starter_code": "def longest_run_len(nums: list[int]) -> int:\n    \"\"\"Длина самой длинной серии подряд идущих одинаковых значений (память O(1)).\"\"\"\n    ...",
+  "entry_function": "longest_run_len",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          2,
+          2,
+          3
+        ]
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        []
+      ],
+      "expected": 0,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

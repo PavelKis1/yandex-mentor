@@ -1,23 +1,145 @@
 {
   "id": "31-p3",
-  "title": "Пропустить половину",
+  "title": "Бинарный поиск без bisect",
   "difficulty": "hard",
   "lecture_id": "31",
   "order": 3,
-  "description": "Дан большой отсортированный массив и target. Найдите индекс target за O(log n) через бинарный поиск (без bisect).",
+  "description": "Дан **отсортированный** список `nums` и `target`. Верните **индекс** `target` за `O(log n)`, реализовав **бинарный поиск вручную** (без `bisect`). Если элемента нет — верните `-1`.\n\n**Функция решения:**\n\n```python\ndef binary_search(nums: list[int], target: int) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "search([1,3,5,7,9], 5)",
+      "input": "nums = [1,3,5,7,9], target = 5",
       "output": "2",
-      "explanation": null
+      "explanation": "5 стоит на индексе 2."
+    },
+    {
+      "input": "nums = [1,3,5,7,9], target = 2",
+      "output": "-1",
+      "explanation": "Двойки нет."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "half = (l + r) // 2, сужай диапазон в два раза."
+  "constraints": [
+    "nums отсортирован по возрастанию; 0 ≤ len ≤ 10^6"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "mid = (l + r) // 2, сужайте диапазон вдвое.",
+    "При nums[mid] < target — ищите в правой половине."
+  ],
+  "starter_code": "def binary_search(nums: list[int], target: int) -> int:\n    \"\"\"Индекс target в отсортированном nums за O(log n); -1, если нет (без bisect).\"\"\"\n    ...",
+  "entry_function": "binary_search",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          7,
+          9
+        ],
+        5
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          7,
+          9
+        ],
+        2
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [],
+        5
+      ],
+      "expected": -1,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          3
+        ],
+        3
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          10,
+          20,
+          30
+        ],
+        30
+      ],
+      "expected": 2,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }
