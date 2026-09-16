@@ -1,23 +1,73 @@
 {
   "id": "36-p2",
-  "title": "Подсчёт по группам",
+  "title": "Проекция и LIMIT",
   "difficulty": "medium",
   "lecture_id": "36",
   "order": 2,
-  "description": "Таблица orders(user_id, amount). Подсчитайте для каждого пользователя суммарную сумму заказов и количество заказов.",
+  "description": "Дана таблица `users(id, name, age)`. Напишите запрос, который выводит **топ-3 самых старших** пользователя с псевдонимом колонки `years` для возраста: `SELECT name, age AS years FROM users ...`. При равном возрасте сортируйте по имени.\n\n```sql\nSELECT name, age AS years FROM users ... LIMIT 3;\n```",
   "examples": [
     {
-      "input": "SELECT user_id, SUM(amount), COUNT(*) FROM orders GROUP BY user_id;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT name, age AS years FROM users ORDER BY age DESC, name LIMIT 3;",
+      "output": "Cid|30, Ann|25, Eva|22",
+      "explanation": "Три старших в первой таблице."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "LIMIT 3",
+    "псевдоним years = age"
+  ],
   "hints": [
-    "GROUP BY + агрегатные функции."
+    "ORDER BY age DESC, name",
+    "LIMIT 3;  AS years"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "Cid",
+          30
+        ],
+        [
+          "Ann",
+          25
+        ],
+        [
+          "Eva",
+          22
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER);\nINSERT INTO users VALUES (1,'Ann',25),(2,'Bob',17),(3,'Cid',30),(4,'Dev',19),(5,'Eva',22),(6,'Fay',17);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "Amy",
+          35
+        ],
+        [
+          "Zed",
+          20
+        ],
+        [
+          "Uli",
+          16
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER);\nINSERT INTO users VALUES (1,'Zed',20),(2,'Amy',35),(3,'Oz',10),(4,'Uli',16);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }

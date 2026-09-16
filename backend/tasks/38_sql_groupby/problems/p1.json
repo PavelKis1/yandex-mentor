@@ -1,23 +1,75 @@
 {
   "id": "38-p1",
-  "title": "HAVING",
+  "title": "Счётчик по группам",
   "difficulty": "easy",
   "lecture_id": "38",
   "order": 1,
-  "description": "Таблица sales(category, price). Найдите категории со средней ценой больше 100.",
+  "description": "Дана таблица `orders(id, status, amount)`. Напишите запрос, который для каждого `status` считает число заказов `cnt`. Отсортируйте по убыванию `cnt`, при равенстве — по статусу.\n\n```sql\nSELECT status, COUNT(*) AS cnt FROM orders GROUP BY status ...;\n```",
   "examples": [
     {
-      "input": "SELECT category, AVG(price) FROM sales GROUP BY category HAVING AVG(price) > 100;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT status, COUNT(*) AS cnt FROM orders GROUP BY status ORDER BY cnt DESC, status;",
+      "output": "done|2, new|2, cancel|1",
+      "explanation": "done и new по 2, cancel — 1; при равенстве по алфавиту."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "GROUP BY status",
+    "COUNT(*)",
+    "ORDER BY cnt DESC, status"
+  ],
   "hints": [
-    "HAVING для фильтра агрегатов (не WHERE)."
+    "GROUP BY status",
+    "COUNT(*) AS cnt",
+    "ORDER BY cnt DESC, status"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "done",
+          2
+        ],
+        [
+          "new",
+          2
+        ],
+        [
+          "cancel",
+          1
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE orders(id INTEGER PRIMARY KEY, status TEXT, amount INTEGER);\nINSERT INTO orders VALUES (1,'new',100),(2,'done',50),(3,'new',200),(4,'done',30),(5,'cancel',10);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "new",
+          3
+        ],
+        [
+          "done",
+          2
+        ],
+        [
+          "cancel",
+          1
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE orders(id INTEGER PRIMARY KEY, status TEXT, amount INTEGER);\nINSERT INTO orders VALUES (1,'new',30),(2,'done',200),(3,'new',40),(4,'cancel',5),(5,'done',60),(6,'new',10);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }

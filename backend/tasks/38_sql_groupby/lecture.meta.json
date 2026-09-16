@@ -1,0 +1,104 @@
+{
+  "id": "38",
+  "slug": "sql-groupby",
+  "title": "SQL GROUP BY и агрегатные функции",
+  "description": "Агрегация данных: COUNT, SUM, MIN, MAX, фильтрация групп через HAVING.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "SQL",
+    "GroupBy",
+    "Aggregates",
+    "Having"
+  ],
+  "learningOutcomes": [
+    "Группировать строки через GROUP BY",
+    "Применять COUNT, SUM, MIN, MAX",
+    "Фильтровать группы через HAVING"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n log n) сортировка либо O(n) при хэшировании",
+    "spaceComplexity": "O(k) на число групп",
+    "explanation": "Агрегация сверяется по ключам групп."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Чем HAVING отличается от WHERE?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "HAVING фильтрует группы после GROUP BY",
+          "isCorrect": true,
+          "explanation": "WHERE — строки до группировки, HAVING — группы после."
+        },
+        {
+          "id": "opt2",
+          "text": "Это синонимы",
+          "isCorrect": false,
+          "explanation": "Нет, применяются на разных этапах."
+        },
+        {
+          "id": "opt3",
+          "text": "WHERE для подзапросов",
+          "isCorrect": false,
+          "explanation": "Неверно."
+        }
+      ],
+      "hint": "Где можно использовать агрегатные функции в условии?"
+    },
+    {
+      "id": "q2",
+      "question": "Что вернёт COUNT(*) для группы, в которой 3 строки?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "3",
+          "isCorrect": true,
+          "explanation": "COUNT(*) считает все строки группы."
+        },
+        {
+          "id": "opt2",
+          "text": "0",
+          "isCorrect": false,
+          "explanation": "Веду как число строк."
+        },
+        {
+          "id": "opt3",
+          "text": "NULL",
+          "isCorrect": false,
+          "explanation": "Без NULL здесь."
+        }
+      ],
+      "hint": "Сколько строк в группе?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "38-p1",
+      "title": "Счётчик по группам",
+      "difficulty": "easy",
+      "slug": "groupby-count"
+    },
+    {
+      "taskId": "38-p2",
+      "title": "Сумма и HAVING",
+      "difficulty": "medium",
+      "slug": "groupby-sum"
+    },
+    {
+      "taskId": "38-p3",
+      "title": "Фильтр групп",
+      "difficulty": "hard",
+      "slug": "groupby-having"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "GROUP BY колонка сворачивает строки в группы.",
+      "COUNT(*), SUM(x), AVG(x), MIN(x), MAX(x) — агрегаты.",
+      "HAVING — фильтр по агрегату, WHERE — по строке.",
+      "В SELECT при GROUP BY можно брать только сгруппированные колонки и агрегаты."
+    ]
+  }
+}

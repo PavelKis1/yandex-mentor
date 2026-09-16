@@ -1,0 +1,105 @@
+{
+  "id": "36",
+  "slug": "sql-select",
+  "title": "SQL SELECT: проекция, фильтр, сортировка, LIMIT",
+  "description": "Получение данных: SELECT, FROM, WHERE, ORDER BY, LIMIT, псевдонимы и CASE.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "SQL",
+    "Select",
+    "Where",
+    "OrderBy"
+  ],
+  "learningOutcomes": [
+    "Писать SELECT с проекцией колонок и псевдонимами",
+    "Фильтровать через WHERE (>, BETWEEN, LIKE)",
+    "Сортировать и ограничивать выборку ORDER BY + LIMIT"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n) выборка, O(n log n) с сортировкой",
+    "spaceComplexity": "O(n) на буфер результатов",
+    "explanation": "Сложность зависит от индексов и необходимости сортировки."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Какой оператор фильтрует строки до GROUP BY?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "WHERE",
+          "isCorrect": true,
+          "explanation": "WHERE фильтрует строки, HAVING — группы."
+        },
+        {
+          "id": "opt2",
+          "text": "HAVING",
+          "isCorrect": false,
+          "explanation": "HAVING применяется к группам."
+        },
+        {
+          "id": "opt3",
+          "text": "LIMIT",
+          "isCorrect": false,
+          "explanation": "LIMIT ограничивает число строк."
+        }
+      ],
+      "hint": "Что применяется раньше — фильтр строк или группировка?"
+    },
+    {
+      "id": "q2",
+      "question": "Что вернёт SELECT name FROM users ORDER BY age DESC LIMIT 3?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Три самых старших пользователя",
+          "isCorrect": true,
+          "explanation": "Сортировка по убыванию возраста и ограничение 3 строками."
+        },
+        {
+          "id": "opt2",
+          "text": "Три самых молодых",
+          "isCorrect": false,
+          "explanation": "DESC — по убыванию, значит старшие."
+        },
+        {
+          "id": "opt3",
+          "text": "Всех пользователей",
+          "isCorrect": false,
+          "explanation": "LIMIT 3 обрезает до трёх."
+        }
+      ],
+      "hint": "Что делает DESC?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "36-p1",
+      "title": "Выборка с условием",
+      "difficulty": "easy",
+      "slug": "select-adults"
+    },
+    {
+      "taskId": "36-p2",
+      "title": "Проекция и LIMIT",
+      "difficulty": "medium",
+      "slug": "select-top"
+    },
+    {
+      "taskId": "36-p3",
+      "title": "CASE и шаблоны",
+      "difficulty": "hard",
+      "slug": "select-case"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "SELECT колонки FROM таблица WHERE условие.",
+      "ORDER BY колонка [ASC|DESC] — сортировка.",
+      "LIMIT n ограничивает число строк.",
+      "CASE WHEN ... THEN ... END — условный столбец; LIKE — шаблон строки.",
+      "Псевдоним AS переименовывает колонку."
+    ]
+  }
+}

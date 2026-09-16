@@ -1,0 +1,105 @@
+{
+  "id": "37",
+  "slug": "sql-join",
+  "title": "SQL JOIN: объединение таблиц",
+  "description": "Объединение таблиц JOIN по ключу, типы JOIN и работа с NULL.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "SQL",
+    "Join",
+    "LeftJoin",
+    "ForeignKey"
+  ],
+  "learningOutcomes": [
+    "Писать INNER JOIN по внешнему ключу",
+    "Осознавать разницу INNER vs LEFT JOIN и NULL-строки",
+    "Применять JOIN с агрегатами (COUNT)"
+  ],
+  "complexity": {
+    "timeComplexity": "O(a+b) hash join, O(n log n) merge join",
+    "spaceComplexity": "O(a+b) при hash join",
+    "explanation": "Оптимизатор выбирает Hash/Merge/Nested-loop в зависимости от данных."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Какой JOIN вернёт строки левой таблицы даже без совпадений?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "LEFT JOIN",
+          "isCorrect": true,
+          "explanation": "LEFT JOIN сохраняет все строки левой таблицы, справа будет NULL."
+        },
+        {
+          "id": "opt2",
+          "text": "INNER JOIN",
+          "isCorrect": false,
+          "explanation": "INNER JOIN оставляет только совпадения."
+        },
+        {
+          "id": "opt3",
+          "text": "CROSS JOIN",
+          "isCorrect": false,
+          "explanation": "CROSS JOIN — декартово произведение."
+        }
+      ],
+      "hint": "Какой JOIN не теряет строки левой таблицы?"
+    },
+    {
+      "id": "q2",
+      "question": "В LEFT JOIN нет совпадения в правой таблице. Что будет в колонках правой?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "NULL",
+          "isCorrect": true,
+          "explanation": "Отсутствующие значения правой таблицы заполняются NULL."
+        },
+        {
+          "id": "opt2",
+          "text": "0",
+          "isCorrect": false,
+          "explanation": "Это не 0, а NULL."
+        },
+        {
+          "id": "opt3",
+          "text": "Пустая строка",
+          "isCorrect": false,
+          "explanation": "Это NULL."
+        }
+      ],
+      "hint": "Чем заполняются отсутствующие значения?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "37-p1",
+      "title": "Внутреннее соединение",
+      "difficulty": "easy",
+      "slug": "join-inner"
+    },
+    {
+      "taskId": "37-p2",
+      "title": "Левое соединение",
+      "difficulty": "medium",
+      "slug": "join-left"
+    },
+    {
+      "taskId": "37-p3",
+      "title": "JOIN с агрегацией",
+      "difficulty": "hard",
+      "slug": "join-aggregate"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "INNER JOIN — только совпадения по ключу.",
+      "LEFT JOIN — все строки левой + NULL справа.",
+      "ON задаёт условие сопоставления: a.id = b.user_id.",
+      "Псевдонимы таблиц: FROM users u JOIN orders o.",
+      "WITH LEFT JOIN подсчёт ведите через COUNT(o.id), не COUNT(*)."
+    ]
+  }
+}

@@ -1,23 +1,68 @@
 {
   "id": "38-p2",
-  "title": "Двойная группировка",
+  "title": "Сумма и HAVING",
   "difficulty": "medium",
   "lecture_id": "38",
   "order": 2,
-  "description": "Таблица events(date, platform). Подсчитайте события по дате и платформе.",
+  "description": "Дана таблица `orders(id, status, amount)`. Напишите запрос, который для каждого `status`, где **не менее двух заказов** (`COUNT(*) >= 2`), выводит суммарный `amount` как `total`. Отсортируйте по убыванию `total`.\n\n```sql\nSELECT status, SUM(amount) AS total FROM orders GROUP BY status ...;\n```",
   "examples": [
     {
-      "input": "SELECT date, platform, COUNT(*) FROM events GROUP BY date, platform;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT status, SUM(amount) AS total FROM orders GROUP BY status HAVING COUNT(*) >= 2 ORDER BY total DESC;",
+      "output": "new|300, done|80",
+      "explanation": "cancel — один заказ, выбывает через HAVING."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "GROUP BY status",
+    "SUM(amount)",
+    "HAVING COUNT(*) >= 2",
+    "ORDER BY total DESC"
+  ],
   "hints": [
-    "GROUP BY с несколькими колонками."
+    "HAVING COUNT(*) >= 2",
+    "SUM(amount) AS total",
+    "ORDER BY total DESC"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "new",
+          300
+        ],
+        [
+          "done",
+          80
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE orders(id INTEGER PRIMARY KEY, status TEXT, amount INTEGER);\nINSERT INTO orders VALUES (1,'new',100),(2,'done',50),(3,'new',200),(4,'done',30),(5,'cancel',10);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "done",
+          260
+        ],
+        [
+          "new",
+          80
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE orders(id INTEGER PRIMARY KEY, status TEXT, amount INTEGER);\nINSERT INTO orders VALUES (1,'new',30),(2,'done',200),(3,'new',40),(4,'cancel',5),(5,'done',60),(6,'new',10);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }

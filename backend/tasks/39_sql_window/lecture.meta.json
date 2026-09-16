@@ -1,0 +1,106 @@
+{
+  "id": "39",
+  "slug": "sql-window",
+  "title": "SQL Window Functions",
+  "description": "Оконные функции: OVER, PARTITION BY, ROW_NUMBER, RANK, LAG, движущиеся агрегаты.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "SQL",
+    "Window",
+    "Over",
+    "Partition",
+    "RowNumber"
+  ],
+  "learningOutcomes": [
+    "Ранжировать строки через ROW_NUMBER() OVER (ORDER BY ...)",
+    "Вычислять агрегаты по окну через PARTITION BY",
+    "Получать соседние строки через LAG"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n log n) из-за сортировки в окне",
+    "spaceComplexity": "O(n) на окно",
+    "explanation": "Оконные функции не сворачивают строки, а лишь добавляют вычисленные колонки."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что делает ROW_NUMBER() OVER (ORDER BY salary DESC)?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Нумерует строки от 1 по убыванию зарплаты",
+          "isCorrect": true,
+          "explanation": "ROW_NUMBER присваивает уникальный номер в порядке окна."
+        },
+        {
+          "id": "opt2",
+          "text": "Сворачивает строки в группы",
+          "isCorrect": false,
+          "explanation": "Это делает GROUP BY."
+        },
+        {
+          "id": "opt3",
+          "text": "Считает сумму зарплат",
+          "isCorrect": false,
+          "explanation": "Это агрегат SUM."
+        }
+      ],
+      "hint": "Что возвращает ROW_NUMBER для каждой строки?"
+    },
+    {
+      "id": "q2",
+      "question": "Что вернёт LAG(salary) для первой строки окна?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "NULL",
+          "isCorrect": true,
+          "explanation": "До первой строки окна нет предыдущей, поэтому NULL."
+        },
+        {
+          "id": "opt2",
+          "text": "0",
+          "isCorrect": false,
+          "explanation": "Это NULL, а не 0."
+        },
+        {
+          "id": "opt3",
+          "text": "Саму зарплату",
+          "isCorrect": false,
+          "explanation": "LAG берёт предыдущую строку."
+        }
+      ],
+      "hint": "Что стоит до начала окна?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "39-p1",
+      "title": "Нумерация строк",
+      "difficulty": "easy",
+      "slug": "window-rownumber"
+    },
+    {
+      "taskId": "39-p2",
+      "title": "Агрегат по окну",
+      "difficulty": "medium",
+      "slug": "window-avg"
+    },
+    {
+      "taskId": "39-p3",
+      "title": "Соседние строки",
+      "difficulty": "hard",
+      "slug": "window-lag"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "OVER (ORDER BY ...) задаёт окно для вычислений.",
+      "ROW_NUMBER(), RANK(), DENSE_RANK() ранжируют строки.",
+      "PARTITION BY делит данные на независимые окна.",
+      "LAG(x)/LEAD(x) обращаются к соседним строкам.",
+      "Оконные функции не сворачивают строки, в отличие от GROUP BY."
+    ]
+  }
+}

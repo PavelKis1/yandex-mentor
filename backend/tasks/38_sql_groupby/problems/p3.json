@@ -1,23 +1,63 @@
 {
   "id": "38-p3",
-  "title": "Количество уникальных",
+  "title": "Фильтр групп",
   "difficulty": "hard",
   "lecture_id": "38",
   "order": 3,
-  "description": "Таблица visits(day, user_id). Сколько уникальных пользователей было каждый день?",
+  "description": "Дана таблица `orders(id, status, amount)`. Напишите запрос, который возвращает статусы, у которых **суммарный `amount` больше 50** (`SUM(amount) > 50`). Отсортируйте по статусу.\n\n```sql\nSELECT status FROM orders GROUP BY status HAVING SUM(amount) > 50 ORDER BY status;\n```",
   "examples": [
     {
-      "input": "SELECT day, COUNT(DISTINCT user_id) FROM visits GROUP BY day;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT status FROM orders GROUP BY status HAVING SUM(amount) > 50 ORDER BY status;",
+      "output": "done, new",
+      "explanation": "new=300 и done=80 больше 50, cancel=10 выбывает."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "GROUP BY status",
+    "HAVING SUM(amount) > 50",
+    "ORDER BY status"
+  ],
   "hints": [
-    "COUNT(DISTINCT ...)."
+    "HAVING SUM(amount) > 50",
+    "SELECT status",
+    "ORDER BY status"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "done"
+        ],
+        [
+          "new"
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE orders(id INTEGER PRIMARY KEY, status TEXT, amount INTEGER);\nINSERT INTO orders VALUES (1,'new',100),(2,'done',50),(3,'new',200),(4,'done',30),(5,'cancel',10);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "done"
+        ],
+        [
+          "new"
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE orders(id INTEGER PRIMARY KEY, status TEXT, amount INTEGER);\nINSERT INTO orders VALUES (1,'new',30),(2,'done',200),(3,'new',40),(4,'cancel',5),(5,'done',60),(6,'new',10);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }

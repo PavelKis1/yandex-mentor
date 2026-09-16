@@ -1,23 +1,85 @@
 {
   "id": "37-p2",
-  "title": "LEFT JOIN + агрегация",
+  "title": "Левое соединение",
   "difficulty": "medium",
   "lecture_id": "37",
   "order": 2,
-  "description": "Выведите всех пользователей и суммарную сумму их заказов, включая тех, у кого заказов нет (NULL→0).",
+  "description": "Даны те же таблицы `users(id, name)` и `orders(id, user_id, amount)`. Напишите запрос с `LEFT JOIN`, который выводит **всех пользователей** (включая тех без заказов с `NULL` в сумме). Отсортируйте по имени пользователя.\n\n```sql\nSELECT u.name, o.amount FROM users u LEFT JOIN orders o ON u.id = o.user_id ...;\n```",
   "examples": [
     {
-      "input": "SELECT u.name, COALESCE(SUM(o.amount),0) FROM users u LEFT JOIN orders o ON u.id=o.user_id GROUP BY u.name;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT u.name, o.amount FROM users u LEFT JOIN orders o ON u.id = o.user_id ORDER BY u.name;",
+      "output": "Ann|100, Ann|50, Bob|, Cid|200, Dev|",
+      "explanation": "Bob и Dev без заказов — NULL."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "LEFT JOIN",
+    "ORDER BY u.name"
+  ],
   "hints": [
-    "LEFT JOIN + COALESCE(...,0)."
+    "LEFT JOIN orders o ON u.id = o.user_id",
+    "У Bob и Dev сумма NULL"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "Ann",
+          50
+        ],
+        [
+          "Ann",
+          100
+        ],
+        [
+          "Bob",
+          null
+        ],
+        [
+          "Cid",
+          200
+        ],
+        [
+          "Dev",
+          null
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT);\nINSERT INTO users VALUES (1,'Ann'),(2,'Bob'),(3,'Cid'),(4,'Dev');\nCREATE TABLE orders(id INTEGER PRIMARY KEY, user_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (1,1,100),(2,1,50),(3,3,200);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "Ada",
+          null
+        ],
+        [
+          "Leo",
+          90
+        ],
+        [
+          "Max",
+          40
+        ],
+        [
+          "Oli",
+          null
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT);\nINSERT INTO users VALUES (1,'Max'),(2,'Ada'),(3,'Leo'),(4,'Oli');\nCREATE TABLE orders(id INTEGER PRIMARY KEY, user_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (1,3,90),(2,1,40);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }

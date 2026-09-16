@@ -1,23 +1,99 @@
 {
   "id": "39-p3",
-  "title": "LAG для дельты",
+  "title": "Соседние строки",
   "difficulty": "hard",
   "lecture_id": "39",
   "order": 3,
-  "description": "Таблица prices(day, price). Для каждого дня добавьте разницу с предыдущим днём.",
+  "description": "Дана таблица `employees(id, name, department, salary)`. Напишите запрос, который для каждого сотрудника показывает зарплату **предыдущего сотрудника в его департаменте** по возрастанию зарплаты (`prev`) через `LAG`. У первого в департаменте `prev` — `NULL`. Отсортируйте по `department`, затем по `salary`.\n\n```sql\nSELECT name, salary, LAG(salary) OVER (PARTITION BY department ORDER BY salary, name) AS prev FROM employees ORDER BY department, salary;\n```",
   "examples": [
     {
-      "input": "SELECT day, price - LAG(price) OVER (ORDER BY day) FROM prices;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT name, salary, LAG(salary) OVER (PARTITION BY department ORDER BY salary, name) AS prev FROM employees ORDER BY department, salary;",
+      "output": "Ann|100|, Eva|110|100, Bob|120|110, Cid|90|, Dev|150|90",
+      "explanation": "Ann и Cid — первые в своих отделах, prev = NULL."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "LAG(salary) OVER (PARTITION BY department ORDER BY salary, name)",
+    "ORDER BY department, salary"
+  ],
   "hints": [
-    "LAG(...) OVER (ORDER BY ...)."
+    "LAG(salary) OVER (PARTITION BY department ORDER BY salary, name)",
+    "ORDER BY department, salary"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "Ann",
+          100,
+          null
+        ],
+        [
+          "Eva",
+          110,
+          100
+        ],
+        [
+          "Bob",
+          120,
+          110
+        ],
+        [
+          "Cid",
+          90,
+          null
+        ],
+        [
+          "Dev",
+          150,
+          90
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE employees(id INTEGER PRIMARY KEY, name TEXT, department TEXT, salary INTEGER);\nINSERT INTO employees VALUES (1,'Ann','Eng',100),(2,'Bob','Eng',120),(3,'Cid','Ops',90),(4,'Dev','Ops',150),(5,'Eva','Eng',110);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "Mae",
+          80,
+          null
+        ],
+        [
+          "Rex",
+          130,
+          80
+        ],
+        [
+          "Ida",
+          70,
+          null
+        ],
+        [
+          "Noa",
+          70,
+          70
+        ],
+        [
+          "Zoe",
+          90,
+          70
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE employees(id INTEGER PRIMARY KEY, name TEXT, department TEXT, salary INTEGER);\nINSERT INTO employees VALUES (1,'Mae','Eng',80),(2,'Noa','Ops',70),(3,'Rex','Eng',130),(4,'Ida','Ops',70),(5,'Zoe','Ops',90);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }

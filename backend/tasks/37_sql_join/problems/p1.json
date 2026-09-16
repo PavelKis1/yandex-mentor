@@ -1,23 +1,69 @@
 {
   "id": "37-p1",
-  "title": "INNER JOIN",
+  "title": "Внутреннее соединение",
   "difficulty": "easy",
   "lecture_id": "37",
   "order": 1,
-  "description": "Таблицы users(id, name) и orders(id, user_id, amount). Выведите имена и суммы всех заказов.",
+  "description": "Даны таблицы `users(id, name)` и `orders(id, user_id, amount)`. Напишите запрос, который выводит имя пользователя и сумму заказа для **всех заказов**, используя `INNER JOIN`. Отсортируйте по `orders.id` (порядку добавления заказов).\n\n```sql\nSELECT u.name, o.amount FROM users u JOIN orders o ON u.id = o.user_id ...;\n```",
   "examples": [
     {
-      "input": "SELECT u.name, o.amount FROM users u JOIN orders o ON u.id = o.user_id;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT u.name, o.amount FROM users u JOIN orders o ON u.id = o.user_id ORDER BY o.id;",
+      "output": "Ann|100, Ann|50, Cid|200",
+      "explanation": "У Dev нет заказов — в INNER JOIN его нет."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "INNER JOIN by u.id = o.user_id",
+    "ORDER BY o.id"
+  ],
   "hints": [
-    "INNER JOIN через ON."
+    "FROM users u JOIN orders o ON u.id = o.user_id",
+    "ORDER BY o.id"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "Ann",
+          100
+        ],
+        [
+          "Ann",
+          50
+        ],
+        [
+          "Cid",
+          200
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT);\nINSERT INTO users VALUES (1,'Ann'),(2,'Bob'),(3,'Cid'),(4,'Dev');\nCREATE TABLE orders(id INTEGER PRIMARY KEY, user_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (1,1,100),(2,1,50),(3,3,200);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "Leo",
+          90
+        ],
+        [
+          "Max",
+          40
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT);\nINSERT INTO users VALUES (1,'Max'),(2,'Ada'),(3,'Leo'),(4,'Oli');\nCREATE TABLE orders(id INTEGER PRIMARY KEY, user_id INTEGER, amount INTEGER);\nINSERT INTO orders VALUES (1,3,90),(2,1,40);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }

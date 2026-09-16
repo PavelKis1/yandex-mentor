@@ -4,20 +4,70 @@
   "difficulty": "easy",
   "lecture_id": "36",
   "order": 1,
-  "description": "Таблица users(id, name, age). Выберите имена пользователей старше 18 лет, отсортированных по возрасту по убыванию.",
+  "description": "Дана таблица `users(id, name, age)`. Напишите запрос, который выбирает имя и возраст пользователей **старше 18 лет**, отсортировав их **по убыванию возраста**, а при равном возрасте — по имени (по возрастанию).\n\n```sql\nSELECT name, age FROM users ...;\n```",
   "examples": [
     {
-      "input": "SELECT name FROM users WHERE age > 18 ORDER BY age DESC;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT name, age FROM users WHERE age > 18 ORDER BY age DESC, name;",
+      "output": "Cid|30, Ann|25, Eva|22, Dev|19",
+      "explanation": "Только взрослые, старший первым."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "age > 18",
+    "ORDER BY age DESC, name ASC"
+  ],
   "hints": [
-    "WHERE + ORDER BY; экранируй кавычки."
+    "WHERE age > 18",
+    "ORDER BY age DESC, name"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "Cid",
+          30
+        ],
+        [
+          "Ann",
+          25
+        ],
+        [
+          "Eva",
+          22
+        ],
+        [
+          "Dev",
+          19
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER);\nINSERT INTO users VALUES (1,'Ann',25),(2,'Bob',17),(3,'Cid',30),(4,'Dev',19),(5,'Eva',22),(6,'Fay',17);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "Max",
+          41
+        ],
+        [
+          "Leo",
+          28
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER);\nINSERT INTO users VALUES (1,'Max',41),(2,'Ada',15),(3,'Leo',28);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }

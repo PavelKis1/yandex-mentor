@@ -1,23 +1,101 @@
 {
   "id": "39-p2",
-  "title": "Скользящая сумма",
+  "title": "Агрегат по окну",
   "difficulty": "medium",
   "lecture_id": "39",
   "order": 2,
-  "description": "Таблица sales(day, amount). Для каждого дня посчитайте накопительную сумму продаж.",
+  "description": "Дана таблица `employees(id, name, department, salary)`. Напишите запрос, который для каждого сотрудника показывает среднюю зарплату его **департамента** `dept_avg` (округлённую до 1 знака) через `AVG(...) OVER (PARTITION BY department)`. Отсортируйте по `id`.\n\n```sql\nSELECT name, department, ROUND(AVG(salary) OVER (PARTITION BY department), 1) AS dept_avg FROM employees ORDER BY id;\n```",
   "examples": [
     {
-      "input": "SELECT day, SUM(amount) OVER (ORDER BY day) FROM sales;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT name, department, ROUND(AVG(salary) OVER (PARTITION BY department),1) AS dept_avg FROM employees ORDER BY id;",
+      "output": "Ann|Eng|110.0, Bob|Eng|110.0, Cid|Ops|120.0, Dev|Ops|120.0, Eva|Eng|110.0",
+      "explanation": "Eng: (100+120+110)/3=110; Ops: (90+150)/2=120."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "AVG(salary) OVER (PARTITION BY department)",
+    "ROUND(..., 1)",
+    "ORDER BY id"
+  ],
   "hints": [
-    "SUM OVER без PARTITION = по всему набору."
+    "AVG(salary) OVER (PARTITION BY department)",
+    "ROUND(...,1)",
+    "ORDER BY id"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "Ann",
+          "Eng",
+          110.0
+        ],
+        [
+          "Bob",
+          "Eng",
+          110.0
+        ],
+        [
+          "Cid",
+          "Ops",
+          120.0
+        ],
+        [
+          "Dev",
+          "Ops",
+          120.0
+        ],
+        [
+          "Eva",
+          "Eng",
+          110.0
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE employees(id INTEGER PRIMARY KEY, name TEXT, department TEXT, salary INTEGER);\nINSERT INTO employees VALUES (1,'Ann','Eng',100),(2,'Bob','Eng',120),(3,'Cid','Ops',90),(4,'Dev','Ops',150),(5,'Eva','Eng',110);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "Mae",
+          "Eng",
+          105.0
+        ],
+        [
+          "Noa",
+          "Ops",
+          76.7
+        ],
+        [
+          "Rex",
+          "Eng",
+          105.0
+        ],
+        [
+          "Ida",
+          "Ops",
+          76.7
+        ],
+        [
+          "Zoe",
+          "Ops",
+          76.7
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE employees(id INTEGER PRIMARY KEY, name TEXT, department TEXT, salary INTEGER);\nINSERT INTO employees VALUES (1,'Mae','Eng',80),(2,'Noa','Ops',70),(3,'Rex','Eng',130),(4,'Ida','Ops',70),(5,'Zoe','Ops',90);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }

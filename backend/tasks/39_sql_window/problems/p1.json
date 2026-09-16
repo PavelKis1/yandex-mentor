@@ -1,23 +1,100 @@
 {
   "id": "39-p1",
-  "title": "ROW_NUMBER",
+  "title": "Нумерация строк",
   "difficulty": "easy",
   "lecture_id": "39",
   "order": 1,
-  "description": "Таблица students(class_id, score). Для каждого класса пронумеруйте студентов по убыванию балла.",
+  "description": "Дана таблица `employees(id, name, department, salary)`. Напишите запрос, который нумерует сотрудников от 1 по **убыванию зарплаты** (`rn`), при одинаковой зарплате — по имени. Отсортируйте по `rn`.\n\n```sql\nSELECT name, salary, ROW_NUMBER() OVER (ORDER BY salary DESC, name) AS rn FROM employees ORDER BY rn;\n```",
   "examples": [
     {
-      "input": "SELECT *, ROW_NUMBER() OVER (PARTITION BY class_id ORDER BY score DESC) rn FROM students;",
-      "output": "",
-      "explanation": null
+      "input": "SELECT name, salary, ROW_NUMBER() OVER (ORDER BY salary DESC, name) AS rn FROM employees ORDER BY rn;",
+      "output": "Dev|150|1, Bob|120|2, Eva|110|3, Ann|100|4, Cid|90|5",
+      "explanation": "Самый высокооплачиваемый получает 1."
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "ROW_NUMBER() OVER (ORDER BY salary DESC, name)",
+    "ORDER BY rn"
+  ],
   "hints": [
-    "Оконная функция + PARTITION BY."
+    "ROW_NUMBER() OVER (ORDER BY salary DESC, name)",
+    "AS rn",
+    "ORDER BY rn"
   ],
   "starter_code": "",
   "entry_function": null,
-  "test_cases": [],
-  "timeout_ms": 3000
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": [
+        [
+          "Dev",
+          150,
+          1
+        ],
+        [
+          "Bob",
+          120,
+          2
+        ],
+        [
+          "Eva",
+          110,
+          3
+        ],
+        [
+          "Ann",
+          100,
+          4
+        ],
+        [
+          "Cid",
+          90,
+          5
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE employees(id INTEGER PRIMARY KEY, name TEXT, department TEXT, salary INTEGER);\nINSERT INTO employees VALUES (1,'Ann','Eng',100),(2,'Bob','Eng',120),(3,'Cid','Ops',90),(4,'Dev','Ops',150),(5,'Eva','Eng',110);\n"
+    },
+    {
+      "id": "t2",
+      "args": [],
+      "expected": [
+        [
+          "Rex",
+          130,
+          1
+        ],
+        [
+          "Zoe",
+          90,
+          2
+        ],
+        [
+          "Mae",
+          80,
+          3
+        ],
+        [
+          "Ida",
+          70,
+          4
+        ],
+        [
+          "Noa",
+          70,
+          5
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "db_schema": "CREATE TABLE employees(id INTEGER PRIMARY KEY, name TEXT, department TEXT, salary INTEGER);\nINSERT INTO employees VALUES (1,'Mae','Eng',80),(2,'Noa','Ops',70),(3,'Rex','Eng',130),(4,'Ida','Ops',70),(5,'Zoe','Ops',90);\n"
+    }
+  ],
+  "timeout_ms": 3000,
+  "language": "sql"
 }
