@@ -4,99 +4,32 @@
   "difficulty": "medium",
   "lecture_id": "12",
   "order": 2,
-  "description": "Найдите стартовую станцию для полного круга.\n\n**Функция решения:**\n\n```python\ndef can_complete_circuit(gas: list[int], cost: list[int]) -> int:\n    \"\"\"O(n) — если суммарный газ хватает, ответ существует; считаем запас.\n\n    Edge cases: суммарный газ < суммарной стоимости (−1), один элемент,\n    нулевые значения.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def can_complete_circuit(gas: list[int], cost: list[int]) -> int:\n    \"\"\"O(n) — если суммарный газ хватает, ответ существует; считаем запас.\n\n    Edge cases: суммарный газ < суммарной стоимости (−1), один элемент,\n    нулевые значения.\n    \"\"\"\n    ...\n",
+  "description": "Имеется круговая трасса с `n` заправками. Массив `gas` — количество топлива, которое можно получить на каждой станции, массив `cost` — расход топлива, чтобы доехать от станции `i` до станции `i+1`. Автомобиль начинает с пустым баком. Найдите **индекс станции**, с которой можно проехать весь круг и вернуться, или `-1`, если это невозможно (ответ существует не более чем для одной станции).\n\n**Функция решения:**\n\n```python\ndef can_complete_circuit(gas: list[int], cost: list[int]) -> int:\n    ...\n```",
+  "examples": [
+    {"input": "gas = [1, 2, 3, 4, 5], cost = [3, 4, 5, 1, 2]", "output": "3", "explanation": "Старт со станции 3: 4→5→1→2→3 удаётся проехать круг."},
+    {"input": "gas = [2, 3, 4], cost = [3, 4, 3]", "output": "-1", "explanation": "Суммарный газ (9) меньше суммарного расхода (10) — круг невозможен."},
+    {"input": "gas = [5], cost = [5]", "output": "0", "explanation": "Единственная станция: газ равен расходу."}
+  ],
+  "constraints": [
+    "1 ≤ len(gas) == len(cost) ≤ 10^5",
+    "0 ≤ gas[i], cost[i] ≤ 10^4"
+  ],
+  "hints": [
+    "Если sum(gas) < sum(cost) — решения нет, верните -1.",
+    "Иначе ответ существует; проходите массив, обновляя текущий запас.",
+    "Когда запас становится отрицательным, «сдвиньте» предполагаемый старт на следующую станцию. O(n)."
+  ],
+  "starter_code": "def can_complete_circuit(gas: list[int], cost: list[int]) -> int:\n    \"\"\"Вернуть индекс стартовой станции для полного круга или -1.\"\"\"\n    ...",
   "entry_function": "can_complete_circuit",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          2,
-          3,
-          4,
-          5
-        ],
-        [
-          3,
-          4,
-          5,
-          1,
-          2
-        ]
-      ],
-      "expected": 3,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [
-          2,
-          3,
-          4
-        ],
-        [
-          3,
-          4,
-          3
-        ]
-      ],
-      "expected": -1,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          5
-        ],
-        [
-          5
-        ]
-      ],
-      "expected": 0,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          3,
-          1
-        ],
-        [
-          1,
-          2
-        ]
-      ],
-      "expected": 0,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[1, 2, 3, 4, 5], [3, 4, 5, 1, 2]], "expected": 3, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t2", "args": [[2, 3, 4], [3, 4, 3]], "expected": -1, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t3", "args": [[5], [5]], "expected": 0, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t4", "args": [[3, 1], [1, 2]], "expected": 0, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t5", "args": [[1, 2], [2, 1]], "expected": 1, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t6", "args": [[3, 1, 1], [1, 1, 1]], "expected": 0, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t7", "args": [[5, 1, 2], [4, 0, 1]], "expected": 0, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t8", "args": [[1, 1], [2, 2]], "expected": -1, "hidden": true, "arg_converters": [null, null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

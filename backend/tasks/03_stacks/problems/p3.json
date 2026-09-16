@@ -1,15 +1,35 @@
 {
   "id": "03-p3",
-  "title": "Оценка RPN",
+  "title": "Наибольший прямоугольник в гистограмме",
   "difficulty": "hard",
   "lecture_id": "03",
   "order": 3,
-  "description": "Вычислите выражение в обратной польской нотации.",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "description": "Дана гистограмма как массив высот столбцов `heights`, где `heights[i]` — высота столбца шириной 1. Найдите **максимально возможную площадь** прямоугольника, который можно разместить внутри гистограммы.\n\nПрямоугольник может опираться на несколько столбцов подряд и должен полностью помещаться в них.\n\n**Функция решения:**\n\n```python\ndef largest_rectangle_area(heights: list[int]) -> int:\n    ...\n```",
+  "examples": [
+    {"input": "heights = [2, 1, 5, 6, 2, 3]", "output": "10", "explanation": "Прямоугольник 2x5 охватывает столбцы 5 и 6: площадь 10."},
+    {"input": "heights = [2, 4]", "output": "4", "explanation": "Один столбец высотой 4 даёт прямоугольник 1x4."},
+    {"input": "heights = [2, 2, 2]", "output": "6", "explanation": "Один прямоугольник 3x2 охватывает все три столбца."}
+  ],
+  "constraints": [
+    "1 ≤ len(heights) ≤ 10^5",
+    "0 ≤ heights[i] ≤ 10^4"
+  ],
+  "hints": [
+    "Для каждого столбца можно найти «границы»: ближайший слева и справа столбец меньшей высоты.",
+    "Монотонный стек индексов за один проход даёт эти границы за O(n).",
+    "Площадь = height[i] * (right[i] - left[i] - 1); ответ — максимум по всем i."
+  ],
+  "starter_code": "def largest_rectangle_area(heights: list[int]) -> int:\n    \"\"\"Вернуть площадь наибольшего прямоугольника внутри гистограммы.\"\"\"\n    ...",
+  "entry_function": "largest_rectangle_area",
+  "test_cases": [
+    {"id": "t1", "args": [[2, 1, 5, 6, 2, 3]], "expected": 10, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t2", "args": [[2, 4]], "expected": 4, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t3", "args": [[2, 2, 2]], "expected": 6, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t4", "args": [[6, 2, 5, 4, 5, 1, 6]], "expected": 12, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t5", "args": [[2, 1, 2]], "expected": 3, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t6", "args": [[1]], "expected": 1, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t7", "args": [[0]], "expected": 0, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t8", "args": [[0, 9]], "expected": 9, "hidden": true, "arg_converters": [null], "result_converter": null}
+  ],
   "timeout_ms": 3000
 }

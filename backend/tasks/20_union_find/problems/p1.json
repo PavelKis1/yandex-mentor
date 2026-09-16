@@ -4,11 +4,34 @@
   "difficulty": "easy",
   "lecture_id": "20",
   "order": 1,
-  "description": "Найдите количество провинций.\n\n**Функция решения:**\n\n```python\ndef find_circle_num(is_connected: list[list[int]]) -> int:\n    \"\"\"O(n^2 α(n)) — число компонент связности по матрице смежности.\n\n    Edge cases: n = 0, одна провинция, изолированные вершины.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def find_circle_num(is_connected: list[list[int]]) -> int:\n    \"\"\"O(n^2 α(n)) — число компонент связности по матрице смежности.\n\n    Edge cases: n = 0, одна провинция, изолированные вершины.\n    \"\"\"\n    ...\n",
+  "description": "Дана матрица смежности `is_connected` размером `n x n`: `is_connected[i][j] == 1`, если города `i` и `j` соединены напрямую. **Провинция** — группа прямо или косвенно связанных городов. Верните **количество провинций**.\n\n**Функция решения:**\n\n```python\ndef find_circle_num(is_connected: list[list[int]]) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "is_connected = [[1,1,0],[1,1,0],[0,0,1]]",
+      "output": "2",
+      "explanation": "Города 0-1 связаны, город 2 отдельно."
+    },
+    {
+      "input": "is_connected = [[1]]",
+      "output": "1",
+      "explanation": "Один город — одна провинция."
+    },
+    {
+      "input": "is_connected = []",
+      "output": "0",
+      "explanation": "Пустая матрица."
+    }
+  ],
+  "constraints": [
+    "0 ≤ n ≤ 200",
+    "is_connected[i][i] = 1",
+    "Матрица симметрична"
+  ],
+  "hints": [
+    "Union все пары с is_connected[i][j] == 1.",
+    "Ответ — число различных корней find(i)."
+  ],
+  "starter_code": "def find_circle_num(is_connected: list[list[int]]) -> int:\n    \"\"\"Число провинций (компонент связности) по матрице смежности.\"\"\"\n    ...",
   "entry_function": "find_circle_num",
   "test_cases": [
     {
@@ -49,7 +72,7 @@
         ]
       ],
       "expected": 1,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null
       ],
@@ -61,7 +84,7 @@
         []
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null
       ],
@@ -89,7 +112,63 @@
         ]
       ],
       "expected": 3,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": 2,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
       "arg_converters": [
         null
       ],

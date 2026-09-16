@@ -4,11 +4,33 @@
   "difficulty": "easy",
   "lecture_id": "14",
   "order": 1,
-  "description": "Найдите количество путей в сетке m×n.\n\n**Функция решения:**\n\n```python\ndef unique_paths(m: int, n: int) -> int:\n    \"\"\"O(m*n) — one-dimensional DP, по столбцам текущего ряда.\n\n    Edge cases: m = 0 или n = 0 (0 путей), m = 1 (1 путь), n = 1 (1 путь).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def unique_paths(m: int, n: int) -> int:\n    \"\"\"O(m*n) — one-dimensional DP, по столбцам текущего ряда.\n\n    Edge cases: m = 0 или n = 0 (0 путей), m = 1 (1 путь), n = 1 (1 путь).\n    \"\"\"\n    ...\n",
+  "description": "Есть сетка размером `m x n`. Робот стартует в левом верхнем углу и может двигаться только **вниз** или **вправо**. Верните количество уникальных путей до правого нижнего угла. Если `m < 1` или `n < 1`, верните 0.\n\n**Функция решения:**\n\n```python\ndef unique_paths(m: int, n: int) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "m = 3, n = 7",
+      "output": "28",
+      "explanation": "Число сочетаний C(3+7-2, 2) = 28."
+    },
+    {
+      "input": "m = 3, n = 3",
+      "output": "6",
+      "explanation": "Шесть различных маршрутов."
+    },
+    {
+      "input": "m = 0, n = 5",
+      "output": "0",
+      "explanation": "Пустой размер — путей нет."
+    }
+  ],
+  "constraints": [
+    "0 ≤ m, n ≤ 100",
+    "Движение только вниз и вправо"
+  ],
+  "hints": [
+    "dp[i][j] = dp[i-1][j] + dp[i][j-1].",
+    "Можно хранить только одну строку, обновляя её слева направо."
+  ],
+  "starter_code": "def unique_paths(m: int, n: int) -> int:\n    \"\"\"Число путей из левого верхнего угла в правый нижний.\"\"\"\n    ...",
   "entry_function": "unique_paths",
   "test_cases": [
     {
@@ -60,7 +82,7 @@
         0
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -74,7 +96,49 @@
         10
       ],
       "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        3,
+        3
+      ],
+      "expected": 6,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t7",
+      "args": [
+        2,
+        2
+      ],
+      "expected": 2,
       "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t8",
+      "args": [
+        7,
+        3
+      ],
+      "expected": 28,
+      "hidden": true,
       "arg_converters": [
         null,
         null

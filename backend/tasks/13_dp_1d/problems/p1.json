@@ -4,11 +4,33 @@
   "difficulty": "easy",
   "lecture_id": "13",
   "order": 1,
-  "description": "Найдите количество способов подняться на n ступеней.\n\n**Функция решения:**\n\n```python\ndef climb_stairs(n: int) -> int:\n    \"\"\"O(n) — фибоначчи: ways(i) = ways(i-1) + ways(i-2).\n\n    Edge cases: n < 0 (0), n = 1 (1 способ), n = 2 (2 способа).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def climb_stairs(n: int) -> int:\n    \"\"\"O(n) — фибоначчи: ways(i) = ways(i-1) + ways(i-2).\n\n    Edge cases: n < 0 (0), n = 1 (1 способ), n = 2 (2 способа).\n    \"\"\"\n    ...\n",
+  "description": "Вы поднимаетесь по лестнице из `n` ступеней. За один раз можно сделать **1** или **2** шага. Верните **количество различных способов** подняться на вершину. Если `n <= 0`, верните 0.\n\n**Функция решения:**\n\n```python\ndef climb_stairs(n: int) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "n = 3",
+      "output": "3",
+      "explanation": "Способы: 1+1+1, 1+2, 2+1."
+    },
+    {
+      "input": "n = 4",
+      "output": "5",
+      "explanation": "Числа Фибоначчи: 1, 2, 3, 5."
+    },
+    {
+      "input": "n = 0",
+      "output": "0",
+      "explanation": "Подниматься не нужно — 0 способов."
+    }
+  ],
+  "constraints": [
+    "0 ≤ n ≤ 45",
+    "Допустимые шаги: 1 и 2"
+  ],
+  "hints": [
+    "dp[n] = dp[n-1] + dp[n-2] — это числа Фибоначчи.",
+    "Достаточно хранить два последних значения: a, b."
+  ],
+  "starter_code": "def climb_stairs(n: int) -> int:\n    \"\"\"Количество способов подняться на n ступеней (шаги 1 или 2).\"\"\"\n    ...",
   "entry_function": "climb_stairs",
   "test_cases": [
     {
@@ -38,9 +60,9 @@
     {
       "id": "t3",
       "args": [
-        4
+        3
       ],
-      "expected": 5,
+      "expected": 3,
       "hidden": false,
       "arg_converters": [
         null
@@ -49,6 +71,30 @@
     },
     {
       "id": "t4",
+      "args": [
+        4
+      ],
+      "expected": 5,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        5
+      ],
+      "expected": 8,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
       "args": [
         0
       ],
@@ -60,12 +106,24 @@
       "result_converter": null
     },
     {
-      "id": "t5",
+      "id": "t7",
       "args": [
         -3
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t8",
+      "args": [
+        10
+      ],
+      "expected": 89,
+      "hidden": true,
       "arg_converters": [
         null
       ],

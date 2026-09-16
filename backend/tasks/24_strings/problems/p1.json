@@ -4,11 +4,34 @@
   "difficulty": "easy",
   "lecture_id": "24",
   "order": 1,
-  "description": "Проверьте, являются ли строки анаграммами.\n\n**Функция решения:**\n\n```python\ndef is_anagram(s: str, t: str) -> bool:\n    \"\"\"O(n) — подсчёт символов через фиксированный массив 26 букв (a-z).\n\n    Edge cases: разная длина (False), пустые строки (True).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def is_anagram(s: str, t: str) -> bool:\n    \"\"\"O(n) — подсчёт символов через фиксированный массив 26 букв (a-z).\n\n    Edge cases: разная длина (False), пустые строки (True).\n    \"\"\"\n    ...\n",
+  "description": "Даны строки `s` и `t`. Верните `True`, если `t` — **анаграмма** `s`, то есть составлена из тех же символов с той же кратностью.\n\n**Функция решения:**\n\n```python\ndef is_anagram(s: str, t: str) -> bool:\n    ...\n```",
+  "examples": [
+    {
+      "input": "s = 'anagram', t = 'nagaram'",
+      "output": "True",
+      "explanation": "Один и тот же набор букв."
+    },
+    {
+      "input": "s = 'rat', t = 'car'",
+      "output": "False",
+      "explanation": "Разные буквы."
+    },
+    {
+      "input": "s = '', t = ''",
+      "output": "True",
+      "explanation": "Обе пустые."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(s), len(t) ≤ 5·10^4",
+    "Только строчные латинские буквы"
+  ],
+  "hints": [
+    "Сравните счётчики символов (Counter).",
+    "Либо отсортируйте и сравните строки.",
+    "Если длины разные — сразу False."
+  ],
+  "starter_code": "def is_anagram(s: str, t: str) -> bool:\n    \"\"\"True, если t — анаграмма s.\"\"\"\n    ...",
   "entry_function": "is_anagram",
   "test_cases": [
     {
@@ -46,7 +69,7 @@
         ""
       ],
       "expected": true,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -56,11 +79,25 @@
     {
       "id": "t4",
       "args": [
+        "ab",
+        "ba"
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
         "a",
-        "ab"
+        "b"
       ],
       "expected": false,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null

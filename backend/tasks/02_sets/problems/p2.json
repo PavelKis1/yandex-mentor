@@ -4,71 +4,42 @@
   "difficulty": "medium",
   "lecture_id": "02",
   "order": 2,
-  "description": "Найдите количество уникальных элементов.\n\n**Функция решения:**\n\n```python\ndef count_unique(nums: list[int]) -> int:\n    \"\"\"O(n) — количество уникальных элементов через set.\n\n    Edge cases: пустой массив, один элемент, все элементы одинаковые.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import Counter\n\ndef count_unique(nums: list[int]) -> int:\n    \"\"\"O(n) — количество уникальных элементов через set.\n\n    Edge cases: пустой массив, один элемент, все элементы одинаковые.\n    \"\"\"\n    ...\n",
+  "description": "Дан массив целых чисел `nums`. Найдите **количество различных значений**, которые в нём встречаются. Например, в массиве `[1, 2, 1, 3]` различных значений три: 1, 2 и 3.\n\n**Функция решения:**\n\n```python\ndef count_unique(nums: list[int]) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "nums = [1, 3, 1, 2, 3]",
+      "output": "3",
+      "explanation": "Различные значения: 1, 2 и 3."
+    },
+    {
+      "input": "nums = [5]",
+      "output": "1",
+      "explanation": "В массиве одно значение."
+    },
+    {
+      "input": "nums = []",
+      "output": "0",
+      "explanation": "Пустой массив — уникальных значений нет."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(nums) ≤ 10^5",
+    "−10^9 ≤ nums[i] ≤ 10^9"
+  ],
+  "hints": [
+    "Множество не хранит дубликаты: добавьте в него все элементы массива.",
+    "Количество различных значений — это len(s) получившегося множества.",
+    "Сложность O(n) по времени и O(n) по памяти."
+  ],
+  "starter_code": "def count_unique(nums: list[int]) -> int:\n    \"\"\"Вернуть количество различных значений в списке.\"\"\"\n    ...",
   "entry_function": "count_unique",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          2,
-          3
-        ]
-      ],
-      "expected": 3,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        []
-      ],
-      "expected": 0,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          7
-        ]
-      ],
-      "expected": 1,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          1,
-          1,
-          1
-        ]
-      ],
-      "expected": 1,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[1, 3, 1, 2, 3]], "expected": 3, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t2", "args": [[]], "expected": 0, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t3", "args": [[5]], "expected": 1, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t4", "args": [[1, 1, 1, 1]], "expected": 1, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t5", "args": [[-1, 0, 1, -1, 0]], "expected": 3, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t6", "args": [[7, 3, 7, 3, 5, 3]], "expected": 3, "hidden": true, "arg_converters": [null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

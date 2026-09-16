@@ -1,83 +1,37 @@
 {
   "id": "11-p3",
-  "title": "Подмножество с суммой",
+  "title": "Подмассивы с суммой k",
   "difficulty": "hard",
   "lecture_id": "11",
   "order": 3,
-  "description": "Найдите количество подмножеств с суммой k.\n\n**Функция решения:**\n\n```python\ndef count_subsets(nums: list[int], k: int) -> int:\n    \"\"\"O(n*k) — DP по сумме (рюкзак 0/1), нижняя граница по памяти.\n\n    Edge cases: пустой массив (k=0 даёт 1), один элемент, нулевой суммовой лимит.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def count_subsets(nums: list[int], k: int) -> int:\n    \"\"\"O(n*k) — DP по сумме (рюкзак 0/1), нижняя граница по памяти.\n\n    Edge cases: пустой массив (k=0 даёт 1), один элемент, нулевой суммовой лимит.\n    \"\"\"\n    ...\n",
-  "entry_function": "count_subsets",
+  "description": "Дан массив целых чисел `nums` и целое `k`. Найдите **количество подмассивов** (непрерывных фрагментов), сумма которых равна `k`.\n\n**Функция решения:**\n\n```python\ndef count_subarrays(nums: list[int], k: int) -> int:\n    ...\n```",
+  "examples": [
+    {"input": "nums = [1, 1, 1], k = 2", "output": "2", "explanation": "Подмассивы [1,1] (индексы 0-1 и 1-2)."},
+    {"input": "nums = [1, 2, 3], k = 3", "output": "2", "explanation": "[1,2] и [3]."},
+    {"input": "nums = [0, 0], k = 0", "output": "3", "explanation": "[0], [0] и [0,0]."}
+  ],
+  "constraints": [
+    "0 ≤ len(nums) ≤ 10^5",
+    "−10^4 ≤ nums[i] ≤ 10^4",
+    "−10^5 ≤ k ≤ 10^5"
+  ],
+  "hints": [
+    "Префиксная сумма: сумма подмассива [l, r] = prefix[r+1] − prefix[l].",
+    "Ищем префиксы prefix с условием prefix − k уже встречался ранее.",
+    "Словарь «префикс → сколько раз встречался». Сложность O(n), память O(n)."
+  ],
+  "starter_code": "def count_subarrays(nums: list[int], k: int) -> int:\n    \"\"\"Вернуть количество подмассивов с суммой k.\"\"\"\n    ...",
+  "entry_function": "count_subarrays",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          2,
-          3
-        ],
-        3
-      ],
-      "expected": 2,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [],
-        0
-      ],
-      "expected": 1,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          1,
-          2,
-          3
-        ],
-        7
-      ],
-      "expected": 0,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          0,
-          1
-        ],
-        1
-      ],
-      "expected": 2,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[1, 1, 1], 2], "expected": 2, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t2", "args": [[1, 2, 3], 3], "expected": 2, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t3", "args": [[], 0], "expected": 0, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t4", "args": [[0, 0], 0], "expected": 3, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t5", "args": [[1], 1], "expected": 1, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t6", "args": [[1, -1, 0], 0], "expected": 3, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t7", "args": [[1, 1, 1], 1], "expected": 3, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t8", "args": [[-1, -1], -2], "expected": 1, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t9", "args": [[3, 1, 2, 4], 6], "expected": 2, "hidden": true, "arg_converters": [null, null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

@@ -1,0 +1,105 @@
+{
+  "id": "20",
+  "slug": "union-find",
+  "title": "Система непересекающихся множеств (Union-Find / DSU)",
+  "description": "DSU объединяет множества и отвечает на вопрос «в одной ли компоненте». Работает почти за O(1) благодаря сжатию путей. Разбираем число провинций, лишнее ребро и слияние аккаунтов.",
+  "durationMinutes": 15,
+  "difficulty": "middle",
+  "tags": [
+    "Algorithms",
+    "Graphs",
+    "Union-Find",
+    "DSU"
+  ],
+  "learningOutcomes": [
+    "Реализовывать find (со сжатием путей) и union",
+    "Считать компоненты связности и находить ребро-цикл",
+    "Применять DSU для группировки по общему ключу"
+  ],
+  "complexity": {
+    "timeComplexity": "O(α(n)) на операцию",
+    "spaceComplexity": "O(n)",
+    "explanation": "Со сжатием путей и union по весу операции почти константны (обратная функция Аккермана)."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что даёт сжатие путей (path compression)?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "find становится почти O(1) в среднем",
+          "isCorrect": true,
+          "explanation": "Родителя узла напрямую ставим в корень."
+        },
+        {
+          "id": "opt2",
+          "text": "Гарантирует сортировку вершин",
+          "isCorrect": false,
+          "explanation": "Сортировка не связана с DSU."
+        },
+        {
+          "id": "opt3",
+          "text": "Добавляет рёбра в граф",
+          "isCorrect": false,
+          "explanation": "DSU не строит рёбра."
+        }
+      ],
+      "hint": "Какой эффект от перенаправления узлов к корню?"
+    },
+    {
+      "id": "q2",
+      "question": "Когда union находит лишнее ребро в графе?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Когда обе вершины уже в одной компоненте",
+          "isCorrect": true,
+          "explanation": "Ребро замыкает цикл внутри одной компоненты."
+        },
+        {
+          "id": "opt2",
+          "text": "Когда вершины в разных компонентах",
+          "isCorrect": false,
+          "explanation": "Тогда ребро просто соединяет два множества."
+        },
+        {
+          "id": "opt3",
+          "text": "Когда рёбер больше 100",
+          "isCorrect": false,
+          "explanation": "Число рёбер ни при чём."
+        }
+      ],
+      "hint": "Какой результат union указывает на цикл?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "20-p1",
+      "title": "Провинции",
+      "difficulty": "easy",
+      "slug": "number-of-provinces"
+    },
+    {
+      "taskId": "20-p2",
+      "title": "Лишнее ребро",
+      "difficulty": "medium",
+      "slug": "redundant-connection"
+    },
+    {
+      "taskId": "20-p3",
+      "title": "Слияние аккаунтов",
+      "difficulty": "hard",
+      "slug": "accounts-merge"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "parent[i] указывает на родителя; find — к корню со сжатием путей.",
+      "union(a,b): находим корни; если равны — уже в одной компоненте.",
+      "Число компонент = число различных find(i).",
+      "Лишнее ребро: union двух узлов одной компоненты.",
+      "DSU по ключу (email) объединяет записи с общим значением."
+    ]
+  }
+}

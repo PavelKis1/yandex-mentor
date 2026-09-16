@@ -1,58 +1,35 @@
 {
   "id": "07-p3",
-  "title": "Топ K частых",
+  "title": "Топ K частых элементов",
   "difficulty": "hard",
   "lecture_id": "07",
   "order": 3,
-  "description": "Найдите k наиболее частых элементов.\n\n**Функция решения:**\n\n```python\ndef top_k_frequent(nums: list[int], k: int) -> list[int]:\n    \"\"\"O(n log k) — Counter и nlargest по частоте.\n\n    Edge cases: один уникальный элемент, все элементы одинаковые, k = n.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "import heapq\n\nfrom collections import Counter\n\ndef top_k_frequent(nums: list[int], k: int) -> list[int]:\n    \"\"\"O(n log k) — Counter и nlargest по частоте.\n\n    Edge cases: один уникальный элемент, все элементы одинаковые, k = n.\n    \"\"\"\n    ...\n",
+  "description": "Дан массив целых чисел `nums` и целое число `k`. Верните **k наиболее часто встречающихся** элементов. Ответ можно вернуть в любом порядке (в тестах частоты элементов различны, поэтому ответ однозначен).\n\n**Функция решения:**\n\n```python\ndef top_k_frequent(nums: list[int], k: int) -> list[int]:\n    ...\n```",
+  "examples": [
+    {"input": "nums = [1, 1, 1, 2, 2, 3], k = 2", "output": "[1, 2]", "explanation": "1 встречается 3 раза, 2 — 2 раза, 3 — 1 раз."},
+    {"input": "nums = [1], k = 1", "output": "[1]", "explanation": "Единственный элемент."},
+    {"input": "nums = [1, 2, 2, 3, 3, 3], k = 2", "output": "[3, 2]", "explanation": "3 — три раза, 2 — два раза."}
+  ],
+  "constraints": [
+    "1 ≤ k ≤ количество уникальных элементов ≤ 10^5",
+    "−10^4 ≤ nums[i] ≤ 10^4"
+  ],
+  "hints": [
+    "Посчитайте частоты с помощью collections.Counter.",
+    "Min-куча размера k хранит элементы с наибольшей частотой.",
+    "Ответ — элементы из кучи; сложность O(n log k) или O(n) через bucket sort по частотам."
+  ],
+  "starter_code": "import heapq\nfrom collections import Counter\n\n\ndef top_k_frequent(nums: list[int], k: int) -> list[int]:\n    \"\"\"Вернуть k наиболее часто встречающихся элементов.\"\"\"\n    ...",
   "entry_function": "top_k_frequent",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          1,
-          1,
-          2,
-          2,
-          3
-        ],
-        2
-      ],
-      "expected": [
-        1,
-        2
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [
-          1
-        ],
-        1
-      ],
-      "expected": [
-        1
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[1, 1, 1, 2, 2, 3], 2], "expected": [1, 2], "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t2", "args": [[1], 1], "expected": [1], "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t3", "args": [[1, 2, 2, 3, 3, 3], 2], "expected": [3, 2], "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t4", "args": [[4, 4, 1, 1, 1, 2], 2], "expected": [1, 4], "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t5", "args": [[1, 1, 2, 2, 3, 3, 3], 1], "expected": [3], "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t6", "args": [[5, 5, 5, 5], 1], "expected": [5], "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t7", "args": [[2, 2, 1, 1, 1], 2], "expected": [1, 2], "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t8", "args": [[7, 7, 7, 7, 7, 1, 1], 2], "expected": [7, 1], "hidden": true, "arg_converters": [null, null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

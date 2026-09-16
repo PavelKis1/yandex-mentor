@@ -4,11 +4,33 @@
   "difficulty": "medium",
   "lecture_id": "19",
   "order": 2,
-  "description": "Проверьте, есть ли цикл в графе.\n\n**Функция решения:**\n\n```python\ndef has_cycle(graph: dict[int, list[int]], n: int) -> bool:\n    \"\"\"O(V + E) — DFS-состояния 0/1/2; цикл = ребро в «текущий обход».\n\n    Edge cases: граф без рёбер (False), самопетля (True), одна вершина.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import deque\n\ndef has_cycle(graph: dict[int, list[int]], n: int) -> bool:\n    \"\"\"O(V + E) — DFS-состояния 0/1/2; цикл = ребро в «текущий обход».\n\n    Edge cases: граф без рёбер (False), самопетля (True), одна вершина.\n    \"\"\"\n    ...\n",
+  "description": "Дан **ориентированный** граф `graph: {vertex: [соседи]}` с вершинами `0..n-1`. Верните `True`, если в графе есть **цикл**.\n\n**Функция решения:**\n\n```python\ndef has_cycle(graph: dict[int, list[int]], n: int) -> bool:\n    ...\n```",
+  "examples": [
+    {
+      "input": "graph={0:[1],1:[0],2:[]}, n=3",
+      "output": "True",
+      "explanation": "Цикл между 0 и 1."
+    },
+    {
+      "input": "graph={}, n=3",
+      "output": "False",
+      "explanation": "Рёбер нет."
+    },
+    {
+      "input": "graph={0:[0]}, n=1",
+      "output": "True",
+      "explanation": "Самопетля — цикл."
+    }
+  ],
+  "constraints": [
+    "0 ≤ n ≤ 10^4",
+    "0 ≤ E ≤ 10^5"
+  ],
+  "hints": [
+    "DFS с состояниями 0 (не посещён), 1 (в обходе), 2 (готов).",
+    "Ребро в вершину со статусом 1 — цикл."
+  ],
+  "starter_code": "def has_cycle(graph: dict[int, list[int]], n: int) -> bool:\n    \"\"\"Есть ли цикл в ориентированном графе.\"\"\"\n    ...",
   "entry_function": "has_cycle",
   "test_cases": [
     {
@@ -40,7 +62,7 @@
         3
       ],
       "expected": false,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -79,7 +101,49 @@
         3
       ],
       "expected": false,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        {
+          "0": [
+            1
+          ],
+          "1": [
+            2
+          ],
+          "2": [
+            0
+          ]
+        },
+        3
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        {
+          "0": [
+            1
+          ]
+        },
+        2
+      ],
+      "expected": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null

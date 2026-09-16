@@ -1,108 +1,37 @@
 {
   "id": "10-p3",
-  "title": "Поиск по ответу",
+  "title": "Поиск по ответу (бананы)",
   "difficulty": "hard",
   "lecture_id": "10",
   "order": 3,
-  "description": "Найдите минимальную скорость для съедания бананов.\n\n**Функция решения:**\n\n```python\ndef min_eating_speed(piles: list[int], h: int) -> int:\n    \"\"\"O(n log max) — бинарный поиск по скорости; если не успеть и с max — -1.\n\n    Edge cases: пустые piles, часов меньше числа куч, одна куча, крупная куча.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def min_eating_speed(piles: list[int], h: int) -> int:\n    \"\"\"O(n log max) — бинарный поиск по скорости; если не успеть и с max — -1.\n\n    Edge cases: пустые piles, часов меньше числа куч, одна куча, крупная куча.\n    \"\"\"\n    ...\n",
+  "description": "Коко хочет съесть все бананы ровно за `h` часов. Массив `piles` содержит размеры кучек бананов. За один час Коко выбирает одну кучу и съедает из неё до `k` бананов (если в куче меньше `k`, она съедает всю кучу и не ест в этот час больше). Найдите **минимальную** скорость `k`, позволяющую съесть всё за `h` часов. Если даже с максимально возможной скоростью не успеть — верните `-1`.\n\n**Функция решения:**\n\n```python\ndef min_eating_speed(piles: list[int], h: int) -> int:\n    ...\n```",
+  "examples": [
+    {"input": "piles = [3, 6, 7, 11], h = 8", "output": "4", "explanation": "При k=4 часы: 1+2+2+3 = 8 — успели; при k=3 будет 1+2+3+4=10 > 8."},
+    {"input": "piles = [30, 11, 23, 4, 20], h = 5", "output": "30", "explanation": "При 5 часах нужно за час съедать целую самую большую кучу (30)."},
+    {"input": "piles = [3, 6], h = 1", "output": "-1", "explanation": "Хасов не хватит даже на две кучи."}
+  ],
+  "constraints": [
+    "0 ≤ len(piles) ≤ 10^4",
+    "1 ≤ h ≤ 10^9",
+    "1 ≤ piles[i] ≤ 10^9"
+  ],
+  "hints": [
+    "Функция total_hours(k) = sum(ceil(p_i / k)) монотонно убывает по k.",
+    "Бинарный поиск по скорости в диапазоне [1, max(piles)].",
+    "Если сумма ceil(p_i / max) > h — возвращайте -1. Сложность O(n log max)."
+  ],
+  "starter_code": "def min_eating_speed(piles: list[int], h: int) -> int:\n    \"\"\"Вернуть минимальную скорость поедания бананов за h часов или -1.\"\"\"\n    ...",
   "entry_function": "min_eating_speed",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          3,
-          6,
-          7,
-          11
-        ],
-        8
-      ],
-      "expected": 4,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [
-          30,
-          11,
-          23,
-          4,
-          20
-        ],
-        5
-      ],
-      "expected": 30,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          30,
-          11,
-          23,
-          4,
-          20
-        ],
-        6
-      ],
-      "expected": 23,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          5
-        ],
-        10
-      ],
-      "expected": 1,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t5",
-      "args": [
-        [
-          3,
-          6
-        ],
-        1
-      ],
-      "expected": -1,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[3, 6, 7, 11], 8], "expected": 4, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t2", "args": [[30, 11, 23, 4, 20], 5], "expected": 30, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t3", "args": [[30, 11, 23, 4, 20], 6], "expected": 23, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t4", "args": [[5], 10], "expected": 1, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t5", "args": [[3, 6], 1], "expected": -1, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t6", "args": [[7], 3], "expected": 3, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t7", "args": [[1, 2, 3], 6], "expected": 1, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t8", "args": [[10, 10, 10], 10], "expected": 4, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t9", "args": [[6], 2], "expected": 3, "hidden": true, "arg_converters": [null, null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

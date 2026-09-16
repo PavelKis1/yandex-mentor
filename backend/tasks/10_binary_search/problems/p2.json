@@ -1,107 +1,37 @@
 {
   "id": "10-p2",
-  "title": "Поиск в вращённом массиве",
+  "title": "Поиск во вращённом массиве",
   "difficulty": "medium",
   "lecture_id": "10",
   "order": 2,
-  "description": "Найдите target в вращённом отсортированном массиве.\n\n**Функция решения:**\n\n```python\ndef search_rotated(nums: list[int], target: int) -> int:\n    \"\"\"O(log n) — в каждой итерации одна из половин гарантированно отсортирована.\n\n    Edge cases: пустой массив, массив без вращения, цель на границе вращения.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def search_rotated(nums: list[int], target: int) -> int:\n    \"\"\"O(log n) — в каждой итерации одна из половин гарантированно отсортирована.\n\n    Edge cases: пустой массив, массив без вращения, цель на границе вращения.\n    \"\"\"\n    ...\n",
+  "description": "Дан массив `nums`, полученный вращением отсортированного массива (возможно, без вращения) — все элементы **уникальны**. Найдите **индекс** `target` или верните `-1`.\n\nПример: `[0,1,2,4,5,6,7]` при вращении на 3 позиции вправо даёт `[4,5,6,7,0,1,2]`.\n\n**Функция решения:**\n\n```python\ndef search_rotated(nums: list[int], target: int) -> int:\n    ...\n```",
+  "examples": [
+    {"input": "nums = [4, 5, 6, 7, 0, 1, 2], target = 0", "output": "4", "explanation": "0 находится на индексе 4."},
+    {"input": "nums = [4, 5, 6, 7, 0, 1, 2], target = 3", "output": "-1", "explanation": "3 отсутствует."},
+    {"input": "nums = [1, 3], target = 3", "output": "1", "explanation": "Небольшой вращённый массив."}
+  ],
+  "constraints": [
+    "0 ≤ len(nums) ≤ 10^5",
+    "−10^4 ≤ nums[i], target ≤ 10^4",
+    "Все элементы nums уникальны"
+  ],
+  "hints": [
+    "В каждой итерации одна из половин [left..mid] или [mid..right] гарантированно отсортирована.",
+    "Определите, какая половина отсортирована, и решайте, в какую спуститься.",
+    "Докажите снятие «вращённости» шаг за шагом — сложность O(log n)."
+  ],
+  "starter_code": "def search_rotated(nums: list[int], target: int) -> int:\n    \"\"\"Вернуть индекс target во вращённом отсортированном массиве или -1.\"\"\"\n    ...",
   "entry_function": "search_rotated",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          4,
-          5,
-          6,
-          7,
-          0,
-          1,
-          2
-        ],
-        0
-      ],
-      "expected": 4,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [
-          4,
-          5,
-          6,
-          7,
-          0,
-          1,
-          2
-        ],
-        3
-      ],
-      "expected": -1,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          1
-        ],
-        1
-      ],
-      "expected": 0,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          1,
-          3
-        ],
-        3
-      ],
-      "expected": 1,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t5",
-      "args": [
-        [],
-        5
-      ],
-      "expected": -1,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[4, 5, 6, 7, 0, 1, 2], 0], "expected": 4, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t2", "args": [[4, 5, 6, 7, 0, 1, 2], 3], "expected": -1, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t3", "args": [[1], 1], "expected": 0, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t4", "args": [[1, 3], 3], "expected": 1, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t5", "args": [[], 5], "expected": -1, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t6", "args": [[4, 5, 6, 7, 0, 1, 2], 7], "expected": 3, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t7", "args": [[4, 5, 6, 7, 0, 1, 2], 1], "expected": 5, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t8", "args": [[2, 3, 4], 3], "expected": 1, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t9", "args": [[5, 1, 3], 3], "expected": 2, "hidden": true, "arg_converters": [null, null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

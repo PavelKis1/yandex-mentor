@@ -4,12 +4,32 @@
   "difficulty": "hard",
   "lecture_id": "06",
   "order": 3,
-  "description": "Проверьте, является ли дерево BST.\n\n**Функция решения:**\n\n```python\ndef is_valid_bst(root: TreeNode | None) -> bool:\n    \"\"\"O(n) — каждый узел проверяется на диапазон (low, high).\n\n    Edge cases: пустое дерево (валидно), один узел, дубликат значения,\n    нарушение в правом поддереве левого узла.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "class TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef is_valid_bst(root: TreeNode | None) -> bool:\n    \"\"\"O(n) — каждый узел проверяется на диапазон (low, high).\n\n    Edge cases: пустое дерево (валидно), один узел, дубликат значения,\n    нарушение в правом поддереве левого узла.\n    \"\"\"\n    ...\n",
+  "description": "Дан корень бинарного дерева `root`. Определите, является ли дерево корректным **бинарным деревом поиска (BST)**: для каждого узла все значения в его левом поддереве **строго меньше**, а в правом — **строго больше** значения узла.\n\n**Функция решения:**\n\n```python\ndef is_valid_bst(root: TreeNode | None) -> bool:\n    ...\n```",
+  "examples": [
+    {"input": "root = [2, 1, 3]", "output": "true", "explanation": "Лево (1) < 2 < право (3) — корректный BST."},
+    {"input": "root = [5, 1, 4, None, None, 3, 6]", "output": "false", "explanation": "Узел 3 находится в правом поддереве корня 5, но 3 < 5 — нарушение."},
+    {"input": "root = [2, 2, 2]", "output": "false", "explanation": "Равенства запрещены: лево и право должны быть строго меньше/больше."}
+  ],
+  "constraints": [
+    "0 ≤ количество узлов ≤ 10^4",
+    "−2^31 ≤ val узла ≤ 2^31 − 1"
+  ],
+  "hints": [
+    "Проверяйте каждый узел на диапазон допустимых значений (low, high).",
+    "Спускаясь в левое поддерево, обновляйте верхнюю границу; в правое — нижнюю.",
+    "При проверке по inorder: значения должны быть строго возрастающими."
+  ],
+  "starter_code": "class TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n    def __init__(self, val: int = 0, left: \"TreeNode | None\" = None, right: \"TreeNode | None\" = None) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\n\ndef is_valid_bst(root: TreeNode | None) -> bool:\n    \"\"\"Вернуть True, если дерево является корректным BST.\"\"\"\n    ...\n\n\ndef _build_bt(level: list[int | None]) -> TreeNode | None:\n    if not level or level[0] is None:\n        return None\n    root = TreeNode(level[0])\n    q, i = [root], 1\n    while q and i < len(level):\n        node = q.pop(0)\n        if i < len(level) and level[i] is not None:\n            node.left = TreeNode(level[i])\n            q.append(node.left)\n        i += 1\n        if i < len(level) and level[i] is not None:\n            node.right = TreeNode(level[i])\n            q.append(node.right)\n        i += 1\n    return root\n",
   "entry_function": "is_valid_bst",
-  "test_cases": [],
+  "test_cases": [
+    {"id": "t1", "args": [[2, 1, 3]], "expected": true, "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t2", "args": [[5, 1, 4, null, null, 3, 6]], "expected": false, "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t3", "args": [[2, 2, 2]], "expected": false, "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t4", "args": [[]], "expected": true, "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t5", "args": [[1]], "expected": true, "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t6", "args": [[10, 5, 15, null, null, 6, 20]], "expected": false, "hidden": true, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t7", "args": [[5, null, 10, null, 3]], "expected": false, "hidden": true, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t8", "args": [[1, null, 1]], "expected": false, "hidden": true, "arg_converters": ["_build_bt"], "result_converter": null}
+  ],
   "timeout_ms": 3000
 }

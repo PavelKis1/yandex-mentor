@@ -4,20 +4,44 @@
   "difficulty": "medium",
   "lecture_id": "18",
   "order": 2,
-  "description": "Найдите максимальную площадь острова.\n\n**Функция решения:**\n\n```python\ndef max_area_of_island(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — DFS-площадь каждого острова, берём максимум.\n\n    Edge cases: пустая сетка, нет суши (0), вся сетка — один остров.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def max_area_of_island(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — DFS-площадь каждого острова, берём максимум.\n\n    Edge cases: пустая сетка, нет суши (0), вся сетка — один остров.\n    \"\"\"\n    ...\n",
+  "description": "Дана сетка `grid` из `0` (вода) и `1` (суша). Верните **максимальную площадь** острова (число клеток) или `0`, если суши нет.\n\n**Функция решения:**\n\n```python\ndef max_area_of_island(grid: list[list[int]]) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "grid = [[1,1],[1,1]]",
+      "output": "4",
+      "explanation": "Все 4 клетки — один остров."
+    },
+    {
+      "input": "grid = [[1,0,1],[0,0,0],[1,0,1]]",
+      "output": "1",
+      "explanation": "Каждый остров из одной клетки."
+    },
+    {
+      "input": "grid = [[0]]",
+      "output": "0",
+      "explanation": "Суши нет."
+    }
+  ],
+  "constraints": [
+    "1 ≤ len(grid), len(grid[0]) ≤ 50",
+    "Значения 0 и 1"
+  ],
+  "hints": [
+    "DFS-площадь каждой компоненты, сохраняйте максимум.",
+    "Обнуляйте посещённые клетки."
+  ],
+  "starter_code": "def max_area_of_island(grid: list[list[int]]) -> int:\n    \"\"\"Максимальная площадь острова (0, если суши нет).\"\"\"\n    ...",
   "entry_function": "max_area_of_island",
   "test_cases": [
     {
       "id": "t1",
       "args": [
-        []
+        [
+          []
+        ]
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null
       ],
@@ -55,6 +79,242 @@
       ],
       "expected": 4,
       "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 6,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t7",
+      "args": [
+        [
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t8",
+      "args": [
+        [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": 3,
+      "hidden": true,
       "arg_converters": [
         null
       ],

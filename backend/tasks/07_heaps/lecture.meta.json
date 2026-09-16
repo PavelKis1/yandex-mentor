@@ -1,0 +1,55 @@
+{
+  "id": "07",
+  "slug": "heaps",
+  "title": "Кучи (Heaps)",
+  "description": "Куча — бинарное дерево со свойством min/max: корень всегда минимален (или максимален). Разбираем heapq в Python: извлечение min за O(1), вставка/pop за O(log n), и классические задачи на топ-K элементов и слияние K списков.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": ["Data Structures", "Heaps", "Priority Queues", "heapq"],
+  "learningOutcomes": [
+    "Использовать heapq для min-кучи и понимать сложности операций",
+    "Находить k-й наибольший элемент и топ-K частых с помощью кучи",
+    "Сливать k отсортированных списков за O(n log k)"
+  ],
+  "complexity": {
+    "timeComplexity": "O(log n) на вставку/извлечение, O(1) на просмотр min",
+    "spaceComplexity": "O(n)",
+    "explanation": "Куча хранит все элементы (O(n)); каждая операция подъёма/погружения проходит по высоте дерева O(log n)."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что возвращает heapq.heappop(heap) для min-кучи?",
+      "options": [
+        {"id": "opt1", "text": "Наименьший элемент", "isCorrect": true, "explanation": "Верно! В Python heapq — min-куча, heappop извлекает минимальный элемент за O(log n)."},
+        {"id": "opt2", "text": "Наибольший элемент", "isCorrect": false, "explanation": "Это было бы для max-кучи; heapq реализует min-кучу."},
+        {"id": "opt3", "text": "Элемент в случайном порядке", "isCorrect": false, "explanation": "Куча всегда отдаёт экстремум, а не случайный элемент."}
+      ],
+      "hint": "Вспомните, какую кучу реализует модуль heapq."
+    },
+    {
+      "id": "q2",
+      "question": "Какая сложность операции heappush / heappop в куче из n элементов?",
+      "options": [
+        {"id": "opt1", "text": "O(log n)", "isCorrect": true, "explanation": "Верно! Узел поднимается/погружается по ветке дерева высотой O(log n)."},
+        {"id": "opt2", "text": "O(1)", "isCorrect": false, "explanation": "O(1) — это только просмотр корня (heap[0])."},
+        {"id": "opt3", "text": "O(n)", "isCorrect": false, "explanation": "O(n) — это heapify списка, но не отдельная операция вставки/извлечения."}
+      ],
+      "hint": "Как зависит высота кучи от числа элементов n?"
+    }
+  ],
+  "attachedTasks": [
+    {"taskId": "07-p1", "title": "K-й наибольший элемент", "difficulty": "easy", "slug": "kth-largest"},
+    {"taskId": "07-p2", "title": "Слияние K отсортированных списков", "difficulty": "medium", "slug": "merge-k-lists"},
+    {"taskId": "07-p3", "title": "Топ K частых элементов", "difficulty": "hard", "slug": "top-k-frequent"}
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "Куча — дерево, где родитель ≤ потомков (min-куча); heapq реализует именно её.",
+      "heapq.heappush(heap, x) и heappop(heap) — O(log n); heap[0] — минимальный за O(1).",
+      "heapify(list) за O(n) превращает список в кучу на месте.",
+      "top-K: min-куча размера k хранит k наибольших — O(n log k).",
+      "Для max-кучи хранилище (—value), иначе heapq всегда отдаёт минимум."
+    ]
+  }
+}

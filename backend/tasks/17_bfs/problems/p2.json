@@ -4,11 +4,34 @@
   "difficulty": "medium",
   "lecture_id": "17",
   "order": 2,
-  "description": "Найдите время, за которое все апельсины сгниют.\n\n**Функция решения:**\n\n```python\ndef oranges_rotting(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — мультиисточниковый BFS от «гнилых» апельсинов.\n\n    Edge cases: пустая сетка, нет свежих (0 минут), недостижимые свежие (-1).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import deque\n\nclass TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef oranges_rotting(grid: list[list[int]]) -> int:\n    \"\"\"O(rows*cols) — мультиисточниковый BFS от «гнилых» апельсинов.\n\n    Edge cases: пустая сетка, нет свежих (0 минут), недостижимые свежие (-1).\n    \"\"\"\n    ...\n",
+  "description": "В сетке `grid`: `0` — пусто, `1` — свежий апельсин, `2` — гнилой. Каждую минуту гнилой заражает соседние (вверх/вниз/влево/вправо) свежие. Верните **число минут**, за которые сгниют все свежие, или `0`, если свежих нет, или `-1`, если какие-то свежие недостижимы.\n\n**Функция решения:**\n\n```python\ndef oranges_rotting(grid: list[list[int]]) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "grid = [[2,1,1],[1,1,0],[0,1,1]]",
+      "output": "4",
+      "explanation": "Все апельсины сгниют за 4 минуты."
+    },
+    {
+      "input": "grid = [[2,1,1],[0,1,1],[1,0,1]]",
+      "output": "-1",
+      "explanation": "Один свежий недостижим."
+    },
+    {
+      "input": "grid = [[0,2]]",
+      "output": "0",
+      "explanation": "Свежих нет."
+    }
+  ],
+  "constraints": [
+    "1 ≤ len(grid), len(grid[0]) ≤ 20",
+    "Значения 0, 1, 2"
+  ],
+  "hints": [
+    "Мультиисточниковый BFS: положите все гнилые в очередь с временем 0.",
+    "Заражённые добавляйте в конец с временем t+1.",
+    "Считайте свежие; если после BFS они остались — верните -1."
+  ],
+  "starter_code": "def oranges_rotting(grid: list[list[int]]) -> int:\n    \"\"\"Минуты до полного гниения (0 — пусто, 1 — свежий, 2 — гнилой).\"\"\"\n    ...",
   "entry_function": "oranges_rotting",
   "test_cases": [
     {
@@ -90,7 +113,83 @@
         []
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ]
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": -1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t7",
+      "args": [
+        [
+          [
+            0,
+            2,
+            1
+          ]
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t8",
+      "args": [
+        [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      ],
+      "expected": 1,
+      "hidden": true,
       "arg_converters": [
         null
       ],

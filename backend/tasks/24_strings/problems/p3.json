@@ -4,11 +4,34 @@
   "difficulty": "hard",
   "lecture_id": "24",
   "order": 3,
-  "description": "Найдите наибольшую подстроку без повторов.\n\n**Функция решения:**\n\n```python\ndef length_of_longest_substring(s: str) -> int:\n    \"\"\"O(n) — скользящее окно: набор уникальных символов, расширяем/сжимаем.\n\n    Edge cases: пустая строка (0), один символ (1), все символы уникальны.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def length_of_longest_substring(s: str) -> int:\n    \"\"\"O(n) — скользящее окно: набор уникальных символов, расширяем/сжимаем.\n\n    Edge cases: пустая строка (0), один символ (1), все символы уникальны.\n    \"\"\"\n    ...\n",
+  "description": "Дана строка `s`. Найдите **длину наибольшей подстроки без повторяющихся символов**.\n\n**Функция решения:**\n\n```python\ndef length_of_longest_substring(s: str) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "s = 'abcabcbb'",
+      "output": "3",
+      "explanation": "Подстрока 'abc' — длина 3."
+    },
+    {
+      "input": "s = 'bbbbb'",
+      "output": "1",
+      "explanation": "Все символы одинаковые."
+    },
+    {
+      "input": "s = 'pwwkew'",
+      "output": "3",
+      "explanation": "'wke' или 'kew' — длина 3."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(s) ≤ 5·10^4",
+    "Символы — ASCII"
+  ],
+  "hints": [
+    "Держите словарь последних позиций символов.",
+    "Левую границу окна сдвигайте за прошлый повтор.",
+    "best = max(best, i - left + 1) на каждом шаге."
+  ],
+  "starter_code": "def length_of_longest_substring(s: str) -> int:\n    \"\"\"Длина длиннейшей подстроки без повторяющихся символов.\"\"\"\n    ...",
   "entry_function": "length_of_longest_substring",
   "test_cases": [
     {
@@ -53,7 +76,7 @@
         ""
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null
       ],
@@ -62,10 +85,22 @@
     {
       "id": "t5",
       "args": [
-        "abcdef"
+        " "
       ],
-      "expected": 6,
-      "hidden": false,
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        "au"
+      ],
+      "expected": 2,
+      "hidden": true,
       "arg_converters": [
         null
       ],

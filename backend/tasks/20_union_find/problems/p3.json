@@ -4,12 +4,197 @@
   "difficulty": "hard",
   "lecture_id": "20",
   "order": 3,
-  "description": "Объедините аккаунты с одинаковыми email.\n\n**Функция решения:**\n\n```python\ndef accounts_merge(accounts: list[list[str]]) -> list[list[str]]:\n    \"\"\"O(N log N) — DSU по email; результат: имя + отсортированные email.\n\n    Edge cases: один email в аккаунте, дубликаты email, несколько аккаунтов\n    одного человека, соединяющиеся через общий email.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def accounts_merge(accounts: list[list[str]]) -> list[list[str]]:\n    \"\"\"O(N log N) — DSU по email; результат: имя + отсортированные email.\n\n    Edge cases: один email в аккаунте, дубликаты email, несколько аккаунтов\n    одного человека, соединяющиеся через общий email.\n    \"\"\"\n    ...\n",
+  "description": "Дан список `accounts`, где каждый элемент `[имя, email1, email2, ...]`. Аккаунты одного человека могут повторяться. Объедините аккаунты, у которых есть **общий email**: результат `[имя, email...]` с **отсортированными** email без дубликатов. Порядок аккаунтов в ответе — по возрастанию первого email.\n\n**Функция решения:**\n\n```python\ndef accounts_merge(accounts: list[list[str]]) -> list[list[str]]:\n    ...\n```",
+  "examples": [
+    {
+      "input": "accounts=[['John','a@','b@'],['John','b@','c@']]",
+      "output": "[['John','a@','b@','c@']]",
+      "explanation": "Общий email 'b@' объединяет оба аккаунта."
+    },
+    {
+      "input": "accounts=[['Mary','m@']]",
+      "output": "[['Mary','m@']]",
+      "explanation": "Один аккаунт без слияния."
+    },
+    {
+      "input": "accounts=[]",
+      "output": "[]",
+      "explanation": "Пустой список."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(accounts) ≤ 1000",
+    "0 ≤ email на аккаунт ≤ 10",
+    "Строки: имя и email"
+  ],
+  "hints": [
+    "Каждому email сопоставьте первого владельца; union по email внутри аккаунта.",
+    "Сгруппируйте email по корню и отсортируйте их.",
+    "Отсортируйте группы по минимальному email."
+  ],
+  "starter_code": "def accounts_merge(accounts: list[list[str]]) -> list[list[str]]:\n    \"\"\"Объединить аккаунты с общими email: [имя] + отсортированные email.\"\"\"\n    ...",
   "entry_function": "accounts_merge",
-  "test_cases": [],
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          [
+            "John",
+            "johnsmith@mail.com",
+            "john_newyork@mail.com"
+          ],
+          [
+            "John",
+            "johnsmith@mail.com",
+            "john00@mail.com"
+          ],
+          [
+            "Mary",
+            "mary@mail.com"
+          ],
+          [
+            "John",
+            "johnnybravo@mail.com"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "John",
+          "john00@mail.com",
+          "john_newyork@mail.com",
+          "johnsmith@mail.com"
+        ],
+        [
+          "John",
+          "johnnybravo@mail.com"
+        ],
+        [
+          "Mary",
+          "mary@mail.com"
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          [
+            "a",
+            "x@m.co",
+            "y@m.co"
+          ],
+          [
+            "a",
+            "y@m.co",
+            "z@m.co"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "a",
+          "x@m.co",
+          "y@m.co",
+          "z@m.co"
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          [
+            "Gabe",
+            "g0@m.co",
+            "g3@m.co",
+            "g1@m.co"
+          ],
+          [
+            "Kevin",
+            "k3@m.co",
+            "k5@m.co",
+            "k0@m.co"
+          ],
+          [
+            "Hanzo",
+            "h0@m.co",
+            "h1@m.co"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "Gabe",
+          "g0@m.co",
+          "g1@m.co",
+          "g3@m.co"
+        ],
+        [
+          "Hanzo",
+          "h0@m.co",
+          "h1@m.co"
+        ],
+        [
+          "Kevin",
+          "k0@m.co",
+          "k3@m.co",
+          "k5@m.co"
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          [
+            "Hanzo",
+            "h0@m.co",
+            "h1@m.co"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "Hanzo",
+          "h0@m.co",
+          "h1@m.co"
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        []
+      ],
+      "expected": [],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
   "timeout_ms": 3000
 }

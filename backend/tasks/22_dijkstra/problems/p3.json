@@ -4,15 +4,113 @@
   "difficulty": "hard",
   "lecture_id": "22",
   "order": 3,
-  "description": "Найдите путь с максимальной вероятностью.\n\n**Функция решения:**\n\n```python\ndef max_probability(\n    n: int,\n    edges: list[list[int]],\n    succ_prob: list[float],\n    start: int,\n    end: int,\n) -> float:\n    \"\"\"O((V+E) log V) — путь с максимальной вероятностью (неориентированный).\n\n    Edge cases: start == end (1.0), нет пути (0.0), ноль узлов.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "import heapq\n\ndef max_probability(\n    n: int,\n    edges: list[list[int]],\n    succ_prob: list[float],\n    start: int,\n    end: int,\n) -> float:\n    \"\"\"O((V+E) log V) — путь с максимальной вероятностью (неориентированный).\n\n    Edge cases: start == end (1.0), нет пути (0.0), ноль узлов.\n    \"\"\"\n    ...\n",
+  "description": "Дан неориентированный граф `n` вершин, рёбра `edges` и вероятности прохождения `succ_prob[i]` для ребра `edges[i]`. Найдите **максимальную вероятность** успешного пути из `start` в `end` (вероятность пути = произведение вероятностей рёбер). Если пути нет — верните **0.0**.\n\n**Функция решения:**\n\n```python\ndef max_probability(n: int, edges: list[list[int]], succ_prob: list[float], start: int, end: int) -> float:\n    ...\n```",
+  "examples": [
+    {
+      "input": "n=3, edges=[[0,1],[1,2],[0,2]], succ_prob=[0.5,0.5,0.2], start=0, end=2",
+      "output": "0.25",
+      "explanation": "0→1→2 = 0.5*0.5 = 0.25 > прямой 0.2."
+    },
+    {
+      "input": "n=3, edges=[[0,1],[1,2],[0,2]], succ_prob=[0.5,0.5,0.3], start=0, end=2",
+      "output": "0.3",
+      "explanation": "Прямой путь 0.3 выгоднее 0→1→2 (0.25)."
+    },
+    {
+      "input": "n=3, edges=[[0,1]], succ_prob=[0.5], start=0, end=2",
+      "output": "0.0",
+      "explanation": "До вершины 2 пути нет."
+    }
+  ],
+  "constraints": [
+    "1 ≤ n ≤ 10^4",
+    "0 ≤ len(edges) ≤ 10^4",
+    "0.0 ≤ succ_prob[i] ≤ 1.0"
+  ],
+  "hints": [
+    "Вероятность пути — произведение; максимизируйте его.",
+    "Куча со знаком минус вероятности — очередь приоритетов по вероятности.",
+    "Недостижимая вершина остаётся с вероятностью 0.0."
+  ],
+  "starter_code": "def max_probability(n: int, edges: list[list[int]], succ_prob: list[float], start: int, end: int) -> float:\n    \"\"\"Максимальной вероятности путь от start до end.\"\"\"\n    ...",
   "entry_function": "max_probability",
   "test_cases": [
     {
       "id": "t1",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          0.5,
+          0.5,
+          0.2
+        ],
+        0,
+        2
+      ],
+      "expected": 0.25,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          0.5,
+          0.5,
+          0.3
+        ],
+        0,
+        2
+      ],
+      "expected": 0.3,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
       "args": [
         3,
         [
@@ -28,7 +126,71 @@
         2
       ],
       "expected": 0.0,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        2,
+        [
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0.9
+        ],
+        0,
+        1
+      ],
+      "expected": 0.9,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        4,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          0.5,
+          0.5,
+          0.5
+        ],
+        0,
+        3
+      ],
+      "expected": 0.125,
+      "hidden": true,
       "arg_converters": [
         null,
         null,

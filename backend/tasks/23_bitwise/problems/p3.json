@@ -4,11 +4,34 @@
   "difficulty": "hard",
   "lecture_id": "23",
   "order": 3,
-  "description": "Сложите два числа без + и -.\n\n**Функция решения:**\n\n```python\ndef get_sum(a: int, b: int) -> int:\n    \"\"\"O(1) — сложение через XOR (сумма) + сдвинутый AND (перенос).\n\n    Edge cases: оба ноля (0), разные знаки, оба отрицательных,\n    результат, выходящий за 32-битный знаковый диапазон.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def get_sum(a: int, b: int) -> int:\n    \"\"\"O(1) — сложение через XOR (сумма) + сдвинутый AND (перенос).\n\n    Edge cases: оба ноля (0), разные знаки, оба отрицательных,\n    результат, выходящий за 32-битный знаковый диапазон.\n    \"\"\"\n    ...\n",
+  "description": "Верните сумму `a + b`, **не используя** операторы `+` и `-`. Числа целые, допускаются отрицательные.\n\n**Функция решения:**\n\n```python\ndef get_sum(a: int, b: int) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "a = 1, b = 2",
+      "output": "3",
+      "explanation": "Простое сложение."
+    },
+    {
+      "input": "a = -1, b = 1",
+      "output": "0",
+      "explanation": "Взаимно уничтожаются."
+    },
+    {
+      "input": "a = -2, b = -3",
+      "output": "-5",
+      "explanation": "Оба отрицательных."
+    }
+  ],
+  "constraints": [
+    "-1000 ≤ a, b ≤ 1000",
+    "Работа в 32-битной арифметике"
+  ],
+  "hints": [
+    "a ^ b — сумма битов без переноса.",
+    "(a & b) << 1 — перенос; повторяйте, пока перенос не 0.",
+    "Маскируйте 32 бита, чтобы обработать отрицательные без зацикливания."
+  ],
+  "starter_code": "def get_sum(a: int, b: int) -> int:\n    \"\"\"Сумма a+b без использования операторов + и -.\"\"\"\n    ...",
   "entry_function": "get_sum",
   "test_cases": [
     {
@@ -46,7 +69,7 @@
         0
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -60,7 +83,7 @@
         1
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -74,7 +97,21 @@
         -3
       ],
       "expected": -5,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        10,
+        7
+      ],
+      "expected": 17,
+      "hidden": true,
       "arg_converters": [
         null,
         null

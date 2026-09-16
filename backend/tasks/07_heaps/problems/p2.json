@@ -1,104 +1,36 @@
 {
   "id": "07-p2",
-  "title": "Слияние K списков",
+  "title": "Слияние K отсортированных списков",
   "difficulty": "medium",
   "lecture_id": "07",
   "order": 2,
-  "description": "Объедините K отсортированных списков.\n\n**Функция решения:**\n\n```python\ndef merge_k_lists(lists: list[list[int]]) -> list[int]:\n    \"\"\"O(n log k) — куча из (значение, индекс списка, позиция внутри списка).\n\n    Edge cases: пустой вход, пустые списки-«заглушки», списки разной длины.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "import heapq\n\nfrom collections import Counter\n\ndef merge_k_lists(lists: list[list[int]]) -> list[int]:\n    \"\"\"O(n log k) — куча из (значение, индекс списка, позиция внутри списка).\n\n    Edge cases: пустой вход, пустые списки-«заглушки», списки разной длины.\n    \"\"\"\n    ...\n",
+  "description": "Дан массив `lists`, содержащий K отсортированных по возрастанию списков целых чисел. Объедините их в один отсортированный список и верните его.\n\n**Функция решения:**\n\n```python\ndef merge_k_lists(lists: list[list[int]]) -> list[int]:\n    ...\n```",
+  "examples": [
+    {"input": "lists = [[1, 4, 5], [1, 3, 4], [2, 6]]", "output": "[1, 1, 2, 3, 4, 4, 5, 6]", "explanation": "Все элементы слиты в один отсортированный список."},
+    {"input": "lists = []", "output": "[]", "explanation": "Нет списков — результат пуст."},
+    {"input": "lists = [[1], [], [2, 3]]", "output": "[1, 2, 3]", "explanation": "Пустые списки-заглушки пропускаются."}
+  ],
+  "constraints": [
+    "0 ≤ k ≤ 10^4",
+    "0 ≤ длина каждого списка ≤ 500",
+    "Каждый список отсортирован по возрастанию",
+    "−10^4 ≤ элемент ≤ 10^4"
+  ],
+  "hints": [
+    "Min-куча хранит кортежи (значение, индекс списка, позиция в списке).",
+    "Извлекаем минимум, добавляем в ответ и подкладываем следующий элемент этого списка.",
+    "Сложность O(n log k), где n — суммарное число элементов."
+  ],
+  "starter_code": "import heapq\n\n\ndef merge_k_lists(lists: list[list[int]]) -> list[int]:\n    \"\"\"Слить K отсортированных списков в один отсортированный.\"\"\"\n    ...",
   "entry_function": "merge_k_lists",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          [
-            1,
-            4,
-            5
-          ],
-          [
-            1,
-            3,
-            4
-          ],
-          [
-            2,
-            6
-          ]
-        ]
-      ],
-      "expected": [
-        1,
-        1,
-        2,
-        3,
-        4,
-        4,
-        5,
-        6
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        []
-      ],
-      "expected": [],
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          [],
-          []
-        ]
-      ],
-      "expected": [],
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          [
-            1
-          ],
-          [],
-          [
-            2,
-            3
-          ]
-        ]
-      ],
-      "expected": [
-        1,
-        2,
-        3
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[[1, 4, 5], [1, 3, 4], [2, 6]]], "expected": [1, 1, 2, 3, 4, 4, 5, 6], "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t2", "args": [[]], "expected": [], "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t3", "args": [[[], []]], "expected": [], "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t4", "args": [[[1], [], [2, 3]]], "expected": [1, 2, 3], "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t5", "args": [[[1, 2, 3], [4, 5], [], [6]]], "expected": [1, 2, 3, 4, 5, 6], "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t6", "args": [[[1], [0]]], "expected": [0, 1], "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t7", "args": [[[0, 0, 0], [0]]], "expected": [0, 0, 0, 0], "hidden": true, "arg_converters": [null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

@@ -1,15 +1,35 @@
 {
   "id": "04-p3",
-  "title": "Скользящее окно",
+  "title": "Максимум в скользящем окне",
   "difficulty": "hard",
   "lecture_id": "04",
   "order": 3,
-  "description": "Найдите максимум в каждом окне размера k.",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "description": "Дан массив целых чисел `nums` и размер окна `k`. Окно размера `k` движется по массиву слева направо, захватывая по одному элементу. Верните массив **максимумов** в каждом окне.\n\nНапример, для `nums = [1, 3, -1, -3, 5, 3, 6, 7]` и `k = 3` максимумы равны `[3, 3, 5, 5, 6, 7]`.\n\n**Функция решения:**\n\n```python\ndef max_sliding_window(nums: list[int], k: int) -> list[int]:\n    ...\n```",
+  "examples": [
+    {"input": "nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3", "output": "[3, 3, 5, 5, 6, 7]", "explanation": "Окна: [1,3,-1]->3, [3,-1,-3]->3, [-1,-3,5]->5, [-3,5,3]->5, [5,3,6]->6, [3,6,7]->7."},
+    {"input": "nums = [1], k = 1", "output": "[1]", "explanation": "Одно окно из одного элемента."},
+    {"input": "nums = [9, 11], k = 2", "output": "[11]", "explanation": "Единственное окно охватывает оба элемента, максимум 11."}
+  ],
+  "constraints": [
+    "1 ≤ k ≤ len(nums) ≤ 10^5",
+    "−10^4 ≤ nums[i] ≤ 10^4"
+  ],
+  "hints": [
+    "Наивный подход — O(n·k); здесь требуется O(n).",
+    "Храните в deque индексы элементов в порядке убывания их значений.",
+    "Для каждого элемента удаляйте индексы вне окна и выталкивайте с конца меньшие значения; максимум — на фронте."
+  ],
+  "starter_code": "def max_sliding_window(nums: list[int], k: int) -> list[int]:\n    \"\"\"Вернуть максимум каждого скользящего окна размера k.\"\"\"\n    ...",
+  "entry_function": "max_sliding_window",
+  "test_cases": [
+    {"id": "t1", "args": [[1, 3, -1, -3, 5, 3, 6, 7], 3], "expected": [3, 3, 5, 5, 6, 7], "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t2", "args": [[1], 1], "expected": [1], "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t3", "args": [[9, 11], 2], "expected": [11], "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t4", "args": [[1, -1], 1], "expected": [1, -1], "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t5", "args": [[4, 3, 2, 1], 2], "expected": [4, 3, 2], "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t6", "args": [[1, 2, 3, 4], 3], "expected": [3, 4], "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t7", "args": [[7, 2, 4], 2], "expected": [7, 4], "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t8", "args": [[1, 3, 1, 2, 0, 5], 3], "expected": [3, 3, 2, 5], "hidden": true, "arg_converters": [null, null], "result_converter": null}
+  ],
   "timeout_ms": 3000
 }

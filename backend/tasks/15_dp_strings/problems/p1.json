@@ -4,11 +4,33 @@
   "difficulty": "easy",
   "lecture_id": "15",
   "order": 1,
-  "description": "Найдите наибольшую палиндромную подстроку.\n\n**Функция решения:**\n\n```python\ndef longest_palindrome(s: str) -> str:\n    \"\"\"O(n^2) — расширение от центра (2n-1 центров × до n расширений).\n\n    Edge cases: пустая строка, один символ, чётный палиндром, все разные символы.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def longest_palindrome(s: str) -> str:\n    \"\"\"O(n^2) — расширение от центра (2n-1 центров × до n расширений).\n\n    Edge cases: пустая строка, один символ, чётный палиндром, все разные символы.\n    \"\"\"\n    ...\n",
+  "description": "Дана строка `s`. Верните **наибольшую палиндромную подстроку**. Если палиндромов равной длины несколько — верните первый найденный. Для пустой строки верните пустую строку.\n\n**Функция решения:**\n\n```python\ndef longest_palindrome(s: str) -> str:\n    ...\n```",
+  "examples": [
+    {
+      "input": "s = 'cbbd'",
+      "output": "'bb'",
+      "explanation": "Наибольший палиндром — 'bb'."
+    },
+    {
+      "input": "s = 'babad'",
+      "output": "'aba'",
+      "explanation": "'aba' — палиндром длины 3 ('bab' тоже подходит)."
+    },
+    {
+      "input": "s = 'a'",
+      "output": "'a'",
+      "explanation": "Один символ всегда палиндром."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(s) ≤ 1000",
+    "Строка из строчных латинских букв"
+  ],
+  "hints": [
+    "Берите каждый символ и каждую границу как центр.",
+    "Расширяйте центр, пока края равны; запоминайте самый длинный результат."
+  ],
+  "starter_code": "def longest_palindrome(s: str) -> str:\n    \"\"\"Наибольшая палиндромная подстрока (расширение от центра).\"\"\"\n    ...",
   "entry_function": "longest_palindrome",
   "test_cases": [
     {
@@ -41,7 +63,67 @@
         "a"
       ],
       "expected": "a",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        "babad"
+      ],
+      "expected": "bab",
       "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        "aaabaaa"
+      ],
+      "expected": "aaabaaa",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        "forgeeksskeegfor"
+      ],
+      "expected": "geeksskeeg",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t7",
+      "args": [
+        "abc"
+      ],
+      "expected": "a",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t8",
+      "args": [
+        "racecar"
+      ],
+      "expected": "racecar",
+      "hidden": true,
       "arg_converters": [
         null
       ],

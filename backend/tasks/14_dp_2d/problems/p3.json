@@ -4,11 +4,34 @@
   "difficulty": "hard",
   "lecture_id": "14",
   "order": 3,
-  "description": "Найдите минимальное количество операций.\n\n**Функция решения:**\n\n```python\ndef edit_distance(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — DP: вставка, удаление, замена; нижняя граница памяти.\n\n    Edge cases: одна строка пустая (len другой), обе пустые, идентичные строки.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def edit_distance(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — DP: вставка, удаление, замена; нижняя граница памяти.\n\n    Edge cases: одна строка пустая (len другой), обе пустые, идентичные строки.\n    \"\"\"\n    ...\n",
+  "description": "Даны строки `s1` и `s2`. За одну операцию можно **вставить**, **удалить** или **заменить** один символ. Верните минимальное количество операций, превращающих `s1` в `s2`.\n\n**Функция решения:**\n\n```python\ndef edit_distance(s1: str, s2: str) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "s1 = 'horse', s2 = 'ros'",
+      "output": "3",
+      "explanation": "Удалить h, заменить o→r, удалить e."
+    },
+    {
+      "input": "s1 = 'intention', s2 = 'execution'",
+      "output": "5",
+      "explanation": "Классический пример из LeetCode."
+    },
+    {
+      "input": "s1 = '', s2 = ''",
+      "output": "0",
+      "explanation": "Строки уже равны."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(s1), len(s2) ≤ 500",
+    "Строки из строчных латинских букв"
+  ],
+  "hints": [
+    "При равенстве символов переносите значение по диагонали.",
+    "Иначе dp[i][j] = 1 + min(вставка, удаление, замена).",
+    "Используйте одну строку dp и переменную prev по диагонали."
+  ],
+  "starter_code": "def edit_distance(s1: str, s2: str) -> int:\n    \"\"\"Минимальное число вставок/удалений/замен.\"\"\"\n    ...",
   "entry_function": "edit_distance",
   "test_cases": [
     {
@@ -46,7 +69,7 @@
         ""
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -74,7 +97,35 @@
         "b"
       ],
       "expected": 1,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        "kitten",
+        "sitting"
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t7",
+      "args": [
+        "flaw",
+        "lawn"
+      ],
+      "expected": 2,
+      "hidden": true,
       "arg_converters": [
         null,
         null

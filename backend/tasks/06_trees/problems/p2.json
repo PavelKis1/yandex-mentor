@@ -4,12 +4,30 @@
   "difficulty": "medium",
   "lecture_id": "06",
   "order": 2,
-  "description": "Найдите максимальную глубину дерева.\n\n**Функция решения:**\n\n```python\ndef max_depth(root: TreeNode | None) -> int:\n    \"\"\"O(n) — рекурсивно: глубина пустого дерева = 0.\n\n    Edge cases: пустое дерево, один узел, несимметричное дерево.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "class TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef max_depth(root: TreeNode | None) -> int:\n    \"\"\"O(n) — рекурсивно: глубина пустого дерева = 0.\n\n    Edge cases: пустое дерево, один узел, несимметричное дерево.\n    \"\"\"\n    ...\n",
+  "description": "Дан корень бинарного дерева `root`. Найдите его **максимальную глубину** — количество узлов на самом длинном пути от корня до самого дальнего листа (глубина пустого дерева равна 0).\n\n**Функция решения:**\n\n```python\ndef max_depth(root: TreeNode | None) -> int:\n    ...\n```",
+  "examples": [
+    {"input": "root = [3, 9, 20, None, None, 15, 7]", "output": "3", "explanation": "Путь 3→20→15 (или 7) содержит 3 узла."},
+    {"input": "root = [1, None, 2]", "output": "2", "explanation": "Цепочка 1→2 — два узла."},
+    {"input": "root = []", "output": "0", "explanation": "Пустое дерево имеет глубину 0."}
+  ],
+  "constraints": [
+    "0 ≤ количество узлов ≤ 10^4",
+    "−100 ≤ val узла ≤ 100"
+  ],
+  "hints": [
+    "Глубина дерева — это 1 + максимум из глубин левого и правого поддеревьев.",
+    "Пустая ветка даёт глубину 0 — базовый случай рекурсии.",
+    "Сложность O(n) по времени и O(h) по памяти (h — высота)."
+  ],
+  "starter_code": "class TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n    def __init__(self, val: int = 0, left: \"TreeNode | None\" = None, right: \"TreeNode | None\" = None) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\n\ndef max_depth(root: TreeNode | None) -> int:\n    \"\"\"Вернуть максимальную глубину дерева.\"\"\"\n    ...\n\n\ndef _build_bt(level: list[int | None]) -> TreeNode | None:\n    if not level or level[0] is None:\n        return None\n    root = TreeNode(level[0])\n    q, i = [root], 1\n    while q and i < len(level):\n        node = q.pop(0)\n        if i < len(level) and level[i] is not None:\n            node.left = TreeNode(level[i])\n            q.append(node.left)\n        i += 1\n        if i < len(level) and level[i] is not None:\n            node.right = TreeNode(level[i])\n            q.append(node.right)\n        i += 1\n    return root\n",
   "entry_function": "max_depth",
-  "test_cases": [],
+  "test_cases": [
+    {"id": "t1", "args": [[3, 9, 20, null, null, 15, 7]], "expected": 3, "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t2", "args": [[1, null, 2]], "expected": 2, "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t3", "args": [[]], "expected": 0, "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t4", "args": [[0]], "expected": 1, "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t5", "args": [[1, 2, 3, 4, null, null, 5]], "expected": 3, "hidden": true, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t6", "args": [[1, 2, null, 3, null, 4, null]], "expected": 4, "hidden": true, "arg_converters": ["_build_bt"], "result_converter": null}
+  ],
   "timeout_ms": 3000
 }

@@ -4,20 +4,43 @@
   "difficulty": "medium",
   "lecture_id": "23",
   "order": 2,
-  "description": "Подсчитайте количество установленных битов.\n\n**Функция решения:**\n\n```python\ndef count_bits(n: int) -> list[int]:\n    \"\"\"O(n) — по элементам: count[i] = count[i >> 1] + (i & 1).\n\n    Edge cases: n = 0 ([0]), n = 1, большие n.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def count_bits(n: int) -> list[int]:\n    \"\"\"O(n) — по элементам: count[i] = count[i >> 1] + (i & 1).\n\n    Edge cases: n = 0 ([0]), n = 1, большие n.\n    \"\"\"\n    ...\n",
+  "description": "Для целого `n >= 0` верните массив `ans` длины `n+1`, где `ans[i]` — **количество единичных битов** в двоичном представлении `i`.\n\n**Функция решения:**\n\n```python\ndef count_bits(n: int) -> list[int]:\n    ...\n```",
+  "examples": [
+    {
+      "input": "n = 2",
+      "output": "[0, 1, 1]",
+      "explanation": "0→0 бит, 1→1 бит, 2→1 бит."
+    },
+    {
+      "input": "n = 5",
+      "output": "[0, 1, 1, 2, 1, 2]",
+      "explanation": "3=11 (2 бита), 5=101 (2 бита)."
+    },
+    {
+      "input": "n = 0",
+      "output": "[0]",
+      "explanation": "Пустой диапазон."
+    }
+  ],
+  "constraints": [
+    "0 ≤ n ≤ 10^5"
+  ],
+  "hints": [
+    "Используйте: count[i] = count[i >> 1] + (i & 1).",
+    "i>>1 отбрасывает младший бит; (i&1) добавляет его."
+  ],
+  "starter_code": "def count_bits(n: int) -> list[int]:\n    \"\"\"ans[i] — количество единичных битов в i, для i от 0 до n.\"\"\"\n    ...",
   "entry_function": "count_bits",
   "test_cases": [
     {
       "id": "t1",
       "args": [
-        0
+        2
       ],
       "expected": [
-        0
+        0,
+        1,
+        1
       ],
       "hidden": false,
       "arg_converters": [
@@ -39,6 +62,57 @@
         2
       ],
       "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        0
+      ],
+      "expected": [
+        0
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        1
+      ],
+      "expected": [
+        0,
+        1
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        8
+      ],
+      "expected": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        2,
+        3,
+        1
+      ],
+      "hidden": true,
       "arg_converters": [
         null
       ],

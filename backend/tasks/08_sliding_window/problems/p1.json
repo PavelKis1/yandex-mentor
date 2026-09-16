@@ -4,97 +4,33 @@
   "difficulty": "easy",
   "lecture_id": "08",
   "order": 1,
-  "description": "Найдите максимальную сумму подмассива размера k.\n\n**Функция решения:**\n\n```python\ndef max_subarray_sum(nums: list[int], k: int) -> int | None:\n    \"\"\"O(n) — поддерживаем сумму текущего окна размера k.\n\n    Edge cases: пустой массив, k <= 0, k > len(nums) — возвращаем None,\n    отрицательные числа (окно может уменьшать сумму).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import Counter\n\ndef max_subarray_sum(nums: list[int], k: int) -> int | None:\n    \"\"\"O(n) — поддерживаем сумму текущего окна размера k.\n\n    Edge cases: пустой массив, k <= 0, k > len(nums) — возвращаем None,\n    отрицательные числа (окно может уменьшать сумму).\n    \"\"\"\n    ...\n",
+  "description": "Дан массив целых чисел `nums` и целое число `k`. Найдите **максимальную сумму подмассива** размера ровно `k`. Если `k ≤ 0` или `k > len(nums)`, верните `None` (подмассив нужного размера невозможен).\n\n**Функция решения:**\n\n```python\ndef max_subarray_sum(nums: list[int], k: int) -> int | None:\n    ...\n```",
+  "examples": [
+    {"input": "nums = [1, 2, 3, 4], k = 2", "output": "7", "explanation": "Окна по 2: [1,2]=3, [2,3]=5, [3,4]=7 → максимум 7."},
+    {"input": "nums = [1, 2, 3], k = 5", "output": "None", "explanation": "k больше длины массива — подмассива нет."},
+    {"input": "nums = [-2, -1], k = 1", "output": "-1", "explanation": "Отрицательные числа: максимум из [-2] и [-1] равен -1."}
+  ],
+  "constraints": [
+    "1 ≤ len(nums) ≤ 10^5",
+    "−10^4 ≤ nums[i] ≤ 10^4",
+    "0 ≤ k ≤ 10^5"
+  ],
+  "hints": [
+    "Сумму следующего окна можно получить из предыдущей за O(1): window = window − nums[left] + nums[right].",
+    "Верните None, если k ≤ 0 или k > len(nums).",
+    "Итоговая сложность O(n)."
+  ],
+  "starter_code": "def max_subarray_sum(nums: list[int], k: int) -> int | None:\n    \"\"\"Вернуть максимальную сумму подмассива размера k (или None).\"\"\"\n    ...",
   "entry_function": "max_subarray_sum",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          2,
-          3,
-          4
-        ],
-        2
-      ],
-      "expected": 7,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [],
-        2
-      ],
-      "expected": null,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          1
-        ],
-        0
-      ],
-      "expected": null,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          1,
-          2,
-          3
-        ],
-        5
-      ],
-      "expected": null,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t5",
-      "args": [
-        [
-          -2,
-          -1
-        ],
-        1
-      ],
-      "expected": -1,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[1, 2, 3, 4], 2], "expected": 7, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t2", "args": [[], 2], "expected": null, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t3", "args": [[1], 0], "expected": null, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t4", "args": [[1, 2, 3], 5], "expected": null, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t5", "args": [[-2, -1], 1], "expected": -1, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t6", "args": [[1, 2, 3, 4, 5], 3], "expected": 12, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t7", "args": [[5, 1, -1, 3, 4], 2], "expected": 7, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t8", "args": [[-3, -1, -2], 2], "expected": -3, "hidden": true, "arg_converters": [null, null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

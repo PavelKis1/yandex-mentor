@@ -4,11 +4,35 @@
   "difficulty": "medium",
   "lecture_id": "22",
   "order": 2,
-  "description": "Найдите минимальную стоимость рейса с K остановками.\n\n**Функция решения:**\n\n```python\ndef find_cheapest_price(\n    n: int, flights: list[list[int]], src: int, dst: int, k: int\n) -> int:\n    \"\"\"O(k * E * log V) — Дейкстра + лимит k промежуточных остановок.\n\n    Edge cases: src == dst (0), нет маршрута (-1), k = 0 (только напрямую).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "import heapq\n\ndef find_cheapest_price(\n    n: int, flights: list[list[int]], src: int, dst: int, k: int\n) -> int:\n    \"\"\"O(k * E * log V) — Дейкстра + лимит k промежуточных остановок.\n\n    Edge cases: src == dst (0), нет маршрута (-1), k = 0 (только напрямую).\n    \"\"\"\n    ...\n",
+  "description": "Есть `n` городов и рейсы `flights[i] = [from, to, price]`. Найдите **минимальную цену** маршрута из `src` в `dst` с **не более чем `k` пересадками** (то есть не более `k+1` рёбер). Если маршрута нет — верните **-1**.\n\n**Функция решения:**\n\n```python\ndef find_cheapest_price(n: int, flights: list[list[int]], src: int, dst: int, k: int) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "n=3, flights=[[0,1,100],[1,2,100],[0,2,500]], src=0, dst=2, k=1",
+      "output": "200",
+      "explanation": "0→1→2 стоит 200, дешевле прямой (500)."
+    },
+    {
+      "input": "n=3, flights=[[0,1,100],[1,2,100],[0,2,500]], src=0, dst=2, k=0",
+      "output": "500",
+      "explanation": "Без пересадок только прямой рейс."
+    },
+    {
+      "input": "n=3, flights=[[0,1,100]], src=0, dst=2, k=1",
+      "output": "-1",
+      "explanation": "До города 2 маршрута нет."
+    }
+  ],
+  "constraints": [
+    "1 ≤ n ≤ 100",
+    "0 ≤ len(flights) ≤ 10^4",
+    "0 ≤ k ≤ n"
+  ],
+  "hints": [
+    "ДП по пересадкам: обновляйте массив цен k+1 раз.",
+    "На каждой итерации берите цену только с предыдущего шага.",
+    "Осторожно: одно ребро нельзя использовать дважды за итерацию."
+  ],
+  "starter_code": "def find_cheapest_price(n: int, flights: list[list[int]], src: int, dst: int, k: int) -> int:\n    \"\"\"Минимальная цена рейсов с не более чем k пересадками.\"\"\"\n    ...",
   "entry_function": "find_cheapest_price",
   "test_cases": [
     {
@@ -73,7 +97,7 @@
         0
       ],
       "expected": 500,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null,
@@ -85,6 +109,73 @@
     },
     {
       "id": "t3",
+      "args": [
+        4,
+        [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        0,
+        3,
+        1
+      ],
+      "expected": 6,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        2,
+        [
+          [
+            0,
+            1,
+            100
+          ]
+        ],
+        0,
+        1,
+        0
+      ],
+      "expected": 100,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
       "args": [
         3,
         [
@@ -99,27 +190,7 @@
         1
       ],
       "expected": -1,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        3,
-        [],
-        1,
-        1,
-        0
-      ],
-      "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null,

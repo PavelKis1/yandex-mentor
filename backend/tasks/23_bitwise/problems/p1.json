@@ -4,11 +4,34 @@
   "difficulty": "easy",
   "lecture_id": "23",
   "order": 1,
-  "description": "Найдите единственный элемент, который не повторяется.\n\n**Функция решения:**\n\n```python\ndef single_number(nums: list[int]) -> int:\n    \"\"\"O(n) — XOR всех элементов; дубликаты попарно уничтожаются.\n\n    Edge cases: один элемент, все пары, отрицательные числа.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def single_number(nums: list[int]) -> int:\n    \"\"\"O(n) — XOR всех элементов; дубликаты попарно уничтожаются.\n\n    Edge cases: один элемент, все пары, отрицательные числа.\n    \"\"\"\n    ...\n",
+  "description": "В массиве `nums` каждый элемент встречается **дважды**, кроме одного. Найдите **тот единственный** элемент.\n\n**Функция решения:**\n\n```python\ndef single_number(nums: list[int]) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "nums = [2, 2, 1]",
+      "output": "1",
+      "explanation": "1 встречается один раз."
+    },
+    {
+      "input": "nums = [4, 1, 2, 1, 2]",
+      "output": "4",
+      "explanation": "4 — единственный неповторяющийся."
+    },
+    {
+      "input": "nums = [1]",
+      "output": "1",
+      "explanation": "Один элемент."
+    }
+  ],
+  "constraints": [
+    "1 ≤ len(nums) ≤ 3·10^4",
+    "-3·10^4 ≤ nums[i] ≤ 3·10^4"
+  ],
+  "hints": [
+    "XOR двух одинаковых чисел равен 0.",
+    "Проксорьте весь массив — останется искомый элемент.",
+    "Работает и с отрицательными числами."
+  ],
+  "starter_code": "def single_number(nums: list[int]) -> int:\n    \"\"\"Единственный элемент, который встречается один раз (остальные — по два).\"\"\"\n    ...",
   "entry_function": "single_number",
   "test_cases": [
     {
@@ -53,7 +76,39 @@
         ]
       ],
       "expected": 1,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          -5,
+          -5,
+          3
+        ]
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          7,
+          9,
+          9
+        ]
+      ],
+      "expected": 7,
+      "hidden": true,
       "arg_converters": [
         null
       ],

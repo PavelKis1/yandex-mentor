@@ -4,83 +4,33 @@
   "difficulty": "hard",
   "lecture_id": "08",
   "order": 3,
-  "description": "Найдите минимальное окно в s, содержащее все символы t.\n\n**Функция решения:**\n\n```python\ndef min_window(s: str, t: str) -> str:\n    \"\"\"O(n + m) — расширяем правый край, схлопываем левый, пока покрыли t.\n\n    Edge cases: пустые s/t, t длиннее s, символы t отсутствуют в s — \"\".\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import Counter\n\ndef min_window(s: str, t: str) -> str:\n    \"\"\"O(n + m) — расширяем правый край, схлопываем левый, пока покрыли t.\n\n    Edge cases: пустые s/t, t длиннее s, символы t отсутствуют в s — \"\".\n    \"\"\"\n    ...\n",
+  "description": "Даны строки `s` и `t`. Найдите **минимальную подстроку** `s`, которая содержит **все символы строки `t`** (включая повторы: если в `t` символ встречается дважды, в подстроке он тоже должен встретиться минимум дважды). Если такой подстроки нет, верните пустую строку.\n\n**Функция решения:**\n\n```python\ndef min_window(s: str, t: str) -> str:\n    ...\n```",
+  "examples": [
+    {"input": "s = \"ADOBECODEBANC\", t = \"ABC\"", "output": "\"BANC\"", "explanation": "BANC содержит все символы ABC и является минимальным таким окном."},
+    {"input": "s = \"a\", t = \"a\"", "output": "\"a\"", "explanation": "Одна из возможных минимальных подстрок."},
+    {"input": "s = \"a\", t = \"aa\"", "output": "\"\"", "explanation": "В s недостаточно символов 'a'."}
+  ],
+  "constraints": [
+    "0 ≤ len(s), len(t) ≤ 10^5",
+    "s и t состоят из символов английского алфавита"
+  ],
+  "hints": [
+    "Считайте частоты символов t через Counter.",
+    "Расширяйте окно вправо; когда окно покрыло t, сужайте слева, сохраняя минимальную длину.",
+    "Отслеживайте, сколько символов из t уже покрыто корректно (счётчик 'formed'), а не сравнивайте весь Counter — так получится O(n)."
+  ],
+  "starter_code": "from collections import Counter\n\n\ndef min_window(s: str, t: str) -> str:\n    \"\"\"Вернуть минимальную подстроку s, содержащую все символы t.\"\"\"\n    ...",
   "entry_function": "min_window",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        "ADOBECODEBANC",
-        "ABC"
-      ],
-      "expected": "BANC",
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        "a",
-        "a"
-      ],
-      "expected": "a",
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        "a",
-        "aa"
-      ],
-      "expected": "",
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        "",
-        "A"
-      ],
-      "expected": "",
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t5",
-      "args": [
-        "abc",
-        ""
-      ],
-      "expected": "",
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": ["ADOBECODEBANC", "ABC"], "expected": "BANC", "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t2", "args": ["a", "a"], "expected": "a", "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t3", "args": ["a", "aa"], "expected": "", "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t4", "args": ["", "A"], "expected": "", "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t5", "args": ["abc", ""], "expected": "", "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t6", "args": ["aa", "aa"], "expected": "aa", "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t7", "args": ["ab", "b"], "expected": "b", "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t8", "args": ["cba", "abc"], "expected": "cba", "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t9", "args": ["aab", "ab"], "expected": "ab", "hidden": true, "arg_converters": [null, null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

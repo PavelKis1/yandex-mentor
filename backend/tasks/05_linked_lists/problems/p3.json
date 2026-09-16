@@ -1,28 +1,35 @@
 {
   "id": "05-p3",
-  "title": "Обнаружение цикла",
+  "title": "Обнаружение цикла в списке",
   "difficulty": "hard",
   "lecture_id": "05",
   "order": 3,
-  "description": "Определите, есть ли цикл в списке.\n\n**Функция решения:**\n\n```python\ndef has_cycle(head: ListNode | None) -> bool:\n    \"\"\"O(n) — алгоритм Флойда «черепаха и заяц».\n\n    Edge cases: пустой список, цикл из одного узла, цикл в конце списка.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "class ListNode:\n    \"\"\"Узел односвязного списка.\"\"\"\n\n    def __init__(self, val: int = 0, next: ListNode | None = None) -> None:\n        self.val = val\n        self.next = next\n\ndef has_cycle(head: ListNode | None) -> bool:\n    \"\"\"O(n) — алгоритм Флойда «черепаха и заяц».\n\n    Edge cases: пустой список, цикл из одного узла, цикл в конце списка.\n    \"\"\"\n    ...\n\ndef _build(values: list[int]) -> ListNode | None:\n    dummy = ListNode()\n    tail = dummy\n    for value in values:\n        tail.next = ListNode(value)\n        tail = tail.next\n    return dummy.next\n\ndef _to_list(head: ListNode | None) -> list[int]:\n    result: list[int] = []\n    while head is not None:\n        result.append(head.val)\n        head = head.next\n    return result\n",
+  "description": "Дан head односвязного списка, в котором может быть **цикл**: некоторый узел ссылается на ранее встреченный узел. Определите, есть ли в списке цикл, и верните `True`, если есть, иначе `False`.\n\nПозиция цикла задаётся числом (0-based индекс узла, с которого начинается цикл; `-1` — цикла нет). В тестах список строится из пары [values, pos].\n\n**Функция решения:**\n\n```python\ndef has_cycle(head: ListNode | None) -> bool:\n    ...\n```",
+  "examples": [
+    {"input": "values = [3, 2, 0, -4], pos = 1", "output": "true", "explanation": "Хвост (узел -4) ссылается на узел под индексом 1 — есть цикл."},
+    {"input": "values = [1, 2], pos = 0", "output": "true", "explanation": "Хвост ссылается на голову — цикл из всех узлов."},
+    {"input": "values = [1], pos = -1", "output": "false", "explanation": "Один узел без ссылки на себя — цикла нет."}
+  ],
+  "constraints": [
+    "0 ≤ количество узлов ≤ 10^4",
+    "−10^5 ≤ val узла ≤ 10^5",
+    "pos равно -1 либо 0 ≤ pos < количества узлов"
+  ],
+  "hints": [
+    "Алгоритм Флойда: fast движется на два шага, slow — на один; если они встретились — цикл есть.",
+    "Если fast или fast.next становится None — цикла нет.",
+    "Сложность O(n) по времени и O(1) по памяти."
+  ],
+  "starter_code": "class ListNode:\n    \"\"\"Узел односвязного списка.\"\"\"\n    def __init__(self, val: int = 0, next: \"ListNode | None\" = None) -> None:\n        self.val = val\n        self.next = next\n\n\ndef has_cycle(head: ListNode | None) -> bool:\n    \"\"\"Вернуть True, если в списке есть цикл.\"\"\"\n    ...\n\n\ndef _build_cyclic(spec) -> ListNode | None:\n    values, pos = spec[0], spec[1]\n    if not values:\n        return None\n    dummy = ListNode()\n    tail = dummy\n    for value in values:\n        tail.next = ListNode(value)\n        tail = tail.next\n    if pos < 0 or pos >= len(values):\n        return dummy.next\n    node = dummy.next\n    for _ in range(pos):\n        node = node.next\n    tail.next = node\n    return dummy.next\n",
   "entry_function": "has_cycle",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        []
-      ],
-      "expected": false,
-      "hidden": false,
-      "arg_converters": [
-        "_build"
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[[3, 2, 0, -4], 1]], "expected": true, "hidden": false, "arg_converters": ["_build_cyclic"], "result_converter": null},
+    {"id": "t2", "args": [[[1, 2], 0]], "expected": true, "hidden": false, "arg_converters": ["_build_cyclic"], "result_converter": null},
+    {"id": "t3", "args": [[[1], -1]], "expected": false, "hidden": false, "arg_converters": ["_build_cyclic"], "result_converter": null},
+    {"id": "t4", "args": [[[], -1]], "expected": false, "hidden": false, "arg_converters": ["_build_cyclic"], "result_converter": null},
+    {"id": "t5", "args": [[[1, 2, 3, 4], 2]], "expected": true, "hidden": true, "arg_converters": ["_build_cyclic"], "result_converter": null},
+    {"id": "t6", "args": [[[1, 2, 3, 4], -1]], "expected": false, "hidden": true, "arg_converters": ["_build_cyclic"], "result_converter": null},
+    {"id": "t7", "args": [[[5, 5, 5], 2]], "expected": true, "hidden": true, "arg_converters": ["_build_cyclic"], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

@@ -1,99 +1,35 @@
 {
   "id": "12-p3",
-  "title": "Non-overlapping Intervals",
+  "title": "Непересекающиеся интервалы",
   "difficulty": "hard",
   "lecture_id": "12",
   "order": 3,
-  "description": "Найдите минимальное количество удалений интервалов.\n\n**Функция решения:**\n\n```python\ndef erase_overlap_intervals(intervals: list[list[int]]) -> int:\n    \"\"\"O(n log n) — сортировка по правой границе; жадно оставляем непересекающиеся.\n\n    Edge cases: пустой список, один интервал, все перекрываются, нет перекрытий.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def erase_overlap_intervals(intervals: list[list[int]]) -> int:\n    \"\"\"O(n log n) — сортировка по правой границе; жадно оставляем непересекающиеся.\n\n    Edge cases: пустой список, один интервал, все перекрываются, нет перекрытий.\n    \"\"\"\n    ...\n",
+  "description": "Дан массив интервалов `intervals`, где `intervals[i] = [start, end]`. Найдите **минимальное количество интервалов**, которые нужно удалить, чтобы оставшиеся интервалы попарно не пересекались (концы интервалов могут касаться: `[1,2]` и `[2,3]` — допустимо).\n\n**Функция решения:**\n\n```python\ndef erase_overlap_intervals(intervals: list[list[int]]) -> int:\n    ...\n```",
+  "examples": [
+    {"input": "intervals = [[1, 2], [2, 3], [3, 4], [1, 3]]", "output": "1", "explanation": "Удалив [1,3], остаются [1,2],[2,3],[3,4] — без пересечений."},
+    {"input": "intervals = [[1, 2], [1, 2], [1, 2]]", "output": "2", "explanation": "Нужно оставить только один интервал [1,2]."},
+    {"input": "intervals = []", "output": "0", "explanation": "Нет интервалов — ничего удалять."}
+  ],
+  "constraints": [
+    "0 ≤ len(intervals) ≤ 2 * 10^4",
+    "−10^4 ≤ start < end ≤ 10^4"
+  ],
+  "hints": [
+    "Отсортируйте интервалы по правой границе end.",
+    "Жадно выбирайте интервал с наименьшим end и отбрасывайте пересекающиеся.",
+    "Сложность O(n log n), память O(1)."
+  ],
+  "starter_code": "def erase_overlap_intervals(intervals: list[list[int]]) -> int:\n    \"\"\"Вернуть минимальное число интервалов для удаления.\"\"\"\n    ...",
   "entry_function": "erase_overlap_intervals",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          [
-            1,
-            2
-          ],
-          [
-            2,
-            3
-          ],
-          [
-            3,
-            4
-          ],
-          [
-            1,
-            3
-          ]
-        ]
-      ],
-      "expected": 1,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [
-          [
-            1,
-            2
-          ],
-          [
-            1,
-            2
-          ],
-          [
-            1,
-            2
-          ]
-        ]
-      ],
-      "expected": 2,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        []
-      ],
-      "expected": 0,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          [
-            1,
-            2
-          ]
-        ]
-      ],
-      "expected": 0,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[[1, 2], [2, 3], [3, 4], [1, 3]]], "expected": 1, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t2", "args": [[[1, 2], [1, 2], [1, 2]]], "expected": 2, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t3", "args": [[]], "expected": 0, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t4", "args": [[[1, 2]]], "expected": 0, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t5", "args": [[[1, 100], [11, 22], [1, 11], [2, 12]]], "expected": 2, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t6", "args": [[[1, 11], [2, 12], [11, 22]]], "expected": 1, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t7", "args": [[[1, 5], [2, 6], [5, 9]]], "expected": 1, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t8", "args": [[[0, 2], [1, 3], [2, 4], [3, 5]]], "expected": 2, "hidden": true, "arg_converters": [null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

@@ -1,0 +1,106 @@
+{
+  "id": "23",
+  "slug": "bitwise",
+  "title": "Побитовые операции",
+  "description": "Битовые трюки дают элегантные решения за O(n) и O(1) памяти. Разбираем одиночный элемент через XOR, подсчёт единичных битов и сложение чисел без + и - через XOR с переносом.",
+  "durationMinutes": 12,
+  "difficulty": "middle",
+  "tags": [
+    "Algorithms",
+    "Bit Manipulation",
+    "XOR",
+    "Math"
+  ],
+  "learningOutcomes": [
+    "Использовать XOR для поиска непарного элемента",
+    "Считать единичные биты за O(n) по DP-рекурсии",
+    "Складывать числа через XOR (сумма) и AND<<1 (перенос)",
+    "Держать в уме 32-битное маскирование для отрицательных чисел"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(1)",
+    "explanation": "XOR-свёртка, счёт битов и битовая сумма работают за линейное время с константной памятью."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Почему XOR всех элементов находит одиночный элемент?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Парные значения сокращаются (x ^ x = 0)",
+          "isCorrect": true,
+          "explanation": "Каждая пара обнуляется, остаётся одиночный."
+        },
+        {
+          "id": "opt2",
+          "text": "XOR сортирует массив",
+          "isCorrect": false,
+          "explanation": "XOR не сортирует."
+        },
+        {
+          "id": "opt3",
+          "text": "XOR всегда возвращает максимум",
+          "isCorrect": false,
+          "explanation": "XOR — не максимум."
+        }
+      ],
+      "hint": "Чему равно x ^ x?"
+    },
+    {
+      "id": "q2",
+      "question": "Как получить бит суммы без оператора +?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "a ^ b — сумма без переноса, (a & b) << 1 — перенос",
+          "isCorrect": true,
+          "explanation": "Повторяем, пока перенос не станет 0."
+        },
+        {
+          "id": "opt2",
+          "text": "a | b даёт сумму",
+          "isCorrect": false,
+          "explanation": "ИЛИ теряет переносы."
+        },
+        {
+          "id": "opt3",
+          "text": "a << b",
+          "isCorrect": false,
+          "explanation": "Сдвиг — это умножение, не сложение."
+        }
+      ],
+      "hint": "Какие два битовых результата дают XOR и AND сдвиг?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "23-p1",
+      "title": "Один элемент",
+      "difficulty": "easy",
+      "slug": "single-number"
+    },
+    {
+      "taskId": "23-p2",
+      "title": "Количество бит",
+      "difficulty": "medium",
+      "slug": "counting-bits"
+    },
+    {
+      "taskId": "23-p3",
+      "title": "Сумма двух чисел",
+      "difficulty": "hard",
+      "slug": "sum-of-two-integers"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "x ^ x = 0, x ^ 0 = x — основа всех приёмов.",
+      "Одиночный элемент: XOR всего массива.",
+      "count_bits[i] = count_bits[i>>1] + (i&1).",
+      "Сумма: a^b плюс перенос (a&b)<<1, повтор до 0.",
+      "Для отрицательных — маска 32 бита + перевод в знаковое."
+    ]
+  }
+}

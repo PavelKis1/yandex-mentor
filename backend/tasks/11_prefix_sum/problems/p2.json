@@ -1,78 +1,34 @@
 {
   "id": "11-p2",
-  "title": "Product Except Self",
+  "title": "Произведение без себя",
   "difficulty": "medium",
   "lecture_id": "11",
   "order": 2,
-  "description": "Верните массив произведений всех элементов кроме текущего.\n\n**Функция решения:**\n\n```python\ndef product_except_self(nums: list[int]) -> list[int]:\n    \"\"\"O(n) — левое произведение × правое, без деления (корректно при нулях).\n\n    Edge cases: один/два нуля, отрицательные числа, один элемент.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def product_except_self(nums: list[int]) -> list[int]:\n    \"\"\"O(n) — левое произведение × правое, без деления (корректно при нулях).\n\n    Edge cases: один/два нуля, отрицательные числа, один элемент.\n    \"\"\"\n    ...\n",
+  "description": "Дан массив `nums`. Верните массив `answer` такой, что `answer[i]` равно произведению **всех** элементов `nums`, **кроме** `nums[i]`. Работайте **без операции деления** — это гарантирует корректность даже при нулях.\n\n**Функция решения:**\n\n```python\ndef product_except_self(nums: list[int]) -> list[int]:\n    ...\n```",
+  "examples": [
+    {"input": "nums = [1, 2, 3, 4]", "output": "[24, 12, 8, 6]", "explanation": "Для nums[0]=1 произведение остальных 2·3·4=24; и т.д."},
+    {"input": "nums = [-1, 1, 0, 3, -3]", "output": "[0, 0, 9, 0, 0]", "explanation": "Единственный нулевой элемент даёт 9 на своей позиции."},
+    {"input": "nums = [5]", "output": "[1]", "explanation": "Произведение всех остальных (пустое) равно 1."}
+  ],
+  "constraints": [
+    "1 ≤ len(nums) ≤ 10^5",
+    "−30 ≤ nums[i] ≤ 30"
+  ],
+  "hints": [
+    "Префиксное произведение слева и суффиксное произведение справа.",
+    "Произведение except self = произведение слева × произведение справа.",
+    "Без деления — корректно при любых нулях. Сложность O(n), память O(1) дополнительно."
+  ],
+  "starter_code": "def product_except_self(nums: list[int]) -> list[int]:\n    \"\"\"Вернуть массив произведений всех элементов, кроме текущего.\"\"\"\n    ...",
   "entry_function": "product_except_self",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          2,
-          3,
-          4
-        ]
-      ],
-      "expected": [
-        24,
-        12,
-        8,
-        6
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [
-          -1,
-          1,
-          0,
-          3,
-          -3
-        ]
-      ],
-      "expected": [
-        0,
-        0,
-        9,
-        0,
-        0
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          5
-        ]
-      ],
-      "expected": [
-        1
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[1, 2, 3, 4]], "expected": [24, 12, 8, 6], "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t2", "args": [[-1, 1, 0, 3, -3]], "expected": [0, 0, 9, 0, 0], "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t3", "args": [[5]], "expected": [1], "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t4", "args": [[0, 0]], "expected": [0, 0], "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t5", "args": [[-1, 1]], "expected": [1, -1], "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t6", "args": [[1, 2, 3]], "expected": [6, 3, 2], "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t7", "args": [[0, 1]], "expected": [1, 0], "hidden": true, "arg_converters": [null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

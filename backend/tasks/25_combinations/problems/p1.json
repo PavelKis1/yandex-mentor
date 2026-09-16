@@ -4,11 +4,34 @@
   "difficulty": "easy",
   "lecture_id": "25",
   "order": 1,
-  "description": "Найдите все комбинации из n по k.\n\n**Функция решения:**\n\n```python\ndef combine(n: int, k: int) -> list[list[int]]:\n    \"\"\"O(C(n,k)) — все k-элементные подмножества [1..n].\n\n    Edge cases: k = 0 ([[]]), k = n (одна комбинация), k > n ([]).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def combine(n: int, k: int) -> list[list[int]]:\n    \"\"\"O(C(n,k)) — все k-элементные подмножества [1..n].\n\n    Edge cases: k = 0 ([[]]), k = n (одна комбинация), k > n ([]).\n    \"\"\"\n    ...\n",
+  "description": "Верните **все возможные комбинации** из `k` чисел, выбранных из диапазона `[1..n]`, в **возрастающем** порядке.\n\n**Функция решения:**\n\n```python\ndef combine(n: int, k: int) -> list[list[int]]:\n    ...\n```",
+  "examples": [
+    {
+      "input": "n = 4, k = 2",
+      "output": "[[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]",
+      "explanation": "Все пары из {1,2,3,4}."
+    },
+    {
+      "input": "n = 1, k = 1",
+      "output": "[[1]]",
+      "explanation": "Единственная комбинация."
+    },
+    {
+      "input": "n = 3, k = 0",
+      "output": "[[]]",
+      "explanation": "Пустая комбинация."
+    }
+  ],
+  "constraints": [
+    "1 ≤ n ≤ 20",
+    "0 ≤ k ≤ n"
+  ],
+  "hints": [
+    "Backtracking: на шаге i выбираем число от last+1 до n.",
+    "Когда собрали k чисел — добавляем копию в ответ.",
+    "Если k = 0 — ответ [[]]."
+  ],
+  "starter_code": "def combine(n: int, k: int) -> list[list[int]]:\n    \"\"\"Все сочетания k чисел из [1..n] (порядок возрастания).\"\"\"\n    ...",
   "entry_function": "combine",
   "test_cases": [
     {
@@ -53,14 +76,12 @@
     {
       "id": "t2",
       "args": [
-        3,
-        3
+        1,
+        1
       ],
       "expected": [
         [
-          1,
-          2,
-          3
+          1
         ]
       ],
       "hidden": false,
@@ -79,7 +100,7 @@
       "expected": [
         []
       ],
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -89,11 +110,67 @@
     {
       "id": "t4",
       "args": [
+        4,
+        3
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        2,
+        1
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
         3,
         4
       ],
       "expected": [],
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null

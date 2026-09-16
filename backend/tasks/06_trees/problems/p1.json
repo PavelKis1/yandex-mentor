@@ -1,15 +1,34 @@
 {
   "id": "06-p1",
-  "title": "Обход в глубину",
+  "title": "Обход в глубину (preorder)",
   "difficulty": "easy",
   "lecture_id": "06",
   "order": 1,
-  "description": "Реализуйте DFS для дерева.\n\n**Функция решения:**\n\n```python\ndef dfs(root: TreeNode | None) -> list[int]:\n    \"\"\"O(n) — итеративный обход в глубину (preorder: корень, левый, правый).\n\n    Edge cases: пустое дерево, один узел, вырожденное дерево (цепочка).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "class TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef dfs(root: TreeNode | None) -> list[int]:\n    \"\"\"O(n) — итеративный обход в глубину (preorder: корень, левый, правый).\n\n    Edge cases: пустое дерево, один узел, вырожденное дерево (цепочка).\n    \"\"\"\n    ...\n",
-  "entry_function": "dfs",
-  "test_cases": [],
+  "description": "Дан корень бинарного дерева `root`. Верните результат его **preorder-обхода** (корень → левое поддерево → правое поддерево) в виде списка значений.\n\nВ тестах дерево задаётся списком значений в порядке уровневой обходности (`None` — отсутствующий узел) и строится с помощью хелпера `_build_bt`.\n\n**Функция решения:**\n\n```python\ndef preorder(root: TreeNode | None) -> list[int]:\n    ...\n```",
+  "examples": [
+    {"input": "root = [1, None, 2, 3]", "output": "[1, 2, 3]", "explanation": "Preorder: корень 1, затем правое поддерево 2 с левым 3."},
+    {"input": "root = []", "output": "[]", "explanation": "Пустое дерево — пустой обход."},
+    {"input": "root = [1]", "output": "[1]", "explanation": "Единственный узел."}
+  ],
+  "constraints": [
+    "0 ≤ количество узлов ≤ 10^4",
+    "−100 ≤ val узла ≤ 100"
+  ],
+  "hints": [
+    "Preorder: сначала корень, затем рекурсивно левый, затем правый узел.",
+    "Итеративно можно использовать стек и добавлять правого потомка первым.",
+    "Сложность O(n) по времени и по памяти."
+  ],
+  "starter_code": "class TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n    def __init__(self, val: int = 0, left: \"TreeNode | None\" = None, right: \"TreeNode | None\" = None) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\n\ndef preorder(root: TreeNode | None) -> list[int]:\n    \"\"\"Вернуть значения узлов в порядке preorder-обхода.\"\"\"\n    ...\n\n\ndef _build_bt(level: list[int | None]) -> TreeNode | None:\n    if not level or level[0] is None:\n        return None\n    root = TreeNode(level[0])\n    q, i = [root], 1\n    while q and i < len(level):\n        node = q.pop(0)\n        if i < len(level) and level[i] is not None:\n            node.left = TreeNode(level[i])\n            q.append(node.left)\n        i += 1\n        if i < len(level) and level[i] is not None:\n            node.right = TreeNode(level[i])\n            q.append(node.right)\n        i += 1\n    return root\n",
+  "entry_function": "preorder",
+  "test_cases": [
+    {"id": "t1", "args": [[1, null, 2, 3]], "expected": [1, 2, 3], "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t2", "args": [[]], "expected": [], "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t3", "args": [[1]], "expected": [1], "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t4", "args": [[1, 2, 3, 4, 5, 6, 7]], "expected": [1, 2, 4, 5, 3, 6, 7], "hidden": false, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t5", "args": [[3, 9, 20, null, null, 15, 7]], "expected": [3, 9, 20, 15, 7], "hidden": true, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t6", "args": [[1, null, 2, null, 3]], "expected": [1, 2, 3], "hidden": true, "arg_converters": ["_build_bt"], "result_converter": null},
+    {"id": "t7", "args": [[4, null, 6, 2]], "expected": [4, 6, 2], "hidden": true, "arg_converters": ["_build_bt"], "result_converter": null}
+  ],
   "timeout_ms": 3000
 }

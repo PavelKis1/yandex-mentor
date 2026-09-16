@@ -4,11 +4,35 @@
   "difficulty": "easy",
   "lecture_id": "22",
   "order": 1,
-  "description": "Найдите максимальную задержку в сети.\n\n**Функция решения:**\n\n```python\ndef network_delay_time(times: list[list[int]], n: int, k: int) -> int:\n    \"\"\"O((V+E) log V) — время, за которое сигнал дойдёт до всех узлов.\n\n    Edge cases: n = 0 (0), недостижимые узлы (-1), один узел (0).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "import heapq\n\ndef network_delay_time(times: list[list[int]], n: int, k: int) -> int:\n    \"\"\"O((V+E) log V) — время, за которое сигнал дойдёт до всех узлов.\n\n    Edge cases: n = 0 (0), недостижимые узлы (-1), один узел (0).\n    \"\"\"\n    ...\n",
+  "description": "Сеть из `n` узлов (1..n) и направленных каналов `times[i] = [u, v, w]` (из u в v за `w` мс). Из узла `k` посылают сигнал во все узлы, параллельно распространяясь по сети. Верните **минимальное время**, за которое сигнал дойдёт до **всех** узлов, или **-1**, если какой-нибудь узел недостижим.\n\n**Функция решения:**\n\n```python\ndef network_delay_time(times: list[list[int]], n: int, k: int) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "times=[[2,1,1],[2,3,1],[3,4,1]], n=4, k=2",
+      "output": "2",
+      "explanation": "Сигнал доходит до 1, 3 за 1 мс и до 4 через 3 ещё за 1 мс."
+    },
+    {
+      "input": "times=[[1,2,1]], n=2, k=1",
+      "output": "1",
+      "explanation": "Всего один канал, доходит за 1 мс."
+    },
+    {
+      "input": "times=[[1,2,1]], n=2, k=2",
+      "output": "-1",
+      "explanation": "Узел 1 недостижим из 2."
+    }
+  ],
+  "constraints": [
+    "1 ≤ n ≤ 100",
+    "0 ≤ len(times) ≤ 6000",
+    "Источник k ∈ [1, n]"
+  ],
+  "hints": [
+    "Постройте список смежности: g[u].append((v, w)).",
+    "Запускайте Дейкстру из k; расстояния храните в массиве.",
+    "Ответ — максимум по всем dist[1..n]; inf означает -1."
+  ],
+  "starter_code": "def network_delay_time(times: list[list[int]], n: int, k: int) -> int:\n    \"\"\"Время, когда сигнал дойдёт до всех узлов сети.\"\"\"\n    ...",
   "entry_function": "network_delay_time",
   "test_cases": [
     {
@@ -79,7 +103,61 @@
         2
       ],
       "expected": -1,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            2,
+            3,
+            2
+          ],
+          [
+            1,
+            3,
+            4
+          ]
+        ],
+        3,
+        1
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          [
+            2,
+            1,
+            1
+          ]
+        ],
+        2,
+        1
+      ],
+      "expected": -1,
+      "hidden": true,
       "arg_converters": [
         null,
         null,

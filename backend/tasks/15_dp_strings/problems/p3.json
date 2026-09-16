@@ -4,11 +4,34 @@
   "difficulty": "hard",
   "lecture_id": "15",
   "order": 3,
-  "description": "Найдите минимальное расстояние редактирования.\n\n**Функция решения:**\n\n```python\ndef edit_distance(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — DP: вставка/удаление/замена; нижняя граница памяти (2 строки).\n\n    Edge cases: одна строка пустая (len другой), обе пустые, идентичные строки.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def edit_distance(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — DP: вставка/удаление/замена; нижняя граница памяти (2 строки).\n\n    Edge cases: одна строка пустая (len другой), обе пустые, идентичные строки.\n    \"\"\"\n    ...\n",
+  "description": "Даны строки `s1` и `s2`. За одну операцию можно **вставить**, **удалить** или **заменить** символ. Верните **минимальное расстояние** (число операций) для превращения `s1` в `s2`.\n\n**Функция решения:**\n\n```python\ndef edit_distance(s1: str, s2: str) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "s1 = 'kitten', s2 = 'sitting'",
+      "output": "3",
+      "explanation": "Замена k→s, вставка g, замена e→i."
+    },
+    {
+      "input": "s1 = '', s2 = 'abc'",
+      "output": "3",
+      "explanation": "Три вставки."
+    },
+    {
+      "input": "s1 = '', s2 = ''",
+      "output": "0",
+      "explanation": "Строки уже равны."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(s1), len(s2) ≤ 500",
+    "Строки из строчных латинских букв"
+  ],
+  "hints": [
+    "dp[i][j] = dp[i-1][j-1], если символы равны.",
+    "Иначе 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]).",
+    "Оптимизируйте память до одной строки dp."
+  ],
+  "starter_code": "def edit_distance(s1: str, s2: str) -> int:\n    \"\"\"Минимальное число операций вставки/удаления/замены.\"\"\"\n    ...",
   "entry_function": "edit_distance",
   "test_cases": [
     {
@@ -18,7 +41,7 @@
         "ros"
       ],
       "expected": 3,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -32,7 +55,7 @@
         "execution"
       ],
       "expected": 5,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -46,7 +69,7 @@
         ""
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -61,6 +84,34 @@
       ],
       "expected": 1,
       "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        "kitten",
+        "sitting"
+      ],
+      "expected": 3,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        "flaw",
+        "lawn"
+      ],
+      "expected": 2,
+      "hidden": true,
       "arg_converters": [
         null,
         null

@@ -4,74 +4,30 @@
   "difficulty": "medium",
   "lecture_id": "05",
   "order": 2,
-  "description": "Найдите середину списка.\n\n**Функция решения:**\n\n```python\ndef middle_node(head: ListNode | None) -> ListNode | None:\n    \"\"\"O(n) — два указателя: fast движется вдвое быстрее slow.\n\n    Edge cases: пустой список, один узел, чётное и нечётное число узлов.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "class ListNode:\n    \"\"\"Узел односвязного списка.\"\"\"\n\n    def __init__(self, val: int = 0, next: ListNode | None = None) -> None:\n        self.val = val\n        self.next = next\n\ndef middle_node(head: ListNode | None) -> ListNode | None:\n    \"\"\"O(n) — два указателя: fast движется вдвое быстрее slow.\n\n    Edge cases: пустой список, один узел, чётное и нечётное число узлов.\n    \"\"\"\n    ...\n\ndef _build(values: list[int]) -> ListNode | None:\n    dummy = ListNode()\n    tail = dummy\n    for value in values:\n        tail.next = ListNode(value)\n        tail = tail.next\n    return dummy.next\n\ndef _to_list(head: ListNode | None) -> list[int]:\n    result: list[int] = []\n    while head is not None:\n        result.append(head.val)\n        head = head.next\n    return result\n",
+  "description": "Дан односвязный список. Верните **средний узел** списка. Если узлов чётное количество, возвращайте второй из двух средних (например, для `[1, 2, 3, 4]` — узел со значением 3). Если список пуст, верните `None`.\n\n**Функция решения:**\n\n```python\ndef middle_node(head: ListNode | None) -> ListNode | None:\n    ...\n```\n\nРезультат сравнивается по значению узла (`val`).",
+  "examples": [
+    {"input": "head = [1, 2, 3, 4, 5]", "output": "3", "explanation": "Средний из пяти узлов — третий."},
+    {"input": "head = [1, 2, 3, 4]", "output": "3", "explanation": "Чётное число — берём второй из двух средних (узел 3)."},
+    {"input": "head = [1]", "output": "1", "explanation": "Один узел и есть середина."}
+  ],
+  "constraints": [
+    "0 ≤ количество узлов ≤ 10^5",
+    "−10^3 ≤ val узла ≤ 10^3"
+  ],
+  "hints": [
+    "Два указателя: slow делает шаг, fast — два шага за итерацию.",
+    "Когда fast достигает конца (или None), slow оказывается на среднем узле.",
+    "Алгоритм работает за O(n) по времени и O(1) по памяти."
+  ],
+  "starter_code": "class ListNode:\n    \"\"\"Узел односвязного списка.\"\"\"\n    def __init__(self, val: int = 0, next: \"ListNode | None\" = None) -> None:\n        self.val = val\n        self.next = next\n\n\ndef middle_node(head: ListNode | None) -> ListNode | None:\n    \"\"\"Вернуть средний узел списка (при чётном числе — второй из двух).\"\"\"\n    ...\n\n\ndef _build(values: list[int]) -> ListNode | None:\n    dummy = ListNode()\n    tail = dummy\n    for value in values:\n        tail.next = ListNode(value)\n        tail = tail.next\n    return dummy.next\n",
   "entry_function": "middle_node",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          2,
-          3,
-          4,
-          5
-        ]
-      ],
-      "expected": 3,
-      "hidden": false,
-      "arg_converters": [
-        "_build"
-      ],
-      "result_converter": "attr:val"
-    },
-    {
-      "id": "t2",
-      "args": [
-        [
-          1,
-          2,
-          3,
-          4
-        ]
-      ],
-      "expected": 3,
-      "hidden": false,
-      "arg_converters": [
-        "_build"
-      ],
-      "result_converter": "attr:val"
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          1
-        ]
-      ],
-      "expected": 1,
-      "hidden": false,
-      "arg_converters": [
-        "_build"
-      ],
-      "result_converter": "attr:val"
-    },
-    {
-      "id": "t4",
-      "args": [
-        []
-      ],
-      "expected": null,
-      "hidden": false,
-      "arg_converters": [
-        "_build"
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[1, 2, 3, 4, 5]], "expected": 3, "hidden": false, "arg_converters": ["_build"], "result_converter": "attr:val"},
+    {"id": "t2", "args": [[1, 2, 3, 4]], "expected": 3, "hidden": false, "arg_converters": ["_build"], "result_converter": "attr:val"},
+    {"id": "t3", "args": [[1]], "expected": 1, "hidden": false, "arg_converters": ["_build"], "result_converter": "attr:val"},
+    {"id": "t4", "args": [[]], "expected": null, "hidden": false, "arg_converters": ["_build"], "result_converter": null},
+    {"id": "t5", "args": [[1, 2]], "expected": 2, "hidden": true, "arg_converters": ["_build"], "result_converter": "attr:val"},
+    {"id": "t6", "args": [[1, 2, 3]], "expected": 2, "hidden": true, "arg_converters": ["_build"], "result_converter": "attr:val"}
   ],
   "timeout_ms": 3000
 }

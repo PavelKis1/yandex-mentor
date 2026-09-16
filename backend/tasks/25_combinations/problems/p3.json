@@ -4,22 +4,136 @@
   "difficulty": "hard",
   "lecture_id": "25",
   "order": 3,
-  "description": "Найдите все подмножества.\n\n**Функция решения:**\n\n```python\ndef subsets(nums: list[int]) -> list[list[int]]:\n    \"\"\"O(2^n) — рекурсивно: добавить элемент или перейти дальше.\n\n    Edge cases: пустой массив ([[]]), один элемент, все элементы одинаковые.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def subsets(nums: list[int]) -> list[list[int]]:\n    \"\"\"O(2^n) — рекурсивно: добавить элемент или перейти дальше.\n\n    Edge cases: пустой массив ([[]]), один элемент, все элементы одинаковые.\n    \"\"\"\n    ...\n",
+  "description": "Дан массив целых чисел `nums` с **различными** элементами. Верните **все возможные подмножества** (включая пустое), без дубликатов.\n\n**Функция решения:**\n\n```python\ndef subsets(nums: list[int]) -> list[list[int]]:\n    ...\n```",
+  "examples": [
+    {
+      "input": "nums = [1, 2]",
+      "output": "[[], [1], [2], [1, 2]]",
+      "explanation": "4 подмножества."
+    },
+    {
+      "input": "nums = [0]",
+      "output": "[[], [0]]",
+      "explanation": "Пустое и само число."
+    },
+    {
+      "input": "nums = []",
+      "output": "[[]]",
+      "explanation": "Только пустое множество."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(nums) ≤ 10",
+    "Все элементы различны",
+    "|nums[i]| ≤ 10"
+  ],
+  "hints": [
+    "Перебирайте битовые маски от 0 до 2^n - 1.",
+    "Бит i указывает, входит ли nums[i] в подмножество.",
+    "Каждой маске соответствует одно подмножество."
+  ],
+  "starter_code": "def subsets(nums: list[int]) -> list[list[int]]:\n    \"\"\"Все подмножества массива nums (включая пустое).\"\"\"\n    ...",
   "entry_function": "subsets",
   "test_cases": [
     {
       "id": "t1",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        []
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        []
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          0
+        ]
+      ],
+      "expected": [
+        [
+          0
+        ],
+        []
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
       "args": [
         []
       ],
       "expected": [
         []
       ],
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null
       ],

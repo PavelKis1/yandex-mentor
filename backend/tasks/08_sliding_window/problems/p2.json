@@ -4,61 +4,33 @@
   "difficulty": "medium",
   "lecture_id": "08",
   "order": 2,
-  "description": "Найдите длину наибольшей подстроки без повторяющихся символов.\n\n**Функция решения:**\n\n```python\ndef length_of_longest_substring(s: str) -> int:\n    \"\"\"O(n) — sliding window + множество символов в текущем окне.\n\n    Edge cases: пустая строка, строка без повторов, все символы одинаковые.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import Counter\n\ndef length_of_longest_substring(s: str) -> int:\n    \"\"\"O(n) — sliding window + множество символов в текущем окне.\n\n    Edge cases: пустая строка, строка без повторов, все символы одинаковые.\n    \"\"\"\n    ...\n",
+  "description": "Дана строка `s`. Найдите **длину наибольшей подстроки без повторяющихся символов**.\n\n**Функция решения:**\n\n```python\ndef length_of_longest_substring(s: str) -> int:\n    ...\n```",
+  "examples": [
+    {"input": "s = \"abcabcbb\"", "output": "3", "explanation": "Наибольшие подстроки без повторов: \"abc\" (длина 3)."},
+    {"input": "s = \"bbbbb\"", "output": "1", "explanation": "Все символы одинаковые — длина 1."},
+    {"input": "s = \"pwwkew\"", "output": "3", "explanation": "\"wke\" (или \"kew\") — длина 3; \"pwke\" не подходит, т.к. это подпоследовательность, а не подстрока."},
+    {"input": "s = \"\"", "output": "0", "explanation": "Пустая строка."}
+  ],
+  "constraints": [
+    "0 ≤ len(s) ≤ 10^5",
+    "s состоит из символов английского алфавита, цифр, пробелов и знаков"
+  ],
+  "hints": [
+    "Поддерживайте множество символов, находящихся в текущем окне.",
+    "Когда справа попадает уже имеющийся символ, сужайте окно слева, пока не уберёте дубликат.",
+    "Сложность O(n), память O(min(n, |алфавит|))."
+  ],
+  "starter_code": "def length_of_longest_substring(s: str) -> int:\n    \"\"\"Вернуть длину наибольшей подстроки без повторяющихся символов.\"\"\"\n    ...",
   "entry_function": "length_of_longest_substring",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        "abcabcbb"
-      ],
-      "expected": 3,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        "bbbbb"
-      ],
-      "expected": 1,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        ""
-      ],
-      "expected": 0,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        "pwwkew"
-      ],
-      "expected": 3,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": ["abcabcbb"], "expected": 3, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t2", "args": ["bbbbb"], "expected": 1, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t3", "args": [""], "expected": 0, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t4", "args": ["pwwkew"], "expected": 3, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t5", "args": ["au"], "expected": 2, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t6", "args": ["abcdef"], "expected": 6, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t7", "args": ["dvdf"], "expected": 3, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t8", "args": ["abac"], "expected": 3, "hidden": true, "arg_converters": [null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

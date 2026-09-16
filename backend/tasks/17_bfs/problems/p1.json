@@ -1,15 +1,143 @@
 {
   "id": "17-p1",
-  "title": "Обход по уровням",
+  "title": "Открытие замка",
   "difficulty": "easy",
   "lecture_id": "17",
   "order": 1,
-  "description": "Обойдите дерево по уровням.\n\n**Функция решения:**\n\n```python\ndef level_order(root: TreeNode | None) -> list[list[int]]:\n    \"\"\"O(n) — BFS с разбиением по текущей длине очереди (уровень за уровень).\n\n    Edge cases: пустое дерево, один узел, вырожденное дерево (цепочка).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import deque\n\nclass TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef level_order(root: TreeNode | None) -> list[list[int]]:\n    \"\"\"O(n) — BFS с разбиением по текущей длине очереди (уровень за уровень).\n\n    Edge cases: пустое дерево, один узел, вырожденное дерево (цепочка).\n    \"\"\"\n    ...\n",
-  "entry_function": "level_order",
-  "test_cases": [],
+  "description": "Замок с 4 круглыми цифрами (`0000`..`9999`). За один ход любая цифра меняется на +1 или −1 (по кругу). Запрещённые состояния — `deadends`. Верните **минимальное число поворотов** от `0000` до `target` или **-1**, если добраться нельзя. Если `0000` в deadends — сразу `-1`.\n\n**Функция решения:**\n\n```python\ndef open_lock(deadends: list[str], target: str) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "deadends = ['0201','0101','0102','1212','2002'], target = '0202'",
+      "output": "6",
+      "explanation": "Кратчайший маршрут обходит запреты."
+    },
+    {
+      "input": "deadends = ['0000'], target = '8888'",
+      "output": "-1",
+      "explanation": "Старт недоступен сразу."
+    },
+    {
+      "input": "deadends = [], target = '0000'",
+      "output": "0",
+      "explanation": "Уже на месте."
+    }
+  ],
+  "constraints": [
+    "target — строка из 4 цифр",
+    "0 ≤ len(deadends) ≤ 1000",
+    "Состояния — все 10^4 комбинаций"
+  ],
+  "hints": [
+    "Представьте каждое состояние как вершину, поворот — как ребро.",
+    "Стартовая очередь из '0000', каждое посещение фиксируйте и не повторяйте.",
+    "Меняйте цифру: (d + 1) % 10 и (d - 1) % 10."
+  ],
+  "starter_code": "def open_lock(deadends: list[str], target: str) -> int:\n    \"\"\"Минимальное число поворотов до target, обходя deadends (-1, если нельзя).\"\"\"\n    ...",
+  "entry_function": "open_lock",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          "0201",
+          "0101",
+          "0102",
+          "1212",
+          "2002"
+        ],
+        "0202"
+      ],
+      "expected": 6,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          "8887",
+          "8889",
+          "8878",
+          "8898",
+          "8788",
+          "8988",
+          "7888",
+          "9888"
+        ],
+        "8888"
+      ],
+      "expected": -1,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          "0000"
+        ],
+        "8888"
+      ],
+      "expected": -1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [],
+        "0202"
+      ],
+      "expected": 4,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [],
+        "0000"
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          "1000"
+        ],
+        "0001"
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    }
+  ],
   "timeout_ms": 3000
 }

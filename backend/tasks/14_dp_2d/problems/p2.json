@@ -4,11 +4,34 @@
   "difficulty": "medium",
   "lecture_id": "14",
   "order": 2,
-  "description": "Найдите длину наибольшей общей подпоследовательности.\n\n**Функция решения:**\n\n```python\ndef longest_common_subsequence(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — нижняя граница памяти (2 строки), классическая LCS.\n\n    Edge cases: одна строка пустая, обе пустые, строки без общих символов.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def longest_common_subsequence(s1: str, s2: str) -> int:\n    \"\"\"O(m*n) — нижняя граница памяти (2 строки), классическая LCS.\n\n    Edge cases: одна строка пустая, обе пустые, строки без общих символов.\n    \"\"\"\n    ...\n",
+  "description": "Даны строки `s1` и `s2`. Верните длину **наибольшей общей подпоследовательности** (символы идут по порядку в обеих строках, но не обязательно подряд).\n\n**Функция решения:**\n\n```python\ndef longest_common_subsequence(s1: str, s2: str) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "s1 = 'abcde', s2 = 'ace'",
+      "output": "3",
+      "explanation": "Общая подпоследовательность 'ace'."
+    },
+    {
+      "input": "s1 = 'abc', s2 = 'def'",
+      "output": "0",
+      "explanation": "Общих символов нет."
+    },
+    {
+      "input": "s1 = 'abc', s2 = 'abc'",
+      "output": "3",
+      "explanation": "Строки совпадают полностью."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(s1), len(s2) ≤ 1000",
+    "Строки из строчных латинских букв"
+  ],
+  "hints": [
+    "При s1[i-1] == s2[j-1]: dp[i][j] = dp[i-1][j-1] + 1.",
+    "Иначе dp[i][j] = max(dp[i-1][j], dp[i][j-1]).",
+    "Храните только предыдущую строку dp."
+  ],
+  "starter_code": "def longest_common_subsequence(s1: str, s2: str) -> int:\n    \"\"\"Длина наибольшей общей подпоследовательности.\"\"\"\n    ...",
   "entry_function": "longest_common_subsequence",
   "test_cases": [
     {
@@ -46,7 +69,7 @@
         "abc"
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null
@@ -61,6 +84,34 @@
       ],
       "expected": 3,
       "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        "AGGTAB",
+        "GXTXAYB"
+      ],
+      "expected": 4,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        "oxcpqrsvwf",
+        "shmtulqrypy"
+      ],
+      "expected": 2,
+      "hidden": true,
       "arg_converters": [
         null,
         null

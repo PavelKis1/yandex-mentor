@@ -1,15 +1,158 @@
 {
   "id": "21-p3",
-  "title": "Замена слов",
+  "title": "Максимальный XOR",
   "difficulty": "hard",
   "lecture_id": "21",
   "order": 3,
-  "description": "Замените слова на корни.",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "description": "Дан массив целых чисел `nums`. Верните **максимальный XOR** двух чисел из массива.\n\n**Функция решения:**\n\n```python\ndef find_max_xor(nums: list[int]) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "nums = [3, 10, 5, 25, 2, 8]",
+      "output": "28",
+      "explanation": "25 XOR 5 = 28 — максимальная пара."
+    },
+    {
+      "input": "nums = [0]",
+      "output": "0",
+      "explanation": "Единственное число XOR с самим собой = 0."
+    },
+    {
+      "input": "nums = [8, 10, 2]",
+      "output": "10",
+      "explanation": "8 XOR 2 = 10."
+    }
+  ],
+  "constraints": [
+    "1 ≤ len(nums) ≤ 10^5",
+    "0 ≤ nums[i] < 2^31"
+  ],
+  "hints": [
+    "Перебирайте старшие биты и проверяйте, можно ли получить кандидата.",
+    "Держите множество префиксов чисел по текущей маске.",
+    "Если пара p, p^cand в префиксах — бит достижим."
+  ],
+  "starter_code": "def find_max_xor(nums: list[int]) -> int:\n    \"\"\"Максимальный XOR двух чисел из nums.\"\"\"\n    ...",
+  "entry_function": "find_max_xor",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          3,
+          10,
+          5,
+          25,
+          2,
+          8
+        ]
+      ],
+      "expected": 28,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          0
+        ]
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          14,
+          70,
+          53,
+          83,
+          49,
+          91,
+          36,
+          80,
+          92,
+          51,
+          66,
+          70
+        ]
+      ],
+      "expected": 127,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          4,
+          6,
+          7
+        ]
+      ],
+      "expected": 3,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          5,
+          25
+        ]
+      ],
+      "expected": 28,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t7",
+      "args": [
+        [
+          8,
+          10,
+          2
+        ]
+      ],
+      "expected": 10,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    }
+  ],
   "timeout_ms": 3000
 }

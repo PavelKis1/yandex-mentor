@@ -4,11 +4,35 @@
   "difficulty": "hard",
   "lecture_id": "17",
   "order": 3,
-  "description": "Найдите кратчайший путь в графе.\n\n**Функция решения:**\n\n```python\ndef shortest_path(graph: dict[int, list[int]], start: int, end: int) -> int:\n    \"\"\"O(V + E) — BFS в невзвешенном графе (смежность: node -> neighbours).\n\n    Edge cases: start == end (0), изолированная вершина, недостижимый конец (-1).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import deque\n\nclass TreeNode:\n    \"\"\"Узел бинарного дерева.\"\"\"\n\n    def __init__(\n        self,\n        val: int = 0,\n        left: TreeNode | None = None,\n        right: TreeNode | None = None,\n    ) -> None:\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef shortest_path(graph: dict[int, list[int]], start: int, end: int) -> int:\n    \"\"\"O(V + E) — BFS в невзвешенном графе (смежность: node -> neighbours).\n\n    Edge cases: start == end (0), изолированная вершина, недостижимый конец (-1).\n    \"\"\"\n    ...\n",
+  "description": "Дан **невзвешенный** граф `graph: {node: [соседи]}`. Верните **минимальное количество рёбер** от `start` до `end`. Если `start == end`, верните `0`; если конца не достичь — верните `-1`.\n\n**Функция решения:**\n\n```python\ndef shortest_path(graph: dict[int, list[int]], start: int, end: int) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "graph={0:[1,2],1:[2],2:[3],3:[]}, start=0, end=3",
+      "output": "2",
+      "explanation": "Путь 0→2→3 (2 ребра)."
+    },
+    {
+      "input": "graph={0:[1],1:[0]}, start=0, end=0",
+      "output": "0",
+      "explanation": "Старт равен концу."
+    },
+    {
+      "input": "graph={0:[1]}, start=0, end=5",
+      "output": "-1",
+      "explanation": "Вершина 5 недостижима."
+    }
+  ],
+  "constraints": [
+    "Вершины графа — целые числа",
+    "0 ≤ E ≤ 10^4",
+    "Граф невзвешенный"
+  ],
+  "hints": [
+    "Очередь хранит (вершина, расстояние).",
+    "Соседей из graph.get(node, []) обходите, пропуская посещённые.",
+    "Первое попадание в end возвращает расстояние."
+  ],
+  "starter_code": "def shortest_path(graph: dict[int, list[int]], start: int, end: int) -> int:\n    \"\"\"Длина кратчайшего пути в невзвешенном графе или -1.\"\"\"\n    ...",
   "entry_function": "shortest_path",
   "test_cases": [
     {
@@ -54,7 +78,7 @@
         0
       ],
       "expected": 0,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null,
@@ -74,7 +98,7 @@
         5
       ],
       "expected": -1,
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null,
         null,
@@ -90,7 +114,58 @@
         2
       ],
       "expected": -1,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        {
+          "1": [
+            2,
+            3
+          ],
+          "2": [
+            4
+          ],
+          "3": [
+            4
+          ],
+          "4": []
+        },
+        1,
+        4
+      ],
+      "expected": 2,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        {
+          "1": [
+            2
+          ],
+          "2": [
+            1
+          ]
+        },
+        1,
+        2
+      ],
+      "expected": 1,
+      "hidden": true,
       "arg_converters": [
         null,
         null,

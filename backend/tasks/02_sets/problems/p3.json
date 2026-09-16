@@ -4,112 +4,43 @@
   "difficulty": "hard",
   "lecture_id": "02",
   "order": 3,
-  "description": "Проверьте, является ли массив подмножеством другого.\n\n**Функция решения:**\n\n```python\ndef is_subset(small: list[int], large: list[int]) -> bool:\n    \"\"\"O(n + m) — мультимножественная проверка: каждый элемент small входит\n    в large с нужной кратностью (дубликаты учитываются).\n\n    Edge cases: пустой small (пустое подмножество чего угодно), пустой large,\n    повторяющиеся элементы.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import Counter\n\ndef is_subset(small: list[int], large: list[int]) -> bool:\n    \"\"\"O(n + m) — мультимножественная проверка: каждый элемент small входит\n    в large с нужной кратностью (дубликаты учитываются).\n\n    Edge cases: пустой small (пустое подмножество чего угодно), пустой large,\n    повторяющиеся элементы.\n    \"\"\"\n    ...\n",
+  "description": "Дан массив `small` и массив `large`. Проверьте, что каждый элемент `small` содержится в `large` **с учётом кратности**: для каждого значения количество его вхождений в `small` не должно превышать количества вхождений в `large`. Верните `True`, если это так, иначе `False`.\n\nПустое множество всегда является подмножеством, поэтому при пустом `small` ответ `True`.\n\n**Функция решения:**\n\n```python\ndef is_subset(small: list[int], large: list[int]) -> bool:\n    ...\n```",
+  "examples": [
+    {
+      "input": "small = [1, 2, 2], large = [1, 2, 3, 2]",
+      "output": "True",
+      "explanation": "Двойка в small встречается два раза, и в large тоже два."
+    },
+    {
+      "input": "small = [1, 2, 2], large = [1, 2, 3]",
+      "output": "False",
+      "explanation": "В large только одна двойка, а требуется две."
+    },
+    {
+      "input": "small = [], large = [1, 2, 3]",
+      "output": "True",
+      "explanation": "Пустое подмножество содержится в любом массиве."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(small), len(large) ≤ 10^4",
+    "0 ≤ small[i], large[i] ≤ 10^4"
+  ],
+  "hints": [
+    "Посчитайте частоты элементов каждого массива (например, с помощью Counter).",
+    "Элемент x допустим, если его количество в large больше или равно количеству в small.",
+    "Сложность O(len(small) + len(large)) по времени и O(len(large)) по памяти."
+  ],
+  "starter_code": "def is_subset(small: list[int], large: list[int]) -> bool:\n    \"\"\"Проверить, что все элементы small содержатся в large с учётом кратности.\"\"\"\n    ...",
   "entry_function": "is_subset",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          2
-        ],
-        [
-          3,
-          2,
-          1
-        ]
-      ],
-      "expected": true,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [
-          4
-        ],
-        [
-          1,
-          2,
-          3
-        ]
-      ],
-      "expected": false,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [],
-        [
-          1,
-          2,
-          3
-        ]
-      ],
-      "expected": true,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          1,
-          1
-        ],
-        [
-          1
-        ]
-      ],
-      "expected": false,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t5",
-      "args": [
-        [
-          1,
-          1
-        ],
-        [
-          1,
-          1,
-          2
-        ]
-      ],
-      "expected": true,
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[1, 2, 2], [1, 2, 3, 2]], "expected": true, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t2", "args": [[4], [1, 2, 3]], "expected": false, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t3", "args": [[], [1, 2, 3]], "expected": true, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t4", "args": [[1, 1], [1]], "expected": false, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t5", "args": [[1, 1], [1, 1, 2]], "expected": true, "hidden": false, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t6", "args": [[5, 5, 5], [5, 5]], "expected": false, "hidden": true, "arg_converters": [null, null], "result_converter": null},
+    {"id": "t7", "args": [[1, 2, 3, 4], [4, 3, 2, 1]], "expected": true, "hidden": true, "arg_converters": [null, null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

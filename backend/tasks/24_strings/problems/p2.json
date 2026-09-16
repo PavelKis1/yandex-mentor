@@ -4,19 +4,63 @@
   "difficulty": "medium",
   "lecture_id": "24",
   "order": 2,
-  "description": "Сгруппируйте анаграммы.\n\n**Функция решения:**\n\n```python\ndef group_anagrams(strs: list[str]) -> list[list[str]]:\n    \"\"\"O(n * k log k) — ключ: отсортированная строка, одна итерация по strs.\n\n    Edge cases: пустой список, один элемент, все анаграммы, ни одной пары.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def group_anagrams(strs: list[str]) -> list[list[str]]:\n    \"\"\"O(n * k log k) — ключ: отсортированная строка, одна итерация по strs.\n\n    Edge cases: пустой список, один элемент, все анаграммы, ни одной пары.\n    \"\"\"\n    ...\n",
+  "description": "Дан массив строк `strs`. Сгруппируйте анаграммы вместе. Две строки — анаграммы, если составлены из одинаковых букв (с учётом кратности). Верните список групп **в порядке первой встречи ключа**.\n\n**Функция решения:**\n\n```python\ndef group_anagrams(strs: list[str]) -> list[list[str]]:\n    ...\n```",
+  "examples": [
+    {
+      "input": "strs = ['eat','tea','tan','ate','nat','bat']",
+      "output": "[['eat','tea','ate'],['tan','nat'],['bat']]",
+      "explanation": "Три группы анаграмм."
+    },
+    {
+      "input": "strs = ['']",
+      "output": "[['']]",
+      "explanation": "Пустая строка — сама по себе группа."
+    },
+    {
+      "input": "strs = ['a']",
+      "output": "[['a']]",
+      "explanation": "Одна группа."
+    }
+  ],
+  "constraints": [
+    "1 ≤ len(strs) ≤ 10^4",
+    "0 ≤ len(слово) ≤ 100",
+    "Строчные латинские буквы"
+  ],
+  "hints": [
+    "Ключ группы — отсортированный вариант строки.",
+    "Складывайте строки в dict: ключ -> список.",
+    "Отдавайте значения dict в порядке вставки."
+  ],
+  "starter_code": "def group_anagrams(strs: list[str]) -> list[list[str]]:\n    \"\"\"Сгруппировать анаграммы вместе.\"\"\"\n    ...",
   "entry_function": "group_anagrams",
   "test_cases": [
     {
       "id": "t1",
       "args": [
-        []
+        [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
       ],
-      "expected": [],
+      "expected": [
+        [
+          "eat",
+          "tea",
+          "ate"
+        ],
+        [
+          "tan",
+          "nat"
+        ],
+        [
+          "bat"
+        ]
+      ],
       "hidden": false,
       "arg_converters": [
         null
@@ -27,6 +71,24 @@
       "id": "t2",
       "args": [
         [
+          ""
+        ]
+      ],
+      "expected": [
+        [
+          ""
+        ]
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
           "a"
         ]
       ],
@@ -35,7 +97,53 @@
           "a"
         ]
       ],
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected": [
+        [
+          "a"
+        ],
+        [
+          "b"
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          "ab",
+          "ba",
+          "abc"
+        ]
+      ],
+      "expected": [
+        [
+          "ab",
+          "ba"
+        ],
+        [
+          "abc"
+        ]
+      ],
+      "hidden": true,
       "arg_converters": [
         null
       ],

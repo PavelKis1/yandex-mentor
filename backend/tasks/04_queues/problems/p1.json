@@ -1,95 +1,33 @@
 {
   "id": "04-p1",
-  "title": "Реализация очереди",
+  "title": "Первая уникальная буква",
   "difficulty": "easy",
   "lecture_id": "04",
   "order": 1,
-  "description": "Реализуйте очередь с enqueue/dequeue.\n\n**Функция решения:**\n\n```python\ndef max_sliding_window(nums: list[int], k: int) -> list[int]:\n    \"\"\"O(n) — deque индексов; максимум каждого окна размера k.\n\n    Edge cases: пустой массив, k <= 0, k > len(nums) — возвращаем [].\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import deque\n\nclass Queue:\n    \"\"\"FIFO-очередь на collections.deque — O(1) на enqueue/dequeue.\n\n    Edge cases: пустая очередь (dequeue бросает IndexError), один элемент.\n    \"\"\"\n\n    def __init__(self) -> None:\n        self._items: deque[int] = deque()\n\n    def enqueue(self, value: int) -> None:\n        self._items.append(value)\n\n    def dequeue(self) -> int:\n        if not self._items:\n            raise IndexError(\"dequeue from empty queue\")\n        return self._items.popleft()\n\n    def is_empty(self) -> bool:\n        return not self._items\n\n    def size(self) -> int:\n        return len(self._items)\n\nclass CircularQueue:\n    \"\"\"Круговая очередь фиксированного размера на кольцевом массиве.\n\n    O(1) на все операции. Edge cases: полная и пустая очередь, capacity = 1.\n    \"\"\"\n\n    def __init__(self, capacity: int) -> None:\n        self._data: list[int | None] = [None] * capacity\n        self._head = 0\n        self._tail = -1\n        self._count = 0\n\n    def enqueue(self, value: int) -> bool:\n        if self.is_full():\n            return False\n        self._tail = (self._tail + 1) % len(self._data)\n        assert self._data[self._tail] is None\n        self._data[self._tail] = value\n        self._count += 1\n        return True\n\n    def dequeue(self) -> bool:\n        if self.is_empty():\n            return False\n        assert self._data[self._head] is not None\n        self._data[self._head] = None\n        self._head = (self._head + 1) % len(self._data)\n        self._count -= 1\n        return True\n\n    def front(self) -> int | None:\n        if self.is_empty():\n            return None\n        return self._data[self._head]\n\n    def rear(self) -> int | None:\n        if self.is_empty():\n            return None\n        return self._data[self._tail]\n\n    def is_empty(self) -> bool:\n        return self._count == 0\n\n    def is_full(self) -> bool:\n        return self._count == len(self._data)\n\ndef max_sliding_window(nums: list[int], k: int) -> list[int]:\n    \"\"\"O(n) — deque индексов; максимум каждого окна размера k.\n\n    Edge cases: пустой массив, k <= 0, k > len(nums) — возвращаем [].\n    \"\"\"\n    ...\n",
-  "entry_function": "max_sliding_window",
+  "description": "Дана строка `s`. Найдите **индекс** (0-based) первого символа, который встречается в строке ровно один раз. Если такого символа нет, верните `-1`.\n\n**Функция решения:**\n\n```python\ndef first_unique_char(s: str) -> int:\n    ...\n```",
+  "examples": [
+    {"input": "s = \"leetcode\"", "output": "0", "explanation": "Буква 'l' встречается один раз и стоит первой."},
+    {"input": "s = \"loveleetcode\"", "output": "2", "explanation": "Буква 'v' единичная, её индекс 2 (первые 'l' и 'o' повторяются)."},
+    {"input": "s = \"aabb\"", "output": "-1", "explanation": "Все символы повторяются — уникального нет."}
+  ],
+  "constraints": [
+    "1 ≤ len(s) ≤ 10^5",
+    "s состоит из строчных латинских букв"
+  ],
+  "hints": [
+    "Сначала посчитайте количество вхождений каждого символа.",
+    "Затем пройдите строку слева направо и найдите первый символ с частотой 1.",
+    "Сложность O(n) по времени и O(1) по памяти (фиксированный алфавит)."
+  ],
+  "starter_code": "def first_unique_char(s: str) -> int:\n    \"\"\"Вернуть индекс первого неповторяющегося символа или -1.\"\"\"\n    ...",
+  "entry_function": "first_unique_char",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          3,
-          -1,
-          -3,
-          5,
-          3,
-          6,
-          7
-        ],
-        3
-      ],
-      "expected": [
-        3,
-        3,
-        5,
-        5,
-        6,
-        7
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [],
-        3
-      ],
-      "expected": [],
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          5,
-          4,
-          3
-        ],
-        0
-      ],
-      "expected": [],
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t4",
-      "args": [
-        [
-          1,
-          2
-        ],
-        5
-      ],
-      "expected": [],
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": ["leetcode"], "expected": 0, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t2", "args": ["loveleetcode"], "expected": 2, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t3", "args": ["aabb"], "expected": -1, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t4", "args": ["a"], "expected": 0, "hidden": false, "arg_converters": [null], "result_converter": null},
+    {"id": "t5", "args": ["abcdabcde"], "expected": 8, "hidden": true, "arg_converters": [null], "result_converter": null},
+    {"id": "t6", "args": ["aba"], "expected": 1, "hidden": true, "arg_converters": [null], "result_converter": null}
   ],
   "timeout_ms": 3000
 }

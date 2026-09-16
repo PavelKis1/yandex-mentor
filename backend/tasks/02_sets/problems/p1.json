@@ -4,79 +4,43 @@
   "difficulty": "easy",
   "lecture_id": "02",
   "order": 1,
-  "description": "Найдите пересечение двух массивов.\n\n**Функция решения:**\n\n```python\ndef intersection(nums1: list[int], nums2: list[int]) -> list[int]:\n    \"\"\"O(n + m) — пересечение через set, без дубликатов в ответе.\n\n    Edge cases: пустые массивы, одинаковые массивы, дубликаты внутри массива.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import Counter\n\ndef intersection(nums1: list[int], nums2: list[int]) -> list[int]:\n    \"\"\"O(n + m) — пересечение через set, без дубликатов в ответе.\n\n    Edge cases: пустые массивы, одинаковые массивы, дубликаты внутри массива.\n    \"\"\"\n    ...\n",
+  "description": "Даны два массива целых чисел `nums1` и `nums2`. Верните массив их **пересечения** — все элементы, которые встречаются и в `nums1`, и в `nums2`. Каждый элемент в ответе должен быть **уникальным** (без дубликатов), порядок не важен.\n\n**Функция решения:**\n\n```python\ndef intersection(nums1: list[int], nums2: list[int]) -> list[int]:\n    ...\n```",
+  "examples": [
+    {
+      "input": "nums1 = [1, 2, 2, 1], nums2 = [2, 2]",
+      "output": "[2]",
+      "explanation": "2 встречается в обоих массивах; в ответе без повторов."
+    },
+    {
+      "input": "nums1 = [4, 9, 5], nums2 = [9, 4, 9, 8, 4]",
+      "output": "[4, 9]",
+      "explanation": "4 и 9 есть в обоих массивах; порядок вывода не важен."
+    },
+    {
+      "input": "nums1 = [1, 2, 3], nums2 = []",
+      "output": "[]",
+      "explanation": "Пустой второй массив — общих элементов нет."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(nums1), len(nums2) ≤ 10^4",
+    "0 ≤ nums1[i], nums2[i] ≤ 10^3",
+    "Порядок элементов в ответе не важен"
+  ],
+  "hints": [
+    "Множество set убирает дубликаты и даёт проверку x in s за O(1).",
+    "Пересечение двух множеств — операция & или метод intersection().",
+    "Итоговая сложность O(n + m) по времени."
+  ],
+  "starter_code": "def intersection(nums1: list[int], nums2: list[int]) -> list[int]:\n    \"\"\"Вернуть уникальные элементы, присутствующие в обоих массивах.\"\"\"\n    ...",
   "entry_function": "intersection",
   "test_cases": [
-    {
-      "id": "t1",
-      "args": [
-        [
-          1,
-          2,
-          2,
-          3
-        ],
-        [
-          2,
-          3,
-          4
-        ]
-      ],
-      "expected": [
-        2,
-        3
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t2",
-      "args": [
-        [],
-        [
-          1,
-          2
-        ]
-      ],
-      "expected": [],
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
-      "args": [
-        [
-          1,
-          2
-        ],
-        [
-          1,
-          2
-        ]
-      ],
-      "expected": [
-        1,
-        2
-      ],
-      "hidden": false,
-      "arg_converters": [
-        null,
-        null
-      ],
-      "result_converter": null
-    }
+    {"id": "t1", "args": [[1, 2, 2, 1], [2, 2]], "expected": [2], "hidden": false, "arg_converters": [null, null], "result_converter": null, "sort_result": true},
+    {"id": "t2", "args": [[4, 9, 5], [9, 4, 9, 8, 4]], "expected": [4, 9], "hidden": false, "arg_converters": [null, null], "result_converter": null, "sort_result": true},
+    {"id": "t3", "args": [[1, 2, 3], []], "expected": [], "hidden": false, "arg_converters": [null, null], "result_converter": null, "sort_result": true},
+    {"id": "t4", "args": [[1, 2], [1, 2]], "expected": [1, 2], "hidden": false, "arg_converters": [null, null], "result_converter": null, "sort_result": true},
+    {"id": "t5", "args": [[1, 1, 1], [1]], "expected": [1], "hidden": true, "arg_converters": [null, null], "result_converter": null, "sort_result": true},
+    {"id": "t6", "args": [[0, 2, 4, 6], [3, 5, 7, 9]], "expected": [], "hidden": true, "arg_converters": [null, null], "result_converter": null, "sort_result": true}
   ],
   "timeout_ms": 3000
 }

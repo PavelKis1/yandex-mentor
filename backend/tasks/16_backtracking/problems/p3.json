@@ -4,11 +4,33 @@
   "difficulty": "hard",
   "lecture_id": "16",
   "order": 3,
-  "description": "Разместите N ферзей на доске.\n\n**Функция решения:**\n\n```python\ndef solve_n_queens(n: int) -> list[list[str]]:\n    \"\"\"O(n!) — доски n×n в виде списка строк ('Q' и '.').\n\n    Edge cases: n = 0 (пусто), n = 1 (одно решение), n = 2 и 3 (решений нет).\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def solve_n_queens(n: int) -> list[list[str]]:\n    \"\"\"O(n!) — доски n×n в виде списка строк ('Q' и '.').\n\n    Edge cases: n = 0 (пусто), n = 1 (одно решение), n = 2 и 3 (решений нет).\n    \"\"\"\n    ...\n",
+  "description": "Разместите `n` ферзей на доске `n x n` так, чтобы они не били друг друга (по горизонтали, вертикали и диагоналям). Верните **все конфигурации** доски в виде списка строк ('Q' — ферзь, '.' — пусто). Порядок аналогичен эталонному.\n\n**Функция решения:**\n\n```python\ndef solve_n_queens(n: int) -> list[list[str]]:\n    ...\n```",
+  "examples": [
+    {
+      "input": "n = 4",
+      "output": "2 решения",
+      "explanation": "Для доски 4x4 существует ровно 2 расстановки."
+    },
+    {
+      "input": "n = 1",
+      "output": "[[\"Q\"]]",
+      "explanation": "Один ферзь на доске 1x1."
+    },
+    {
+      "input": "n = 2",
+      "output": "[]",
+      "explanation": "На доске 2x2 ферзи поставить нельзя."
+    }
+  ],
+  "constraints": [
+    "0 ≤ n ≤ 9",
+    "Ферзи не должны бить друг друга"
+  ],
+  "hints": [
+    "Строки перебирайте сверху вниз — ферзь один на строку.",
+    "Проверяйте занятость по колонке и двум диагоналям за O(1)."
+  ],
+  "starter_code": "def solve_n_queens(n: int) -> list[list[str]]:\n    \"\"\"Все расстановки n ферзей на доске n x n ('Q' и '.').\"\"\"\n    ...",
   "entry_function": "solve_n_queens",
   "test_cases": [
     {
@@ -16,8 +38,10 @@
       "args": [
         0
       ],
-      "expected": [],
-      "hidden": false,
+      "expected": [
+        []
+      ],
+      "hidden": true,
       "arg_converters": [
         null
       ],
@@ -25,6 +49,22 @@
     },
     {
       "id": "t2",
+      "args": [
+        1
+      ],
+      "expected": [
+        [
+          "Q"
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t3",
       "args": [
         2
       ],
@@ -36,11 +76,36 @@
       "result_converter": null
     },
     {
-      "id": "t3",
+      "id": "t4",
       "args": [
         3
       ],
       "expected": [],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        4
+      ],
+      "expected": [
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ],
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ]
+      ],
       "hidden": false,
       "arg_converters": [
         null

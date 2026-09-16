@@ -4,11 +4,34 @@
   "difficulty": "hard",
   "lecture_id": "19",
   "order": 3,
-  "description": "Восстановите порядок букв.\n\n**Функция решения:**\n\n```python\ndef alien_order(words: list[str]) -> str:\n    \"\"\"O(C) — рёбра из соседних слов + топологическая сортировка букв.\n\n    Edge cases: одно слово, пустой список, префикс-конфликт (\"\"),\n    изолированные буквы.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "from collections import deque\n\ndef alien_order(words: list[str]) -> str:\n    \"\"\"O(C) — рёбра из соседних слов + топологическая сортировка букв.\n\n    Edge cases: одно слово, пустой список, префикс-конфликт (\"\"),\n    изолированные буквы.\n    \"\"\"\n    ...\n",
+  "description": "Слова `words` отсортированы в лексикографическом порядке **неизвестного алфавита**. Верните **строку-порядок букв** этого алфавита. Если порядок восстановить нельзя (цикл или конфликт префиксов) — верните пустую строку `''`.\n\n**Функция решения:**\n\n```python\ndef alien_order(words: list[str]) -> str:\n    ...\n```",
+  "examples": [
+    {
+      "input": "words = ['wrt','wrf','er','ett','rftt']",
+      "output": "'wertf'",
+      "explanation": "Порядок, восстановленный по первым различиям пар."
+    },
+    {
+      "input": "words = ['z','x']",
+      "output": "'zx'",
+      "explanation": "z идёт раньше x."
+    },
+    {
+      "input": "words = ['abc','ab']",
+      "output": "''",
+      "explanation": "Конфликт префиксов: 'ab' меньше, но длиннее — некорректно."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(words) ≤ 100",
+    "Слова из строчных латинских букв"
+  ],
+  "hints": [
+    "Сравните соседние слова: первое различие даёт ребро x→y.",
+    "Префикс-конфликт: длинное слово раньше короткого — ответ пустой.",
+    "Примените топосорт (Kahn) по буквам; при цикле верните ''."
+  ],
+  "starter_code": "def alien_order(words: list[str]) -> str:\n    \"\"\"Порядок букв в словаре; '' при противоречии/цикле.\"\"\"\n    ...",
   "entry_function": "alien_order",
   "test_cases": [
     {
@@ -38,7 +61,7 @@
         ]
       ],
       "expected": "zx",
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null
       ],
@@ -64,7 +87,7 @@
         []
       ],
       "expected": "",
-      "hidden": false,
+      "hidden": true,
       "arg_converters": [
         null
       ],
@@ -79,7 +102,52 @@
         ]
       ],
       "expected": "",
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          "z",
+          "x",
+          "z"
+        ]
+      ],
+      "expected": "",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t7",
+      "args": [
+        [
+          "ab",
+          "adc"
+        ]
+      ],
+      "expected": "abcd",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t8",
+      "args": [
+        [
+          "abcd"
+        ]
+      ],
+      "expected": "abcd",
+      "hidden": true,
       "arg_converters": [
         null
       ],

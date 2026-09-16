@@ -4,20 +4,47 @@
   "difficulty": "medium",
   "lecture_id": "13",
   "order": 2,
-  "description": "Найдите максимальную сумму без соседних элементов.\n\n**Функция решения:**\n\n```python\ndef rob(nums: list[int]) -> int:\n    \"\"\"O(n) — на каждом доме: ограбить (prev + num) или пропустить (curr).\n\n    Edge cases: пустой массив (0), один дом, два дома, чередование.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def rob(nums: list[int]) -> int:\n    \"\"\"O(n) — на каждом доме: ограбить (prev + num) или пропустить (curr).\n\n    Edge cases: пустой массив (0), один дом, два дома, чередование.\n    \"\"\"\n    ...\n",
+  "description": "Вдоль улицы стоят дома, в `nums[i]` — ценности. Грабитель не может ограбить два **соседних** дома. Верните максимальную сумму, которую можно украсть.\n\n**Функция решения:**\n\n```python\ndef rob(nums: list[int]) -> int:\n    ...\n```",
+  "examples": [
+    {
+      "input": "nums = [2, 7, 9, 3, 1]",
+      "output": "12",
+      "explanation": "Грабим дома 0, 2, 4: 2+9+1=12."
+    },
+    {
+      "input": "nums = [2, 1, 1, 2]",
+      "output": "4",
+      "explanation": "Грабим дома 0 и 3: 2+2=4."
+    },
+    {
+      "input": "nums = []",
+      "output": "0",
+      "explanation": "Домов нет."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(nums) ≤ 10^5",
+    "0 ≤ nums[i] ≤ 10^4"
+  ],
+  "hints": [
+    "dp[i] = max(ограбить i, пропустить i) = max(prev + nums[i], curr).",
+    "Храните только два значения: curr и prev."
+  ],
+  "starter_code": "def rob(nums: list[int]) -> int:\n    \"\"\"Максимальная сумма, не беря соседние элементы.\"\"\"\n    ...",
   "entry_function": "rob",
   "test_cases": [
     {
       "id": "t1",
       "args": [
-        []
+        [
+          2,
+          1,
+          1,
+          2
+        ]
       ],
-      "expected": 0,
-      "hidden": false,
+      "expected": 4,
+      "hidden": true,
       "arg_converters": [
         null
       ],
@@ -25,20 +52,6 @@
     },
     {
       "id": "t2",
-      "args": [
-        [
-          5
-        ]
-      ],
-      "expected": 5,
-      "hidden": false,
-      "arg_converters": [
-        null
-      ],
-      "result_converter": null
-    },
-    {
-      "id": "t3",
       "args": [
         [
           2,
@@ -56,13 +69,28 @@
       "result_converter": null
     },
     {
+      "id": "t3",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 2,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
       "id": "t4",
       "args": [
         [
+          1,
           2,
-          1,
-          1,
-          2
+          3,
+          1
         ]
       ],
       "expected": 4,
@@ -76,12 +104,61 @@
       "id": "t5",
       "args": [
         [
-          1,
+          5,
+          3,
+          4,
+          11,
           2
         ]
       ],
-      "expected": 2,
+      "expected": 16,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t7",
+      "args": [
+        []
+      ],
+      "expected": 0,
       "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t8",
+      "args": [
+        [
+          3,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": 7,
+      "hidden": true,
       "arg_converters": [
         null
       ],

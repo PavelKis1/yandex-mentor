@@ -4,11 +4,34 @@
   "difficulty": "medium",
   "lecture_id": "15",
   "order": 2,
-  "description": "Проверьте, можно ли разбить строку на слова.\n\n**Функция решения:**\n\n```python\ndef word_break(s: str, word_dict: list[str]) -> bool:\n    \"\"\"O(n^2) — DP: dp[i] = True, если s[:i] разбивается на слова.\n\n    Edge cases: пустая строка (True), одно длинное слово, несколько вариантов.\n    \"\"\"\n```",
-  "examples": [],
-  "constraints": [],
-  "hints": [],
-  "starter_code": "def word_break(s: str, word_dict: list[str]) -> bool:\n    \"\"\"O(n^2) — DP: dp[i] = True, если s[:i] разбивается на слова.\n\n    Edge cases: пустая строка (True), одно длинное слово, несколько вариантов.\n    \"\"\"\n    ...\n",
+  "description": "Дана строка `s` и словарь `word_dict`. Верните `True`, если `s` можно **разбить на последовательность слов** из словаря (каждое слово можно использовать неограниченно).\n\n**Функция решения:**\n\n```python\ndef word_break(s: str, word_dict: list[str]) -> bool:\n    ...\n```",
+  "examples": [
+    {
+      "input": "s = 'leetcode', word_dict = ['leet', 'code']",
+      "output": "True",
+      "explanation": "'leet' + 'code'."
+    },
+    {
+      "input": "s = 'catsandog', word_dict = ['cats','dog','sand','and','cat']",
+      "output": "False",
+      "explanation": "Ни одно разбиение не покрывает всю строку."
+    },
+    {
+      "input": "s = '', word_dict = []",
+      "output": "True",
+      "explanation": "Пустая строка тривиально разбивается."
+    }
+  ],
+  "constraints": [
+    "0 ≤ len(s) ≤ 300",
+    "0 ≤ len(word_dict) ≤ 1000",
+    "Слово — непустая строка из строчных букв"
+  ],
+  "hints": [
+    "dp[i] = True, если префикс s[:i] разбивается на слова.",
+    "Проверяйте все разбиения: s[j:i] ∈ словаря и dp[j] == True."
+  ],
+  "starter_code": "def word_break(s: str, word_dict: list[str]) -> bool:\n    \"\"\"Можно ли разбить строку на слова из словаря (слова можно повторять).\"\"\"\n    ...",
   "entry_function": "word_break",
   "test_cases": [
     {
@@ -72,7 +95,72 @@
         []
       ],
       "expected": true,
-      "hidden": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t5",
+      "args": [
+        "aaaa",
+        [
+          "a"
+        ]
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t6",
+      "args": [
+        "aaaa",
+        [
+          "aaa",
+          "aa"
+        ]
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t7",
+      "args": [
+        "bb",
+        []
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null
+    },
+    {
+      "id": "t8",
+      "args": [
+        "cars",
+        [
+          "car",
+          "ca",
+          "rs"
+        ]
+      ],
+      "expected": true,
+      "hidden": true,
       "arg_converters": [
         null,
         null
