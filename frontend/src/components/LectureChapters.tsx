@@ -3,6 +3,11 @@ import { BookOpen, ChevronLeft, ChevronRight, Layers, Lock } from "lucide-react"
 import { MarkdownArticle } from "./MarkdownArticle";
 import { ReadingProgressBar } from "./ReadingProgressBar";
 import { Spoiler } from "./Spoiler";
+import { CheatSheetBlock } from "./lecture/CheatSheetBlock";
+import { AttachedTasks } from "./lecture/AttachedTasks";
+import { LectureHeader } from "./lecture/LectureHeader";
+import { StickyToc, type TocItem } from "./lecture/StickyToc";
+import type { LectureData, TaskStatus } from "../types";
 import { readText, writeText } from "../utils/storage";
 
 interface Chapter {
@@ -18,6 +23,12 @@ interface Chapter {
 interface LectureChaptersProps {
   markdown: string;
   taskId?: string;
+  /** Метаданные лекции (description, cheatSheet, attachedTasks и т.п.) — опционально. */
+  meta?: LectureData | null;
+  /** Глобальный прогресс тем (todo/wip/done) для блока привязанных задач. */
+  progress?: Record<string, TaskStatus>;
+  /** Deep-link на задачу: открывает указанную тему и вкладку «Практические задания». */
+  onOpenTask?: (taskId: string, lectureId: string) => void;
 }
 
 type Mode = "step" | "full";
@@ -92,9 +103,14 @@ function renderChapterBody(chapter: Chapter) {
   return <MarkdownArticle markdown={chapter.body} />;
 }
 
-export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
+export function LectureChapters({ markdown, taskId, meta, progress, onOpenTask }: LectureChaptersProps) {
   const chapters = useMemo(() => parseChapters(markdown), [markdown]);
   const storageId = taskId ?? "default";
+  // Оглавление по главам (для ScrollSpy в режиме «весь текст»).
+  const tocItems: TocItem[] = useMemo(
+    () => chapters.map(ch => ({ id: `lecture-chapter-${ch.index}`, text: ch.heading, level: 2 })),
+    [chapters],
+  );
 
   const [mode, setMode] = useState<Mode>(() =>
     readText(MODE_KEY(storageId)) === "full" ? "full" : "step",
@@ -178,6 +194,23 @@ export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
 
   return (
     <div className="animate-fadeIn">
+      {/* Метаданные лекции: заголовок, длительность, сложность, теги, цели. */}
+      {meta?.name &&
+        (meta.description ||
+          meta.durationMinutes ||
+          meta.difficulty ||
+          meta.tags?.length ||
+          meta.learningOutcomes?.length) && (
+        <LectureHeader
+          title={meta.name}
+          description={meta.description}
+          durationMinutes={meta.durationMinutes}
+          difficulty={meta.difficulty}
+          tags={meta.tags}
+          learningOutcomes={meta.learningOutcomes}
+        />
+      )}
+
       {/* Шапка: заголовок + переключатель режима */}
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2 font-semibold text-slate-900">
@@ -236,26 +269,30 @@ export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
             <div className="mb-2 flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-slate-500">
               <Layers className="h-3.5 w-3.5" /> Оглавление
             </div>
-            <nav className="space-y-1">
-              {chapters.map((chapter) => (
-                <button
-                  key={chapter.index}
-                  type="button"
-                  onClick={() => jumpTo(chapter.index)}
-                  className={`flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-left text-[13px] leading-snug transition cursor-pointer border ${
-                    chapter.index === activeIndex
-                      ? "bg-indigo-50 border-indigo-200 font-medium text-indigo-700 shadow-sm"
-                      : "border-transparent text-slate-500 hover:bg-slate-100 hover:text-slate-800"
-                  }`}
-                >
-                  {chapter.spoiler && <Lock className="h-3 w-3 shrink-0 text-slate-400" />}
-                  {chapter.index === activeIndex && (
-                    <span className="absolute left-0 h-4 w-0.5 rounded-r bg-indigo-600" />
-                  )}
-                  <span className="min-w-0 truncate">{chapter.heading}</span>
-                </button>
-              ))}
-            </nav>
+            {mode === "full" ? (
+              <StickyToc items={tocItems} />
+            ) : (
+              <nav className="space-y-1">
+                {chapters.map((chapter) => (
+                  <button
+                    key={chapter.index}
+                    type="button"
+                    onClick={() => jumpTo(chapter.index)}
+                    className={`flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-left text-[13px] leading-snug transition cursor-pointer border ${
+                      chapter.index === activeIndex
+                        ? "bg-indigo-50 border-indigo-200 font-medium text-indigo-700 shadow-sm"
+                        : "border-transparent text-slate-500 hover:bg-slate-100 hover:text-slate-800"
+                    }`}
+                  >
+                    {chapter.spoiler && <Lock className="h-3 w-3 shrink-0 text-slate-400" />}
+                    {chapter.index === activeIndex && (
+                      <span className="absolute left-0 h-4 w-0.5 rounded-r bg-indigo-600" />
+                    )}
+                    <span className="min-w-0 truncate">{chapter.heading}</span>
+                  </button>
+                ))}
+              </nav>
+            )}
           </div>
         </aside>
 
@@ -327,6 +364,16 @@ export function LectureChapters({ markdown, taskId }: LectureChaptersProps) {
                 </article>
               ))}
             </div>
+          )}
+
+          {/* Шпаргалка и привязанные задачи — в конце лекции. */}
+          {meta?.cheatSheet && <CheatSheetBlock data={meta.cheatSheet} />}
+          {(meta?.attachedTasks ?? []).length > 0 && onOpenTask && progress && (
+            <AttachedTasks
+              tasks={meta?.attachedTasks ?? []}
+              progress={progress}
+              onOpenTask={onOpenTask}
+            />
           )}
         </div>
       </div>

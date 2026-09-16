@@ -1,4 +1,5 @@
 """Тесты REST API: лекции, задачи, run/submit, статусы."""
+import json
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
@@ -52,6 +53,55 @@ def test_get_lecture(tmp_path, monkeypatch):
     assert first["test_case_count"] == 5
 
 
+def test_get_lecture_meta(tmp_path, monkeypatch):
+    """Опциональные метаданные из lecture.meta.json аддитивно добавляются в ответ."""
+    import pathlib
+
+    meta_path = (
+        pathlib.Path(config.BASE_DIR)
+        / "backend"
+        / "tasks"
+        / "01_hash_tables"
+        / "lecture.meta.json"
+    )
+    meta_path.write_text(
+        json.dumps(
+            {
+                "description": "Вводная лекция",
+                "difficulty": "junior",
+                "durationMinutes": 25,
+                "tags": ["hash", "intro"],
+                "learningOutcomes": ["Решать задачи с Two Sum"],
+                "attachedTasks": [{"taskId": "01-p1", "title": "Two Sum"}],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    try:
+        client = _make_client(tmp_path, monkeypatch)
+        body = client.get("/api/lectures/01").json()
+        assert body["description"] == "Вводная лекция"
+        assert body["difficulty"] == "junior"
+        assert body["durationMinutes"] == 25
+        assert body["tags"] == ["hash", "intro"]
+        assert body["learningOutcomes"] == ["Решать задачи с Two Sum"]
+        assert body["attachedTasks"][0]["taskId"] == "01-p1"
+        # поля по умолчанию для аддитивности
+        assert body["quizzes"] == []
+    finally:
+        meta_path.unlink(missing_ok=True)
+
+
+def test_get_lecture_without_meta(tmp_path, monkeypatch):
+    """Без lecture.meta.json ответ содержит те же поля с пустыми значениями (обратная совместимость)."""
+    client = _make_client(tmp_path, monkeypatch)
+    body = client.get("/api/lectures/01").json()
+    assert body.get("description") is None
+    assert body.get("difficulty") is None
+    assert body.get("tags") == []
+    assert body.get("attachedTasks") == []
+    assert body.get("quizzes") == []
 def test_get_lecture_404(tmp_path, monkeypatch):
     client = _make_client(tmp_path, monkeypatch)
     assert client.get("/api/lectures/99").status_code == 404

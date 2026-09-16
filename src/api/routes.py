@@ -87,6 +87,14 @@ def get_lecture(lecture_id: str):
             except OSError:
                 lecture_md = ""
 
+    # Опциональные мета-данные (заголовок лекции, квизы, привязки задач и т.п.).
+    # Если файла нет — отдаём прежний ответ (аддитивность, обратная совместимость).
+    meta = {}
+    if lecture.dir:
+        meta_file = config.TASKS_DIR / lecture.dir / "lecture.meta.json"
+        if meta_file.exists():
+            meta = read_json(meta_file) or {}
+
     return {
         "id": lecture.id,
         "name": lecture.name,
@@ -95,6 +103,15 @@ def get_lecture(lecture_id: str):
         "lecture_md": lecture_md,
         "status": status,
         "problems": [_problem_public(p) for p in problems],
+        "description": meta.get("description"),
+        "durationMinutes": meta.get("durationMinutes"),
+        "difficulty": meta.get("difficulty"),
+        "tags": meta.get("tags", []),
+        "learningOutcomes": meta.get("learningOutcomes", []),
+        "complexity": meta.get("complexity"),
+        "quizzes": meta.get("quizzes", []),
+        "attachedTasks": meta.get("attachedTasks", []),
+        "cheatSheet": meta.get("cheatSheet"),
     }
 
 

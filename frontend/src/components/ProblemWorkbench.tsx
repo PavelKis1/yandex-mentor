@@ -18,6 +18,9 @@ interface ProblemWorkbenchProps {
   /** 0-based порядковый номер задачи в лекции. */
   index: number;
   total: number;
+  /** Сколько задач лекции уже решено и сколько всего — для индикатора прогресса. */
+  solvedCount: number;
+  solvedTotal: number;
   lectureName: string;
   submitting: boolean;
   result: RunResponse | SubmitResponse | null;
@@ -55,6 +58,8 @@ export function ProblemWorkbench({
   problem,
   index,
   total,
+  solvedCount,
+  solvedTotal,
   lectureName,
   submitting,
   result,
@@ -107,6 +112,25 @@ export function ProblemWorkbench({
           >
             <ChevronRight className="h-4 w-4" />
           </button>
+        </div>
+
+        {/* Мини-прогресс по заданиям темы */}
+        <div
+          className="flex items-center gap-2"
+          title={`Решено задач в теме: ${solvedCount} из ${solvedTotal}`}
+        >
+          <div className="w-20 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-indigo-500 rounded-full transition-all duration-500"
+              style={{
+                width: `${solvedTotal ? Math.round((solvedCount / solvedTotal) * 100) : 0}%`,
+              }}
+            />
+          </div>
+          <span className="text-[10px] font-semibold text-slate-600">
+            {solvedCount}
+            <span className="text-slate-400 font-normal">/{solvedTotal}</span>
+          </span>
         </div>
 
         <span className={`ml-auto text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full ${diffMeta.className}`}>

@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import type { ProgressMap, RoadmapStage, TaskStatus, TaskSummary } from "../types";
 import { TaskCard } from "./TaskCard";
 
@@ -17,6 +19,8 @@ export function StageSection({
   onSetStatus,
 }: StageSectionProps) {
   const stageLectures = stage.lectures ?? [];
+  // Модули свернуты по умолчанию — темы раскрываются по клику на заголовок.
+  const [open, setOpen] = useState(false);
   const completedCount = stageLectures.filter((lec) => progress[lec.id] === "done").length;
   const stageProgress = stageLectures.length
     ? Math.round((completedCount / stageLectures.length) * 100)
@@ -24,16 +28,19 @@ export function StageSection({
 
   return (
     <div className="space-y-6">
-      {/* Interactive Module Tab-Card */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-white border border-slate-200 p-6 rounded-3xl gap-4 shadow-sm hover:border-indigo-200 transition-all duration-300">
+      {/* Заголовок модуля: кликабельная «шапка», раскрывающая список тем */}
+      <button
+        type="button"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        className="group flex w-full flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm transition-all duration-300 hover:border-indigo-200 cursor-pointer"
+      >
         <div className="flex items-center gap-4">
           <div className="text-3xl bg-indigo-50 p-4 rounded-2xl border border-indigo-100 text-indigo-600">
             {stage.icon}
           </div>
           <div>
-            <h2 className="text-xl font-bold text-slate-950">
-              {stage.name}
-            </h2>
+            <h2 className="text-xl font-bold text-slate-950">{stage.name}</h2>
             <p className="text-sm text-slate-500 font-medium">
               Модуль {stageIndex + 1} &bull; {completedCount} / {stageLectures.length} тем завершено
             </p>
@@ -50,20 +57,33 @@ export function StageSection({
           <span className="text-sm font-bold text-indigo-700 w-12 text-right">
             {stageProgress}%
           </span>
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-all duration-300 group-hover:border-indigo-200 group-hover:text-indigo-600">
+            <ChevronDown
+              className={`h-5 w-5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+            />
+          </span>
         </div>
-      </div>
+      </button>
 
-      {/* Stage Lectures Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {stageLectures.map((lecture) => (
-          <TaskCard
-            key={lecture.id}
-            task={lecture}
-            status={progress[lecture.id] ?? "todo"}
-            onSelect={onSelectTask}
-            onSetStatus={onSetStatus}
-          />
-        ))}
+      {/* Сворачиваемый контент: плавная анимация высоты через grid-template-rows без сторонних библиотек */}
+      <div
+        className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden min-h-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-2">
+            {stageLectures.map((lecture) => (
+              <TaskCard
+                key={lecture.id}
+                task={lecture}
+                status={progress[lecture.id] ?? "todo"}
+                onSelect={onSelectTask}
+                onSetStatus={onSetStatus}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

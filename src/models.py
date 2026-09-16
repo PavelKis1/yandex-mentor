@@ -70,6 +70,17 @@ class LectureData(BaseModel):
     lecture_md: str = ""
     status: Literal["todo", "wip", "done"] = "todo"
     problems: list[ProblemPublic] = Field(default_factory=list)
+    
+    # НОВЫЕ ОПЦИОНАЛЬНЫЕ ПОЛЯ
+    description: str | None = None
+    durationMinutes: int | None = None
+    difficulty: Literal["junior", "middle", "hard"] | None = None
+    tags: list[str] = Field(default_factory=list)
+    learningOutcomes: list[str] = Field(default_factory=list)
+    complexity: dict | None = None
+    quizzes: list[dict] = Field(default_factory=list)
+    attachedTasks: list[dict] = Field(default_factory=list)
+    cheatSheet: dict | None = None
 
 
 # === Проверка решений ===

@@ -38,6 +38,40 @@ export interface ProblemPublic {
   solved?: boolean;
 }
 
+export type DifficultyLevel = 'junior' | 'middle' | 'hard';
+
+export interface InternalTaskRef {
+  taskId: string;
+  title: string;
+  difficulty?: DifficultyLevel;
+  slug: string;
+  lectureId?: string;
+}
+
+export interface QuizOption {
+  id: string;
+  text: string;
+  isCorrect: boolean;
+  explanation: string;
+}
+
+export interface QuizQuestion {
+  id: string;
+  question: string;
+  options: QuizOption[];
+  hint?: string;
+}
+
+export interface AlgorithmComplexity {
+  timeComplexity: string;
+  spaceComplexity: string;
+  explanation?: string;
+}
+
+export interface InterviewCheatSheet {
+  summary60Sec: string[];
+}
+
 export interface LectureData {
   id: string;
   name: string;
@@ -46,6 +80,17 @@ export interface LectureData {
   lecture_md: string;
   status: TaskStatus;
   problems: ProblemPublic[];
+  
+  // Optional metadata
+  description?: string;
+  durationMinutes?: number;
+  difficulty?: DifficultyLevel;
+  tags?: string[];
+  learningOutcomes?: string[];
+  complexity?: AlgorithmComplexity;
+  quizzes?: QuizQuestion[];
+  attachedTasks?: InternalTaskRef[];
+  cheatSheet?: InterviewCheatSheet;
 }
 
 export type Verdict =

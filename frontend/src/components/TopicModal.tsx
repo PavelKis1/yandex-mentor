@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  ArrowLeft,
   ArrowRight,
   BookOpen,
   CheckCircle2,
@@ -9,6 +10,7 @@ import {
 } from "lucide-react";
 import { useTask } from "../hooks/useTask";
 import type {
+  ProgressMap,
   RunResponse,
   SubmitResponse,
   TaskStatus,
@@ -27,8 +29,16 @@ interface TopicModalProps {
   onTaskStatusChange?: (lectureId: string, status: TaskStatus) => void;
   /** Следующая тема по порядку — для кнопки «Дальше» в футере. */
   nextLecture?: TaskSummary | null;
+  /** Предыдущая тема по порядку — для кнопки «Назад» и хоткея ←. */
+  prevLecture?: TaskSummary | null;
   /** Переход на другую тему без закрытия модалки. */
   onOpenLecture?: (lecture: TaskSummary) => void;
+  /** Глобальный прогресс тем — для блока привязанных задач в лекции. */
+  progress?: ProgressMap;
+  /** Deep-link: сразу открыть конкретную задачу темы (вкладка «Практические задания»). */
+  initialProblemId?: string | null;
+  /** Deep-link из лекции на привязанную задачу другой/текущей темы. */
+  onOpenTask?: (taskId: string, lectureId: string) => void;
 }
 
 type Tab = "lecture" | "tasks";
@@ -38,21 +48,43 @@ export function TopicModal({
   onClose,
   onTaskStatusChange,
   nextLecture,
+  prevLecture,
   onOpenLecture,
+  progress,
+  initialProblemId,
+  onOpenTask,
 }: TopicModalProps) {
-  const [activeTab, setActiveTab] = useState<Tab>("lecture");
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<Tab>(initialProblemId ? "tasks" : "lecture");
+  const [selectedId, setSelectedId] = useState<string | null>(initialProblemId ?? null);
   const [result, setResult] = useState<RunResponse | SubmitResponse | null>(null);
   const { data: taskData, loading, submitting, error, submit, run } = useTask(lecture.id);
 
-  // Esc — закрыть модалку (подсказка показывается в шапке).
+  // Клавиатура: Esc — закрыть, ←/→ — листать темы (не перехватываем при вводе текста).
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+
+      const target = event.target as HTMLElement | null;
+      const tag = target?.tagName;
+      const isTyping =
+        tag === "INPUT" ||
+        tag === "TEXTAREA" ||
+        Boolean(target?.closest(".monaco-editor, [contenteditable='true']"));
+      if (isTyping) return;
+
+      const targetLecture = event.key === "ArrowRight" ? nextLecture : prevLecture;
+      if (targetLecture && onOpenLecture) {
+        event.preventDefault();
+        onOpenLecture(targetLecture);
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [onClose]);
+  }, [onClose, nextLecture, prevLecture, onOpenLecture]);
 
   const problems = taskData?.problems ?? [];
   const selectedIndex = problems.findIndex((p) => p.id === selectedId);
@@ -68,12 +100,28 @@ export function TopicModal({
     }
   }, [activeTab, selectedId, problems]);
 
+  // Deep-link: по привязанной задаче открыть вкладку «Задачи» с нужной задачей
+  // (после загрузки данных темы; задача принадлежит текущей теме).
+  useEffect(() => {
+    if (!initialProblemId) return;
+    const known = taskData?.problems ?? [];
+    if (known.length === 0 || !known.some((p) => p.id === initialProblemId)) return;
+    setSelectedId(initialProblemId);
+    setActiveTab("tasks");
+  }, [initialProblemId, taskData]);
+
   // Смена лекции (кнопка «Дальше») — сбрасываем выбор задачи и вердикт.
   useEffect(() => {
     setSelectedId(null);
     setResult(null);
     setActiveTab("lecture");
   }, [lecture.id]);
+
+  // Фикс «залипания» вердикта: при переключении между задачами темы
+  // (Prev/Next/клик в списке) сбрасываем результат прошлого запуска/сабмита.
+  useEffect(() => {
+    setResult(null);
+  }, [selectedId]);
 
   const handleRun = async (code: string) => {
     if (!selectedProblem) return;
@@ -161,13 +209,21 @@ const problemCount = problems.length;
           ) : error ? (
             <ErrorBanner message={`Ошибка загрузки: ${error}`} compact />
           ) : activeTab === "lecture" ? (
-            <LectureView lecture={taskData?.lecture_md ?? ""} taskId={lecture.id} />
+            <LectureView
+              lecture={taskData?.lecture_md ?? ""}
+              taskId={lecture.id}
+              meta={taskData ?? null}
+              progress={progress}
+              onOpenTask={onOpenTask}
+            />
           ) : selectedProblem ? (
             <ProblemWorkbench
               key={selectedProblem.id}
               problem={selectedProblem}
               index={selectedIndex}
               total={problems.length}
+              solvedCount={solvedCount}
+              solvedTotal={problemCount}
               lectureName={lecture.name}
               submitting={submitting}
               result={result}
@@ -179,14 +235,14 @@ const problemCount = problems.length;
             />
           ) : problemCount > 0 ? (
             <div className="space-y-4">
-              <div className="flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-950/50 px-4 py-3">
+              <div className="flex flex-wrap items-center gap-3 rounded-xl border border-indigo-200 bg-indigo-50/70 px-4 py-3">
                 <div className="flex items-center gap-2 text-sm">
-                  <ListChecks className="h-4 w-4 text-indigo-500" />
-                  <span className="text-slate-300">
-                    Решено задач: <span className="font-semibold text-white">{solvedCount}</span> из {problemCount}
+                  <ListChecks className="h-4 w-4 text-indigo-600" />
+                  <span className="text-slate-600">
+                    Решено задач: <span className="font-semibold text-indigo-700">{solvedCount}</span> из {problemCount}
                   </span>
                 </div>
-                <div className="w-40 h-2 bg-slate-800 rounded-full overflow-hidden">
+                <div className="w-40 h-2 bg-slate-200 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-indigo-500 rounded-full transition-all duration-500"
                     style={{ width: `${problemCount ? Math.round((solvedCount / problemCount) * 100) : 0}%` }}
@@ -250,6 +306,16 @@ const problemCount = problems.length;
             по карточке — сменить статус темы
           </div>
           <div className="flex items-center gap-2 ml-auto">
+            {prevLecture && onOpenLecture && (
+              <button
+                onClick={() => onOpenLecture(prevLecture)}
+                className="flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-5 py-2 rounded-xl text-sm font-semibold transition cursor-pointer"
+                title={`Предыдущая тема: ${prevLecture.name}`}
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Предыдущая тема
+              </button>
+            )}
             <button
               onClick={onClose}
               className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-5 py-2 rounded-xl text-sm font-medium transition cursor-pointer"
