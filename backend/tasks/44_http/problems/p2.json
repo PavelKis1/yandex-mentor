@@ -1,23 +1,122 @@
 {
   "id": "44-p2",
-  "title": "Заголовки кэша",
+  "title": "Разрешён ли метод",
   "difficulty": "medium",
   "lecture_id": "44",
   "order": 2,
-  "description": "Ответ с большим статическим файлом должен кэшироваться на день. Какие заголовки?",
+  "description": "Некоторые ресурсы доступны только для чтения. Реализуйте `method_allowed(method, read_only)`:\n- безопасные методы `GET`, `HEAD`, `OPTIONS` разрешены всегда (регистр не важен);\n- изменяющие методы (`POST`, `PUT`, `PATCH`, `DELETE`) — только если ресурс **не** `read_only`.\n\n**Функция решения:**\n\n```python\ndef method_allowed(method: str, read_only: bool) -> bool:\n    ...\n```",
   "examples": [
     {
-      "input": "Cache-Control: max-age=86400",
-      "output": "",
-      "explanation": null
+      "input": "method_allowed('GET', True)",
+      "output": "True",
+      "explanation": "GET безопасен — разрешён даже для чтения."
+    },
+    {
+      "input": "method_allowed('POST', True)",
+      "output": "False",
+      "explanation": "POST меняет состояние, а ресурс доступен только для чтения."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Cache-Control + ETag/Last-Modified."
+  "constraints": [
+    "method — непустая строка"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Приведите method.upper() и проверьте безопасное множество.",
+    "Иначе верните not read_only."
+  ],
+  "starter_code": "def method_allowed(method: str, read_only: bool) -> bool:\n    \"\"\"True, если метод разрешён: безопасные всегда, изменяющие — только если не read_only.\"\"\"\n    ...",
+  "entry_function": "method_allowed",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "GET",
+        false
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "GET",
+        true
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "POST",
+        false
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        "POST",
+        true
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        "DELETE",
+        true
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        "HEAD",
+        true
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

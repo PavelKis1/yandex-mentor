@@ -1,0 +1,45 @@
+{
+  "id": "52",
+  "slug": "security",
+  "title": "Security",
+  "description": "Разбираем Security.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Security"
+  ],
+  "learningOutcomes": [
+    "Основы Security"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1)",
+    "spaceComplexity": "O(1)",
+    "explanation": "Базовые операции."
+  },
+  "quizzes": [],
+  "attachedTasks": [
+    {
+      "taskId": "52-p1",
+      "title": "Задача 1",
+      "difficulty": "easy",
+      "slug": "t1"
+    },
+    {
+      "taskId": "52-p2",
+      "title": "Задача 2",
+      "difficulty": "medium",
+      "slug": "t2"
+    },
+    {
+      "taskId": "52-p3",
+      "title": "Задача 3",
+      "difficulty": "hard",
+      "slug": "t3"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "Функции для Security"
+    ]
+  }
+}

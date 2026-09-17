@@ -1,23 +1,30 @@
 {
   "id": "55-p1",
-  "title": "Права и владелец",
+  "title": "Задача 1",
   "difficulty": "easy",
   "lecture_id": "55",
   "order": 1,
-  "description": "Как изменить владельца файла и права на 'чтение-запись только владельцу'?",
+  "description": "Базовая задача.",
   "examples": [
     {
-      "input": "chown user:group file; chmod 600 file",
-      "output": "",
-      "explanation": null
+      "input": "func_55_p1()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "chown/chmod."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_55_p1() -> bool:\n    return True",
+  "entry_function": "func_55_p1",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

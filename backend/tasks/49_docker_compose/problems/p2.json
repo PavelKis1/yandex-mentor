@@ -1,23 +1,49 @@
 {
   "id": "49-p2",
-  "title": "Переменные окружения",
+  "title": "Режим сети",
   "difficulty": "medium",
   "lecture_id": "49",
   "order": 2,
-  "description": "Прокидывайте DATABASE_URL в web-сервис через environment (не хардкодьте в коде).\n  - DATABASE_URL=postgres://...`",
+  "description": "Вернуть режим сети (bridge по умолчанию).",
   "examples": [
     {
-      "input": "`environment:",
-      "output": "",
-      "explanation": null
+      "input": "compose_network_mode({'network_mode': 'host'})",
+      "output": "'host'"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "12-factor: конфиг в env."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def compose_network_mode(config: dict) -> str:\n    ...",
+  "entry_function": "compose_network_mode",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        {
+          "network_mode": "host"
+        }
+      ],
+      "expected": "host",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        {}
+      ],
+      "expected": "bridge",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

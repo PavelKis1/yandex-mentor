@@ -1,23 +1,30 @@
 {
   "id": "58-p2",
-  "title": "OpenTelemetry",
+  "title": "Задача 2",
   "difficulty": "medium",
   "lecture_id": "58",
   "order": 2,
-  "description": "Как автоматически инструментировать FastAPI-приложение для трейсинга?",
+  "description": "Средняя задача.",
   "examples": [
     {
-      "input": "opentelemetry-instrumentation-fastapi",
-      "output": "",
-      "explanation": null
+      "input": "func_58_p2()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "SDK + exporter + instrumentation."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_58_p2() -> bool:\n    return True",
+  "entry_function": "func_58_p2",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

@@ -1,23 +1,155 @@
 {
   "id": "40-p2",
-  "title": "Композитный индекс",
+  "title": "Покрывающий индекс",
   "difficulty": "medium",
   "lecture_id": "40",
   "order": 2,
-  "description": "Запросы ищут по (country, city). Создайте подходящий индекс.",
+  "description": "Реализуйте `is_covering_index(select_cols, index_cols)`. Индекс называется **покрывающим**, если в нём содержатся все колонки, которые запрос выбирает в `SELECT` — тогда возможен `Index Only Scan` без обращения к таблице.\n\nВерните `True`, если **каждая** требуемая колонка из `select_cols` присутствует в составе индекса `index_cols`.\n\n**Функция решения:**\n\n```python\ndef is_covering_index(select_cols: list[str], index_cols: list[str]) -> bool:\n    ...\n```",
   "examples": [
     {
-      "input": "CREATE INDEX idx_users_country_city ON users(country, city);",
-      "output": "",
-      "explanation": null
+      "input": "is_covering_index(['email','id'], ['email','id'])",
+      "output": "True",
+      "explanation": "Обе колонки есть в индексе."
+    },
+    {
+      "input": "is_covering_index(['email','name'], ['email','id'])",
+      "output": "False",
+      "explanation": "name нет в индексе."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Порядок колонок: самый селективный первым."
+  "constraints": [
+    "Дубликаты колонок не встречаются"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Проверьте включение: set(select_cols) <= set(index_cols).",
+    "Порядок колонок в индексе не важен для покрытия."
+  ],
+  "starter_code": "def is_covering_index(select_cols: list[str], index_cols: list[str]) -> bool:\n    \"\"\"True, если индекс содержит все колонки из SELECT (покрывающий).\"\"\"\n    ...",
+  "entry_function": "is_covering_index",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          "email",
+          "id"
+        ],
+        [
+          "email",
+          "id"
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          "email",
+          "name"
+        ],
+        [
+          "email",
+          "id"
+        ]
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          "id"
+        ],
+        [
+          "id"
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          "email",
+          "name",
+          "age"
+        ],
+        [
+          "email",
+          "name",
+          "age"
+        ]
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          "name"
+        ],
+        [
+          "email",
+          "name"
+        ]
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          "age"
+        ],
+        [
+          "name"
+        ]
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

@@ -1,23 +1,195 @@
 {
   "id": "40-p3",
-  "title": "Влияние на запись",
+  "title": "Лучший индекс под запрос",
   "difficulty": "hard",
   "lecture_id": "40",
   "order": 3,
-  "description": "Объясните: почему много индексов ускоряют SELECT, но замедляют INSERT/UPDATE?",
+  "description": "Из списка кандидатов `indexes` (каждый — список колонок) выберите тот составной индекс, который **наилучшим образом обслуживает предикаты `WHERE`** `where_cols`.\n\nПравило: индекс «полезен», если его колонки совпадают с `where_cols` **слева направо** — это называется совпадением левого префикса. Считаем **score = число подряд идущих колонок** индекса, совпавших с началом `where_cols`. Чем больше score — тем лучше. При равенстве возвращаем первый встреченный индекс.\n\nЕсли `indexes` пуст — верните пустой список.\n\n**Функция решения:**\n\n```python\ndef best_index(where_cols: list[str], indexes: list[list[str]]) -> list[str]:\n    ...\n```",
   "examples": [
     {
-      "input": "INSERT обновляет все индексы; баланс чтение/запись",
-      "output": "",
-      "explanation": null
+      "input": "best_index(['email'], [['name'], ['email']])",
+      "output": "['email']",
+      "explanation": "Индекс [email] даёт score 1, [name] — 0."
+    },
+    {
+      "input": "best_index(['city','created_at'], [['city'], ['city','created_at']])",
+      "output": "['city','created_at']",
+      "explanation": "Составной индекс покрывает оба предиката."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Каждый индекс = доп. структура на запись."
+  "constraints": [
+    "0 ≤ len(indexes) ≤ 10^3",
+    "Колонки — строки"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Считайте ведущий префикс: пока index[i] == where_cols[i].",
+    "Пустой indexes даёт пустой результат."
+  ],
+  "starter_code": "def best_index(where_cols: list[str], indexes: list[list[str]]) -> list[str]:\n    \"\"\"Вернуть индекс с максимальным совпадением левого префикса с WHERE-колонками.\"\"\"\n    ...",
+  "entry_function": "best_index",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          "email"
+        ],
+        [
+          [
+            "name"
+          ],
+          [
+            "email"
+          ]
+        ]
+      ],
+      "expected": [
+        "email"
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          "city",
+          "created_at"
+        ],
+        [
+          [
+            "city"
+          ],
+          [
+            "city",
+            "created_at"
+          ]
+        ]
+      ],
+      "expected": [
+        "city",
+        "created_at"
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          "user_id"
+        ],
+        [
+          [
+            "user_id",
+            "created_at"
+          ],
+          [
+            "created_at"
+          ]
+        ]
+      ],
+      "expected": [
+        "user_id",
+        "created_at"
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          "status"
+        ],
+        []
+      ],
+      "expected": [],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "a",
+            "b",
+            "c"
+          ]
+        ]
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          "a"
+        ],
+        [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "a",
+            "c"
+          ]
+        ]
+      ],
+      "expected": [
+        "a",
+        "b"
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

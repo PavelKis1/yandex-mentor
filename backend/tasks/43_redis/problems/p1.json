@@ -1,23 +1,130 @@
 {
   "id": "43-p1",
-  "title": "Кэш с TTL",
+  "title": "INCR-счётчик",
   "difficulty": "easy",
   "lecture_id": "43",
   "order": 1,
-  "description": "Напишите код: сохраните key 'user:1' со значением JSON и временем жизни 60 секунд (redis-py).",
+  "description": "Команда Redis `INCR key` атомарно увеличивает целочисленное значение по ключу на `1`. Если ключа нет — он создаётся со значением `0`, после чего инкрементируется до `1`.\n\nРеализуйте `redis_incr(store, key)`, возвращающую **новое значение** счётчика (не мутируя переданный `store`): для отсутствующего ключа верните `1`, иначе — текущее значение плюс `1`.\n\n**Функция решения:**\n\n```python\ndef redis_incr(store: dict, key: str) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "r.setex('user:1', 60, json.dumps(user))",
-      "output": "",
-      "explanation": null
+      "input": "redis_incr({}, 'hits')",
+      "output": "1",
+      "explanation": "Ключа не было — создаётся и инкрементируется."
+    },
+    {
+      "input": "redis_incr({'hits': 5}, 'hits')",
+      "output": "6",
+      "explanation": "Существующий счётчик 5 + 1."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "setex / SETEX с ttl."
+  "constraints": [
+    "store — словарь целых значений"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "store.get(key, 0) вернёт 0 для отсутствующего ключа.",
+    "Верните store.get(key, 0) + 1."
+  ],
+  "starter_code": "def redis_incr(store: dict, key: str) -> int:\n    \"\"\"Атомарно увеличить счётчик key на 1; вернуть новое значение.\"\"\"\n    ...",
+  "entry_function": "redis_incr",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        {},
+        "hits"
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        {
+          "hits": 5
+        },
+        "hits"
+      ],
+      "expected": 6,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        {
+          "views": 0
+        },
+        "views"
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        {
+          "v": 10
+        },
+        "other"
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        {
+          "a": -1
+        },
+        "a"
+      ],
+      "expected": 0,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        {},
+        "x"
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

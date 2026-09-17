@@ -7,7 +7,7 @@ import { CheatSheetBlock } from "./lecture/CheatSheetBlock";
 import { AttachedTasks } from "./lecture/AttachedTasks";
 import { LectureHeader } from "./lecture/LectureHeader";
 import { StickyToc, type TocItem } from "./lecture/StickyToc";
-import type { LectureData, TaskStatus } from "../types";
+import type { LectureData } from "../types";
 import { readText, writeText } from "../utils/storage";
 
 interface Chapter {
@@ -25,8 +25,6 @@ interface LectureChaptersProps {
   taskId?: string;
   /** Метаданные лекции (description, cheatSheet, attachedTasks и т.п.) — опционально. */
   meta?: LectureData | null;
-  /** Глобальный прогресс тем (todo/wip/done) для блока привязанных задач. */
-  progress?: Record<string, TaskStatus>;
   /** Deep-link на задачу: открывает указанную тему и вкладку «Практические задания». */
   onOpenTask?: (taskId: string, lectureId: string) => void;
 }
@@ -103,7 +101,7 @@ function renderChapterBody(chapter: Chapter) {
   return <MarkdownArticle markdown={chapter.body} />;
 }
 
-export function LectureChapters({ markdown, taskId, meta, progress, onOpenTask }: LectureChaptersProps) {
+export function LectureChapters({ markdown, taskId, meta, onOpenTask }: LectureChaptersProps) {
   const chapters = useMemo(() => parseChapters(markdown), [markdown]);
   const storageId = taskId ?? "default";
   // Оглавление по главам (для ScrollSpy в режиме «весь текст»).
@@ -368,10 +366,10 @@ export function LectureChapters({ markdown, taskId, meta, progress, onOpenTask }
 
           {/* Шпаргалка и привязанные задачи — в конце лекции. */}
           {meta?.cheatSheet && <CheatSheetBlock data={meta.cheatSheet} />}
-          {(meta?.attachedTasks ?? []).length > 0 && onOpenTask && progress && (
+          {(meta?.attachedTasks ?? []).length > 0 && onOpenTask && (
             <AttachedTasks
               tasks={meta?.attachedTasks ?? []}
-              progress={progress}
+              problems={meta?.problems ?? []}
               onOpenTask={onOpenTask}
             />
           )}

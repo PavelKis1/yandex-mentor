@@ -1,23 +1,159 @@
 {
   "id": "43-p2",
-  "title": "Счётчик просмотров",
+  "title": "Значение по TTL",
   "difficulty": "medium",
   "lecture_id": "43",
   "order": 2,
-  "description": "Реализуйте счётчик просмотров поста через INCR, без гонок.",
+  "description": "Записи кэша хранят `{'value': ..., 'expires_at': ...}` (метка времени истечения). Реализуйте `cache_get(store, key, now)`:\n- если ключа нет или момент `now` **больше** `expires_at` (TTL истёк) — верните `None`;\n- если `now <= expires_at` — верните `value`.\n\n**Функция решения:**\n\n```python\ndef cache_get(store: dict, key: str, now: int):\n    ...\n```",
   "examples": [
     {
-      "input": "r.incr('post:5:views')",
-      "output": "",
-      "explanation": null
+      "input": "cache_get({'a': {'value': 10, 'expires_at': 100}}, 'a', 50)",
+      "output": "10",
+      "explanation": "Рано — значение живо."
+    },
+    {
+      "input": "cache_get({'a': {'value': 10, 'expires_at': 100}}, 'a', 101)",
+      "output": "None",
+      "explanation": "Момент истёк — ключ недоступен."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "INCR атомарен — не нужны блокировки."
+  "constraints": [
+    "expires_at и now — целые метки времени"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Проверьте наличие ключа через `key not in store`.",
+    "Истёк, когда now > expires_at."
+  ],
+  "starter_code": "def cache_get(store: dict, key: str, now: int):\n    \"\"\"Вернуть значение ключа, если он не истёк (now <= expires_at), иначе None.\"\"\"\n    ...",
+  "entry_function": "cache_get",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        {
+          "a": {
+            "value": 10,
+            "expires_at": 100
+          }
+        },
+        "a",
+        50
+      ],
+      "expected": 10,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        {
+          "a": {
+            "value": 10,
+            "expires_at": 100
+          }
+        },
+        "a",
+        100
+      ],
+      "expected": 10,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        {
+          "a": {
+            "value": 10,
+            "expires_at": 100
+          }
+        },
+        "a",
+        101
+      ],
+      "expected": null,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        {
+          "x": {
+            "value": "ok",
+            "expires_at": 5
+          }
+        },
+        "x",
+        5
+      ],
+      "expected": "ok",
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        {},
+        "missing",
+        0
+      ],
+      "expected": null,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        {
+          "b": {
+            "value": 7,
+            "expires_at": 1
+          }
+        },
+        "b",
+        9
+      ],
+      "expected": null,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

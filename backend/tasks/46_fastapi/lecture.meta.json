@@ -1,0 +1,51 @@
+{
+  "id": "46",
+  "slug": "fastapi",
+  "title": "FastAPI: маршрутизация, модели, зависимости",
+  "description": "Разбираем FastAPI: маршруты, Pydantic, DI.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "FastAPI",
+    "Python",
+    "API"
+  ],
+  "learningOutcomes": [
+    "Маршруты",
+    "Валидация",
+    "DI"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1)",
+    "spaceComplexity": "O(1)",
+    "explanation": "Базовые операции с API."
+  },
+  "quizzes": [],
+  "attachedTasks": [
+    {
+      "taskId": "46-p1",
+      "title": "Сопоставление маршрутов",
+      "difficulty": "easy",
+      "slug": "route-match"
+    },
+    {
+      "taskId": "46-p2",
+      "title": "Валидация Pydantic",
+      "difficulty": "medium",
+      "slug": "pydantic-model"
+    },
+    {
+      "taskId": "46-p3",
+      "title": "Зависимости",
+      "difficulty": "hard",
+      "slug": "di-order"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "Маршруты с {}",
+      "Pydantic для схем",
+      "Depends для DI"
+    ]
+  }
+}

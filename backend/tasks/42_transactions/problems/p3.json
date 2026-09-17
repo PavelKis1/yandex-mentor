@@ -4,20 +4,120 @@
   "difficulty": "hard",
   "lecture_id": "42",
   "order": 3,
-  "description": "Чем READ COMMITTED отличается от REPEATABLE READ? Приведите пример, когда результат различается.",
+  "description": "Верните `True`, если уровень изоляции `level` предотвращает аномалию `anomaly`. Используйте таблицу соответствий:\n\n- `read_uncommitted`: не предотвращает ни одной из аномалий;\n- `read_committed`: только `dirty_read`;\n- `repeatable_read`: `dirty_read`, `non_repeatable_read`, `lost_update`;\n- `serializable`: `dirty_read`, `non_repeatable_read`, `lost_update`, `phantom_read`.\n\nДопустимые аномалии: `dirty_read`, `lost_update`, `non_repeatable_read`, `phantom_read`.\n\n**Функция решения:**\n\n```python\ndef isolation_prevents(level: str, anomaly: str) -> bool:\n    ...\n```",
   "examples": [
     {
-      "input": "При RC повторные чтения видят чужие коммиты",
-      "output": "",
-      "explanation": null
+      "input": "isolation_prevents('serializable', 'phantom_read')",
+      "output": "True",
+      "explanation": "Serializable защищает от всех аномалий."
+    },
+    {
+      "input": "isolation_prevents('read_committed', 'non_repeatable_read')",
+      "output": "False",
+      "explanation": "Read committed видит повторные изменения."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Опиши ситуацию с двумя соединениями."
+  "constraints": [
+    "level в списке четырёх уровней",
+    "anomaly в списке аномалий"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Составьте словарь уровень → множество допустимых аномалий.",
+    "Чем выше изоляция, тем больше защита."
+  ],
+  "starter_code": "def isolation_prevents(level: str, anomaly: str) -> bool:\n    \"\"\"True, если уровень изоляции level предотвращает аномалию anomaly.\"\"\"\n    ...",
+  "entry_function": "isolation_prevents",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "serializable",
+        "phantom_read"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "read_committed",
+        "dirty_read"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "repeatable_read",
+        "phantom_read"
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        "read_uncommitted",
+        "dirty_read"
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        "repeatable_read",
+        "lost_update"
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        "read_committed",
+        "non_repeatable_read"
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

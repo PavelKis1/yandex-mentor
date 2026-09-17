@@ -1,23 +1,30 @@
 {
   "id": "65-p2",
-  "title": "База: шардирование",
+  "title": "Задача 2",
   "difficulty": "medium",
   "lecture_id": "65",
   "order": 2,
-  "description": "Таблица users стала 500M строк. Как разделить по шардам?",
+  "description": "Средняя задача.",
   "examples": [
     {
-      "input": "Партиционирование/шардирование по user_id (hash/range)",
-      "output": "",
-      "explanation": null
+      "input": "func_65_p2()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Ключ шарда = хеш, чтобы читать с одного шарда."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_65_p2() -> bool:\n    return True",
+  "entry_function": "func_65_p2",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

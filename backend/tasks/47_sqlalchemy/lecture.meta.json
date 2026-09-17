@@ -1,0 +1,51 @@
+{
+  "id": "47",
+  "slug": "sqlalchemy",
+  "title": "SQLAlchemy: ORM, сессии, связи",
+  "description": "Разбираем SQLAlchemy: сессии, связи, конвертация.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "SQLAlchemy",
+    "ORM",
+    "SQL"
+  ],
+  "learningOutcomes": [
+    "Сессии",
+    "Загрузка",
+    "Модели"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1)",
+    "spaceComplexity": "O(1)",
+    "explanation": "Базовые операции с объектами."
+  },
+  "quizzes": [],
+  "attachedTasks": [
+    {
+      "taskId": "47-p1",
+      "title": "Коммит сессии",
+      "difficulty": "easy",
+      "slug": "session-commit"
+    },
+    {
+      "taskId": "47-p2",
+      "title": "Тип загрузки",
+      "difficulty": "medium",
+      "slug": "load-type"
+    },
+    {
+      "taskId": "47-p3",
+      "title": "Конвертация в dict",
+      "difficulty": "hard",
+      "slug": "model-dict"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "commit для сохранения",
+      "lazy/joined загрузка",
+      "obj.__dict__ для dict"
+    ]
+  }
+}

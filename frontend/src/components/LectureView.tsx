@@ -1,5 +1,5 @@
 import { LectureChapters } from "./LectureChapters";
-import type { LectureData, TaskStatus } from "../types";
+import type { LectureData } from "../types";
 
 interface LectureViewProps {
   lecture?: string | null;
@@ -7,11 +7,10 @@ interface LectureViewProps {
   taskId?: string;
   /** Метаданные лекции — опционально, для шапки/шпаргалки/привязанных задач. */
   meta?: LectureData | null;
-  progress?: Record<string, TaskStatus>;
   onOpenTask?: (taskId: string, lectureId: string) => void;
 }
 
-export function LectureView({ lecture, taskId, meta, progress, onOpenTask }: LectureViewProps) {
+export function LectureView({ lecture, taskId, meta, onOpenTask }: LectureViewProps) {
   if (!lecture || lecture.trim().length === 0) {
     return (
       <p className="text-slate-400 italic">Лекция для данной темы готовится.</p>
@@ -23,7 +22,6 @@ export function LectureView({ lecture, taskId, meta, progress, onOpenTask }: Lec
       markdown={lecture}
       taskId={taskId}
       meta={meta}
-      progress={progress}
       onOpenTask={onOpenTask}
     />
   );

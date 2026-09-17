@@ -1,23 +1,30 @@
 {
   "id": "56-p3",
-  "title": "Структурированные логи",
+  "title": "Задача 3",
   "difficulty": "hard",
   "lecture_id": "56",
   "order": 3,
-  "description": "Почему JSON-логи лучше текстовых для продакшена и как их сделать?",
+  "description": "Сложная задача.",
   "examples": [
     {
-      "input": "json.dumps(record) в кастомном Formatter",
-      "output": "",
-      "explanation": null
+      "input": "func_56_p3()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Парсинг/поиск/агрегация."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_56_p3() -> bool:\n    return True",
+  "entry_function": "func_56_p3",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

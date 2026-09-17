@@ -1,23 +1,30 @@
 {
   "id": "64-p2",
-  "title": "Задержка задач",
+  "title": "Задача 2",
   "difficulty": "medium",
   "lecture_id": "64",
   "order": 2,
-  "description": "Письмо должно отправиться через 30 минут после регистрации. Как реализовать?",
+  "description": "Средняя задача.",
   "examples": [
     {
-      "input": "RabbitMQ delayed exchange / Redis ZSET по времени",
-      "output": "",
-      "explanation": null
+      "input": "func_64_p2()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Отложенные задачи в планировщике."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_64_p2() -> bool:\n    return True",
+  "entry_function": "func_64_p2",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

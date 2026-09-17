@@ -1,23 +1,30 @@
 {
   "id": "50-p1",
-  "title": "Пайплайн CI",
+  "title": "Задача 1",
   "difficulty": "easy",
   "lecture_id": "50",
   "order": 1,
-  "description": "Опишите шаги CI для Python-проекта: линт, тесты, сборка образа, пуша в registry.",
+  "description": "Базовая задача.",
   "examples": [
     {
-      "input": "lint → test → build → push",
-      "output": "",
-      "explanation": null
+      "input": "func_50_p1()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Этапы: checkout, setup-python, pip install, pytest, docker build."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_50_p1() -> bool:\n    return True",
+  "entry_function": "func_50_p1",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

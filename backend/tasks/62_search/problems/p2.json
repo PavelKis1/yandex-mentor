@@ -1,23 +1,30 @@
 {
   "id": "62-p2",
-  "title": "Ранжирование",
+  "title": "Задача 2",
   "difficulty": "medium",
   "lecture_id": "62",
   "order": 2,
-  "description": "Почему простое количество совпадений недостаточно? Что добавить?",
+  "description": "Средняя задача.",
   "examples": [
     {
-      "input": "TF-IDF, частота, позиция, релевантность",
-      "output": "",
-      "explanation": null
+      "input": "func_62_p2()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Сначала фильтр, потом ранжирование."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_62_p2() -> bool:\n    return True",
+  "entry_function": "func_62_p2",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

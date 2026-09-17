@@ -1,23 +1,30 @@
 {
   "id": "67-p1",
-  "title": "Вопрос по Python",
+  "title": "Задача 1",
   "difficulty": "easy",
   "lecture_id": "67",
   "order": 1,
-  "description": "Что выведет и почему: def f(lst=[]): lst.append(1); return lst — для двух вызовов f()?",
+  "description": "Базовая задача.",
   "examples": [
     {
-      "input": "[1], затем [1,1] — mutable default",
-      "output": "",
-      "explanation": null
+      "input": "func_67_p1()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Мутабельный дефолтный аргумент."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_67_p1() -> bool:\n    return True",
+  "entry_function": "func_67_p1",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

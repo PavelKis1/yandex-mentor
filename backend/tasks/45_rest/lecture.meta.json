@@ -1,0 +1,52 @@
+{
+  "id": "45",
+  "slug": "rest",
+  "title": "REST API: ресурсы, методы, форматы",
+  "description": "Разбираем принципы REST: ресурсы, HTTP-методы, query-параметры.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "REST",
+    "API",
+    "HTTP"
+  ],
+  "learningOutcomes": [
+    "Парсить параметры",
+    "Выбирать метод",
+    "Валидировать URI"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1)",
+    "spaceComplexity": "O(1)",
+    "explanation": "Базовые операции с URI."
+  },
+  "quizzes": [],
+  "attachedTasks": [
+    {
+      "taskId": "45-p1",
+      "title": "Парсинг параметров",
+      "difficulty": "easy",
+      "slug": "parse-params"
+    },
+    {
+      "taskId": "45-p2",
+      "title": "Выбор REST метода",
+      "difficulty": "medium",
+      "slug": "rest-method"
+    },
+    {
+      "taskId": "45-p3",
+      "title": "Валидация URI",
+      "difficulty": "hard",
+      "slug": "valid-uri"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "GET - чтение",
+      "POST - создание",
+      "PUT - обновление",
+      "DELETE - удаление"
+    ]
+  }
+}

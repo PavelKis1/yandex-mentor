@@ -1,0 +1,45 @@
+{
+  "id": "56",
+  "slug": "logging",
+  "title": "Logging",
+  "description": "Разбираем Logging.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Logging"
+  ],
+  "learningOutcomes": [
+    "Основы Logging"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1)",
+    "spaceComplexity": "O(1)",
+    "explanation": "Базовые операции."
+  },
+  "quizzes": [],
+  "attachedTasks": [
+    {
+      "taskId": "56-p1",
+      "title": "Задача 1",
+      "difficulty": "easy",
+      "slug": "t1"
+    },
+    {
+      "taskId": "56-p2",
+      "title": "Задача 2",
+      "difficulty": "medium",
+      "slug": "t2"
+    },
+    {
+      "taskId": "56-p3",
+      "title": "Задача 3",
+      "difficulty": "hard",
+      "slug": "t3"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "Функции для Logging"
+    ]
+  }
+}

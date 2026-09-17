@@ -1,0 +1,105 @@
+{
+  "id": "43",
+  "slug": "redis",
+  "title": "Redis: ключ-значение, счётчики, TTL и LRU-кэш",
+  "description": "Redis хранит данные в памяти: счётчики с атомарным INCR, значения с TTL и вытеснение по LRU. Моделируем эти поведенческие правила функциями.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Redis",
+    "Cache",
+    "TTL",
+    "LRU",
+    "Key-Value"
+  ],
+  "learningOutcomes": [
+    "Моделировать атомарный INCR-счётчик",
+    "Читать значение с учётом TTL",
+    "Выбирать ключ для вытеснения по LRU"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1)–O(k) на задачи блока",
+    "spaceComplexity": "O(n)",
+    "explanation": "Задачи воспроизводят семантику команд Redis без реального сервера."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Что возвращает INCR для отсутствующего ключа?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "1 (ключ создаётся со значением 0)",
+          "isCorrect": true,
+          "explanation": "INCR несуществующего ключа даёт 1."
+        },
+        {
+          "id": "opt2",
+          "text": "Ошибку",
+          "isCorrect": false,
+          "explanation": "Redis создаёт ключ автоматически."
+        },
+        {
+          "id": "opt3",
+          "text": "0",
+          "isCorrect": false,
+          "explanation": "0 было бы до счётчика, но INCR вернёт 1."
+        }
+      ],
+      "hint": "Какое значение получится, если 0 увеличить на 1?"
+    },
+    {
+      "id": "q2",
+      "question": "Какой ключ вытесняется при LRU?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Давно не использовавшийся",
+          "isCorrect": true,
+          "explanation": "Least Recently Used — старший по давности."
+        },
+        {
+          "id": "opt2",
+          "text": "Самый маленький по размеру",
+          "isCorrect": false,
+          "explanation": "Это больше про размер, не про LRU."
+        },
+        {
+          "id": "opt3",
+          "text": "Самый новый",
+          "isCorrect": false,
+          "explanation": "Новые живут дольше."
+        }
+      ],
+      "hint": "Что значит буква L в LRU?"
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "43-p1",
+      "title": "INCR-счётчик",
+      "difficulty": "easy",
+      "slug": "redis-incr"
+    },
+    {
+      "taskId": "43-p2",
+      "title": "Значение по TTL",
+      "difficulty": "medium",
+      "slug": "cache-ttl"
+    },
+    {
+      "taskId": "43-p3",
+      "title": "LRU-вытеснение",
+      "difficulty": "hard",
+      "slug": "lru-eviction"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "INCR key атомарно увеличивает счётчик, создавая его с 0.",
+      "Записи SET EX ставят expires_at; истёкшие ключи возвращают NULL.",
+      "LRU вытесняет ключ с самым старым временем последнего обращения.",
+      "Redis хранит данные в памяти — отсюда скорость."
+    ]
+  }
+}

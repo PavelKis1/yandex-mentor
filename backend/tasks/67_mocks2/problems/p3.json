@@ -1,23 +1,30 @@
 {
   "id": "67-p3",
-  "title": "Беседа",
+  "title": "Задача 3",
   "difficulty": "hard",
   "lecture_id": "67",
   "order": 3,
-  "description": "Как бы вы профилировали медленную функцию продакшена?",
+  "description": "Сложная задача.",
   "examples": [
     {
-      "input": "cProfile/трассировка + гипотезы",
-      "output": "",
-      "explanation": null
+      "input": "func_67_p3()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Сначала измерь, потом оптимизируй."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_67_p3() -> bool:\n    return True",
+  "entry_function": "func_67_p3",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

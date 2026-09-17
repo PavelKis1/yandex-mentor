@@ -1,23 +1,30 @@
 {
   "id": "63-p1",
-  "title": "Стратегия",
+  "title": "Задача 1",
   "difficulty": "easy",
   "lecture_id": "63",
   "order": 1,
-  "description": "Когда уместен кэш и когда нет? Назовите примеры для 'горячих' и 'холодных' данных.",
+  "description": "Базовая задача.",
   "examples": [
     {
-      "input": "Горячие данные: частые чтения, редкие записи",
-      "output": "",
-      "explanation": null
+      "input": "func_63_p1()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Принцип: дешёвое чтение > стоимость инвалидации."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_63_p1() -> bool:\n    return True",
+  "entry_function": "func_63_p1",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

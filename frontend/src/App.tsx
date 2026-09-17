@@ -88,7 +88,6 @@ export default function App() {
           onOpenLecture={openLecture}
           onClose={closeModal}
           onTaskStatusChange={setTaskStatus}
-          progress={progress}
           initialProblemId={pendingProblemId}
           onOpenTask={handleOpenTask}
         />

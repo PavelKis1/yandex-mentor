@@ -1,23 +1,73 @@
 {
   "id": "45-p2",
-  "title": "Пагинация",
+  "title": "Выбор REST метода",
   "difficulty": "medium",
   "lecture_id": "45",
   "order": 2,
-  "description": "Как вернуть 10 000 постов постранично по 25? Какой параметр и зачем limit/offset?",
+  "description": "Вернуть HTTP-метод: create->POST, read->GET, update->PUT, delete->DELETE.",
   "examples": [
     {
-      "input": "GET /posts?page=2&limit=25",
-      "output": "",
-      "explanation": null
+      "input": "rest_method_for('create')",
+      "output": "'POST'"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "limit/offset или курсор; лимит против перегрузки."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def rest_method_for(action: str) -> str:\n    \"\"\"Вернуть HTTP-метод для действия (create, read, update, delete).\"\"\"\n    ...",
+  "entry_function": "rest_method_for",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "create"
+      ],
+      "expected": "POST",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "read"
+      ],
+      "expected": "GET",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "update"
+      ],
+      "expected": "PUT",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        "delete"
+      ],
+      "expected": "DELETE",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

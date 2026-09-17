@@ -1,23 +1,30 @@
 {
   "id": "63-p2",
-  "title": "Инвалидация",
+  "title": "Задача 2",
   "difficulty": "medium",
   "lecture_id": "63",
   "order": 2,
-  "description": "База и кэш рассинхронизировались. Опишите TTL и write-through.",
+  "description": "Средняя задача.",
   "examples": [
     {
-      "input": "TTL: данные сами устаревают; write-through: пишем в оба",
-      "output": "",
-      "explanation": null
+      "input": "func_63_p2()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "TTL проще, write-through консистентнее."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_63_p2() -> bool:\n    return True",
+  "entry_function": "func_63_p2",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

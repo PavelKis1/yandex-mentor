@@ -1,23 +1,53 @@
 {
   "id": "48-p1",
-  "title": "Dockerfile",
+  "title": "Слои Dockerfile",
   "difficulty": "easy",
   "lecture_id": "48",
   "order": 1,
-  "description": "Напишите Dockerfile для Python-приложения: установка зависимостей, копирование кода, запуск uvicorn.\nCOPY requirements.txt .\nRUN pip install -r requirements.txt\nCMD [\"uvicorn\", \"server:app\"]`",
+  "description": "Вернуть количество слоев (RUN, COPY, ADD).",
   "examples": [
     {
-      "input": "`FROM python:3.11-slim",
-      "output": "",
-      "explanation": null
+      "input": "dockerfile_layer_count(['RUN x', 'FROM y'])",
+      "output": "1"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Слои: базовый → зависимости → код."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def dockerfile_layer_count(commands: list) -> int:\n    ...",
+  "entry_function": "dockerfile_layer_count",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          "RUN x",
+          "FROM y"
+        ]
+      ],
+      "expected": 1,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          "COPY x .",
+          "RUN z"
+        ]
+      ],
+      "expected": 2,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

@@ -1,0 +1,105 @@
+{
+  "id": "44",
+  "slug": "http",
+  "title": "HTTP: коды ответа, безопасные методы и условные запросы",
+  "description": "HTTP — язык общения клиента и сервера. Разбираем семантику кодов статуса, безопасные/идемпотентные методы и проверку ETag через If-None-Match.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "HTTP",
+    "Status Codes",
+    "REST",
+    "ETag",
+    "Cache"
+  ],
+  "learningOutcomes": [
+    "Сопоставлять ситуацию правильному коду статуса",
+    "Различать безопасные и изменяющие методы",
+    "Реализовывать условный ответ через ETag"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1) на задачи блока",
+    "spaceComplexity": "O(1)",
+    "explanation": "Задачи проверяют табличные знания HTTP и простые условия."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Какой код возвращается, когда ресурс не найден?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "404 Not Found",
+          "isCorrect": true,
+          "explanation": "Ресурс отсутствует."
+        },
+        {
+          "id": "opt2",
+          "text": "403 Forbidden",
+          "isCorrect": false,
+          "explanation": "Доступ запрещён, но ресурс есть."
+        },
+        {
+          "id": "opt3",
+          "text": "500",
+          "isCorrect": false,
+          "explanation": "Это ошибка сервера."
+        }
+      ],
+      "hint": "Клиент не нашёл ресурс по URL."
+    },
+    {
+      "id": "q2",
+      "question": "Кто такие «безопасные» методы HTTP?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Не изменяют состояние на сервере (GET, HEAD, OPTIONS)",
+          "isCorrect": true,
+          "explanation": "Безопасные — только чтение."
+        },
+        {
+          "id": "opt2",
+          "text": "Все методы, включая POST",
+          "isCorrect": false,
+          "explanation": "POST изменяет данные."
+        },
+        {
+          "id": "opt3",
+          "text": "Только DELETE",
+          "isCorrect": false,
+          "explanation": "DELETE удаляет ресурс."
+        }
+      ],
+      "hint": "Безопасный = только чтение."
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "44-p1",
+      "title": "Код статуса",
+      "difficulty": "easy",
+      "slug": "status-codes"
+    },
+    {
+      "taskId": "44-p2",
+      "title": "Разрешён ли метод",
+      "difficulty": "medium",
+      "slug": "method-allowed"
+    },
+    {
+      "taskId": "44-p3",
+      "title": "Условный запрос ETag",
+      "difficulty": "hard",
+      "slug": "etag-match"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "4xx — ошибка клиента, 5xx — ошибка сервера.",
+      "GET/HEAD/OPTIONS безопасны, остальные меняют состояние.",
+      "If-None-Match + ETag даёт 304, если клиент уже актуален.",
+      "Символ '*' в If-None-Match означает «любой ETag»."
+    ]
+  }
+}

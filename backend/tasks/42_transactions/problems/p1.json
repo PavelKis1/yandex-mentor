@@ -1,23 +1,181 @@
 {
   "id": "42-p1",
-  "title": "Потерянное обновление",
+  "title": "Атомарный перевод",
   "difficulty": "easy",
   "lecture_id": "42",
   "order": 1,
-  "description": "Две транзакции одновременно увеличивают balance на 10. Опишите проблему и решение (BEGIN/COMMIT/ISOLATION).",
+  "description": "Список `state` хранит балансы счетов. Реализуйте **атомарный перевод** `transfer_balances(state, from_id, to_id, amount)`:\n- если на счёте `from_id` достаточно средств — списать `amount` и зачислить на `to_id`, вернуть новый список балансов;\n- если средств не хватает — перевод не выполняется, верните `None` (транзакция отменена).\n\nВажно: ни один счёт не должен измениться при неудачном переводе.\n\n**Функция решения:**\n\n```python\ndef transfer_balances(state: list[int], from_id: int, to_id: int, amount: int):\n    ...\n```",
   "examples": [
     {
-      "input": "Свойство атомарности: UPDATE ... SET balance=balance+10 атомарно",
-      "output": "",
-      "explanation": null
+      "input": "transfer_balances([100, 0], 0, 1, 10)",
+      "output": "[90, 10]",
+      "explanation": "10 переведено с 1-го на 2-й счет."
+    },
+    {
+      "input": "transfer_balances([10, 0], 0, 1, 20)",
+      "output": "None",
+      "explanation": "Недостаточно средств — транзакция отменена."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Одиночная UPDATE атомарна; массивы обновлять через row lock."
+  "constraints": [
+    "0 ≤ from_id, to_id < len(state)",
+    "amount ≥ 0"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Сначала проверьте остаток, потом переводите.",
+    "Возвращайте новый список, а не мутируйте входной."
+  ],
+  "starter_code": "def transfer_balances(state: list[int], from_id: int, to_id: int, amount: int):\n    \"\"\"Атомарно перевести amount между счётами state; None при нехватке средств.\"\"\"\n    ...",
+  "entry_function": "transfer_balances",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          100,
+          0
+        ],
+        0,
+        1,
+        10
+      ],
+      "expected": [
+        90,
+        10
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          100,
+          50,
+          0
+        ],
+        1,
+        2,
+        5
+      ],
+      "expected": [
+        100,
+        45,
+        5
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          10,
+          0
+        ],
+        0,
+        1,
+        20
+      ],
+      "expected": null,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          0,
+          100
+        ],
+        1,
+        0,
+        100
+      ],
+      "expected": [
+        100,
+        0
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          50,
+          10
+        ],
+        0,
+        1,
+        60
+      ],
+      "expected": null,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          33,
+          33,
+          33
+        ],
+        0,
+        2,
+        33
+      ],
+      "expected": [
+        0,
+        33,
+        66
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

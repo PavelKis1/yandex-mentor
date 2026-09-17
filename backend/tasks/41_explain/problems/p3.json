@@ -1,23 +1,101 @@
 {
   "id": "41-p3",
-  "title": "Оптимизация по плану",
+  "title": "Стоимость соединения",
   "difficulty": "hard",
   "lecture_id": "41",
   "order": 3,
-  "description": "EXPLAIN показывает 'Seq Scan' на миллионной таблице с WHERE по колонке x. Что сделать?",
+  "description": "Хэш-соединение возвращает примерно `left × right × selectivity` строк, где `left_rows` и `right_rows` — мощности таблиц, а `selectivity` (0–1) — доля совпадающих ключей.\n\nРеализуйте `estimate_join_rows(left_rows, right_rows, selectivity)`, возвращающую результат, **округлённый до ближайшего целого**.\n\n**Функция решения:**\n\n```python\ndef estimate_join_rows(left_rows: int, right_rows: int, selectivity: float) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "Добавить индекс на x и перезапустить ANALYZE",
-      "output": "",
-      "explanation": null
+      "input": "estimate_join_rows(1000, 100, 0.1)",
+      "output": "10000",
+      "explanation": "1000×100×0.1 = 10000."
+    },
+    {
+      "input": "estimate_join_rows(10, 10, 1.0)",
+      "output": "100",
+      "explanation": "Полное соединение всех строк."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Индекс + VACUUM ANALYZE."
+  "constraints": [
+    "left_rows, right_rows ≥ 0",
+    "0 ≤ selectivity ≤ 1"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Перемножьте и примените round().",
+    "round(3.0) == 3 — целое."
+  ],
+  "starter_code": "def estimate_join_rows(left_rows: int, right_rows: int, selectivity: float) -> int:\n    \"\"\"Оценочное число строк Hash Join: округлить left * right * selectivity.\"\"\"\n    ...",
+  "entry_function": "estimate_join_rows",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        1000,
+        100,
+        0.1
+      ],
+      "expected": 10000,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        10,
+        10,
+        1.0
+      ],
+      "expected": 100,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        500,
+        200,
+        0.5
+      ],
+      "expected": 50000,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        100,
+        100,
+        0.01
+      ],
+      "expected": 100,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

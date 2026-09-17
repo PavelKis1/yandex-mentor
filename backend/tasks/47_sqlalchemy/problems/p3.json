@@ -1,23 +1,39 @@
 {
   "id": "47-p3",
-  "title": "Связь один-ко-многим",
+  "title": "Конвертация в dict",
   "difficulty": "hard",
   "lecture_id": "47",
   "order": 3,
-  "description": "Модели User и Post: один пользователь — много постов. Опишите relationship.",
+  "description": "Вернуть словарь полей (без начинающихся с _).",
   "examples": [
     {
-      "input": "posts = relationship('Post', back_populates='user')",
-      "output": "",
-      "explanation": null
+      "input": "model_to_dict(obj)",
+      "output": "{'a': 1}"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "ForeignKey + relationship."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def model_to_dict(obj) -> dict:\n    ...",
+  "entry_function": "model_to_dict",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        {
+          "a": 1,
+          "_b": 2
+        }
+      ],
+      "expected": {
+        "a": 1
+      },
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

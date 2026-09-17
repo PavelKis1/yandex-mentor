@@ -4,20 +4,49 @@
   "difficulty": "hard",
   "lecture_id": "46",
   "order": 3,
-  "description": "Создайте зависимость get_db(), которая открывает соединение и закрывает его. Примените к эндпоинту.\ndef get_users(db: Session = Depends(get_db))`",
+  "description": "Вернуть список зависимостей в порядке разрешения (по весу).",
   "examples": [
     {
-      "input": "`@app.get('/users')",
-      "output": "",
-      "explanation": null
+      "input": "dependency_injection_order([('a', 2), ('b', 1)])",
+      "output": "['b', 'a']"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Depends + yield/генератор в зависимости."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def dependency_injection_order(dependencies: list) -> list:\n    ...",
+  "entry_function": "dependency_injection_order",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          [
+            "a",
+            2
+          ],
+          [
+            "b",
+            1
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "b",
+          1
+        ],
+        [
+          "a",
+          2
+        ]
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

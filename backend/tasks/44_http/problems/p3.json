@@ -1,23 +1,128 @@
 {
   "id": "44-p3",
-  "title": "Idempotency",
+  "title": "Условный запрос ETag",
   "difficulty": "hard",
   "lecture_id": "44",
   "order": 3,
-  "description": "POST /orders должен быть идемпотентным. Как клиент обеспечивает это?",
+  "description": "Условные запросы экономят трафик. Реализуйте `etag_match(etag, if_none_match)` — решает, вернуть ли серверу `304 Not Modified` (если состояние клиента актуально):\n- если `if_none_match` равен `None` — нет условия, верните `False`;\n- если `if_none_match == '*'` — клиент совпадает с любым вариантом, верните `True`;\n- иначе верните `etag == if_none_match`.\n\n**Функция решения:**\n\n```python\ndef etag_match(etag, if_none_match):\n    ...\n```",
   "examples": [
     {
-      "input": "Передача Idempotency-Key на каждый повтор",
-      "output": "",
-      "explanation": null
+      "input": "etag_match('\"abc\"', '\"abc\"')",
+      "output": "True",
+      "explanation": "ETag совпадает — клиент актуален, 304."
+    },
+    {
+      "input": "etag_match('anything', '*')",
+      "output": "True",
+      "explanation": "Звёздочка принимает любой ETag."
+    },
+    {
+      "input": "etag_match('\"abc\"', None)",
+      "output": "False",
+      "explanation": "Условия нет — отвечаем полным телом."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Ключ идемпотентности в заголовке."
+  "constraints": [
+    "etag может быть None или строкой",
+    "if_none_match — строка или None"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Обработайте None раньше всего.",
+    "'*' — шаблон «любое значение»."
+  ],
+  "starter_code": "def etag_match(etag, if_none_match):\n    \"\"\"True, если клиент актуален (вернуть 304); '*' значит любой ETag.\"\"\"\n    ...",
+  "entry_function": "etag_match",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "\"abc\"",
+        "\"abc\""
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "\"abc\"",
+        "\"xyz\""
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "anything",
+        "*"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        "\"abc\"",
+        null
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        null,
+        null
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        "\"v1\"",
+        "\"v2\""
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

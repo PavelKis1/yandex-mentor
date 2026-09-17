@@ -1,23 +1,47 @@
 {
   "id": "49-p3",
-  "title": "Масштабирование",
+  "title": "Маппинг объемов",
   "difficulty": "hard",
   "lecture_id": "49",
   "order": 3,
-  "description": "Как запустить 3 реплики web-сервиса? Что нужно изменить (переменные, healthcheck)?",
+  "description": "True, если это корректный маппинг.",
   "examples": [
     {
-      "input": "docker compose up --scale web=3",
-      "output": "",
-      "explanation": null
+      "input": "compose_volume_mapping('./data:/data')",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Нужен healthcheck + общие для реплик тома."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def compose_volume_mapping(mapping: str) -> bool:\n    ...",
+  "entry_function": "compose_volume_mapping",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "./data:/data"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "invalid"
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

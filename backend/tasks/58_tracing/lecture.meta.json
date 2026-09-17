@@ -1,0 +1,45 @@
+{
+  "id": "58",
+  "slug": "tracing",
+  "title": "Tracing",
+  "description": "Разбираем Tracing.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Tracing"
+  ],
+  "learningOutcomes": [
+    "Основы Tracing"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1)",
+    "spaceComplexity": "O(1)",
+    "explanation": "Базовые операции."
+  },
+  "quizzes": [],
+  "attachedTasks": [
+    {
+      "taskId": "58-p1",
+      "title": "Задача 1",
+      "difficulty": "easy",
+      "slug": "t1"
+    },
+    {
+      "taskId": "58-p2",
+      "title": "Задача 2",
+      "difficulty": "medium",
+      "slug": "t2"
+    },
+    {
+      "taskId": "58-p3",
+      "title": "Задача 3",
+      "difficulty": "hard",
+      "slug": "t3"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "Функции для Tracing"
+    ]
+  }
+}

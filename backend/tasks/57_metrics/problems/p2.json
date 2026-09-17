@@ -1,23 +1,30 @@
 {
   "id": "57-p2",
-  "title": "RED-метрики",
+  "title": "Задача 2",
   "difficulty": "medium",
   "lecture_id": "57",
   "order": 2,
-  "description": "Назовите три метрики для сервиса: Rate, Errors, Duration. Как их измерить?",
+  "description": "Средняя задача.",
   "examples": [
     {
-      "input": "RPS, error rate, latency (p99)",
-      "output": "",
-      "explanation": null
+      "input": "func_57_p2()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "RED = Rate/Errors/Duration."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_57_p2() -> bool:\n    return True",
+  "entry_function": "func_57_p2",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

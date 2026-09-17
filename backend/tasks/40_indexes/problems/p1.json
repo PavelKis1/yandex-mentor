@@ -1,23 +1,122 @@
 {
   "id": "40-p1",
-  "title": "Индекс по равенству",
+  "title": "DDL индекса",
   "difficulty": "easy",
   "lecture_id": "40",
   "order": 1,
-  "description": "Таблица users(email). Запрос WHERE email='x@y.z' медленный. Что создать для ускорения?",
+  "description": "Напишите функцию `create_index_sql(table, column)`, которая возвращает строку-команду `CREATE INDEX`, ускоряющую поиск по равенству `WHERE column = ...` в таблице `table`.\n\n**Формат:** `CREATE INDEX idx_<таблица>_<колонка> ON <таблица>(<колонка>);`\n\n**Функция решения:**\n\n```python\ndef create_index_sql(table: str, column: str) -> str:\n    ...\n```",
   "examples": [
     {
-      "input": "CREATE INDEX idx_users_email ON users(email);",
-      "output": "",
-      "explanation": null
+      "input": "create_index_sql('users', 'email')",
+      "output": "CREATE INDEX idx_users_email ON users(email);",
+      "explanation": "Индекс по уникальному поиску."
+    },
+    {
+      "input": "create_index_sql('orders', 'created_at')",
+      "output": "CREATE INDEX idx_orders_created_at ON orders(created_at);",
+      "explanation": "Индекс для сортировки/диапазона."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "B-tree индекс на колонку поиска."
+  "constraints": [
+    "table и column — непустые строки"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Верните строку в строго заданном формате.",
+    "Имя индекса: idx_<table>_<column>."
+  ],
+  "starter_code": "def create_index_sql(table: str, column: str) -> str:\n    \"\"\"Вернуть CREATE INDEX, ускоряющий поиск по column в table.\"\"\"\n    ...",
+  "entry_function": "create_index_sql",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "users",
+        "email"
+      ],
+      "expected": "CREATE INDEX idx_users_email ON users(email);",
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "orders",
+        "created_at"
+      ],
+      "expected": "CREATE INDEX idx_orders_created_at ON orders(created_at);",
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "products",
+        "sku"
+      ],
+      "expected": "CREATE INDEX idx_products_sku ON products(sku);",
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        "users",
+        "name"
+      ],
+      "expected": "CREATE INDEX idx_users_name ON users(name);",
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        "logs",
+        "ts"
+      ],
+      "expected": "CREATE INDEX idx_logs_ts ON logs(ts);",
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        "orders",
+        "total"
+      ],
+      "expected": "CREATE INDEX idx_orders_total ON orders(total);",
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

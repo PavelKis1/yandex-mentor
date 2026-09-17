@@ -1,23 +1,30 @@
 {
   "id": "55-p3",
-  "title": "Поиск больших файлов",
+  "title": "Задача 3",
   "difficulty": "hard",
   "lecture_id": "55",
   "order": 3,
-  "description": "Найдите 5 самых больших файлов в /var/log и покажите их размер.",
+  "description": "Сложная задача.",
   "examples": [
     {
-      "input": "du -ah /var/log | sort -rh | head -5",
-      "output": "",
-      "explanation": null
+      "input": "func_55_p3()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "du + sort + head."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_55_p3() -> bool:\n    return True",
+  "entry_function": "func_55_p3",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

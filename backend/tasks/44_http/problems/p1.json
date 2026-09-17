@@ -1,23 +1,84 @@
 {
   "id": "44-p1",
-  "title": "Коды ответа",
+  "title": "Код статуса",
   "difficulty": "easy",
   "lecture_id": "44",
   "order": 1,
-  "description": "Для каждой ситуации назовите корректный HTTP-код: 'не найдено', 'нет прав', 'создано', 'валидация не прошла'.",
+  "description": "Верните корректный HTTP-код статуса по имени ситуации по таблице:\n\n- `ok` → 200, `created` → 201, `accepted` → 202, `no_content` → 204, `not_modified` → 304;\n- `bad_request` → 400, `unauthorized` → 401, `forbidden` → 403, `not_found` → 404, `not_allowed` → 405, `conflict` → 409, `gone` → 410, `validation` → 422;\n- `server_error` → 500, `unavailable` → 503.\n\n**Функция решения:**\n\n```python\ndef status_for(situation: str) -> int:\n    ...\n```",
   "examples": [
     {
-      "input": "404, 403, 201, 422",
-      "output": "",
-      "explanation": null
+      "input": "status_for('not_found')",
+      "output": "404",
+      "explanation": "Ресурс не найден."
+    },
+    {
+      "input": "status_for('created')",
+      "output": "201",
+      "explanation": "Ресурс успешно создан."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Коды: клиентские 4xx, серверные 5xx."
+  "constraints": [
+    "situation — строка из таблицы"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Заведите словарь ситуация → код.",
+    "Запомните группы: 2xx успех, 4xx клиент, 5xx сервер."
+  ],
+  "starter_code": "def status_for(situation: str) -> int:\n    \"\"\"Вернуть HTTP-код по имени ситуации (см. таблицу).\"\"\"\n    ...",
+  "entry_function": "status_for",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "not_found"
+      ],
+      "expected": 404,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "created"
+      ],
+      "expected": 201,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "forbidden"
+      ],
+      "expected": 403,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        "validation"
+      ],
+      "expected": 422,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

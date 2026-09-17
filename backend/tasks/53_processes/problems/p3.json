@@ -1,23 +1,30 @@
 {
   "id": "53-p3",
-  "title": "Демонизация",
+  "title": "Задача 3",
   "difficulty": "hard",
   "lecture_id": "53",
   "order": 3,
-  "description": "Запустите Python-скрипт как демон, чтобы он работал после выхода из терминала (nohup).",
+  "description": "Сложная задача.",
   "examples": [
     {
-      "input": "nohup python app.py &",
-      "output": "",
-      "explanation": null
+      "input": "func_53_p3()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "nohup + & или setsid."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_53_p3() -> bool:\n    return True",
+  "entry_function": "func_53_p3",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

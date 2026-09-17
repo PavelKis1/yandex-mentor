@@ -1,23 +1,60 @@
 {
   "id": "48-p3",
-  "title": "Уменьшение образа",
+  "title": "Валидация тега",
   "difficulty": "hard",
   "lecture_id": "48",
   "order": 3,
-  "description": "Образ весит 1.5 ГБ. Какие действия уменьшат его до ~200 МБ?",
+  "description": "True, если тег валиден (a-z, 0-9, ., -, _).",
   "examples": [
     {
-      "input": "multi-stage build, python:*-slim, --no-cache-dir",
-      "output": "",
-      "explanation": null
+      "input": "image_tag_valid('v1.0')",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "multi-stage + slim + dockerignore."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def image_tag_valid(tag: str) -> bool:\n    ...",
+  "entry_function": "image_tag_valid",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "v1.0"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "v1:0"
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "valid-tag"
+      ],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

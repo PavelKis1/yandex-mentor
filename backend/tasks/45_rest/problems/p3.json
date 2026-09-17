@@ -1,23 +1,73 @@
 {
   "id": "45-p3",
-  "title": "Версионирование",
+  "title": "Валидация URI",
   "difficulty": "hard",
   "lecture_id": "45",
   "order": 3,
-  "description": "Клиент старой версии сломается при изменении /users. Как поддержать обратную совместимость?",
+  "description": "True, если URI соответствует `/resource` или `/resource/id`.",
   "examples": [
     {
-      "input": "GET /v1/users и /v2/users",
-      "output": "",
-      "explanation": null
+      "input": "is_valid_rest_uri('/users')",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Версия в пути или в Accept-заголовке."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def is_valid_rest_uri(uri: str) -> bool:\n    \"\"\"True, если URI соответствует REST (/resource или /resource/id).\"\"\"\n    ...",
+  "entry_function": "is_valid_rest_uri",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "/users"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "/users/1"
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "/users/1/posts"
+      ],
+      "expected": false,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        "invalid"
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

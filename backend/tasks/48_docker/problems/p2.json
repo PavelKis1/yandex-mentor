@@ -1,23 +1,55 @@
 {
   "id": "48-p2",
-  "title": "Команды",
+  "title": "Docker ignore",
   "difficulty": "medium",
   "lecture_id": "48",
   "order": 2,
-  "description": "Объясните разницу между COPY и ADD, RUN и CMD.",
+  "description": "True, если файл попадает под паттерн.",
   "examples": [
     {
-      "input": "COPY копирует, ADD распаковывает архивы; RUN — build-time, CMD — runtime",
-      "output": "",
-      "explanation": null
+      "input": "docker_ignore_pattern('a.log', ['*.log'])",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Минимальный образ: python:3.11-slim."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def docker_ignore_pattern(file: str, patterns: list) -> bool:\n    ...",
+  "entry_function": "docker_ignore_pattern",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "a.log",
+        [
+          "*.log"
+        ]
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "b.txt",
+        [
+          "*.log"
+        ]
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

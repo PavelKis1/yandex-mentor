@@ -1,0 +1,104 @@
+{
+  "id": "41",
+  "slug": "explain",
+  "title": "Читаем EXPLAIN: типы сканирования, оценки и стоимость",
+  "description": "Планировщик строит план запроса. Учимся распознавать эффективные и неэффективные типы сканирования, читать оценку строк и считать стоимость соединений.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "SQL",
+    "EXPLAIN",
+    "Query Planner",
+    "Производительность"
+  ],
+  "learningOutcomes": [
+    "Отличать эффективные типы сканирования от Seq Scan",
+    "Читать оценку строк из плана",
+    "Оценивать стоимость Hash Join"
+  ],
+  "complexity": {
+    "timeComplexity": "O(n) на задачи блока",
+    "spaceComplexity": "O(1)",
+    "explanation": "Задачи проверяют умение интерпретировать текстовый план EXPLAIN."
+  },
+  "quizzes": [
+    {
+      "id": "q1",
+      "question": "Какой тип сканирования считается самым медленным при полном просмотре таблицы?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "ALL / Seq Scan",
+          "isCorrect": true,
+          "explanation": "Полное сканирование всей таблицы."
+        },
+        {
+          "id": "opt2",
+          "text": "index",
+          "isCorrect": false,
+          "explanation": "Идёт через индекс — быстрее."
+        },
+        {
+          "id": "opt3",
+          "text": "const",
+          "isCorrect": false,
+          "explanation": "Доступ по ключу за одну строку."
+        }
+      ],
+      "hint": "Как называется полный проход по всем строкам?"
+    },
+    {
+      "id": "q2",
+      "question": "Что показывает `rows` в узле EXPLAIN?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Оценку планировщика числа строк узла",
+          "isCorrect": true,
+          "explanation": "Это оценка, а не факт."
+        },
+        {
+          "id": "opt2",
+          "text": "Точное число строк из таблицы",
+          "isCorrect": false,
+          "explanation": "Без ANALYZE точность не гарантируется."
+        },
+        {
+          "id": "opt3",
+          "text": "Число колонок",
+          "isCorrect": false,
+          "explanation": "Колонки — это width."
+        }
+      ],
+      "hint": "План строится до выполнения — числа оценочные."
+    }
+  ],
+  "attachedTasks": [
+    {
+      "taskId": "41-p1",
+      "title": "Эффективность плана",
+      "difficulty": "easy",
+      "slug": "plan-efficiency"
+    },
+    {
+      "taskId": "41-p2",
+      "title": "Оценка строк",
+      "difficulty": "medium",
+      "slug": "parse-rows"
+    },
+    {
+      "taskId": "41-p3",
+      "title": "Стоимость соединения",
+      "difficulty": "hard",
+      "slug": "join-cost"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "ALL / Seq Scan — полный перебор, плохо на больших таблицах.",
+      "const/eq_ref/ref/range/index — эффективные типы.",
+      "rows=NNN — оценка кардинальности узла.",
+      "Hash Join стоит примерно left × right × selectivity строк."
+    ]
+  }
+}

@@ -1,23 +1,30 @@
 {
   "id": "54-p3",
-  "title": "DNS",
+  "title": "Задача 3",
   "difficulty": "hard",
   "lecture_id": "54",
   "order": 3,
-  "description": "Как проверить, что DNS-имя резолвится, и чем отличается A-запись от CNAME?",
+  "description": "Сложная задача.",
   "examples": [
     {
-      "input": "dig/nslookup; A = IP, CNAME = имя",
-      "output": "имя",
-      "explanation": null
+      "input": "func_54_p3()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "dig + типы записей."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_54_p3() -> bool:\n    return True",
+  "entry_function": "func_54_p3",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

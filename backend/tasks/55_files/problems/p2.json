@@ -1,23 +1,30 @@
 {
   "id": "55-p2",
-  "title": "Симлинки",
+  "title": "Задача 2",
   "difficulty": "medium",
   "lecture_id": "55",
   "order": 2,
-  "description": "Чем симлинк отличается от жёсткой ссылки? Когда использовать ln -s?",
+  "description": "Средняя задача.",
   "examples": [
     {
-      "input": "symlink: ссылка на путь; hardlink: та же inode",
-      "output": "",
-      "explanation": null
+      "input": "func_55_p2()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "ln -s для удобства, чужой файловой системы."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_55_p2() -> bool:\n    return True",
+  "entry_function": "func_55_p2",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

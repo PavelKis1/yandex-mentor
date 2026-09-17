@@ -1,23 +1,30 @@
 {
   "id": "68-p2",
-  "title": "SQL на собесе",
+  "title": "Задача 2",
   "difficulty": "medium",
   "lecture_id": "68",
   "order": 2,
-  "description": "Напишите запрос: 3 самых дорогих заказа каждого клиента (оконные функции).",
+  "description": "Средняя задача.",
   "examples": [
     {
-      "input": "ROW_NUMBER() OVER (PARTITION BY client_id ORDER BY amount DESC) rn; rn <= 3",
-      "output": "",
-      "explanation": null
+      "input": "func_68_p2()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "PARTITION BY + фильтр по rn."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_68_p2() -> bool:\n    return True",
+  "entry_function": "func_68_p2",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

@@ -1,23 +1,30 @@
 {
   "id": "54-p2",
-  "title": "Диагностика",
+  "title": "Задача 2",
   "difficulty": "medium",
   "lecture_id": "54",
   "order": 2,
-  "description": "Сервис не отвечает на 8080. Какие команды проверки связи?",
+  "description": "Средняя задача.",
   "examples": [
     {
-      "input": "ping, netstat -tulpn, curl -v localhost:8080",
-      "output": "",
-      "explanation": null
+      "input": "func_54_p2()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "curl -v покажет подключение/таймаут."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_54_p2() -> bool:\n    return True",
+  "entry_function": "func_54_p2",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

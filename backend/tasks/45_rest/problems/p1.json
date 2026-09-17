@@ -1,23 +1,52 @@
 {
   "id": "45-p1",
-  "title": "Проектирование ресурсов",
+  "title": "Парсинг параметров",
   "difficulty": "easy",
   "lecture_id": "45",
   "order": 1,
-  "description": "Спроектируйте REST-эндпоинты для блога: создать пост, получить пост, лайк поста, список постов автора.",
+  "description": "Верните словарь query-параметров из URL.",
   "examples": [
     {
-      "input": "POST/GET /posts, POST /posts/{id}/like, GET /users/{id}/posts",
-      "output": "",
-      "explanation": null
+      "input": "parse_url_params('a.com?x=1')",
+      "output": "{'x': '1'}"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Существительные, иерархия, методы по действию."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def parse_url_params(url: str) -> dict:\n    \"\"\"Вернуть словарь query-параметров из URL.\"\"\"\n    ...",
+  "entry_function": "parse_url_params",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "a.com?x=1"
+      ],
+      "expected": {
+        "x": "1"
+      },
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "b.com?y=2&z=3"
+      ],
+      "expected": {
+        "y": "2",
+        "z": "3"
+      },
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

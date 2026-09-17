@@ -1,23 +1,30 @@
 {
   "id": "69-p1",
-  "title": "System design",
+  "title": "Задача 1",
   "difficulty": "easy",
   "lecture_id": "69",
   "order": 1,
-  "description": "Спроектируйте сервис сокращения ссылок (как tinyurl) за 20 минут: функциональные/нефункциональные требования.",
+  "description": "Базовая задача.",
   "examples": [
     {
-      "input": "POST /shorten, GET /{key}; 1M RPS; latency < 100 мс",
-      "output": "",
-      "explanation": null
+      "input": "func_69_p1()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Обсуждай требования → дизайн → детали."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_69_p1() -> bool:\n    return True",
+  "entry_function": "func_69_p1",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

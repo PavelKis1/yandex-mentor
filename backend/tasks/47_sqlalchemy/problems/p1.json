@@ -1,23 +1,51 @@
 {
   "id": "47-p1",
-  "title": "Модель",
+  "title": "Коммит сессии",
   "difficulty": "easy",
   "lecture_id": "47",
   "order": 1,
-  "description": "Опишите модель User(id, name, email unique) на SQLAlchemy (declarative).",
+  "description": "True, если сессия активна и есть изменения.",
   "examples": [
     {
-      "input": "class User(Base): __tablename__='users'; email = Column(String, unique=True)",
-      "output": "",
-      "explanation": null
+      "input": "session_commit_behavior(True, True)",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Declarative Base + Column."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def session_commit_behavior(is_active: bool, has_changes: bool) -> bool:\n    ...",
+  "entry_function": "session_commit_behavior",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        true,
+        true
+      ],
+      "expected": true,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        true,
+        false
+      ],
+      "expected": false,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

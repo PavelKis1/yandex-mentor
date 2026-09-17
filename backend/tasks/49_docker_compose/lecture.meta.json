@@ -1,0 +1,51 @@
+{
+  "id": "49",
+  "slug": "docker_compose",
+  "title": "Docker Compose: оркестрация",
+  "description": "Разбираем Compose: зависимости, сети, объемы.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "Docker",
+    "Compose",
+    "Orchestration"
+  ],
+  "learningOutcomes": [
+    "Зависимости",
+    "Сети",
+    "Объемы"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1)",
+    "spaceComplexity": "O(1)",
+    "explanation": "Базовые операции с Compose."
+  },
+  "quizzes": [],
+  "attachedTasks": [
+    {
+      "taskId": "49-p1",
+      "title": "Зависимости сервисов",
+      "difficulty": "easy",
+      "slug": "service-deps"
+    },
+    {
+      "taskId": "49-p2",
+      "title": "Режим сети",
+      "difficulty": "medium",
+      "slug": "network-mode"
+    },
+    {
+      "taskId": "49-p3",
+      "title": "Маппинг объемов",
+      "difficulty": "hard",
+      "slug": "volume-mapping"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "depends_on для порядка",
+      "network_mode для сети",
+      "volume: host:container"
+    ]
+  }
+}

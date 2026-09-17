@@ -1,23 +1,85 @@
 {
   "id": "41-p2",
-  "title": "Использование индекса",
+  "title": "Оценка строк",
   "difficulty": "medium",
   "lecture_id": "41",
   "order": 2,
-  "description": "Почему запрос с LIKE '%text%' не использует обычный индекс на колонке?",
+  "description": "В выводе `EXPLAIN` планировщик оценивает число строк узла как `rows=N`. Напишите `parse_explain_rows(text)`, которая извлекает целое число `N` из фрагмента `rows=NNN`.\n\nЕсли в тексте нет совпадения `rows=NNN` — верните `None`.\n\n**Функция решения:**\n\n```python\ndef parse_explain_rows(text: str):\n    ...\n```",
   "examples": [
     {
-      "input": "LIKE с ведущей звездой — не сработает btree",
-      "output": "",
-      "explanation": null
+      "input": "parse_explain_rows('seq scan on users (cost=0.00..35.50 rows=1000 width=8)')",
+      "output": "1000",
+      "explanation": "Планировщик ожидает 1000 строк."
+    },
+    {
+      "input": "parse_explain_rows('no rows here')",
+      "output": "None",
+      "explanation": "Нет паттерна rows=NNN."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Полнотекстовый поиск / GIN для подстрок."
+  "constraints": [
+    "text — строка",
+    "Искомая N — целое"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Regex r'rows=(\\d+)' находит число.",
+    "Используйте .search, а не .match."
+  ],
+  "starter_code": "def parse_explain_rows(text: str):\n    \"\"\"Вынуть число rows=N из текста EXPLAIN (int или None).\"\"\"\n    ...",
+  "entry_function": "parse_explain_rows",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "seq scan on users (cost=0.00..35.50 rows=1000 width=8)"
+      ],
+      "expected": 1000,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "index scan on orders using idx (cost=0.28..8.30 rows=25 width=6)"
+      ],
+      "expected": 25,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        "hash (cost=40.21..40.21 rows=300 width=4)"
+      ],
+      "expected": 300,
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        "explain analyze select * from t where id=5 rows=1"
+      ],
+      "expected": 1,
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

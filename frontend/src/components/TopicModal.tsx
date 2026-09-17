@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { useTask } from "../hooks/useTask";
 import type {
-  ProgressMap,
   RunResponse,
   SubmitResponse,
   TaskStatus,
@@ -33,8 +32,6 @@ interface TopicModalProps {
   prevLecture?: TaskSummary | null;
   /** Переход на другую тему без закрытия модалки. */
   onOpenLecture?: (lecture: TaskSummary) => void;
-  /** Глобальный прогресс тем — для блока привязанных задач в лекции. */
-  progress?: ProgressMap;
   /** Deep-link: сразу открыть конкретную задачу темы (вкладка «Практические задания»). */
   initialProblemId?: string | null;
   /** Deep-link из лекции на привязанную задачу другой/текущей темы. */
@@ -50,7 +47,6 @@ export function TopicModal({
   nextLecture,
   prevLecture,
   onOpenLecture,
-  progress,
   initialProblemId,
   onOpenTask,
 }: TopicModalProps) {
@@ -213,7 +209,6 @@ const problemCount = problems.length;
               lecture={taskData?.lecture_md ?? ""}
               taskId={lecture.id}
               meta={taskData ?? null}
-              progress={progress}
               onOpenTask={onOpenTask}
             />
           ) : selectedProblem ? (

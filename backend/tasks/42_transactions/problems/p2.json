@@ -1,23 +1,233 @@
 {
   "id": "42-p2",
-  "title": "Откат",
+  "title": "COMMIT / ROLLBACK",
   "difficulty": "medium",
   "lecture_id": "42",
   "order": 2,
-  "description": "В транзакции: INSERT, INSERT с ошибкой. Что останется после ROLLBACK?",
+  "description": "Список `ops` описывает команды внутри транзакции, `state` — текущий баланс счетов.\n- `['add', i, n]` — увеличить счёт `i` на `n`;\n- `['sub', i, n]` — уменьшить счёт `i` на `n`;\n- `['fail']` — транзакция прерывается ошибкой, происходит **ROLLBACK** — возвращаем исходное состояние без изменений.\n\nЕсли ошибок нет — применяем все команды и **COMMIT**: возвращаем итоговое состояние.\n\n**Функция решения:**\n\n```python\ndef transaction_commit_or_rollback(state: list[int], ops: list[list]) -> list[int]:\n    ...\n```",
   "examples": [
     {
-      "input": "Ничего: обе вставки откатятся",
-      "output": "",
-      "explanation": null
+      "input": "transaction_commit_or_rollback([100, 0], [['add',0,50],['add',1,50]])",
+      "output": "[150, 50]",
+      "explanation": "Все команды успешны — COMMIT."
+    },
+    {
+      "input": "transaction_commit_or_rollback([100, 0], [['add',0,50],['fail'],['add',1,50]])",
+      "output": "[100, 0]",
+      "explanation": "Ошибка — ROLLBACK до исходного состояния."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "ROLLBACK отменяет всю транзакцию."
+  "constraints": [
+    "Команды корректны по индексам",
+    "n ≥ 0"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "Сохраните копию исходного состояния.",
+    "При ['fail'] верните эту копию немедленно."
+  ],
+  "starter_code": "def transaction_commit_or_rollback(state: list[int], ops: list[list]) -> list[int]:\n    \"\"\"Применить операции; при op=['fail'] вернуть исходное состояние (ROLLBACK).\"\"\"\n    ...",
+  "entry_function": "transaction_commit_or_rollback",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        [
+          100,
+          0
+        ],
+        [
+          [
+            "add",
+            0,
+            50
+          ],
+          [
+            "add",
+            1,
+            50
+          ]
+        ]
+      ],
+      "expected": [
+        150,
+        50
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        [
+          100,
+          0
+        ],
+        [
+          [
+            "add",
+            0,
+            50
+          ],
+          [
+            "fail"
+          ],
+          [
+            "sub",
+            1,
+            20
+          ]
+        ]
+      ],
+      "expected": [
+        100,
+        0
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          [
+            "add",
+            2,
+            5
+          ],
+          [
+            "sub",
+            0,
+            3
+          ]
+        ]
+      ],
+      "expected": [
+        7,
+        10,
+        15
+      ],
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        [
+          5,
+          5
+        ],
+        [
+          [
+            "fail"
+          ]
+        ]
+      ],
+      "expected": [
+        5,
+        5
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          [
+            "add",
+            1,
+            4
+          ],
+          [
+            "sub",
+            2,
+            2
+          ],
+          [
+            "add",
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": [
+        2,
+        6,
+        1
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        [
+          100,
+          100
+        ],
+        [
+          [
+            "add",
+            0,
+            1
+          ],
+          [
+            "fail"
+          ],
+          [
+            "add",
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": [
+        100,
+        100
+      ],
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }

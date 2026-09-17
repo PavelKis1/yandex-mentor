@@ -1,23 +1,47 @@
 {
   "id": "47-p2",
-  "title": "Запросы",
+  "title": "Тип загрузки",
   "difficulty": "medium",
   "lecture_id": "47",
   "order": 2,
-  "description": "Напишите: получить пользователя по email, всех старше 30, первого отсортированного по id.",
+  "description": "Вернуть 'joined' если eager, иначе 'lazy'.",
   "examples": [
     {
-      "input": "User.query.filter_by(email=e).first()",
-      "output": "",
-      "explanation": null
+      "input": "relationship_load_type('eager')",
+      "output": "'joined'"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "filter_by для равенства, order_by/limit."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def relationship_load_type(query_type: str) -> str:\n    ...",
+  "entry_function": "relationship_load_type",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        "eager"
+      ],
+      "expected": "joined",
+      "hidden": false,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        "lazy"
+      ],
+      "expected": "lazy",
+      "hidden": true,
+      "arg_converters": [
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

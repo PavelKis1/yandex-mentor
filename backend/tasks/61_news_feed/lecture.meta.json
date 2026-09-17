@@ -1,0 +1,45 @@
+{
+  "id": "61",
+  "slug": "news_feed",
+  "title": "News feed",
+  "description": "Разбираем News feed.",
+  "durationMinutes": 15,
+  "difficulty": "junior",
+  "tags": [
+    "News feed"
+  ],
+  "learningOutcomes": [
+    "Основы News feed"
+  ],
+  "complexity": {
+    "timeComplexity": "O(1)",
+    "spaceComplexity": "O(1)",
+    "explanation": "Базовые операции."
+  },
+  "quizzes": [],
+  "attachedTasks": [
+    {
+      "taskId": "61-p1",
+      "title": "Задача 1",
+      "difficulty": "easy",
+      "slug": "t1"
+    },
+    {
+      "taskId": "61-p2",
+      "title": "Задача 2",
+      "difficulty": "medium",
+      "slug": "t2"
+    },
+    {
+      "taskId": "61-p3",
+      "title": "Задача 3",
+      "difficulty": "hard",
+      "slug": "t3"
+    }
+  ],
+  "cheatSheet": {
+    "summary60Sec": [
+      "Функции для News feed"
+    ]
+  }
+}

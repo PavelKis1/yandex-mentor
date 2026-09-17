@@ -1,23 +1,30 @@
 {
   "id": "68-p3",
-  "title": "Системный вопрос",
+  "title": "Задача 3",
   "difficulty": "hard",
   "lecture_id": "68",
   "order": 3,
-  "description": "Чем отличается монолит от микросервисов? Когда микросервисы оправданы?",
+  "description": "Сложная задача.",
   "examples": [
     {
-      "input": "Команды/масштаб; не спеши с микросервисами",
-      "output": "",
-      "explanation": null
+      "input": "func_68_p3()",
+      "output": "True"
     }
   ],
-  "constraints": [],
-  "hints": [
-    "Сначала монолит, потом выделение."
+  "constraints": "time: 1s, memory: 256mb",
+  "hints": [],
+  "starter_code": "def func_68_p3() -> bool:\n    return True",
+  "entry_function": "func_68_p3",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [],
+      "expected": true,
+      "hidden": true,
+      "arg_converters": [],
+      "result_converter": null,
+      "sort_result": false
+    }
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
   "timeout_ms": 3000
 }

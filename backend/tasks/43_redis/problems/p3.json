@@ -1,23 +1,143 @@
 {
   "id": "43-p3",
-  "title": "Очередь через LPUSH/BRPOP",
+  "title": "LRU-вытеснение",
   "difficulty": "hard",
   "lecture_id": "43",
   "order": 3,
-  "description": "Реализуйте очередь на Redis: producer (LPUSH) и consumer (BRPOP с таймаутом).",
+  "description": "Словарь `last_used` хранит `ключ → время последнего обращения`. При превышении ёмкости `capacity` кэш вытесняет **наиболее давно использованный (LRU)** ключ.\n\nРеализуйте `lru_evict_key(last_used, capacity)`:\n- если `len(last_used) <= capacity` — вытеснение не нужно, верните `None`;\n- иначе верните ключ с **минимальным** временем последнего обращения.\n\n**Функция решения:**\n\n```python\ndef lru_evict_key(last_used: dict, capacity: int):\n    ...\n```",
   "examples": [
     {
-      "input": "r.brpop('queue', timeout=0)",
-      "output": "",
-      "explanation": null
+      "input": "lru_evict_key({'a': 10, 'b': 5}, 1)",
+      "output": "'b'",
+      "explanation": "b обращались раньше (5 < 10)."
+    },
+    {
+      "input": "lru_evict_key({'a': 10, 'b': 5}, 3)",
+      "output": "None",
+      "explanation": "Места достаточно — вытеснять нечего."
     }
   ],
-  "constraints": [],
-  "hints": [
-    "BRPOP блокирует; потребитель забирает справа."
+  "constraints": [
+    "capacity ≥ 0",
+    "last_used непуст"
   ],
-  "starter_code": "",
-  "entry_function": null,
-  "test_cases": [],
+  "hints": [
+    "min(last_used, key=last_used.get) даёт самый старый ключ.",
+    "Сначала сравните размер с capacity."
+  ],
+  "starter_code": "def lru_evict_key(last_used: dict, capacity: int):\n    \"\"\"Если ключей больше capacity — вернуть ключ с самым старым last_used, иначе None.\"\"\"\n    ...",
+  "entry_function": "lru_evict_key",
+  "test_cases": [
+    {
+      "id": "t1",
+      "args": [
+        {
+          "a": 10,
+          "b": 5
+        },
+        1
+      ],
+      "expected": "b",
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t2",
+      "args": [
+        {
+          "a": 10,
+          "b": 5,
+          "c": 3
+        },
+        2
+      ],
+      "expected": "c",
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t3",
+      "args": [
+        {
+          "a": 10,
+          "b": 5
+        },
+        3
+      ],
+      "expected": null,
+      "hidden": false,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t4",
+      "args": [
+        {
+          "x": 1,
+          "y": 2
+        },
+        1
+      ],
+      "expected": "x",
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t5",
+      "args": [
+        {
+          "p": 9,
+          "q": 8,
+          "r": 7,
+          "s": 6
+        },
+        2
+      ],
+      "expected": "s",
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    },
+    {
+      "id": "t6",
+      "args": [
+        {
+          "a": 1
+        },
+        2
+      ],
+      "expected": null,
+      "hidden": true,
+      "arg_converters": [
+        null,
+        null
+      ],
+      "result_converter": null,
+      "sort_result": false
+    }
+  ],
   "timeout_ms": 3000
 }
